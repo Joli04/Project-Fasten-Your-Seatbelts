@@ -1,9 +1,11 @@
-#Fys team-3
+# Fys team-3
 # Corendon Fys opdracht
+Een simple web applicatie waarin gebruikers een account kunnen aanmaken en hun reis interesses op kunnen geven om vervolgens andere personen te vinden met de zelfde reis interesses.
 
-###Requirements 
+Waarna ze elkaar kunnen contacteren en vervolgens een (groeps) reis kunnen boeken.
+### Requirements 
 
-##Account
+## Account
 | Code   |      Description      |  Prio |
 |----------|:-------------:|------:|
 | A-1 | Account profiel aanmaken | MUST |
@@ -11,7 +13,7 @@
 | A-3 | Account password change |    MUST |
 | A-4 | Account delete |    MUST |
 
-##Profiel
+## Profiel
 | Code   |      Description      |  Prio |
 |----------|:-------------:|------:|
 | P-1 | Profiel bekijken    | MUST |
@@ -19,7 +21,7 @@
 | P-3 | Profiel matching    |    MUST |
 | P-4 | Profiel filtering   |  MUST |
 
-##Non functioneel
+## Non functioneel
 | Code   |      Description      |  Prio |
 |----------|:-------------:|------:|
 | N-1 | Multi lang (EN, NL)             | MUST |
