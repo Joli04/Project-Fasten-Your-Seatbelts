@@ -4,6 +4,8 @@ Een simple web applicatie waarin gebruikers een account kunnen aanmaken en hun r
 
 Waarna ze elkaar kunnen contacteren en vervolgens een (groeps) reis kunnen boeken.
 
+### Bekijk onze [Wiki](https://gitlab.fdmci.hva.nl/FYS/2122/is108/team-3/-/wikis/home)
+
 ## Team leden
 | Leden |
 |------|
@@ -12,9 +14,6 @@ Waarna ze elkaar kunnen contacteren en vervolgens een (groeps) reis kunnen boeke
 | Jonah Brandwagt |
 | Joli-coeur Weibolt |
 
-### Requirements 
-Bekijk wiki:
-[Requirements](https://gitlab.fdmci.hva.nl/FYS/2122/is108/team-3/-/wikis/Requirements-Document/Functional-Requirements)
 ## Color codes
 - ![#d81e05](https://via.placeholder.com/15/d81e05/000000?text=+) `#d81e05`
 - ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) `#ffffff`
