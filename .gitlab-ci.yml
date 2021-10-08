@@ -1,0 +1,37 @@
+stages:
+  - deploy
+
+before_script:
+  - apk update
+  - apk add openssh
+  - apk add lftp
+
+deploy_mockup:
+  stage: deploy
+  only:
+    - main
+  tags:
+    - hva
+  environment: Mockup
+  script: 
+    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+
+deploy_dev:
+  stage: deploy
+  only:
+    - dev
+  tags:
+    - hva
+  environment: Dev
+  script: 
+    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+
+deploy_live:
+  stage: deploy
+  only:
+    - live
+  tags:
+    - hva
+  environment: Live
+  script: 
+    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
