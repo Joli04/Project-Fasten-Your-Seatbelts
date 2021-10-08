@@ -9,7 +9,7 @@ before_script:
 deploy_mockup:
   stage: deploy
   only:
-    - main
+    - master
   tags:
     - hva
   environment: Mockup
