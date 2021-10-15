@@ -122,3 +122,33 @@ body {
     background-color: #C4C4C4;
     border-radius: 20px;
 }
+
+.info {
+    padding: 150px 100px;
+    background-color: #F0F0F0;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: center;
+    height: 800px;
+    text-align: center;
+}
+.infoContainer__left {
+    width: 800px;
+    margin-right: 50px;
+    background-color: #C4C4C4;
+    border-radius: 25px;
+}
+.infoContainer__title {
+    width: 850px;
+    height: 150px;
+    background-color: #C4C4C4;
+    border-radius: 25px;
+}
+.infoContainer__description {
+    width: 850px;
+    height: 525px;
+    background-color: #C4C4C4;
+    border-radius: 25px;
+}
