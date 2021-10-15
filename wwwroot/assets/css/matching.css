@@ -181,7 +181,7 @@ h2 {
     display: inline-block;
 }
 
-.card .profile_name {
+.card .header {
     font-family: 'robotobold' !important;
     font-size: x-large;
 }
