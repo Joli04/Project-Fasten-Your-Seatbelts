@@ -1,3 +1,33 @@
-.container{
+html, * {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
 
+body {
+    background-color: #484848;
+}
+
+.hero {
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 187px;
+}
+.hero__title {
+    padding-top: 171px;
+    color: #ffffff;
+    font-size: 100px;
+}
+.hero__slogan {
+    margin: 15px 0 100px 0;
+    color: #DCDBDB;
+    font-size: 60px;
+}
+.hero__button {
+    font-size: 70px;
+    padding: 51px 102px;
+    background-color: #C4C4C4;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 50px;
 }
