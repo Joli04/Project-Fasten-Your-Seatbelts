@@ -1,0 +1,72 @@
+body {
+    background-color: dimgrey;
+}
+
+.inloggen {
+    position: relative;
+    top: 50px;
+    left: 470px;
+    width: 600px;
+    height: 550px;
+    text-align: center;
+    background-color: darkgrey;
+    /*border: 15px solid yellow;*/
+
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 0;
+}
+
+form label {
+    margin: 20px 0px;
+    text-align: left;
+}
+
+form {
+    display: grid;
+    position: relative;
+    left: 110px;
+    top: 30px;
+    text-align: left;
+}
+
+
+input[type = text] {
+    padding: 10px;
+    width: 60%;
+}
+
+#aanmelden {
+    margin: 0;
+    padding: 10px 90px;
+    position: relative;
+    top: 50px;
+    border-radius: 5px;
+    /*border: 5px solid blue;*/
+
+}
+
+#niewacc {
+    margin: 0;
+    padding: 10px 100px;
+    position: relative;
+    top: 100px;
+    border-radius: 5px;
+    /*border: 5px solid blue;*/
+}
+
+.WV {
+    position: relative;
+    top: 50px;
+}
+
+hr {
+    background-color: black;
+    position: relative;
+    top: 70px;
+}
