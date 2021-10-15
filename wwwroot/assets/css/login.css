@@ -73,3 +73,10 @@ footer{
     position: relative;
     top: 50px;
 }
+
+#home{
+    margin: 0;
+    padding: 10px 100px;
+    position: relative;
+    border-radius: 5px;
+}
