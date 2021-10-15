@@ -152,3 +152,103 @@ body {
     background-color: #C4C4C4;
     border-radius: 25px;
 }
+
+footer {
+    width: 100%;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+.footer_content{
+    background-color: #C4C4C4;
+}
+.copyright_container{
+    background: #484848;
+    width: 100%;
+}
+.copyright{
+    text-align: center;
+    color: #ffffff;
+}
+/**
+ * Back to top
+ */
+.back-to-top img{
+    width: 35px;
+    margin-top: 13px;
+    color: black;
+}
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: #fed136;
+    color: #fff;
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    line-height: 1;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 2%;
+    bottom: 10%;
+    transition: background 0.5s;
+    z-index: 11;
+}
+
+.footer .contact{
+    margin-left: 5%;
+}
+.footer .links{
+
+}
+.row {
+    margin-left: 5%;
+    margin-bottom: 2%;
+    display: flex;
+}
+.col {
+    flex: 50%;
+}
+/**
+    Plane hr line
+ */
+.hr_plane {
+    display: flex;
+}
+.hr-line {
+    width: 60%;
+    position: relative;
+    margin: 15px;
+    border-bottom: 3px solid #969696;;
+}
+
+.loading_plane{
+    animation: hr_plane 4s infinite linear;
+}
+.hr-icon img{
+    margin-left: -25px;
+    transform: rotate(90deg);
+    height: 45px;;
+    margin-top: 2px;
+    color: #969696;
+}
+
+@keyframes hr_plane{
+    0%{
+        width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+}
