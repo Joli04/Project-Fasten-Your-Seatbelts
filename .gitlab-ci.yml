@@ -14,7 +14,7 @@ deploy_mockup:
     - hva
   environment: Mockup
   script: 
-    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rv wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
 
 deploy_dev:
   stage: deploy
@@ -24,7 +24,7 @@ deploy_dev:
     - hva
   environment: Dev
   script: 
-    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rv wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
 
 deploy_live:
   stage: deploy
@@ -34,4 +34,4 @@ deploy_live:
     - hva
   environment: Live
   script: 
-    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+    - lftp -e "set net:max-retries 3; set ssl:verify-certificate no; set ftp:ssl-allow yes; set sftp:auto-confirm yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rv wwwroot/ $FTP_TARGETPATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
