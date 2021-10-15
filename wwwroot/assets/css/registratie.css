@@ -1,0 +1,93 @@
+body {
+    background-color: dimgrey;
+}
+
+.regi {
+    position: relative;
+    left: 470px;
+    width: 600px;
+    height: 625px;
+    text-align: center;
+    background-color: darkgrey;
+    /*border: 15px solid yellow;*/
+
+}
+
+header h1,p {
+    margin: 0;
+    text-align: center;
+}
+
+header p {
+    margin: 0;
+}
+
+form {
+    position: relative;
+    left: 110px;
+    top: 30px;
+    text-align: left;
+
+}
+
+form label{
+    margin-right: 50px;
+}
+
+input[type = text] {
+    padding: 10px;
+    width: 60%;
+    margin-right: 80px;
+}
+input[type = radio]{
+    margin: 0 15px;
+}
+
+select{
+    margin: 0 30px;
+
+}
+
+#aanmelden {
+    margin: 0;
+    padding: 10px 90px;
+    position: relative;
+    top: 50px;
+    border-radius: 5px;
+
+
+}
+
+#voornaam input{
+    width:125px;
+}
+
+#achternaam input{
+    width:125px;
+}
+#test{
+    padding: 10px;
+    width: 60%;
+    margin-left:105px;
+}
+
+#inloggen {
+    margin: 0;
+    padding: 10px 100px;
+    position: relative;
+    top: 80px;
+    border-radius: 5px;
+
+}
+
+.WV {
+    position: relative;
+    top: 60px;
+}
+
+
+hr {
+    background-color: black;
+    position: relative;
+    top: 70px;
+}
