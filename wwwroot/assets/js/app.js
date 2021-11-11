@@ -30,16 +30,7 @@ function Previous() {
     window.history.back()
 }
 
-function isLoggedIn () {
-    const { user } = response.body
-    localStorage.setItem('user_id', user)
-}
-/**
- * Local storage logout
- */
-function logout () {
-    localStorage.removeItem('user_Id')
-}
+
 //NOTE: Global function so other JavaScript files can use this as well
 // export function checkLoggedIn(element) {
 //     if (FYSCloud.Session.get("loggedin")) {

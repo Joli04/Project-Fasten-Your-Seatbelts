@@ -45,7 +45,7 @@ form {
 }
 
 
-input[type = text] {
+input {
     padding: 10px;
     width: 60%;
 }
