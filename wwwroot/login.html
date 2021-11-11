@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+
+    <!-- stylesheet(s) -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
     <link rel="stylesheet" href="assets/css/pages/login.css">
+    <!-- Script(s) -->
+    <script src="assets/js/app.js" type="module"></script>
+
 </head>
 <body>
 <a href="index.html">
-    <button type="button" id="home">Home</button>
+    <button type="button" id="home" class="btn bg-red" style="width: 250px;">
+        <svg style="width: 35%; color: var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        </svg>
+        Home
+    </button>
 </a>
-<div class="inloggen">
-    <header><h1>Corendon</h1><br>
-        <p>De beste vakantiedeals!!!</p></header>
+<div class="container" style="flex-wrap: wrap;">
+    <div class="inloggen">
+        <header><h1>Corendon</h1><br>
+            <p>De beste vakantiedeals!!!</p>
+        </header>
+        <form>
+            <label>Email</label>
+            <input type="text" name="Email" placeholder="Email">
+            <label>Wachtwoord</label>
+            <input type="text" name="wachtwoord" placeholder="Wachtwoord">
+        </form>
+        <button type="button" class="login_button">Inloggen</button>
 
-    <form action="?">
-        <label>Email</label>
-        <input type="text" name="Email" placeholder="Email">
-        <label>Wachtwoord</label>
-        <input type="text" name="wachtwoord" placeholder="Wachtwoord">
-    </form>
+        <div class="row" style="margin-top: 6%">
+            <div class="col" style="display: inline-block; margin-top: 4%; margin-left: 1%; margin-right: 2%;">
+                <div style="width: 120px">
+                    <label class="checkbox-wrap checkbox-primary">
+                        <input type="checkbox" checked="">
+                        Onthoud mij
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <p><span class="">Wachtwoord vergeten?</span></p>
+            </div>
+        </div>
+        <hr>
+        <button type="button" id="niewacc" class="btn bg-red">Maak een nieuw account aan!</button>
 
-    <a href="profiel.html">
-        <button type="button" id="aanmelden">Inloggen</button>
-    </a>
-    <p><span class="WV">Wachtwoord vergeten?</span></p>
-    <hr>
-    <a href="registratie.html">
-        <button type="button" id="niewacc">Maak een nieuw account aan!</button>
-    </a>
 
+    </div>
 </div>
-<footer>
-    <div class="footer">
-        <div class="footer__content"></div>
-        <div class="footer__copyright"></div>
-    </div>
-    <div class="copyright_container">
-        <!-- Copyright bar -->
-        <p class="copyright">&copy; Copyright
-            <script>
-                document.write(new Date().getFullYear())
-            </script>
-        </p>
-    </div>
-</footer>
+<div id="footer"></div>
 </body>
 
 </html>

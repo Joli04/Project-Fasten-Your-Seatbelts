@@ -1,5 +1,7 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
+
+
 document.addEventListener("DOMContentLoaded", async function () {
     //Add the header to the page
     const headerData = await FYSCloud.Utils.fetchAndParseHtml("_header.html");
@@ -19,9 +21,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     function addFooter(data) {
         const firstElement = data[0];
         document.querySelector("#footer").appendChild(firstElement);
+        var copyright_year = document.querySelector(".copyright .year");
+        copyright_year.innerHTML  = new Date().getFullYear();
     }
 });
+function Previous() {
+    console.log("click?")
+    window.history.back()
+}
 
+function isLoggedIn () {
+    const { user } = response.body
+    localStorage.setItem('user_id', user)
+}
+/**
+ * Local storage logout
+ */
+function logout () {
+    localStorage.removeItem('user_Id')
+}
 //NOTE: Global function so other JavaScript files can use this as well
 // export function checkLoggedIn(element) {
 //     if (FYSCloud.Session.get("loggedin")) {

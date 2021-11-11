@@ -3,18 +3,14 @@
 .faqTitle{
     text-align: center;
 }
-.accordion {
-    margin: 0 auto;
-    padding: 4rem;
-    width: 48rem;
-}
-.accordion  .accordion-item {
+
+.accordion .accordion-item {
     border-bottom: 1px solid #e5e5e5;
-    }
-.accordion button[aria-expanded='true'] {
-    border-bottom: 1px solid #03b5d2;
 }
 
+.accordion .accordion-item button[aria-expanded='true'] {
+    border-bottom: 1px solid #00bce2;
+}
 
 .accordion button {
     position: relative;
@@ -29,24 +25,25 @@
     background: none;
     outline: none;
 }
-.accordion button
-:hover,
-:focus {
+
+.accordion button:hover,
+.accordion button:focus {
     cursor: pointer;
-    color: #03b5d2;
-}
-.accordion button::after {
-    cursor: pointer;
-    color: #03b5d2;
-    border: 1px solid #03b5d2;
+    color: #00bce2;
 }
 
+.accordion button:hover::after,
+.accordion button:focus::after {
+    cursor: pointer;
+    color: #00bce2;
+    border: 1px solid #00bce2;
+}
 
-.accordion-title {
+.accordion button .accordion-title {
     padding: 1em 1.5em 1em 0;
 }
 
-.accordion .icon {
+.accordion button .icon {
     display: inline-block;
     position: absolute;
     top: 18px;
@@ -56,7 +53,8 @@
     border: 1px solid;
     border-radius: 22px;
 }
-.accordion .icon::before {
+
+.accordion button .icon::before {
     display: block;
     position: absolute;
     content: '';
@@ -66,9 +64,7 @@
     height: 2px;
     background: currentColor;
 }
-
-.accordion .icon
-::after {
+.accordion button .icon::after {
     display: block;
     position: absolute;
     content: '';
@@ -79,31 +75,26 @@
     background: currentColor;
 }
 
-
 .accordion button[aria-expanded='true'] {
     color: #03b5d2;
 }
-.accordion .icon
-::after {
+.accordion button[aria-expanded='true'] .icon::after {
     width: 0;
 }
- .accordion-content {
+.accordion button[aria-expanded='true'] + .accordion-content {
     opacity: 1;
     max-height: 9em;
     transition: all 200ms linear;
     will-change: opacity, max-height;
 }
-
-
-
-.accordion-content {
+.accordion .accordion-content {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
     transition: opacity 200ms linear, max-height 200ms linear;
     will-change: opacity, max-height;
 }
-.accordion-content p {
+.accordion .accordion-content p {
     font-size: 1rem;
     font-weight: 300;
     margin: 2em 0;
