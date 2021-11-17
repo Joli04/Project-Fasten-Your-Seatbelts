@@ -1,33 +1,37 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-
-
+import {GetCurrentPage} from "../app.js";
 document.addEventListener("DOMContentLoaded", function () {
-    var login_bt = document.querySelector("#login_button");
-    login_bt.addEventListener('click', login);
-
+    if(GetCurrentPage() === "login.html"){
+        var login_bt = document.querySelector("#login_button");
+        login_bt.addEventListener('click', login);
+        if(isLoggedIn()){
+            FYSCloud.URL.redirect("profiel.html");
+        }
+    }
 });
-
 /**
  * Check if logedin
  */
-function isLoggedIn() {
-    localStorage.setItem('user_id', '');
+export function isLoggedIn() {
+    if(FYSCloud.Session.get("user_id") !== ""){
+        return true;
+    }
+    return false;
 }
 
 /**
  * Local storage logout
  */
-function logout() {
-    localStorage.removeItem('user_Id');
+export function logout() {
+    FYSCloud.Session.clear();
 }
 
-console.log();
 
 /**
  * Login function
  */
-function login() {
+ function login() {
     //Valideer input
     if (validate()) {
         const email = document.getElementById('email');
@@ -39,19 +43,18 @@ function login() {
         shaObj.update(password.value);
         const hash = shaObj.getHash("HEX");
         console.log(hash)
-        getLogin(email.value, hash);
+        this.getLogin(email.value, hash);
         //Execute query
 
         //FYSCloud.URL.redirect("profile.html");
     }
 }
 
-function getLogin(email, password) {
+export function getLogin(email, password) {
     FYSCloud.API.queryDatabase(
         "SELECT id, email, password FROM users WHERE email = ?", [email]
     ).then(function (data) {
         //Get User info
-        console.log(data[0]);
         if (data[0].password === password) {
             FYSCloud.Session.set("user_id", data.id);
             //Redirect page to an URL with querystring
