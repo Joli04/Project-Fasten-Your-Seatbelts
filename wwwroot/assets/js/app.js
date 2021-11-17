@@ -14,7 +14,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     function addHeader(data) {
         const firstElement = data[0];
         // checkLoggedIn(firstElement);
-        document.querySelector("#nav").appendChild(firstElement);
+        const nav =document.querySelector("#nav");
+        if(nav !== undefined){
+            nav.appendChild(firstElement);
+        }
+
         // document.body.insertBefore(firstElement, document.body.firstChild);
     }
 

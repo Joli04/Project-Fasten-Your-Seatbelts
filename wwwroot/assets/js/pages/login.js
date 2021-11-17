@@ -1,96 +1,112 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
-import md5 from '../../../vendors/md5/md5.js';
 import "../config.js";
-import { hashing} from "../hashing.js";
 
 
-document.addEventListener("DOMContentLoaded", async function () {
-    var login_bt = document.querySelector(".login_button");
-    login_bt.addEventListener('click', login());
+document.addEventListener("DOMContentLoaded", function () {
+    var login_bt = document.querySelector("#login_button");
+    login_bt.addEventListener('click', login);
+
 });
 
-function isLoggedIn () {
+/**
+ * Check if logedin
+ */
+function isLoggedIn() {
     localStorage.setItem('user_id', '');
 }
+
 /**
  * Local storage logout
  */
-function logout () {
+function logout() {
     localStorage.removeItem('user_Id');
 }
 
-console.log(hashing.hash('demo'));
+console.log();
+
 /**
- *
- const rawPassword = 'password'
-
- console.log(crypt.hash(rawPassword))
- //1563995248971$10$58e0867f3acc11de363e03389bb27167
-
- console.log(crypt.compare('password','1563995248971$10$58e0867f3acc11de363e03389bb27167'));
- //true
-
- console.log(crypt.hash(rawPassword, {salt: 'someRandomString', rounds: 20}))
- //someRandomString$20$199d9de71859a87cdd22e52d93f4522a
-
- console.log(crypt.compare('password', 'someRandomString$20$199d9de71859a87cdd22e52d93f4522a'));
- //true
+ * Login function
  */
-function login(){
+function login() {
     //Valideer input
-    if(validate()){
-        FYSCloud.API.queryDatabase(
-            "SELECT id, email, password FROM users WHERE email = ?", ["demo@demo.nl"]
-        ).then(function(data) {
-            console.log(data);
-        }).catch(function(reason) {
-            console.log(reason);
-        });
+    if (validate()) {
+        const email = document.getElementById('email');
+        var password = document.getElementById('pass');
 
-        FYSCloud.Session.set("loggedin", true);
-        FYSCloud.URL.redirect("profile.html");
-    }else{
-        console.log('niks')
+        //Hash password directly
+        //format must be HEX, TEXT, B64, BYTES, ARRAYBUFFER, or UINT8ARRAY
+        const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
+        shaObj.update(password.value);
+        const hash = shaObj.getHash("HEX");
+        console.log(hash)
+        getLogin(email.value, hash);
+        //Execute query
+
+        //FYSCloud.URL.redirect("profile.html");
     }
 }
+
+function getLogin(email, password) {
+    FYSCloud.API.queryDatabase(
+        "SELECT id, email, password FROM users WHERE email = ?", [email]
+    ).then(function (data) {
+        //Get User info
+        console.log(data[0]);
+        if (data[0].password === password) {
+            FYSCloud.Session.set("user_id", data.id);
+            //Redirect page to an URL with querystring
+            FYSCloud.URL.redirect("profiel.html");
+        } else {
+            addError(document.querySelector("form"), "Wachtwoord is incorrect");
+        }
+    }).catch(function (reason) {
+        //Log reason
+        console.log(reason);
+    });
+
+}
+
 function validate() {
     var isValid = true;
     var elements = document.querySelectorAll("input");
+    var errorMsg = "";
     const errors = document.querySelectorAll('.error');
     errors.forEach(e => {
         e.remove();
     });
     elements.forEach(e => {
-        if(e.type === "submit"){
-            console.log(e);
-        }
-        if(e.type === "email"){
-            if(validateEmail(e.value)){
-                addError(e);
-                isValid = false;
-            }
-        }else{
-            if(e.value) {
-                return true;
-            }else{
-                addError(e);
+        if (e.type === "email") {
+            if (!validateEmail(e.value)) {
+                errorMsg = "Geen geldig email addres";
+                addError(e, errorMsg);
                 isValid = false;
             }
         }
+        if (e.type === "password") {
+            if (e.value === "") {
+                errorMsg = "Wachtwoord is een verplicht veld";
+                console.log(e.value, errorMsg);
+                addError(e);
+                isValid = false;
+            }
+        }
+
     });
+    console.log(isValid);
     return isValid;
 }
 
 /**
  * Add Custom error block
- * @param e
+ * @param element
+ * @param errorMsg
  */
-function addError(e){
+function addError(element, errorMsg = "Dit veld is een verplicht veld") {
     const error = document.createElement("p");
     error.className = "error";
     error.style.display = 'block';
-    error.innerText = "Dit veld is een verplicht veld";
-    e.parentElement.appendChild(error);
+    error.innerText = errorMsg;
+    element.parentElement.appendChild(error);
 }
 
 function validateEmail(email) {
