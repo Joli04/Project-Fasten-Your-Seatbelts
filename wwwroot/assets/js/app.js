@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         var copyright_year = document.querySelector(".copyright .year");
         copyright_year.innerHTML = new Date().getFullYear();
     }
+    var logout_btn = document.querySelector("#nav_logout");
+    logout_btn.addEventListener('click', logout);
 
     checkNeedsLogin(GetCurrentPage());
     setActivePage();
@@ -100,13 +102,3 @@ function redirectToLogin() {
     }
 }
 
-//NOTE: Global function so other JavaScript files can use this as well
-// export function checkLoggedIn(element) {
-//     if (FYSCloud.Session.get("loggedin")) {
-//         element.querySelectorAll(".js-loggedin-show").forEach(e => e.style.display = "block");
-//         element.querySelectorAll(".js-loggedin-hide").forEach(e => e.style.display = "none");
-//     } else {
-//         element.querySelectorAll(".js-loggedin-show").forEach(e => e.style.display = "none");
-//         element.querySelectorAll(".js-loggedin-hide").forEach(e => e.style.display = "block");
-//     }
-// }
