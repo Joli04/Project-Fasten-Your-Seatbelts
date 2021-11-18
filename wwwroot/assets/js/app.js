@@ -2,7 +2,7 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
 import {isLoggedIn, logout} from './pages/login.js';
 
-const initialLanguage = "nl";
+
 
 document.addEventListener("DOMContentLoaded", async function () {
     //Add the header to the page
@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     //Set default translations
     FYSCloud.Localization.setTranslations(await getTransable());
-
+    const initialLanguage  = FYSCloud.Session.get('lang') !== '' ? FYSCloud.Session.get('lang') : 'nl';
     document.querySelector("#languageSwitch").value = initialLanguage;
-    translate("nl");
+    translate(initialLanguage);
 
 
     document.querySelector("#languageSwitch").addEventListener("change", function () {
@@ -126,6 +126,7 @@ async function getTransable() {
 }
 
 function translate(lang_code) {
+    FYSCloud.Session.set('lang', lang_code);
     FYSCloud.Localization.switchLanguage(lang_code);
     FYSCloud.Localization.translate();
 }

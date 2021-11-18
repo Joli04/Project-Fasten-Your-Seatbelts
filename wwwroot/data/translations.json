@@ -7,6 +7,58 @@
     "subheader": {
       "nl": "Dit moet ook vertaald worden",
       "en": "This has to be translated as well"
+    },
+    "data": {
+      "first_name": {
+        "nl": "Voornaam",
+        "en": "First name"
+      },
+      "last_name": {
+        "nl": "Achternaam",
+        "en": "Lastname"
+      },
+      "email": {
+        "nl": "Email adres",
+        "en": "Email"
+      },
+      "password": {
+        "nl": "Wachtwoord",
+        "en": "Password"
+      },
+      "birthday": {
+        "nl": "Geboorte Datum",
+        "en": "Birthday"
+      },
+      "gender": {
+        "nl": "Geslacht",
+        "en": "Gender"
+      },
+      "new_password": {
+        "nl": "Nieuw wachtwoord",
+        "en": "New password"
+      }
+    }
+  },
+  "register": {
+    "registerNewAccount": {
+      "nl": "Een nieuw account maken",
+      "en": "Generate a new account"
+    },
+    "easyAsHell": {
+      "nl": "Dit kan je heel eenvoudig doen.",
+      "en": "it's as easy as hell!"
+    },
+    "btn_register": {
+      "nl": "Aanmelden",
+      "en": "Register"
+    },
+    "btn_pass_forgot": {
+      "nl": "Wachtwoord vergeten",
+      "en": "Password forgotten"
+    },
+    "has_account":{
+      "nl": "Heb je al een account? Log dan in!",
+      "en": "Already a account? lets login!"
     }
   },
   "nav": {
