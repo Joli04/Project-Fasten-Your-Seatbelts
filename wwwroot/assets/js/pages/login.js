@@ -46,11 +46,8 @@ function login() {
         const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
         shaObj.update(password.value);
         const hash = shaObj.getHash("HEX");
-        console.log(hash)
-        this.getLogin(email.value, hash);
-        //Execute query
+        getLogin(email.value, hash);
 
-        //FYSCloud.URL.redirect("profile.html");
     }
 }
 
@@ -60,9 +57,10 @@ export function getLogin(email, password) {
     ).then(function (data) {
         //Get User info
         if (data[0].password === password) {
-            FYSCloud.Session.set("user_id", data.id);
+            FYSCloud.Session.set("user_id", data[0].id);
             //Redirect page to an URL with querystring
             FYSCloud.URL.redirect("profiel.html");
+
         } else {
             addError(document.querySelector("form"), "Wachtwoord is incorrect");
         }
