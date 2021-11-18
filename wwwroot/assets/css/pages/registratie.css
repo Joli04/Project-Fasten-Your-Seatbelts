@@ -1,16 +1,17 @@
 body {
-    background-color: dimgrey;
+    background-color: #f8f9fd;
 }
 
 .regi {
+    bottom: 40px;
     position: relative;
     left: 470px;
     width: 600px;
     height: 625px;
     text-align: center;
-    background-color: darkgrey;
-    /*border: 15px solid yellow;*/
-
+    box-shadow: 0 10px 34px -15px rgb(0 0 0 / 80%);
+    border-radius: 40px;
+    background-color: #ffffff;
 }
 
 header h1,p {
@@ -35,6 +36,7 @@ form label{
 }
 
 input[type = text] {
+    border-radius: 10px;
     padding: 10px;
     width: 60%;
     margin-right: 80px;
@@ -44,16 +46,20 @@ input[type = radio]{
 }
 
 select{
-    margin: 0 30px;
-
+    position: relative;
+    right: 27px;
+    border-radius: 10px;
+    margin: 0 40px;
 }
 
 #aanmelden {
+    color: white;
     margin: 0;
     padding: 10px 90px;
     position: relative;
     top: 50px;
     border-radius: 5px;
+    background-color: #1089ff;
 
 
 }
@@ -72,11 +78,13 @@ select{
 }
 
 #inloggen {
+    color: white;
     margin: 0;
     padding: 10px 100px;
     position: relative;
     top: 80px;
     border-radius: 5px;
+    background-color: #dc3545;
 
 }
 
@@ -97,4 +105,9 @@ hr {
     padding: 10px 100px;
     position: relative;
     border-radius: 5px;
+}
+.copyright{
+    left:30px;
+    position: relative;
+    bottom:40px;
 }
