@@ -15,6 +15,29 @@ export default class Profile {
         return this.first_name + " " + this.last_name;
     }
 
+    async registerProfile() {
+        if (this.id === 'undefined') {
+            try {
+                let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,account_type,birthday,qountry_origin_id) VALUES (?,?,?,?,?,?,?);", [this.first_name, this.last_name, this.password, this.email, this.account_type, this.birthday, this.qountry]);
+                return data[0]
+            } catch (e) {
+                return {};
+            }
+        }
+    }
+
+    /**
+     *
+     * @return {Promise<void>}
+     */
+    async getQountry(){
+
+    }
+
+    /**
+     *
+     * @return {Promise<void>}
+     */
     async setProfile() {
         const data = await this.getData();
         console.log(data);
@@ -27,10 +50,10 @@ export default class Profile {
 
     async getData() {
         if (this.id > 0) {
-            try{
+            try {
                 let data = await FYSCloud.API.queryDatabase("SELECT * FROM users WHERE id = ?", [this.id]);
                 return data[0]
-            }catch (e){
+            } catch (e) {
                 return {};
             }
 
