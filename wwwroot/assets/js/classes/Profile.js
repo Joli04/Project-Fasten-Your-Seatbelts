@@ -27,17 +27,13 @@ export default class Profile {
 
     async getData() {
         if (this.id > 0) {
-            let data = await FYSCloud.API.queryDatabase("SELECT * FROM users WHERE id = ?", [this.id]);
-            //console.log(data)
+            try{
+                let data = await FYSCloud.API.queryDatabase("SELECT * FROM users WHERE id = ?", [this.id]);
+                return data[0]
+            }catch (e){
+                return {};
+            }
 
-            return data[0]
-            // await FYSCloud.API.queryDatabase("SELECT * FROM users WHERE id = ?", [this.id]
-            // ).then(function (data) {
-            //     console.log(data[0]);
-            //     return data[0];
-            // }).catch(function (reason) {
-            //     console.log(reason);
-            // });
         }
     }
 

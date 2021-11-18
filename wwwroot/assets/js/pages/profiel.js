@@ -15,5 +15,6 @@ var age =document.querySelector('#profiel_age');
 const d = new Date(profiel.birthday);
 
 age.innerHTML =d.toLocaleDateString().replace("T"," ");
+
 var gender =document.querySelector('#profiel_gender');
 var country =document.querySelector('#profiel_country');
