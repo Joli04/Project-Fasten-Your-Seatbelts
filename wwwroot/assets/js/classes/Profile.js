@@ -40,7 +40,6 @@ export default class Profile {
      */
     async setProfile() {
         const data = await this.getData();
-        console.log(data);
         this.first_name = data.first_name;
         this.last_name = data.last_name;
         this.email = data.email;

@@ -2,6 +2,8 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
 import {isLoggedIn, logout} from './pages/login.js';
 
+const initialLanguage = "nl";
+
 document.addEventListener("DOMContentLoaded", async function () {
     //Add the header to the page
     const headerData = await FYSCloud.Utils.fetchAndParseHtml("_header.html");
@@ -27,11 +29,23 @@ document.addEventListener("DOMContentLoaded", async function () {
         var copyright_year = document.querySelector(".copyright .year");
         copyright_year.innerHTML = new Date().getFullYear();
     }
+
     var logout_btn = document.querySelector("#nav_logout");
     logout_btn.addEventListener('click', logout);
 
     checkNeedsLogin(GetCurrentPage());
     setActivePage();
+
+    //Set default translations
+    FYSCloud.Localization.setTranslations(await getTransable());
+
+    document.querySelector("#languageSwitch").value = initialLanguage;
+    translate("nl");
+
+
+    document.querySelector("#languageSwitch").addEventListener("change", function () {
+        translate(this.value)
+    });
 });
 
 /**
@@ -66,19 +80,19 @@ function setActivePage() {
     nav_page.style.display = "block"; //first show if is hidden
     nav_page.classList.add("active");
 }
+
 function HandleLinks(show) {
     const login = document.querySelector(".nav #login");
     const register = document.querySelector(".nav #registratie");
-    if(show){
+    if (show) {
         login.style.display = "block";
         register.style.display = "block";
-    }else{
+    } else {
         login.style.display = "none";
         register.style.display = "none";
     }
 
 }
-
 
 
 function checkNeedsLogin(endpoint) {
@@ -100,5 +114,19 @@ function redirectToLogin() {
     if (!isLoggedIn()) {
         FYSCloud.URL.redirect("login.html");
     }
+}
+
+async function getTransable() {
+    //Get the same accommodations again, but this time from a local JSON-file.
+    try {
+        return await FYSCloud.Utils.fetchJson("data/translations.json");
+    } catch (reason) {
+        console.log(reason);
+    }
+}
+
+function translate(lang_code) {
+    FYSCloud.Localization.switchLanguage(lang_code);
+    FYSCloud.Localization.translate();
 }
 

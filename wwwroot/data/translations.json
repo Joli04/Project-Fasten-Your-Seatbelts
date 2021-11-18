@@ -1,0 +1,38 @@
+{
+  "profile": {
+    "header": {
+      "nl": "Mijn profiel",
+      "en": "My profile"
+    },
+    "subheader": {
+      "nl": "Dit moet ook vertaald worden",
+      "en": "This has to be translated as well"
+    }
+  },
+  "nav": {
+    "home": {
+      "nl": "Home",
+      "en": "home"
+    },
+    "faq": {
+      "nl": "vgv",
+      "en": "faq"
+    },
+    "logout": {
+      "nl": "Uitloggen",
+      "en": "Logout"
+    },
+    "profile": {
+      "nl": "Profiel",
+      "en": "Profile"
+    },
+    "matching": {
+      "nl": "Matches",
+      "en": "Matching"
+    },
+    "register": {
+      "nl": "Registreren",
+      "en": "Register"
+    }
+  }
+}
