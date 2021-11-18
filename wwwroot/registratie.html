@@ -24,7 +24,7 @@
     <h1>Een nieuw account maken</h1>
     <p>Dit kan je heel eenvoudig maken.</p>
 
-    <form action="?">
+    <form>
         <label data-translate="profile.data.first_name">Voornaam</label>
         <label id="test"  data-translate="profile.data.last_name">Achternaam</label>
         <br>
@@ -38,12 +38,12 @@
         <input type="date"><br>
 
         <label data-translate="profile.data.gender">Geslacht</label><br>
-        <input type="radio" name="wachtwoord" placeholder="Man">
-        <label>Man</label>
-        <input type="radio" name="wachtwoord" placeholder="Vrouw">
-        <label>Vrouw</label>
-        <input type="radio" name="wachtwoord" placeholder="Anders">
-        <label>Anders</label>
+        <input type="radio" name="gender" id="gender_men" placeholder="Man">
+        <label for="gender_men">Man</label>
+        <input type="radio" name="gender" id="gender_whoman" placeholder="Vrouw">
+        <label for="gender_whoman">Vrouw</label>
+        <input type="radio" name="gender" id="gender_else" placeholder="Anders">
+        <label for="gender_else">Anders</label>
     </form>
     <a href="profiel.html">
         <button type="button" id="aanmelden" data-translate="register.btn_register">Aanmelden</button>
