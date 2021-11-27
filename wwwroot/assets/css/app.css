@@ -107,7 +107,7 @@ body {
 }
 
 .nav {
-    padding: 50px 50px 0 50px;
+    padding: 50px 50px 75px 50px;
 }
 
 .nav ul {
@@ -153,7 +153,7 @@ body {
 }
 
 .fourSteps {
-    padding: 125px 0 200px 0;
+    padding-bottom: 75px;
 }
 
 .fourSteps__title {
@@ -206,34 +206,60 @@ body {
 }
 
 .info {
-    padding: 150px 100px;
+    padding: 75px;
     background-color: #F0F0F0;
 }
 
 .infoContainer {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
     justify-content: center;
-    height: 800px;
-    text-align: center;
 }
 
 .infoContainer__left {
-    width: 800px;
+    width: 625px;
     margin-right: 50px;
     background-color: #C4C4C4;
     border-radius: 25px;
 }
 
+.infoContainer__right {
+    width: 625px;
+}
+
 .infoContainer__title {
-    width: 850px;
-    height: 150px;
+    height: 75px;
     background-color: #C4C4C4;
     border-radius: 25px;
 }
 
+.infoContainer__divider {
+    position: relative;
+}
+.infoContainer__divider hr {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 33px 0;
+    border: solid 2px #000000;
+}
+.infoContainer__divider:after {
+    display: inline-block;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 15px;
+    left: 45%;
+    content: '';
+    background-image: url("../img/airplane-seperator.svg");
+    background-size: 40px 40px;
+    transform: rotate(90deg);
+}
+
 .infoContainer__description {
-    width: 850px;
-    height: 525px;
+    height: 325px;
     background-color: #C4C4C4;
     border-radius: 25px;
 }
