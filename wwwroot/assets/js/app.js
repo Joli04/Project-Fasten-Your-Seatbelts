@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     function addHeader(data) {
         const firstElement = data[0];
+        var nav = document.querySelector("#nav");
         // checkLoggedIn(firstElement);
         // const nav =document.querySelector("#nav");
         // if(nav !== undefined){
         //     nav.appendChild(firstElement);
         // }
-        document.body.insertBefore(firstElement, document.body.firstElementChild);
+        nav.insertBefore(firstElement, nav.firstElementChild);
     }
 
     function addFooter(data) {

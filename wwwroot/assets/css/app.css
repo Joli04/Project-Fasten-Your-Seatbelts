@@ -119,7 +119,7 @@ body {
 
 .nav ul li {
     float: right;
-    font-size: 50px;
+    font-size: 25px;
     margin-left: 35px;
     cursor: default;
 }
@@ -142,7 +142,7 @@ body {
 .nav ul .nav__title {
     float: left;
     margin: 0;
-    font-size: 55px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -269,7 +269,7 @@ footer {
 
 .back-to-top {
     position: fixed;
-    display: none;
+    display: inline;
     background: #d81e05;
     color: #00bce2;
     width: 65px;
