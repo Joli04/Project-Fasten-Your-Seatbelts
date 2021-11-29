@@ -1,4 +1,14 @@
 {
+  "home": {
+    "slogan":{
+      "nl":  "Website slogan",
+      "en":  "Website slogan"
+    },
+    "hero": {
+      "nl": "Meld je aan!",
+      "en": "Register now"
+    }
+  },
   "profile": {
     "header": {
       "nl": "Mijn profiel",
@@ -71,7 +81,7 @@
       "en": "home"
     },
     "faq": {
-      "nl": "vgv",
+      "nl": "faq",
       "en": "faq"
     },
     "logout": {
