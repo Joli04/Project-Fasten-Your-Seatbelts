@@ -49,6 +49,11 @@
       }
     }
   },
+  "match": {
+    "data": {
+
+    }
+  },
   "register": {
     "registerNewAccount": {
       "nl": "Een nieuw account maken",
@@ -99,6 +104,12 @@
     "register": {
       "nl": "Registreren",
       "en": "Register"
+    }
+  },
+  "faq": {
+    "header": {
+      "nl": "Veel gestelde vragen",
+      "en": "Most asked questions"
     }
   }
 }

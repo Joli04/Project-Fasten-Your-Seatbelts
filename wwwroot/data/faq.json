@@ -1,0 +1,25 @@
+{
+  "payments": {
+    "invoices": {
+      "title": {
+        "nl": "Facturen",
+        "en": "Invoices"
+      },
+      "data": {
+        "nl": "Je factuur wordt incl btw verstuur per email",
+        "en": "Your invoices will be send with taxes to your email adres"
+      }
+    },
+    "subscriptions": {
+      "title": {
+        "nl": "abonnement",
+        "en": "subscriptions"
+      },
+      "data": {
+        "nl": "Je abonnement wordt per maand automatisch vernieuwd",
+        "en": "Your subscription is automatically renewed each month"
+      }
+    }
+  }
+
+}
