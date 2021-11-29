@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
     <link rel="stylesheet" href="assets/css/pages/login.css">
     <script src="assets/js/pages/login.js" type="module"></script>
+    <script src="vendors/jsSHA/sha.js"></script>
 </head>
 <body>
 <a href="index.html">
@@ -26,11 +27,11 @@
         </header>
         <form >
             <label>Email</label>
-            <input type="email" name="Email" placeholder="Email">
+            <input type="email" name="Email" id="email" placeholder="Email">
             <label>Wachtwoord</label>
-            <input type="password" name="wachtwoord" placeholder="Wachtwoord">
+            <input type="password" name="wachtwoord" id="pass" placeholder="Wachtwoord">
         </form>
-        <button type="button" class="login_button">Inloggen</button>
+        <button type="button" class="login_button" id="login_button">Inloggen</button>
         <div class="row" style="margin-top: 6%">
             <div class="col" style="display: inline-block; margin-top: 4%; margin-left: 1%; margin-right: 2%;">
                 <div style="width: 120px">

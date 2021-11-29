@@ -27,6 +27,6 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
         url: "https://api.fys.cloud",
         apiKey: "fys_is108_3.xPgSL3VLOKzdmUMe",
         database: "fys_is108_3_dev",
-        environment: "mockup"
+        environment: "dev"
     });
 
