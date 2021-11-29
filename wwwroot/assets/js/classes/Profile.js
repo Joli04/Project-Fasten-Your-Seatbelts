@@ -30,7 +30,7 @@ export default class Profile {
      *
      * @return {Promise<void>}
      */
-    async getQountry(){
+    async getQountry() {
 
     }
 
@@ -45,6 +45,42 @@ export default class Profile {
         this.email = data.email;
         this.account_type = data.account_type;
         this.birthday = data.birthday;
+        this.profile = data.profile;
+    }
+
+    /**
+     *
+     */
+    getProfilePicture() {
+        return this.profile;
+    }
+
+
+    updateProfile(){
+     return profile;
+    }
+
+    setProfilePicture(uplaudEl) {
+        FYSCloud.Utils
+            .getDataUrl(uplaudEl)
+            .then(function (data) {
+                FYSCloud.API.uploadFile(
+                    "userprofile_" + this.id + ".png", //set name of file to reffence
+                    data.url
+                ).then(function (data) {
+                    //is uplauded
+                    this.profile = data.url;
+
+                    console.log(data);
+                }).catch(function (reason) {
+                    console.log(reason);
+                });
+                if (data.isImage) {
+                    document.querySelector("#imagePreview").src = data.url;
+                }
+            }).catch(function (reason) {
+            console.log(reason);
+        });
     }
 
     async getData() {
