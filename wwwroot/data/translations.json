@@ -64,8 +64,49 @@
   "match": {
     "data": {
 
-    }
-  },
+        "countryTo": {
+          "nl": "Land om naar te reizen:",
+          "en": "Country to travel to:"
+        },
+        "gender": {
+          "nl": "Geslacht:",
+          "en": "Gender:",
+          "data": {
+            "male": {
+              "nl": "Man",
+              "en": "Male"
+            },
+            "female": {
+              "nl": "Vrouw",
+              "en": "Female"
+            },
+            "other": {
+              "nl": "Overig",
+              "en": "Other"
+            }
+          }
+        },
+        "age": {
+          "nl": "Leeftijd:",
+          "en": "Age:"
+        },
+        "countryOrigin": {
+          "nl": "Lang van herkomst:",
+          "en": "Country of origin:"
+        },
+        "moreSettings": {
+          "nl": "Meer filter instellingen...",
+          "en": "More filter settings..."
+        }
+      },
+      "profile": {
+        "header": {
+          "nl": "Jouw profiel",
+          "en": "Your profile"
+          }
+        }
+      }
+    },
   "register": {
     "registerNewAccount": {
       "nl": "Een nieuw account maken",
