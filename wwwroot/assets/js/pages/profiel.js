@@ -1,4 +1,3 @@
-
 import {GetCurrentPage} from "../app.js";
 import Profile from "../classes/Profile.js";
 const profiel = new Profile();
