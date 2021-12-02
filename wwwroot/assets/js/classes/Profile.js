@@ -53,7 +53,7 @@ export default class Profile {
      * @return {Promise<void>}
      */
      getQountry() {
-         return this.qountry;
+         return this.country;
     }
 
     /**
@@ -69,7 +69,7 @@ export default class Profile {
         this.birthday = data.birthday;
         this.profile = data.profile;
         this.gender = data.gender;
-        this.qountry = data.orgin_qountry;
+        this.country = data.orgin_country;
     }
     generateAvatar(foregroundColor = "white", backgroundColor = "black") {
         const canvas = document.createElement("canvas");
@@ -93,8 +93,7 @@ export default class Profile {
         return canvas.toDataURL("image/png");
     }
 
-
-    getBirthdayString(){
+    getBirthdayDateObject(){
         return new Date(this.birthday);
     }
 
@@ -102,7 +101,6 @@ export default class Profile {
      *
      */
     getProfilePicture() {
-        console.log(this.profile);
         if(!!this.profile){
             return this.profile;
         }else{
@@ -114,11 +112,9 @@ export default class Profile {
     }
 
 
-    updateProfile(){
-     return profile;
-    }
 
-    setProfilePicture(uplaudEl) {
+
+    setProfilePicture(uplaudEl,previewEl) {
         FYSCloud.Utils
             .getDataUrl(uplaudEl)
             .then(function (data) {
@@ -128,13 +124,12 @@ export default class Profile {
                 ).then(function (data) {
                     //is uplauded
                     this.profile = data.url;
-
                     console.log(data);
                 }).catch(function (reason) {
                     console.log(reason);
                 });
                 if (data.isImage) {
-                    document.querySelector("#imagePreview").src = data.url;
+                    previewEl.src = data.url;
                 }
             }).catch(function (reason) {
             console.log(reason);
@@ -144,7 +139,7 @@ export default class Profile {
     async getData() {
         if (this.id > 0) {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,qountries.names as orgin_qountry ,users.profile,users.gender,users.bio FROM users INNER JOIN qountries ON users.qountry_origin_id = qountries.id where users.id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
                 return {};
