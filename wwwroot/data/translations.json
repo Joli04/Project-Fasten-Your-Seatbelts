@@ -1,8 +1,8 @@
 {
   "home": {
     "slogan":{
-      "nl":  "Website slogan",
-      "en":  "Website slogan"
+      "nl":  "Match op CommonFlight om met Corendon wereldwijd te reizen!",
+      "en":  "Match on CommonFlight to travel with Corendon worldwide!"
     },
     "hero": {
       "nl": "Meld je aan!",
@@ -25,7 +25,7 @@
       },
       "last_name": {
         "nl": "Achternaam",
-        "en": "Lastname"
+        "en": "Last name"
       },
       "email": {
         "nl": "Email adres",
@@ -36,7 +36,7 @@
         "en": "Password"
       },
       "birthday": {
-        "nl": "Geboorte Datum",
+        "nl": "Geboorte datum",
         "en": "Birthday"
       },
       "gender": {
@@ -90,9 +90,9 @@
           "nl": "Leeftijd:",
           "en": "Age:"
         },
-        "countryOrigin": {
-          "nl": "Lang van herkomst:",
-          "en": "Country of origin:"
+        "nationality": {
+          "nl": "Nationaliteit:",
+          "en": "Nationality:"
         },
         "moreSettings": {
           "nl": "Meer filter instellingen...",
@@ -110,37 +110,31 @@
   "register": {
     "registerNewAccount": {
       "nl": "Een nieuw account maken",
-      "en": "Generate a new account"
-    },
-    "easyAsHell": {
-      "nl": "Dit kan je heel eenvoudig doen.",
-      "en": "it's as easy as hell!"
+      "en": "Create a new account"
     },
     "btn_register": {
       "nl": "Aanmelden",
-      "en": "Register"
+      "en": "Registration"
     },
     "btn_pass_forgot": {
       "nl": "Wachtwoord vergeten",
-      "en": "Password forgotten"
+      "en": "Forgotten password"
     },
     "has_account":{
-      "nl": "Heb je al een account? Log dan in!",
-      "en": "Already a account? lets login!"
+      "nl": "Heb je al een account? Login",
+      "en": "Already registered? Login"
+    }
+  },
+  "login": {
+    "no_account": {
+      "nl": "Geen account? Registreer nu!",
+      "en": "No account? Sign up now!"
     }
   },
   "nav": {
     "login": {
       "nl": "Inloggen",
       "en": "Login"
-    },
-    "home": {
-      "nl": "Home",
-      "en": "home"
-    },
-    "faq": {
-      "nl": "faq",
-      "en": "faq"
     },
     "logout": {
       "nl": "Uitloggen",
@@ -156,7 +150,7 @@
     },
     "register": {
       "nl": "Registreren",
-      "en": "Register"
+      "en": "Registration"
     }
   },
   "faq": {

@@ -253,7 +253,7 @@ body {
     top: 15px;
     left: 45%;
     content: '';
-    background-image: url("../img/airplane-seperator.svg");
+    background-image: url("../img/icons/airplane-seperator.svg");
     background-size: 40px 40px;
     transform: rotate(90deg);
 }
