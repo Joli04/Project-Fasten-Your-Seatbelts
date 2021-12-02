@@ -52,8 +52,8 @@ export default class Profile {
      *
      * @return {Promise<void>}
      */
-    async getQountry() {
-
+     getQountry() {
+         return this.qountry;
     }
 
     /**
@@ -69,6 +69,7 @@ export default class Profile {
         this.birthday = data.birthday;
         this.profile = data.profile;
         this.gender = data.gender;
+        this.qountry = data.orgin_qountry;
     }
 
     /**
@@ -109,7 +110,7 @@ export default class Profile {
     async getData() {
         if (this.id > 0) {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT * FROM users WHERE id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.account_type,users.birthday,qountries.names as orgin_qountry ,users.profile,users.gender,users.bio FROM users INNER JOIN qountries ON users.qountry_origin_id = qountries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
                 return {};
