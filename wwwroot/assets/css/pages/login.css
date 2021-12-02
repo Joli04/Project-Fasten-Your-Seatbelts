@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f9fd;
+    background-color: #484848;
 }
 .login_button{
     margin: 0;
@@ -61,7 +61,8 @@ input {
 
 .WV {
     position: relative;
-    top: 50px;
+    top: 15px;
+    left: 20px;
 }
 
 hr {
