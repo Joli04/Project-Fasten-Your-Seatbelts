@@ -18,3 +18,5 @@ age.innerHTML =d.toLocaleDateString().replace("T"," ");
 var gender =document.querySelector('#profiel_gender');
 var country =document.querySelector('#profiel_country');
 country.innerHTML = profiel.getQountry();
+
+document.getElementById("avatar").src = profiel.getProfilePicture()

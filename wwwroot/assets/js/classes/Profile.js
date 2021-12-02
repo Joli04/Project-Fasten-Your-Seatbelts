@@ -71,6 +71,28 @@ export default class Profile {
         this.gender = data.gender;
         this.qountry = data.orgin_qountry;
     }
+    generateAvatar(foregroundColor = "white", backgroundColor = "black") {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = 200;
+        canvas.height = 200;
+
+        // Draw background
+        context.fillStyle = backgroundColor;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw text
+        context.font = "bold 100px Assistant";
+        context.fillStyle = foregroundColor;
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        const intials = this.first_name.charAt(0) + this.last_name.charAt(0);
+        context.fillText(intials, canvas.width / 2, canvas.height / 2);
+
+        return canvas.toDataURL("image/png");
+    }
+
 
     getBirthdayString(){
         return new Date(this.birthday);
@@ -80,7 +102,15 @@ export default class Profile {
      *
      */
     getProfilePicture() {
-        return this.profile;
+        console.log(this.profile);
+        if(!!this.profile){
+            return this.profile;
+        }else{
+           return this.generateAvatar(
+                "white",
+                "#009578"
+            );
+        }
     }
 
 
@@ -114,7 +144,7 @@ export default class Profile {
     async getData() {
         if (this.id > 0) {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.account_type,users.birthday,qountries.names as orgin_qountry ,users.profile,users.gender,users.bio FROM users INNER JOIN qountries ON users.qountry_origin_id = qountries.id where users.id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,qountries.names as orgin_qountry ,users.profile,users.gender,users.bio FROM users INNER JOIN qountries ON users.qountry_origin_id = qountries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
                 return {};
