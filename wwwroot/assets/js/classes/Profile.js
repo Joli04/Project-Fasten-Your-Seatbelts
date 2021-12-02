@@ -72,6 +72,10 @@ export default class Profile {
         this.qountry = data.orgin_qountry;
     }
 
+    getBirthdayString(){
+        return new Date(this.birthday);
+    }
+
     /**
      *
      */
