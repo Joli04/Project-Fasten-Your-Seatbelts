@@ -43,13 +43,13 @@
         "nl": "Geslacht",
         "en": "Gender"
       },
-      "qountrie": {
+      "country": {
         "nl": "Land",
-        "en": "Qountrie"
+        "en": "Country"
       },
-      "orgin": {
-        "nl": "Land van afkomst",
-        "en": "Orgin qountrie"
+      "nationality": {
+        "nl": "Nationaliteit",
+        "en": "Nationality"
       },
       "age": {
         "nl": "Leeftijd",
