@@ -43,6 +43,18 @@
         "nl": "Geslacht",
         "en": "Gender"
       },
+      "qountrie": {
+        "nl": "Land",
+        "en": "Qountrie"
+      },
+      "orgin": {
+        "nl": "Land van afkomst",
+        "en": "Orgin qountrie"
+      },
+      "age": {
+        "nl": "Leeftijd",
+        "en": "Age"
+      },
       "new_password": {
         "nl": "Nieuw wachtwoord",
         "en": "New password"
