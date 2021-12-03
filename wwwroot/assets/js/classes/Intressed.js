@@ -3,21 +3,13 @@
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
+import {findObjectByLabel} from "../app.js";
 
 export default class Intressed {
     constructor(el) {
         this.el= el;
     }
-    findObjectByLabel(obj, label) {
-        if(obj.label === label) { return obj; }
-        for(var i in obj) {
-            if(obj.hasOwnProperty(i)){
-                var foundLabel = findObjectByLabel(obj[i], label);
-                if(foundLabel) { return foundLabel; }
-            }
-        }
-        return null;
-    };
+
     async filter(){
         this.removeAllChildNodes(this.el)
         await this.get()
@@ -37,7 +29,7 @@ export default class Intressed {
     }
     create_elements(){
         for (const i in this.intressed) {
-          const intress = this.findObjectByLabel(this.intressed[i]);
+          const intress = findObjectByLabel(this.intressed[i]);
           const a = document.createElement('a');
           a.classList.add('intress_item');
           a.innerHTML = "  <svg className=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"\n" +

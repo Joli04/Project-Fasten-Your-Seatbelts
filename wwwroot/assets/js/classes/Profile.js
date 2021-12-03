@@ -3,7 +3,7 @@
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-
+import Intressed from "./Intressed.js";
 export default class Profile {
 
     constructor() {
@@ -20,6 +20,12 @@ export default class Profile {
     }
     getFullName() {
         return this.first_name + " " + this.last_name;
+    }
+    getMatches(){
+        this.matches = [];
+    }
+    getIntress(){
+
     }
 
     /**

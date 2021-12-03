@@ -53,8 +53,7 @@ document.addEventListener("DOMContentLoaded", async function () {
  *
  * @constructor
  */
-function Previous() {
-    console.log("click?")
+export function Previous() {
     window.history.back()
 }
 
@@ -130,7 +129,16 @@ async function getTransable() {
         console.log(reason);
     }
 }
-
+export function findObjectByLabel(obj, label) {
+    if(obj.label === label) { return obj; }
+    for(var i in obj) {
+        if(obj.hasOwnProperty(i)){
+            var foundLabel = findObjectByLabel(obj[i], label);
+            if(foundLabel) { return foundLabel; }
+        }
+    }
+    return null;
+};
 function translate(lang_code) {
     FYSCloud.Session.set('lang', lang_code);
     FYSCloud.Localization.switchLanguage(lang_code);

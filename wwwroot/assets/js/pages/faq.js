@@ -24,7 +24,6 @@ function addTopics(topic) {
     accordion.classList.add("accordion");
 
     for (const obj in questions[topic]) {
-
             addQuestion(questions[topic][obj], accordion)
     }
 
