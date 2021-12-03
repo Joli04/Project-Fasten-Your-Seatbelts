@@ -182,7 +182,14 @@ export function validate(elements) {
                 isValid = false;
             }
         }
-
+        if (e.type === "text") {
+            if (!e.value >"") {
+                errorMsg = "Veld heeft geen waarde";
+                console.log(e.value, errorMsg);
+                addError(e);
+                isValid = false;
+            }
+        }
     });
     console.log(isValid);
     return isValid;
