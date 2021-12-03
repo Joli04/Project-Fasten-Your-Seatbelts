@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     //Set default translations
     FYSCloud.Localization.setTranslations(await getTransable());
-    const initialLanguage  = FYSCloud.Session.get('lang') !== '' ? FYSCloud.Session.get('lang') : 'nl';
+    const initialLanguage  = FYSCloud.Session.get('lang') !== null ? FYSCloud.Session.get('lang') : 'nl';
     document.querySelector("#languageSwitch").value = initialLanguage;
     translate(initialLanguage);
 

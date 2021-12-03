@@ -28,6 +28,8 @@ export function isLoggedIn() {
  */
 export function logout() {
     FYSCloud.Session.clear();
+    //Set basic lang to nl
+    FYSCloud.Session.set('lang','nl');
     FYSCloud.URL.redirect("index.html");
 }
 
