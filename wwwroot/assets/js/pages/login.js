@@ -1,6 +1,9 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import {GetCurrentPage} from "../app.js";
+import {GetCurrentPage,addError,validate} from "../app.js";
+
+import Profile from "../classes/Profile.js";
+const profiel = new Profile();
 
 document.addEventListener("DOMContentLoaded", function () {
     if (GetCurrentPage() === "login.html") {
@@ -39,7 +42,8 @@ export function logout() {
  */
 function login() {
     //Valideer input
-    if (validate()) {
+    var elements = document.querySelectorAll("input");
+    if (validate(elements)) {
         const email = document.getElementById('email');
         var password = document.getElementById('pass');
 
@@ -73,50 +77,3 @@ export function getLogin(email, password) {
 
 }
 
-function validate() {
-    var isValid = true;
-    var elements = document.querySelectorAll("input");
-    var errorMsg = "";
-    const errors = document.querySelectorAll('.error');
-    errors.forEach(e => {
-        e.remove();
-    });
-    elements.forEach(e => {
-        if (e.type === "email") {
-            if (!validateEmail(e.value)) {
-                errorMsg = "Geen geldig email addres";
-                addError(e, errorMsg);
-                isValid = false;
-            }
-        }
-        if (e.type === "password") {
-            if (e.value === "") {
-                errorMsg = "Wachtwoord is een verplicht veld";
-                console.log(e.value, errorMsg);
-                addError(e);
-                isValid = false;
-            }
-        }
-
-    });
-    console.log(isValid);
-    return isValid;
-}
-
-/**
- * Add Custom error block
- * @param element
- * @param errorMsg
- */
-function addError(element, errorMsg = "Dit veld is een verplicht veld") {
-    const error = document.createElement("p");
-    error.className = "error";
-    error.style.display = 'block';
-    error.innerText = errorMsg;
-    element.parentElement.appendChild(error);
-}
-
-function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}

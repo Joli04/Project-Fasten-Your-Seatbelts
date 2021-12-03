@@ -27,15 +27,22 @@ export default class Profile {
     getIntress(){
 
     }
+    validateInput(){
+        this.validateEmail()
+    }
+    validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
 
     /**
      * Register a new Profile and set this profile data
      * @return {Promise<{}|*>}
      */
-    async registerProfile() {
-        if (this.id === 'undefined') {
+    async registerProfile(first,last,email,password,account_type,birthday,country_origin_id) {
+        if (this.id === undefined) {
             try {
-                let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,account_type,birthday,qountry_origin_id) VALUES (?,?,?,?,?,?,?);", [this.first_name, this.last_name, this.password, this.email, this.account_type, this.birthday, this.qountry]);
+                let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,account_type,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?);", [first,last,email,password,account_type,birthday,country_origin_id]);
                 this.setId(data[0].id) //Set registerd user
                 await this.setProfile(); //Set all profile data
             } catch (e) {

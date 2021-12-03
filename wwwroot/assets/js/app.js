@@ -1,39 +1,39 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
 import {isLoggedIn, logout} from './pages/login.js';
-
-
+import "./classes/Profile.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
-    //Add the header to the page
+    checkNeedsLogin(GetCurrentPage());
+
+    //Set default translations
+    FYSCloud.Localization.setTranslations(await getTransable());
+    const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
+    translate(initialLanguage);
 
     const headerData = await FYSCloud.Utils.fetchAndParseHtml("_header.html");
-    if(document.querySelector("#nav") !== null){
+    //Add the header to the page
+    if (document.querySelector("#nav") !== null) {
         addHeader(headerData);
         var logout_btn = document.querySelector("#nav_logout");
         logout_btn.addEventListener('click', logout);
+
+        setActivePage();
+        document.querySelector("#languageSwitch").value = initialLanguage;
+        document.querySelector("#languageSwitch").addEventListener("change", function () {
+            translate(this.value)
+        });
     }
 
 
     //Add the footer to the page
     const footerData = await FYSCloud.Utils.fetchAndParseHtml("_footer.html");
-    if(document.querySelector("#footer") !== null){
+    if (document.querySelector("#footer") !== null) {
         addFooter(footerData);
     }
 
-    checkNeedsLogin(GetCurrentPage());
-    setActivePage();
-
-    //Set default translations
-    FYSCloud.Localization.setTranslations(await getTransable());
-    const initialLanguage  = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
-    document.querySelector("#languageSwitch").value = initialLanguage;
-    translate(initialLanguage);
-
-    document.querySelector("#languageSwitch").addEventListener("change", function () {
-        translate(this.value)
-    });
 });
+
 function addHeader(data) {
     const firstElement = data[0];
     var nav = document.querySelector("#nav");
@@ -51,6 +51,7 @@ function addFooter(data) {
     var copyright_year = document.querySelector(".copyright .year");
     copyright_year.innerHTML = new Date().getFullYear();
 }
+
 /**
  *
  * @constructor
@@ -70,9 +71,8 @@ export function GetCurrentPage() {
 
 function setActivePage() {
     const other_links = document.querySelectorAll(".nav li");
-    if(GetCurrentPage() === "profile_wizard"){
+    if (GetCurrentPage() !== "profile_wizard") {
 
-    }else{
         for (let i = 0; i < other_links.length; i++) {
             other_links[i].classList.remove("active");
             if (isLoggedIn()) {
@@ -84,6 +84,8 @@ function setActivePage() {
         const nav_page = document.querySelector(".nav #" + GetCurrentPage().split('.html')[0]);
         nav_page.style.display = "block"; //first show if is hidden
         nav_page.classList.add("active");
+    }else {
+
     }
 
 }
@@ -112,7 +114,7 @@ function checkNeedsLogin(endpoint) {
             redirectToLogin();
             break;
         case "registratie.html":
-            if (isLoggedIn()){
+            if (isLoggedIn()) {
                 FYSCloud.URL.redirect("profiel.html");
             }
             break;
@@ -136,19 +138,65 @@ async function getTransable() {
         console.log(reason);
     }
 }
+
 export function findObjectByLabel(obj, label) {
-    if(obj.label === label) { return obj; }
-    for(var i in obj) {
-        if(obj.hasOwnProperty(i)){
+    if (obj.label === label) {
+        return obj;
+    }
+    for (var i in obj) {
+        if (obj.hasOwnProperty(i)) {
             var foundLabel = findObjectByLabel(obj[i], label);
-            if(foundLabel) { return foundLabel; }
+            if (foundLabel) {
+                return foundLabel;
+            }
         }
     }
     return null;
 };
+
 function translate(lang_code) {
     FYSCloud.Session.set('lang', lang_code);
     FYSCloud.Localization.switchLanguage(lang_code);
     FYSCloud.Localization.translate();
 }
+export function validate(elements) {
+    var isValid = true;
+    var errorMsg = "";
+    const errors = document.querySelectorAll('.error');
+    errors.forEach(e => {
+        e.remove();
+    });
+    elements.forEach(e => {
+        if (e.type === "email") {
+            if (!profiel.validateEmail(e.value)) {
+                errorMsg = "Geen geldig email addres";
+                addError(e, errorMsg);
+                isValid = false;
+            }
+        }
+        if (e.type === "password") {
+            if (e.value === "") {
+                errorMsg = "Wachtwoord is een verplicht veld";
+                console.log(e.value, errorMsg);
+                addError(e);
+                isValid = false;
+            }
+        }
 
+    });
+    console.log(isValid);
+    return isValid;
+}
+
+/**
+ * Add Custom error block
+ * @param element
+ * @param errorMsg
+ */
+export function addError(element, errorMsg = "Dit veld is een verplicht veld") {
+    const error = document.createElement("p");
+    error.className = "error";
+    error.style.display = 'block';
+    error.innerText = errorMsg;
+    element.parentElement.appendChild(error);
+}
