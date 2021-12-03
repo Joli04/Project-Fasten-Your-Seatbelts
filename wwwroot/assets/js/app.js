@@ -6,50 +6,51 @@ import {isLoggedIn, logout} from './pages/login.js';
 
 document.addEventListener("DOMContentLoaded", async function () {
     //Add the header to the page
+
     const headerData = await FYSCloud.Utils.fetchAndParseHtml("_header.html");
-    addHeader(headerData);
+    if(document.querySelector("#nav") !== null){
+        addHeader(headerData);
+        var logout_btn = document.querySelector("#nav_logout");
+        logout_btn.addEventListener('click', logout);
+    }
+
 
     //Add the footer to the page
     const footerData = await FYSCloud.Utils.fetchAndParseHtml("_footer.html");
-    addFooter(footerData);
-
-    function addHeader(data) {
-        const firstElement = data[0];
-        var nav = document.querySelector("#nav");
-        // checkLoggedIn(firstElement);
-        // const nav =document.querySelector("#nav");
-        // if(nav !== undefined){
-        //     nav.appendChild(firstElement);
-        // }
-        nav.insertBefore(firstElement, nav.firstElementChild);
+    if(document.querySelector("#footer") !== null){
+        addFooter(footerData);
     }
-
-    function addFooter(data) {
-        const firstElement = data[0];
-        document.querySelector("#footer").appendChild(firstElement);
-        var copyright_year = document.querySelector(".copyright .year");
-        copyright_year.innerHTML = new Date().getFullYear();
-    }
-
-    var logout_btn = document.querySelector("#nav_logout");
-    logout_btn.addEventListener('click', logout);
 
     checkNeedsLogin(GetCurrentPage());
     setActivePage();
 
     //Set default translations
     FYSCloud.Localization.setTranslations(await getTransable());
-    console.log(FYSCloud.Session.get('lang'))
     const initialLanguage  = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
     document.querySelector("#languageSwitch").value = initialLanguage;
     translate(initialLanguage);
-
 
     document.querySelector("#languageSwitch").addEventListener("change", function () {
         translate(this.value)
     });
 });
+function addHeader(data) {
+    const firstElement = data[0];
+    var nav = document.querySelector("#nav");
+    // checkLoggedIn(firstElement);
+    // const nav =document.querySelector("#nav");
+    // if(nav !== undefined){
+    //     nav.appendChild(firstElement);
+    // }
+    nav.insertBefore(firstElement, nav.firstElementChild);
+}
 
+function addFooter(data) {
+    const firstElement = data[0];
+    document.querySelector("#footer").appendChild(firstElement);
+    var copyright_year = document.querySelector(".copyright .year");
+    copyright_year.innerHTML = new Date().getFullYear();
+}
 /**
  *
  * @constructor
@@ -109,6 +110,11 @@ function checkNeedsLogin(endpoint) {
     switch (endpoint) {
         case "profiel.html":
             redirectToLogin();
+            break;
+        case "registratie.html":
+            if (isLoggedIn()){
+                FYSCloud.URL.redirect("profiel.html");
+            }
             break;
         case "matching.html":
             redirectToLogin()
