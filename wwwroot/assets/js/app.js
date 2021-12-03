@@ -159,6 +159,10 @@ function translate(lang_code) {
     FYSCloud.Localization.switchLanguage(lang_code);
     FYSCloud.Localization.translate();
 }
+export function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 export function validate(elements) {
     var isValid = true;
     var errorMsg = "";
@@ -168,7 +172,7 @@ export function validate(elements) {
     });
     elements.forEach(e => {
         if (e.type === "email") {
-            if (!profiel.validateEmail(e.value)) {
+            if (!validateEmail(e.value)) {
                 errorMsg = "Geen geldig email addres";
                 addError(e, errorMsg);
                 isValid = false;
