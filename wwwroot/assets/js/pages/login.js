@@ -2,8 +2,6 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import {GetCurrentPage,addError,validate} from "../app.js";
 
-import Profile from "../classes/Profile.js";
-const profiel = new Profile();
 
 document.addEventListener("DOMContentLoaded", function () {
     if (GetCurrentPage() === "login.html") {

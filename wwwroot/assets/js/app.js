@@ -1,7 +1,9 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
 import {isLoggedIn, logout} from './pages/login.js';
+
 import "./classes/Profile.js";
+import Countries from "./Objects/Countries.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     checkNeedsLogin(GetCurrentPage());
@@ -124,6 +126,9 @@ function checkNeedsLogin(endpoint) {
     }
 }
 
+export function redirect(endpoint){
+    FYSCloud.URL.redirect(endpoint);
+}
 function redirectToLogin() {
     if (!isLoggedIn()) {
         FYSCloud.URL.redirect("login.html");
@@ -163,6 +168,11 @@ export function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+export function validatePassword(password){
+    var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
+    return strongRegex.test(String(password));
+}
+
 export function validate(elements) {
     var isValid = true;
     var errorMsg = "";
@@ -182,7 +192,22 @@ export function validate(elements) {
             if (e.value === "") {
                 errorMsg = "Wachtwoord is een verplicht veld";
                 console.log(e.value, errorMsg);
-                addError(e);
+                addError(e,errorMsg);
+                isValid = false;
+            }
+            console.log(validatePassword(e.value));
+            if(!validatePassword(e.value)){
+                errorMsg = "Wachtwoord voldoet niet aan de voorwaardes";
+                console.log(e.value, errorMsg);
+                addError(e,errorMsg);
+                isValid = false;
+            }
+        }
+        if (e.type === "date") {
+            if (e.value === "") {
+                errorMsg = "Datum is verplicht, selecteer een datum";
+                console.log(e.value, errorMsg);
+                addError(e,errorMsg);
                 isValid = false;
             }
         }

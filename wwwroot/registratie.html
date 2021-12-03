@@ -8,6 +8,7 @@
     <!-- Script(s) -->
     <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/pages/register.js" type="module"></script>
+    <script src="vendors/jsSHA/sha.js"></script>
 </head>
 <body>
 <a href="index.html">
@@ -26,24 +27,25 @@
         <label data-translate="profile.data.first_name">Voornaam</label>
         <label id="test"  data-translate="profile.data.last_name">Achternaam</label>
         <br>
-        <span id="voornaam"><input type="text" name="voornaam" placeholder="Voornaam"></span>
-        <span id="achternaam"><input type="text" name="achternaam" placeholder="Achternaam"></span><br><br>
+        <span id="voornaam"><input type="text" name="firstname" placeholder="Voornaam"></span>
+        <span id="achternaam"><input type="text" name="lastname" placeholder="Achternaam"></span><br><br>
         <label data-translate="profile.data.email">Email</label><br>
-        <input type="text" name="Email" placeholder="Email"><br><br>
+        <input type="email" name="email" placeholder="Email"><br><br>
         <label data-translate="profile.data.new_password">Nieuw wachtwoord</label><br>
-        <input type="text" name="wachtwoord" placeholder="Wachtwoord"><br><br>
+        <input type="password" name="password" autocomplete="current-password" placeholder="Wachtwoord"><br><br>
         <label data-translate="profile.data.birthday">Geboortedatum</label><br>
-        <input type="date"><br>
+        <input type="date" name="birthday"><br>
 
         <label data-translate="profile.data.gender">Geslacht</label><br>
-        <input type="radio" name="gender" id="gender_men" placeholder="Man">
+        <input type="radio" value="male" name="gender" id="gender_men" placeholder="Man">
         <label for="gender_men">Man</label>
-        <input type="radio" name="gender" id="gender_whoman" placeholder="Vrouw">
+        <input type="radio" value="female" name="gender" id="gender_whoman" placeholder="Vrouw">
         <label for="gender_whoman">Vrouw</label>
-        <input type="radio" name="gender" id="gender_else" placeholder="Anders">
+        <input type="radio" value="neutral"  name="gender" id="gender_else" placeholder="Anders">
         <label for="gender_else">Anders</label>
+        <div id="countrie_selector" style="margin-left: 10px;"></div>
     </form>
-    <a href="profiel.html">
+    <a>
         <button type="button" id="aanmelden">Aanmelden</button>
     </a>
     <p><span class="WV" data-translate="register.btn_pass_forgot" >Wachtwoord vergeten?</span></p>

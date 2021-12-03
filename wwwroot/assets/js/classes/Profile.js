@@ -4,6 +4,7 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import Intressed from "./Intressed.js";
+
 export default class Profile {
 
     constructor() {
@@ -14,17 +15,20 @@ export default class Profile {
      * Setter
      * @param id
      */
-    setId(id){
+    setId(id) {
         this.id = id;
         FYSCloud.Session.set('user_id', this.id);
     }
+
     getFullName() {
         return this.first_name + " " + this.last_name;
     }
-    getMatches(){
+
+    getMatches() {
         this.matches = [];
     }
-    getIntress(){
+
+    getIntress() {
 
     }
 
@@ -32,15 +36,13 @@ export default class Profile {
      * Register a new Profile and set this profile data
      * @return {Promise<{}|*>}
      */
-    async registerProfile(first,last,email,password,account_type,birthday,country_origin_id) {
-        if (this.id === undefined) {
-            try {
-                let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,account_type,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?);", [first,last,email,password,account_type,birthday,country_origin_id]);
-                this.setId(data[0].id) //Set registerd user
-                await this.setProfile(); //Set all profile data
-            } catch (e) {
-                return {};
-            }
+    async registerProfile(first, last, email, password,birthday, gender,country_origin_id,account_type = 'user') {
+        try {
+            let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,gender,account_type,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?,?);", [first, last, password,email,gender,account_type, birthday, country_origin_id]);
+            this.setId(data[0].id) //Set registerd user
+            await this.setProfile(); //Set all profile data
+        } catch (e) {
+            return {};
         }
     }
 
@@ -48,8 +50,8 @@ export default class Profile {
      *
      * @return {Promise<void>}
      */
-     getQountry() {
-         return this.country;
+    getQountry() {
+        return this.country;
     }
 
     /**
@@ -67,6 +69,7 @@ export default class Profile {
         this.gender = data.gender;
         this.country = data.orgin_country;
     }
+
     generateAvatar(foregroundColor = "white", backgroundColor = "black") {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
@@ -89,7 +92,7 @@ export default class Profile {
         return canvas.toDataURL("image/png");
     }
 
-    getBirthdayDateObject(){
+    getBirthdayDateObject() {
         return new Date(this.birthday);
     }
 
@@ -97,10 +100,10 @@ export default class Profile {
      *
      */
     getProfilePicture() {
-        if(!!this.profile){
+        if (!!this.profile) {
             return this.profile;
-        }else{
-           return this.generateAvatar(
+        } else {
+            return this.generateAvatar(
                 "white",
                 "#009578"
             );
@@ -108,9 +111,7 @@ export default class Profile {
     }
 
 
-
-
-    setProfilePicture(uplaudEl,previewEl) {
+    setProfilePicture(uplaudEl, previewEl) {
         FYSCloud.Utils
             .getDataUrl(uplaudEl)
             .then(function (data) {
