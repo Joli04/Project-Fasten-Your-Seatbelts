@@ -69,17 +69,22 @@ export function GetCurrentPage() {
 
 function setActivePage() {
     const other_links = document.querySelectorAll(".nav li");
-    for (let i = 0; i < other_links.length; i++) {
-        other_links[i].classList.remove("active");
-        if (isLoggedIn()) {
-            other_links[i].style.display = "block";
-            HandleLinks(false);
-        }
+    if(GetCurrentPage() === "profile_wizard"){
 
+    }else{
+        for (let i = 0; i < other_links.length; i++) {
+            other_links[i].classList.remove("active");
+            if (isLoggedIn()) {
+                other_links[i].style.display = "block";
+                HandleLinks(false);
+            }
+
+        }
+        const nav_page = document.querySelector(".nav #" + GetCurrentPage().split('.html')[0]);
+        nav_page.style.display = "block"; //first show if is hidden
+        nav_page.classList.add("active");
     }
-    const nav_page = document.querySelector(".nav #" + GetCurrentPage().split('.html')[0]);
-    nav_page.style.display = "block"; //first show if is hidden
-    nav_page.classList.add("active");
+
 }
 
 function HandleLinks(show) {

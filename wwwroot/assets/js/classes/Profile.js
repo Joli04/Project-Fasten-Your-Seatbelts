@@ -6,16 +6,6 @@ import "../config.js";
 
 export default class Profile {
 
-    // public first_name;
-    // public last_name;
-    // private password;
-    // private email;
-    // private account_type;
-    // private birthday;
-    // private qountry;
-    // private id;
-    // private gender;
-
     constructor() {
         this.id = FYSCloud.Session.get('user_id');
     }
