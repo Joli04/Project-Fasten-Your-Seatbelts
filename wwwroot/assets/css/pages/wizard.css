@@ -378,11 +378,11 @@
     position: relative;
     display: flex;
 }
-.intress_table{
+.interests_table{
     margin-left: 8%;
     display: inline-block;
 }
-.intress_item{
+.interests_item{
     display: inline-block;
     margin: 1%;
     padding: 1%;

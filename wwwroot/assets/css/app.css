@@ -32,13 +32,16 @@ Setup defaults
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-[data-translate] {
-    visibility: hidden;
-}
+/* Dit zorgt ervoor dat de rest van de nav niet zichtbaar is.
+/* Alleen nadat je Engels als taal kiest wordt het zichtbaar.
+ */
+/*[data-translate] {*/
+/*    visibility: hidden;*/
+/*}*/
 
-[data-translate][translated] {
-    visibility: visible;
-}
+/*[data-translate][translated] {*/
+/*    visibility: visible;*/
+/*}*/
 
 .error {
     width: 60%;

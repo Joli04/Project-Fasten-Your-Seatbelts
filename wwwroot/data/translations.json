@@ -62,13 +62,13 @@
     }
   },
   "wizard": {
-    "intress": {
+    "interests": {
       "nl": "Interesses",
-      "en": "Intressed"
+      "en": "Interests"
     },
-    "countrie": {
+    "country": {
       "nl": "Land voorkeuren",
-      "en": "Countrie intressed"
+      "en": "Preferred country"
     },
     "wizard.finish": {
       "nl": "Profiel voltooien",
@@ -167,14 +167,20 @@
       "en": "Registration"
     }
   },
+  "fourSteps": {
+    "title": {
+      "nl": "De vier stappen van onze website",
+      "en": "The four steps of our website"
+    }
+  },
   "faq": {
     "header": {
       "nl": "Veel gestelde vragen",
       "en": "Most asked questions"
     }
   },
-  "countrie": {
-    "nl": "Selecteer land",
-    "en": "Select countrie"
+  "country": {
+    "nl": "Selecteer een land",
+    "en": "Select a country"
   }
 }
