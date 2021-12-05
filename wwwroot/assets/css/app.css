@@ -137,9 +137,16 @@ h3 {
 .wrapper {
     width: 100%;
     margin-top: -40px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     background-color: #ffffff;
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .wrapper {
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+    }
 }
 
 /* --------------------------- */
@@ -195,46 +202,69 @@ h3 {
 /* ----------[ FOUR STEPS ]---------- */
 /* ---------------------------------- */
 .fourSteps {
-    padding-bottom: 75px;
+    padding: 0 20px 75px 20px;
 }
 
 .fourSteps__title {
-    margin: 0 0 50px 100px;
     font-weight: bold;
 }
 
 .fourSteps__steps {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    margin: auto;
     justify-content: center;
-}
-.stepContainer:nth-of-type(2),.stepContainer:nth-of-type(4) {
-    margin-right: 0;
-}
-
-.stepContainer {
-    display: flex;
-    height: 206px;
-    margin: 0 50px 50px 0;
+    margin: auto;
+    text-align: center;
 }
 
 .stepContainer__icon img {
-    width: 200px;
-}
-
-.stepContainer__right {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 25px;
+    width: 150px;
 }
 
 .stepContainer__title {
     margin-bottom: 15px;
-    font-size: 25px;
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .fourSteps {
+        padding: 0 0 75px 0;
+    }
+
+    .fourSteps__title {
+        margin: 0 0 50px 100px;
+    }
+
+    .fourSteps__steps {
+        flex-direction: row;
+    }
+
+    .stepContainer:nth-of-type(2),.stepContainer:nth-of-type(4) {
+        margin-right: 0;
+    }
+
+    .stepContainer {
+        display: flex;
+        height: 206px;
+        margin: 0 50px 50px 0;
+    }
+
+    .stepContainer__icon img {
+        width: 200px;
+    }
+
+    .stepContainer__right {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 25px;
+    }
+
+    .stepContainer__title {
+        font-size: 25px;
+    }
 }
 
 /* ---------------------------- */
