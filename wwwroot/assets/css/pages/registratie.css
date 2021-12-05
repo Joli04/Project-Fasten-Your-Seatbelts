@@ -7,7 +7,7 @@ body {
     position: relative;
     left: 470px;
     width: 600px;
-    height: 625px;
+    height: auto;
     text-align: center;
     box-shadow: 0 10px 34px -15px rgb(0 0 0 / 80%);
     border-radius: 40px;
@@ -44,7 +44,6 @@ input {
 input[type = radio]{
     margin: 0 15px;
 }
-
 select{
     position: relative;
     right: 27px;
@@ -57,11 +56,9 @@ select{
     margin: 0;
     padding: 10px 90px;
     position: relative;
-    top: 50px;
+    top: 25px;
     border-radius: 5px;
     background-color: #1089ff;
-
-
 }
 
 #voornaam input{
@@ -82,7 +79,7 @@ select{
     margin: 0;
     padding: 10px 100px;
     position: relative;
-    top: 80px;
+    top: 75px;
     border-radius: 5px;
     background-color: #dc3545;
 
@@ -90,7 +87,7 @@ select{
 
 .WV {
     position: relative;
-    top: 60px;
+    top: 35px;
 }
 
 
@@ -107,7 +104,11 @@ hr {
     border-radius: 5px;
 }
 .copyright{
-    left:30px;
     position: relative;
-    bottom:40px;
+    left: 23px;
+}
+footer{
+    text-align: center;
+    position: relative;
+    top:150px;
 }
