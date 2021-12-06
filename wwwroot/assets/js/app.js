@@ -86,11 +86,16 @@ function setActivePage() {
     if (GetCurrentPage() !== "profile_wizard") {
 
         for (let i = 0; i < other_links.length; i++) {
-            other_links[i].classList.remove("active");
-            if (isLoggedIn()) {
-                other_links[i].style.display = "block";
-                HandleLinks(false);
+            if(other_links[i].classList.contains('icon')){
+
+            }else{
+                other_links[i].classList.remove("active");
+                if (isLoggedIn()) {
+                    other_links[i].style.display = "block";
+                    HandleLinks(false);
+                }
             }
+
 
         }
         const nav_page = document.querySelector(".topnav #" + GetCurrentPage().split('.html')[0]);
@@ -103,8 +108,8 @@ function setActivePage() {
 }
 
 function HandleLinks(show) {
-    const login = document.querySelector(".nav #login");
-    const register = document.querySelector(".nav #registratie");
+    const login = document.querySelector(".topnav #login");
+    const register = document.querySelector(".topnav #registratie");
     if (show) {
         login.style.display = "block";
         register.style.display = "block";
