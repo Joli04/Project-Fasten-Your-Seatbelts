@@ -5,10 +5,21 @@
       "en": "Select file"
     }
   },
+  "verify": {
+    "header": {
+      "nl": "Verifieer profiel",
+      "en": "Verify Login Code"
+    },
+    "explain": {
+      "nl": "Het lijkt er op dat jouw account nog niet is gevalideerd\n  Er is een email verstuurd klik op deze link om je account te verifieren",
+      "en": "It looks like you're trying to use your account.\n But your account is'nt valided yet, so check your email and click on the verify link"
+    }
+
+  },
   "home": {
-    "slogan":{
-      "nl":  "Match op CommonFlight om met Corendon wereldwijd te reizen!",
-      "en":  "Match on CommonFlight to travel with Corendon worldwide!"
+    "slogan": {
+      "nl": "Match op CommonFlight om met Corendon wereldwijd te reizen!",
+      "en": "Match on CommonFlight to travel with Corendon worldwide!"
     },
     "hero": {
       "nl": "Meld je aan!",
@@ -123,10 +134,10 @@
         "header": {
           "nl": "Jouw profiel",
           "en": "Your profile"
-          }
         }
       }
-    },
+    }
+  },
   "register": {
     "registerNewAccount": {
       "nl": "Een nieuw account maken",
@@ -140,7 +151,7 @@
       "nl": "Wachtwoord vergeten?",
       "en": "Forgotten password"
     },
-    "has_account":{
+    "has_account": {
       "nl": "Heb je al een account? Login",
       "en": "Already registered? Login"
     }

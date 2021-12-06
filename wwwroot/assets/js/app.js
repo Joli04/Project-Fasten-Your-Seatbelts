@@ -2,7 +2,7 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
 import {isLoggedIn, logout} from './pages/login.js';
 
-import "./classes/Profile.js";
+import Profile from "./classes/Profile.js";
 import Countries from "./Objects/Countries.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -99,8 +99,12 @@ function setActivePage() {
 
         }
         const nav_page = document.querySelector(".topnav #" + GetCurrentPage().split('.html')[0]);
-        nav_page.style.display = "block"; //first show if is hidden
-        nav_page.classList.add("active");
+        if(nav_page !== null){
+            console.log(nav_page)
+            nav_page.style.display = "block"; //first show if is hidden
+            nav_page.classList.add("active");
+        }
+
     }else {
 
     }
@@ -129,6 +133,16 @@ function checkNeedsLogin(endpoint) {
     switch (endpoint) {
         case "profiel.html":
             redirectToLogin();
+            break;
+        case "verify.html":
+            const profiel = new Profile();
+            var queryString = FYSCloud.URL.queryString();
+            if(queryString.id > 0){
+                profiel.setId(queryString.id);
+                profiel.update('email_verified_at',queryString.timestamp);
+                redirect('profile_wizard.html');
+            }
+
             break;
         case "registratie.html":
             if (isLoggedIn()) {
