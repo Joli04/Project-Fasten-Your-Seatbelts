@@ -32,9 +32,37 @@ export default class Profile {
 
     }
 
+    /**
+     * Update all profile data
+     * @param first
+     * @param last
+     * @param email
+     * @param password
+     * @param birthday
+     * @param gender
+     * @param country_origin_id
+     * @param account_type
+     * @return {Promise<{}|*>}
+     */
     async updateProfile(first, last, email, password,birthday, gender,country_origin_id,account_type = 'user'){
         try {
-            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?, password = ?,email =?,gender=?,account_type=?,birthday = ?,country_origin_id =?", [first, last, password,email,gender,account_type, birthday, country_origin_id]);
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?, password = ?,email =?,gender=?,account_type=?,birthday = ?,country_origin_id =? where users.id="+this.id, [first, last, password,email,gender,account_type, birthday, country_origin_id]);
+            return data[0];
+        } catch (e) {
+            console.log('Profile : ' +e);
+            return {};
+        }
+    }
+
+    /**
+     * Update one specific colum
+     * @param colum
+     * @param colum_data
+     * @return {Promise<{}|*>}
+     */
+    async update(colum,colum_data){
+        try {
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set "+colum+" = ? where users.id="+this.id, [colum_data]);
             return data[0];
         } catch (e) {
             console.log('Profile : ' +e);
@@ -117,34 +145,31 @@ export default class Profile {
         } else {
             return this.generateAvatar(
                 "white",
-                "#009578"
+                getComputedStyle(document.documentElement).getPropertyValue('--dark_green') // #999999
             );
         }
     }
 
 
-    setProfilePicture(uplaudEl, previewEl) {
-        FYSCloud.Utils
-            .getDataUrl(uplaudEl)
-            .then(function (data) {
-                FYSCloud.API.uploadFile(
-                    "userprofile_" + this.id + ".png", //set name of file to reffence
-                    data.url
-                ).then(function (data) {
-                    //is uplauded
-                    this.profile = data.url;
-                    console.log(data);
-                }).catch(function (reason) {
-                    console.log(reason);
-                });
-                if (data.isImage) {
-                    previewEl.src = data.url;
-                }
-            }).catch(function (reason) {
-            console.log(reason);
-        });
+    async setProfilePicture(uplaudEl, previewEl) {
+        try{
+            const dataUrl = await FYSCloud.Utils.getDataUrl(uplaudEl);
+            const result = await FYSCloud.API.uploadFile( "userprofile_" + this.id + ".png", dataUrl.url, true);
+            await this.update('profile',result)
+            this.updateProfilePreview(previewEl,result);
+        }catch (e){
+
+        }
     }
 
+     updateProfilePreview(previewElement,url) {
+        if (url) {
+            previewElement.src = url;
+            previewElement.style.display = "block";
+        } else {
+            previewElement.style.display = "none";
+        }
+    }
     async getData() {
         if (this.id > 0) {
             try {

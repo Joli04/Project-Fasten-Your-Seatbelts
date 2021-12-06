@@ -1,4 +1,10 @@
 {
+  "file": {
+    "choose": {
+      "nl": "Kies file",
+      "en": "Select file"
+    }
+  },
   "home": {
     "slogan":{
       "nl":  "Match op CommonFlight om met Corendon wereldwijd te reizen!",

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector("#languageSwitch").value = initialLanguage;
         document.querySelector("#languageSwitch").addEventListener("change", function () {
             translate(this.value)
-        });;
+        });
         document.querySelector("#mobile_nav").addEventListener("click", function () {
             var x = document.querySelector(".topnav");
             console.log(x);

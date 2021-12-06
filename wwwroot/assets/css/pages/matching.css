@@ -120,45 +120,7 @@ h2 {
     font-family: 'robotobold' !important;
 }
 
-.nav {
-    margin: 2%;
-}
 
-.nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-.nav ul li {
-    float: right;
-    font-size: 50px;
-    margin-left: 35px;
-    cursor: default;
-}
-.nav ul li:last-of-type {
-    margin: 0;
-}
-.nav ul li a {
-    display: block;
-    color: #000000;
-    text-align: center;
-    text-decoration: none;
-}
-.nav ul li a:hover {
-    text-decoration: underline;
-}
-.nav ul .nav_title {
-    float: left;
-    margin: 0;
-    font-size: 55px;
-    font-weight: bold;
-}
-
-.nav ul .nav_item {
-    margin-top: 15px;
-    font-size: 30px;
-}
 
 .card {
     background-color: #484848;

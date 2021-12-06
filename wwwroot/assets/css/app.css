@@ -4,6 +4,10 @@ Setup defaults
 :root {
     --blue: #007bff;
     --red: #dc3545;
+    --dark_green: #1e8410;
+    --green:#26a514;
+    --light_blue:#00bce2;
+    --white:#ffffff;
     --breakpoint-sm: 576px /* var(--breakpoint-sm) */;
     --breakpoint-md: 768px /* var(--breakpoint-md) */;
     --breakpoint-lg: 992px /* var(--breakpoint-lg) */;
@@ -11,6 +15,7 @@ Setup defaults
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
 
 /* Dit zorgt ervoor dat de rest van de nav niet zichtbaar is.
 /* Alleen nadat je Engels als taal kiest wordt het zichtbaar.
@@ -35,11 +40,21 @@ Setup defaults
     position: relative;
     top: 50px;
     border-radius: 5px;
-    background: var(--blue);
-    border: 1px var(--blue);
+    background: var(--light_blue);
+    border: 1px var(--light_blue);
     color: #fff;
 }
 
+.btn_edit{
+    float: right;
+    width: 10%;
+    border-radius: 5px;
+    align-content: center;
+    padding: 1% 2%;
+    background: var(--light_blue);
+    border: 1px var(--light_blue);
+    color: #fff;
+}
 .bg-red {
     background: var(--red);
     border: 1px var(--red);
@@ -520,7 +535,7 @@ footer {
 }
 
 .topnav a.active {
-    background-color: #04AA6D;
+    background-color: var(--dark_green);
     color: white;
 }
 
@@ -550,3 +565,4 @@ footer {
         text-align: left;
     }
 }
+
