@@ -25,6 +25,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector("#languageSwitch").addEventListener("change", function () {
             translate(this.value)
         });
+
+        document.querySelector("#languageSwitch").addEventListener("click", function () {
+            var x = document.querySelector("a .icon");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        });
+
     }
 
 
@@ -72,7 +82,7 @@ export function GetCurrentPage() {
 }
 
 function setActivePage() {
-    const other_links = document.querySelectorAll(".nav li");
+    const other_links = document.querySelectorAll(".topnav a");
     if (GetCurrentPage() !== "profile_wizard") {
 
         for (let i = 0; i < other_links.length; i++) {
@@ -83,7 +93,7 @@ function setActivePage() {
             }
 
         }
-        const nav_page = document.querySelector(".nav #" + GetCurrentPage().split('.html')[0]);
+        const nav_page = document.querySelector(".topnav #" + GetCurrentPage().split('.html')[0]);
         nav_page.style.display = "block"; //first show if is hidden
         nav_page.classList.add("active");
     }else {
