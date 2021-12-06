@@ -37,7 +37,7 @@ export default class Profile {
             let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?, password = ?,email =?,gender=?,account_type=?,birthday = ?,country_origin_id =?", [first, last, password,email,gender,account_type, birthday, country_origin_id]);
             return data[0];
         } catch (e) {
-            console.log('Fys: ' +e);
+            console.log('Profile : ' +e);
             return {};
         }
     }
@@ -53,7 +53,7 @@ export default class Profile {
             this.setId(user[0].id) //Set registerd user
             await this.setProfile(); //Set all profile data
         } catch (e) {
-            console.log(e);
+            console.log("Profile error: "+e);
             return {};
         }
     }

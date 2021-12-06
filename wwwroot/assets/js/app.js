@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector("#languageSwitch").value = initialLanguage;
         document.querySelector("#languageSwitch").addEventListener("change", function () {
             translate(this.value)
-        });
-
-        document.querySelector("#languageSwitch").addEventListener("click", function () {
-            var x = document.querySelector("a .icon");
+        });;
+        document.querySelector("#mobile_nav").addEventListener("click", function () {
+            var x = document.querySelector(".topnav");
+            console.log(x);
             if (x.className === "topnav") {
                 x.className += " responsive";
             } else {
