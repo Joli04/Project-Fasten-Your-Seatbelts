@@ -32,6 +32,16 @@ export default class Profile {
 
     }
 
+    async updateProfile(first, last, email, password,birthday, gender,country_origin_id,account_type = 'user'){
+        try {
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?, password = ?,email =?,gender=?,account_type=?,birthday = ?,country_origin_id =?", [first, last, password,email,gender,account_type, birthday, country_origin_id]);
+            return data[0];
+        } catch (e) {
+            console.log('Fys: ' +e);
+            return {};
+        }
+    }
+
     /**
      * Register a new Profile and set this profile data
      * @return {Promise<{}|*>}
