@@ -42,6 +42,7 @@ export default class Profile {
             this.setId(data[0].id) //Set registerd user
             await this.setProfile(); //Set all profile data
         } catch (e) {
+            console.log(e);
             return {};
         }
     }
