@@ -28,7 +28,7 @@ function register(){
         const countrie = document.getElementById("countries")
         try{
             profiel.registerProfile(firstname.value,lastname.value,email.value,hash,birthday.value,gender.value,countrie.value);
-            //redirect("login.html");
+            redirect("profiel.html");
         }catch (e){
             console.log(e);
         }
