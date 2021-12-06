@@ -39,8 +39,8 @@ export default class Profile {
     async registerProfile(first, last, email, password,birthday, gender,country_origin_id,account_type = 'user') {
         try {
             let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,gender,account_type,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?,?);", [first, last, password,email,gender,account_type, birthday, country_origin_id]);
-            console.log(data);
-            this.setId(data[0].id) //Set registerd user
+            let user = await FYSCloud.API.queryDatabase("SELECT id from users where email = ?", [email]);
+            this.setId(user[0].id) //Set registerd user
             await this.setProfile(); //Set all profile data
         } catch (e) {
             console.log(e);
