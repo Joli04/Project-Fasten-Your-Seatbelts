@@ -86,9 +86,9 @@ function setActivePage() {
     if (GetCurrentPage() !== "profile_wizard") {
 
         for (let i = 0; i < other_links.length; i++) {
-            if(other_links[i].classList.contains('icon')){
+            if (other_links[i].classList.contains('icon')) {
 
-            }else{
+            } else {
                 other_links[i].classList.remove("active");
                 if (isLoggedIn()) {
                     other_links[i].style.display = "block";
@@ -98,19 +98,18 @@ function setActivePage() {
 
 
         }
-        const nav_page =null;
+        var nav_page = null;
         const current_page = GetCurrentPage().split('.html')[0];
         console.log(current_page);
-        if(!current_page === ""){
-            const nav_page = document.querySelector(".topnav #" + current_page);
+        if (current_page !== "") {
+             nav_page = document.querySelector(".topnav #" + current_page);
         }
 
-        if(nav_page !== null){
-            console.log(nav_page)
+        if (nav_page) {
             nav_page.classList.add("active");
         }
 
-    }else {
+    } else {
 
     }
 
@@ -127,7 +126,10 @@ function HandleLinks(show) {
     } else {
         login.style.display = "none";
         register.style.display = "none";
-        heroButton.style.display = "none";
+        if (heroButton) {
+            heroButton.style.display = "none";
+        }
+
     }
 
 }
@@ -145,9 +147,9 @@ function checkNeedsLogin(endpoint) {
         case "verify.html":
             const profiel = new Profile();
             var queryString = FYSCloud.URL.queryString();
-            if(queryString.id > 0){
+            if (queryString.id > 0) {
                 profiel.setId(queryString.id);
-                profiel.update('email_verified_at',queryString.timestamp);
+                profiel.update('email_verified_at', queryString.timestamp);
                 redirect('profile_wizard.html');
             }
 
@@ -163,9 +165,10 @@ function checkNeedsLogin(endpoint) {
     }
 }
 
-export function redirect(endpoint){
+export function redirect(endpoint) {
     FYSCloud.URL.redirect(endpoint);
 }
+
 function redirectToLogin() {
     if (!isLoggedIn()) {
         FYSCloud.URL.redirect("login.html");
@@ -201,11 +204,13 @@ function translate(lang_code) {
     FYSCloud.Localization.switchLanguage(lang_code);
     FYSCloud.Localization.translate();
 }
+
 export function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
-export function validatePassword(password){
+
+export function validatePassword(password) {
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
     return strongRegex.test(String(password));
 }
@@ -229,14 +234,14 @@ export function validate(elements) {
             if (e.value === "") {
                 errorMsg = "Wachtwoord is een verplicht veld";
                 console.log(e.value, errorMsg);
-                addError(e,errorMsg);
+                addError(e, errorMsg);
                 isValid = false;
             }
             console.log(validatePassword(e.value));
-            if(!validatePassword(e.value)){
+            if (!validatePassword(e.value)) {
                 errorMsg = "Wachtwoord voldoet niet aan de voorwaardes";
                 console.log(e.value, errorMsg);
-                addError(e,errorMsg);
+                addError(e, errorMsg);
                 isValid = false;
             }
         }
@@ -244,12 +249,12 @@ export function validate(elements) {
             if (e.value === "") {
                 errorMsg = "Datum is verplicht, selecteer een datum";
                 console.log(e.value, errorMsg);
-                addError(e,errorMsg);
+                addError(e, errorMsg);
                 isValid = false;
             }
         }
         if (e.type === "text") {
-            if (!e.value >"") {
+            if (!e.value > "") {
                 errorMsg = "Veld heeft geen waarde";
                 console.log(e.value, errorMsg);
                 addError(e);
