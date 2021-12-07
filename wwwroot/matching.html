@@ -5,21 +5,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/matching.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
     <!-- Script(s) -->
     <script src="assets/js/app.js" type="module"></script>
-    <script src="assets/js/pages/matching.js"></script>
+    <script src="assets/js/pages/matching.js" type="module"></script>
     <title>Fasten your seat belts</title>
 </head>
 <body>
-    <div class="nav">
-        <ul>
-            <li class="nav_title">Website Naam</li>
-            <li><a class="nav_item" href="./profiel.html">Profiel</a></li>
-            <li><a class="nav_item active">Matching</a></li>
-            <li><a class="nav_item" href="./index.html">Home</a></li>
-        </ul>
-    </div>
+
     <div class="main">
+        <div id="nav"></div>
         <h2 class="align_left">Matching</h2>
         <div class="grid-container">
             <div class="grid-child" style="margin-left: 2%;">
@@ -38,10 +33,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_2">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_2">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -50,10 +45,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_3">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_3">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -62,10 +57,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_4">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_4">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -74,10 +69,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_5">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_5">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -86,10 +81,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_6">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_6">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -98,10 +93,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_7">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_7">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -110,10 +105,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_8">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_8">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -122,10 +117,10 @@
                     </div>
                     <div class="grid-child">
                         <div class="card">
-                            <div id="image">
+                            <div id="image_9">
                                 <img class="align_image" src="https://pbs.twimg.com/profile_images/1188042439141003264/q0RbSw2t_400x400.jpg" alt="Profile Picture">
                             </div>
-                            <div id="info">
+                            <div id="info_9">
                                 <p>18</p>
                                 <p>Netherlands</p>
                                 <p>Male</p>
@@ -138,73 +133,38 @@
                 <div class="card">
                     <div id="filter_card">
                         <p class="header">Filter</p>
-                        <label for="countries">Country to travel to:</label>
-                        <select name="countries" id="countries">
-                            <option value="nederland">Nederland</option>
-                            <option value="belgie">België</option>
-                            <option value="bali">Bali</option>
-                            <option value="bonaire">Bonaire</option>
-                            <option value="bulgarije">Bulgarije</option>
-                            <option value="curacao">Curaçao</option>
-                            <option value="dominicaanse Republiek">Dominicaanse Republiek</option>
-                            <option value="dubai">Dubai</option>
-                            <option value="egypte">Egypte</option>
-                            <option value="gambia">Gambia</option>
-                            <option value="griekenland">Griekenland</option>
-                            <option value="indonesie">Indonesië</option>
-                            <option value="istanbul">Istanbul</option>
-                            <option value="kaapverdie">Kaapverdië</option>
-                            <option value="macedonie">Macedonië</option>
-                            <option value="portugal">Portugal</option>
-                            <option value="spanje">Spanje</option>
-                            <option value="turkije">Turkije</option>
-                            <option value="erabische-emiraten">Ver. Arabische Emiraten</option>
-                        </select><br><br>
-                        <label for="genders">Gender:</label>
+                        <label for="countrie_selector" data-translate="match.data.filter.countryTo">Country to travel to:</label>
+                        <div id="countrie_selector" style="margin-left: 10px;"></div>
+                       <br><br>
+                        <label for="genders" data-translate="match.data.filter.gender">Gender:</label>
                         <select name="genders" id="genders">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="male" data-translate="match.data.filter.gender.data.male">Male</option>
+                            <option value="female" data-translate="match.data.filter.gender.data.female">Female</option>
+                            <option value="other" data-translate="match.data.filter.gender.data.other">Other</option>
                         </select><br><br>
-                        <label for="age">Age:</label>
+                        <label for="age" data-translate="match.data.filter.age">Age:</label>
                         <input type="number" id="age" name="age" min="0" max="150"><br><br>
-                        <label for="countries">Country of origin:</label>
-                        <select name="countries" id="countries">
-                            <option value="nederland">Nederland</option>
-                            <option value="belgie">België</option>
-                            <option value="bali">Bali</option>
-                            <option value="bonaire">Bonaire</option>
-                            <option value="bulgarije">Bulgarije</option>
-                            <option value="curacao">Curaçao</option>
-                            <option value="dominicaanse Republiek">Dominicaanse Republiek</option>
-                            <option value="dubai">Dubai</option>
-                            <option value="egypte">Egypte</option>
-                            <option value="gambia">Gambia</option>
-                            <option value="griekenland">Griekenland</option>
-                            <option value="indonesie">Indonesië</option>
-                            <option value="istanbul">Istanbul</option>
-                            <option value="kaapverdie">Kaapverdië</option>
-                            <option value="macedonie">Macedonië</option>
-                            <option value="portugal">Portugal</option>
-                            <option value="spanje">Spanje</option>
-                            <option value="turkije">Turkije</option>
-                            <option value="erabische-emiraten">Ver. Arabische Emiraten</option>
-                        </select><br>
-                        <p>More filter settings...</p>
+                        <label for="countrie_selector_2" data-translate="match.data.filter.countryOrigin">Country of origin:</label>
+                        <div id="countrie_selector_2" style="margin-left: 10px;"></div>
+
+                        <p data-translate="match.data.filter.moreSettings">More filter settings...</p>
                     </div>
                 </div>
                 <div class="card">
                     <div id="profile_card">
-                        <p class="header">Your profile</p>
-                        <p>Naam</p>
-                        <p>Bios / Description</p>
-                        <p>Age</p>
-                        <p>Country of origin</p>
+                        <p class="header" data-translate="match.data.profile.header">Your profile</p>
+                        <p>Naam: <span id="mathing_profile_name"></span></p>
+                        <p>Bios / Description <span id="mathing_profile_bio"></span></p>
+                        <p>Age <span id="mathing_profile_age"></span></p>
+                        <p>Country of origin <span id="mathing_profile_orgin"></span></p>
                         <p>More filter settings...</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<div id="footer">
+
+</div>
 </body>
 </html>

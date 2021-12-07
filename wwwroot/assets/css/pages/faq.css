@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
 
+.wrapper {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 .faqTitle{
     text-align: center;
 }
@@ -58,8 +63,8 @@
     display: block;
     position: absolute;
     content: '';
-    top: 9px;
-    left: 5px;
+    top: 10px;
+    left: 6px;
     width: 10px;
     height: 2px;
     background: currentColor;
@@ -68,8 +73,8 @@
     display: block;
     position: absolute;
     content: '';
-    top: 5px;
-    left: 9px;
+    top: 6px;
+    left: 10px;
     width: 2px;
     height: 10px;
     background: currentColor;

@@ -1,0 +1,203 @@
+{
+  "file": {
+    "choose": {
+      "nl": "Kies file",
+      "en": "Select file"
+    }
+  },
+  "verify": {
+    "header": {
+      "nl": "Verifieer profiel",
+      "en": "Verify Login Code"
+    },
+    "explain": {
+      "nl": "Het lijkt er op dat jouw account nog niet is gevalideerd\n  Er is een email verstuurd klik op deze link om je account te verifieren",
+      "en": "It looks like you're trying to use your account.\n But your account is'nt valided yet, so check your email and click on the verify link"
+    }
+
+  },
+  "home": {
+    "slogan": {
+      "nl": "Match op CommonFlight om met Corendon wereldwijd te reizen!",
+      "en": "Match on CommonFlight to travel with Corendon worldwide!"
+    },
+    "hero": {
+      "nl": "Meld je aan!",
+      "en": "Sign up now!"
+    }
+  },
+  "profile": {
+    "header": {
+      "nl": "Mijn profiel",
+      "en": "My profile"
+    },
+    "subheader": {
+      "nl": "Dit moet ook vertaald worden",
+      "en": "This has to be translated as well"
+    },
+    "data": {
+      "first_name": {
+        "nl": "Voornaam",
+        "en": "First name"
+      },
+      "last_name": {
+        "nl": "Achternaam",
+        "en": "Last name"
+      },
+      "email": {
+        "nl": "Email adres",
+        "en": "Email"
+      },
+      "password": {
+        "nl": "Wachtwoord",
+        "en": "Password"
+      },
+      "birthday": {
+        "nl": "Geboorte datum",
+        "en": "Birthday"
+      },
+      "gender": {
+        "nl": "Geslacht",
+        "en": "Gender"
+      },
+      "country": {
+        "nl": "Land",
+        "en": "Country"
+      },
+      "nationality": {
+        "nl": "Nationaliteit",
+        "en": "Nationality"
+      },
+      "age": {
+        "nl": "Leeftijd",
+        "en": "Age"
+      },
+      "new_password": {
+        "nl": "Nieuw wachtwoord",
+        "en": "New password"
+      }
+    }
+  },
+  "wizard": {
+    "interests": {
+      "nl": "Interesses",
+      "en": "Interests"
+    },
+    "country": {
+      "nl": "Land voorkeuren",
+      "en": "Preferred country"
+    },
+    "wizard.finish": {
+      "nl": "Profiel voltooien",
+      "en": "Finish profile"
+    }
+  },
+  "match": {
+    "data": {
+      "filter": {
+        "countryTo": {
+          "nl": "Land om naar te reizen:",
+          "en": "Country to travel to:"
+        },
+        "gender": {
+          "nl": "Geslacht:",
+          "en": "Gender:",
+          "data": {
+            "male": {
+              "nl": "Man",
+              "en": "Male"
+            },
+            "female": {
+              "nl": "Vrouw",
+              "en": "Female"
+            },
+            "other": {
+              "nl": "Overig",
+              "en": "Other"
+            }
+          }
+        },
+        "age": {
+          "nl": "Leeftijd:",
+          "en": "Age:"
+        },
+        "nationality": {
+          "nl": "Nationaliteit:",
+          "en": "Nationality:"
+        },
+        "moreSettings": {
+          "nl": "Meer filter instellingen...",
+          "en": "More filter settings..."
+        }
+      },
+      "profile": {
+        "header": {
+          "nl": "Jouw profiel",
+          "en": "Your profile"
+        }
+      }
+    }
+  },
+  "register": {
+    "registerNewAccount": {
+      "nl": "Een nieuw account maken",
+      "en": "Create a new account"
+    },
+    "btn_register": {
+      "nl": "Aanmelden",
+      "en": "Registration"
+    },
+    "btn_pass_forgot": {
+      "nl": "Wachtwoord vergeten?",
+      "en": "Forgotten password"
+    },
+    "has_account": {
+      "nl": "Heb je al een account? Login",
+      "en": "Already registered? Login"
+    }
+  },
+  "login": {
+    "no_account": {
+      "nl": "Geen account? Registreer nu!",
+      "en": "No account? Sign up now!"
+    }
+  },
+  "nav": {
+    "login": {
+      "nl": "Inloggen",
+      "en": "Login"
+    },
+    "logout": {
+      "nl": "Uitloggen",
+      "en": "Logout"
+    },
+    "profile": {
+      "nl": "Profiel",
+      "en": "Profile"
+    },
+    "matching": {
+      "nl": "Matches",
+      "en": "Matching"
+    },
+    "register": {
+      "nl": "Registreren",
+      "en": "Registration"
+    }
+  },
+  "fourSteps": {
+    "title": {
+      "nl": "De vier stappen van onze website",
+      "en": "The four steps of our website"
+    }
+  },
+  "faq": {
+    "header": {
+      "nl": "Veel gestelde vragen",
+      "en": "Most asked questions"
+    }
+  },
+  "country": {
+    "nl": "Selecteer een land",
+    "en": "Select a country"
+  }
+}
