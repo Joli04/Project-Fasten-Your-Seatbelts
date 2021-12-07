@@ -327,6 +327,7 @@ h3 {
 .fourSteps__title {
     margin-bottom: 50px;
     font-weight: bold;
+    color: var(--red);
 }
 
 .fourSteps__steps {
@@ -354,6 +355,11 @@ h3 {
 .stepContainer__title {
     margin-bottom: 15px;
     font-size: 20px;
+    color: var(--red);
+}
+
+.stepContainer__description {
+    color: var(--grey);
 }
 
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
@@ -453,13 +459,19 @@ h3 {
 .infoContainer__divider {
     position: relative;
 }
+
+.infoContainer__title {
+    color: var(--red);
+}
+
 .infoContainer__divider hr {
     width: 35%;
     display: inline-block;
     vertical-align: middle;
     margin: 25px 0;
-    border: solid 2px #000000;
+    border: solid 2px var(--dark_red);
 }
+
 .infoContainer__divider:after {
     display: inline-block;
     position: absolute;
@@ -471,6 +483,10 @@ h3 {
     background-image: url("../img/icons/airplane-seperator.svg");
     background-size: 35px 35px;
     transform: rotate(90deg);
+}
+
+.infoContainer__description {
+    color: var(--grey);
 }
 
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
