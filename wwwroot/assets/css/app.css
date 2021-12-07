@@ -69,6 +69,7 @@ html, * {
 
 body {
     background-color: #484848;
+    cursor: default;
 }
 
 h1 {
@@ -171,6 +172,7 @@ h3 {
     float: left;
     font-size: 30px;
     font-weight: bold;
+    cursor: default;
 }
 
 .topnav__item {
@@ -498,7 +500,7 @@ footer {
 .back-to-top {
     position: fixed;
     display: inline;
-    background: #666;
+    background-color: var(--green);
     width: 50px;
     height: 50px;
     text-align: center;
@@ -509,6 +511,10 @@ footer {
     bottom: 1%;
     transition: background 0.5s;
     z-index: 11;
+}
+
+.back-to-top:hover {
+    background-color: var(--dark_green);
 }
 
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
