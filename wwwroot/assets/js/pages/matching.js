@@ -19,7 +19,7 @@ profile_age.innerHTML = profiel.birthday;
 var profile_orgin =document.querySelector('#mathing_profile_orgin');
 profile_orgin.innerHTML = profiel.getQountry();
 
-let users = await FYSCloud.API.queryDatabase('SELECT * FROM users')
+let users = await FYSCloud.API.queryDatabase('SELECT * FROM users WHERE id != ?', [profiel.id]);
 let countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
 
 for(var user in users) {

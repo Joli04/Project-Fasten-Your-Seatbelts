@@ -6,12 +6,11 @@ import Countries from "../Objects/Countries.js";
 let query = FYSCloud.URL.queryString()
 
 if(query.id > 0) {
+    document.getElementById('edit_btn').style.display = 'none';
+
     var user = await FYSCloud.API.queryDatabase('SELECT * FROM users WHERE id = ?', [query.id])
 
     let countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
-
-    console.log(user)
-    console.log(countries)
 
     if(user.length > 0) { 
         user = user[0]
@@ -54,10 +53,19 @@ if(query.id > 0) {
         }
 
         document.getElementById("avatar").src = profile_picture
+
+        function contact() {
+            window.open(`mailto:${user.email}`);
+        }
+
+        const change_profile = document.querySelector("#contact_btn");
+        change_profile.addEventListener('click', contact);
     } else {
         redirect('404.htm')
     }
 } else {
+    document.getElementById('contact_btn').style.display = 'none'
+
     const profiel = new Profile();
     await profiel.setProfile();
 
@@ -93,8 +101,7 @@ if(query.id > 0) {
 
     document.getElementById("avatar").src = profiel.getProfilePicture();
 
-    const change_profile = document.querySelector(".btn_edit");
-    console.log(change_profile);
+    const change_profile = document.querySelector("#edit_btn")
     change_profile.addEventListener('click', edit);
 }
 
