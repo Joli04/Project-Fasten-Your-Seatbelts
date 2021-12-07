@@ -113,12 +113,15 @@ function setActivePage() {
 function HandleLinks(show) {
     const login = document.querySelector(".topnav #login");
     const register = document.querySelector(".topnav #registratie");
+    const heroButton = document.querySelector(".hero__button");
     if (show) {
         login.style.display = "block";
         register.style.display = "block";
+        heroButton.style.display = "flex";
     } else {
         login.style.display = "none";
         register.style.display = "none";
+        heroButton.style.display = "none";
     }
 
 }
@@ -211,7 +214,7 @@ export function validate(elements) {
     elements.forEach(e => {
         if (e.type === "email") {
             if (!validateEmail(e.value)) {
-                errorMsg = "Geen geldig email addres";
+                errorMsg = "Geen geldig email address";
                 addError(e, errorMsg);
                 isValid = false;
             }
