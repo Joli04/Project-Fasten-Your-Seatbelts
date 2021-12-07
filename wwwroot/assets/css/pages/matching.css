@@ -189,6 +189,14 @@ h2 {
     display: flex;
 }
 
+#user_name {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: 3%;
+}
+
 .matching-container .card #info {
     justify-content: center;
     display: flex;
@@ -196,8 +204,6 @@ h2 {
 
 .matching-container .card #info p {
     margin: auto;
-    margin-top: 8%;
-    margin-bottom: 8%;
 }
 
 .grid-container .card .bar {
