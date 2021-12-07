@@ -98,7 +98,13 @@ function setActivePage() {
 
 
         }
-        const nav_page = document.querySelector(".topnav #" + GetCurrentPage().split('.html')[0]);
+        const nav_page =null;
+        const current_page = GetCurrentPage().split('.html')[0];
+        console.log(current_page);
+        if(!current_page === ""){
+            const nav_page = document.querySelector(".topnav #" + current_page);
+        }
+
         if(nav_page !== null){
             console.log(nav_page)
             nav_page.classList.add("active");
