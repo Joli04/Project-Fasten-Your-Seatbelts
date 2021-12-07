@@ -22,6 +22,10 @@ profile_orgin.innerHTML = profiel.getQountry();
 let users = await FYSCloud.API.queryDatabase('SELECT * FROM users WHERE id != ? AND email_verified_at IS NOT NULL', [profiel.id]);
 let countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
 
+if(users.length == 0) {
+    document.getElementById('card-container').innerHTML += "Geen resultaten gevonden"
+}
+
 for(var user in users) {
     user = users[user]
 
