@@ -40,16 +40,16 @@ export default class Profile {
      * @param first
      * @param last
      * @param email
-     * @param password
      * @param birthday
      * @param gender
      * @param country_origin_id
+     * @param bio
      * @param account_type
      * @return {Promise<{}|*>}
      */
-    async updateProfile(first, last, email, password, birthday, gender, country_origin_id, account_type = 'user') {
+    async updateProfile(first, last, email, birthday, gender, country_origin_id,bio, account_type = 'user') {
         try {
-            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?, password = ?,email =?,gender=?,account_type=?,birthday = ?,country_origin_id =? where users.id=" + this.id, [first, last, password, email, gender, account_type, birthday, country_origin_id]);
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?,email =?,gender=?,account_type=?,birthday = ?,bio = ?,country_origin_id =? where users.id=" + this.id, [first, last, password, email, gender, account_type, birthday,bio, country_origin_id]);
             return data[0];
         } catch (e) {
             console.log('Profile : ' + e);
@@ -112,6 +112,7 @@ export default class Profile {
         this.gender = data.gender;
         this.verified_at = data.email_verified_at;
         this.country = data.orgin_country;
+        this.country_id = data.country_origin_id;
         console.log(this.verified_at);
         if (this.verified_at === null && GetCurrentPage() !== 'verify.html') {
             await this.sendVerification();
@@ -127,7 +128,6 @@ export default class Profile {
 
     async sendVerification() {
         if (this.verified_at === null) {
-
             const domain = "https://" + window.location.hostname;
             const url = FYSCloud.Utils.createUrl("verify.html", {
                 id: this.id,
@@ -355,7 +355,58 @@ export default class Profile {
 
         }
     }
+    async destroy(){
+        if (this.id > 0) {
+            try {
+                let data = await FYSCloud.API.queryDatabase("DELETE FROM users WHERE user_id = ?", [this.id]);
+                this.first_name = null;
+                this.last_name = null;
+                this.email = null;
+                this.account_type = null;
+                this.birthday = null;
+                this.profile = null;
+                this.gender = null;
+                this.verified_at =null;
+                this.country = null;
+                return data[0];
 
+            } catch (e) {
+                return {};
+            }
+
+        }
+    }
+    async sendRequest(match_user){
+        const domain = "https://" + window.location.hostname;
+        const url = FYSCloud.Utils.createUrl("verify.html", {
+            id: this.id,
+            timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
+        });
+
+        try {
+            await FYSCloud.API.sendEmail({
+                from: {
+                    name: "CommonFlight",
+                    address: "group@fys.cloud"
+                },
+                to: [
+                    {
+                        name: this.getFullName(),
+                        address: this.email
+                    },
+                    {
+                        name: match_user.getFullName(),
+                        address: match_user.email
+                    },
+                ],
+                subject: "CommonFlight Match request",
+                html: "<p>1</p>"
+            });
+        }
+        catch (e) {
+
+        }
+    }
     generateAvatar(foregroundColor = "white", backgroundColor = "black") {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
@@ -381,9 +432,23 @@ export default class Profile {
     getBirthdayDateObject() {
         return new Date(this.birthday);
     }
+    getBirtdayStringFormatedLocale(initialLanguage){
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(this.birthday)
+
+        if(initialLanguage == null){
+         initialLanguage  = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
+        }
+        if(initialLanguage === "nl"){
+            return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-');
+        }
+        if(initialLanguage === "en"){
+            return [d.getFullYear(), pad(d.getMonth()+1),pad(d.getDate())].join('-');
+        }
+    }
 
     /**
-     *
+     * Get profile picture
      */
     getProfilePicture() {
         if (!!this.profile) {
@@ -397,6 +462,12 @@ export default class Profile {
     }
 
 
+    /**
+     * Set profile picture
+     * @param uplaudEl
+     * @param previewEl
+     * @return {Promise<void>}
+     */
     async setProfilePicture(uplaudEl, previewEl) {
         try {
             const dataUrl = await FYSCloud.Utils.getDataUrl(uplaudEl);
@@ -420,7 +491,7 @@ export default class Profile {
     async getData() {
         if (this.id > 0) {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
                 return {};
