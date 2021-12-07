@@ -41,13 +41,21 @@ for(var user in users) {
 
     //capitalizing first letter of gender
     const formatted_gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
+
+    var profile_picture
+
+    if(user.profile == null) {
+        profile_picture = generateAvatar("white", getComputedStyle(document.documentElement).getPropertyValue('--dark_green'), user.first_name, user.last_name)
+    } else {
+        profile_picture = user.profile
+    }
     
     //adding user card to container
     document.getElementById('card-container').innerHTML += `
     <div class="grid-child">
         <div class="card" onclick="window.open('profiel.html?id=${user.id}');" style="cursor: pointer;">
             <div id="image">
-                <img class="align_image" src="${user.profile}" alt="Profile Picture">
+                <img class="align_image" src="${profile_picture}" alt="Profile Picture">
             </div>
             <p id="user_name">${user.first_name} ${user.last_name}</p>
             <div id="info">
@@ -57,4 +65,26 @@ for(var user in users) {
             </div>
         </div>
     </div>`
+}
+
+function generateAvatar(foregroundColor = "white", backgroundColor = "black", first_name, last_name) {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.width = 200;
+    canvas.height = 200;
+
+    // Draw background
+    context.fillStyle = backgroundColor;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw text
+    context.font = "bold 100px Assistant";
+    context.fillStyle = foregroundColor;
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    const intials = first_name.charAt(0) + last_name.charAt(0);
+    context.fillText(intials, canvas.width / 2, canvas.height / 2);
+
+    return canvas.toDataURL("image/png");
 }
