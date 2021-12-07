@@ -24,7 +24,7 @@ country.innerHTML = profiel.getQountry();
 document.getElementById("avatar").src = profiel.getProfilePicture();
 
 const change_profile = document.querySelector(".btn_edit");
-console.log(change_profile);
+
 change_profile.addEventListener('click', edit);
 
 function edit() {

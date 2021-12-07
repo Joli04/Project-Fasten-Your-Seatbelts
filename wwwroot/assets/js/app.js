@@ -100,7 +100,6 @@ function setActivePage() {
         }
         var nav_page = null;
         const current_page = GetCurrentPage().split('.html')[0];
-        console.log(current_page);
         if (current_page !== "") {
              nav_page = document.querySelector(".topnav #" + current_page);
         }
