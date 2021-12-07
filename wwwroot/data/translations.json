@@ -158,8 +158,12 @@
   },
   "login": {
     "no_account": {
-      "nl": "Geen account? Registreer nu!",
-      "en": "No account? Sign up now!"
+      "nl": "Heb je geen account?",
+      "en": "Don't have an account?"
+    },
+    "no_account_link": {
+      "nl": "Registreer hier",
+      "en": "Sign up here"
     }
   },
   "nav": {
