@@ -101,7 +101,6 @@ function setActivePage() {
         const nav_page = document.querySelector(".topnav #" + GetCurrentPage().split('.html')[0]);
         if(nav_page !== null){
             console.log(nav_page)
-            nav_page.style.display = "block"; //first show if is hidden
             nav_page.classList.add("active");
         }
 
