@@ -99,6 +99,10 @@
           "nl": "Land om naar te reizen:",
           "en": "Country to travel to:"
         },
+        "countryOrigin": {
+          "nl": "Land van herkomst:",
+          "en": "Country of origin:"
+        },
         "gender": {
           "nl": "Geslacht:",
           "en": "Gender:",
@@ -114,6 +118,10 @@
             "other": {
               "nl": "Overig",
               "en": "Other"
+            },
+            "none": {
+              "nl": "Geen voorkeur",
+              "en": "No preference"
             }
           }
         },
@@ -201,7 +209,9 @@
     }
   },
   "country": {
-    "nl": "Selecteer een land",
-    "en": "Select a country"
+    "select": {
+      "nl": "Selecteer een land",
+      "en": "Select a country"
+    }
   }
 }

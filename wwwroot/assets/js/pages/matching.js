@@ -7,8 +7,8 @@ const profiel = new Profile();
 await profiel.setProfile();
 
 
-Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
-Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
+await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
+await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
 
 var profile_name =document.querySelector('#mathing_profile_name');
 profile_name.innerHTML = profiel.getFullName();
@@ -19,57 +19,86 @@ profile_age.innerHTML = profiel.birthday;
 var profile_orgin =document.querySelector('#mathing_profile_orgin');
 profile_orgin.innerHTML = profiel.getQountry();
 
-let users = await FYSCloud.API.queryDatabase('SELECT * FROM users WHERE id != ? AND email_verified_at IS NOT NULL', [profiel.id]);
 let countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
 
-if(users.length == 0) {
-    document.getElementById('card-container').innerHTML += "Geen resultaten gevonden"
+var users
+
+async function search() {
+    document.getElementById('card-container').innerHTML = ""
+
+    var query_string = `SELECT * FROM users WHERE id != ${profiel.id} AND email_verified_at IS NOT NULL`
+
+    let geslacht = document.getElementById('genders').value
+    let country_origin = document.querySelector('#countrie_selector_2 #countries').value
+
+    if(geslacht != "none") {
+        query_string += ` AND gender = "${geslacht}"`
+    }
+
+    query_string += ` AND country_origin_id = "${country_origin}"`
+
+    users = await FYSCloud.API.queryDatabase(query_string)
+
+    getData()
 }
 
-for(var user in users) {
-    user = users[user]
-
-    //getting age from current date / users birthday
-    const age = new Date().getFullYear() - new Date(user.birthday).getFullYear()
-
-    //filtering to get users country (name)
-    const country = countries.filter(country => country.id == user.country_origin_id)[0]
-
-    //capitalizing first letter of country name
-    const arr = country.names.split(" ");
-    for (var i = 0; i < arr.length; i++) {
-        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
-
-    }
-    const formatted_country_name = arr.join(" ");
-
-    //capitalizing first letter of gender
-    const formatted_gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
-
-    var profile_picture
-
-    if(user.profile == null) {
-        profile_picture = generateAvatar("white", getComputedStyle(document.documentElement).getPropertyValue('--dark_green'), user.first_name, user.last_name)
-    } else {
-        profile_picture = user.profile
+function getData() {
+    if(users.length == 0) {
+        document.getElementById('card-container').innerHTML += "Geen resultaten gevonden"
     }
     
-    //adding user card to container
-    document.getElementById('card-container').innerHTML += `
-    <div class="grid-child">
-        <div class="card" onclick="window.open('profiel.html?id=${user.id}');" style="cursor: pointer;">
-            <div id="image">
-                <img class="align_image" src="${profile_picture}" alt="Profile Picture">
+    for(var user in users) {
+        user = users[user]
+    
+        //getting age from current date / users birthday
+        const age = new Date().getFullYear() - new Date(user.birthday).getFullYear()
+    
+        //filtering to get users country (name)
+        const country = countries.filter(country => country.id == user.country_origin_id)[0]
+    
+        //capitalizing first letter of country name
+        const arr = country.names.split(" ");
+        for (var i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    
+        }
+        const formatted_country_name = arr.join(" ");
+    
+        //capitalizing first letter of gender
+        const formatted_gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
+    
+        var profile_picture
+    
+        if(user.profile == null) {
+            profile_picture = generateAvatar("white", getComputedStyle(document.documentElement).getPropertyValue('--dark_green'), user.first_name, user.last_name)
+        } else {
+            profile_picture = user.profile
+        }
+        
+        //adding user card to container
+        document.getElementById('card-container').innerHTML += `
+        <div class="grid-child">
+            <div class="card" onclick="window.open('profiel.html?id=${user.id}');" style="cursor: pointer;">
+                <div id="image">
+                    <img class="align_image" src="${profile_picture}" alt="Profile Picture">
+                </div>
+                <p id="user_name">${user.first_name} ${user.last_name}</p>
+                <div id="info">
+                    <p>${age}</p>
+                    <p>${formatted_country_name}</p>
+                    <p>${formatted_gender}</p>
+                </div>
             </div>
-            <p id="user_name">${user.first_name} ${user.last_name}</p>
-            <div id="info">
-                <p>${age}</p>
-                <p>${formatted_country_name}</p>
-                <p>${formatted_gender}</p>
-            </div>
-        </div>
-    </div>`
+        </div>`
+    }
 }
+
+//get filter changes
+document.getElementById('countries').addEventListener("change", search)
+document.getElementById('genders').addEventListener("change", search)
+
+//initial search
+search()
 
 function generateAvatar(foregroundColor = "white", backgroundColor = "black", first_name, last_name) {
     const canvas = document.createElement("canvas");
