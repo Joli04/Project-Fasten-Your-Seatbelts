@@ -156,6 +156,7 @@ h3 {
 /* --------------------------- */
 .topnav {
     overflow: hidden;
+    padding: 15px 50px 75px 50px;
 }
 
 .topnav a {
@@ -164,21 +165,21 @@ h3 {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
 }
 
 .topnav__title {
     float: left;
+    font-size: 30px;
     font-weight: bold;
 }
 
 .topnav__item {
     float: right;
+    font-size: 20px;
 }
 
 .topnav__item:hover {
-    background-color: #ddd;
-    color: black;
+    text-decoration: underline;
 }
 
 .topnav a.active {
@@ -187,11 +188,24 @@ h3 {
 }
 
 .topnav .icon {
-    width: 6%;
+    width: 10%;
     display: none;
 }
 
 @media screen and (max-width: 600px) {
+    .topnav {
+        padding: 0;
+    }
+
+    .topnav span {
+        display: none;
+    }
+
+    .responsive span {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
         float: right;
@@ -214,6 +228,7 @@ h3 {
     }
 
     .topnav a.active {
+        display: none;
         background-color: #747474;
         color: white;
         font-weight: normal;
@@ -226,8 +241,29 @@ h3 {
         text-align: left;
     }
 
-    .topnav__item, .topnav__langSwitch {
+    .topnav__item {
+        font-size: 17px;
+        border-bottom: solid 1px black;
+    }
+    .topnav__item:last-of-type {
         border-top: solid 1px black;
+    }
+
+    .topnav__langSwitch {
+        float: none;
+    }
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .topnav {
+        overflow: hidden;
+        padding: 15px 25px 75px 25px;
+    }
+}
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    .topnav__langSwitch {
+        float: left;
     }
 }
 
@@ -235,7 +271,7 @@ h3 {
 /* ----------[ FOUR STEPS ]---------- */
 /* ---------------------------------- */
 .fourSteps {
-    padding: 0 20px 0 20px;
+    padding: 50px 20px 0 20px;
 }
 
 .fourSteps__title {
