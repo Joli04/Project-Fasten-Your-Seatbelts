@@ -2,57 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FYS Registration Page</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CommonFlight | Registration</title>
     <link rel="icon" type="image/x-icon" href="./favicon.png">
+
+    <!-- stylesheet(s) -->
     <link rel="stylesheet" href="assets/css/pages/registratie.css">
     <link rel="stylesheet" href="assets/css/app.css">
+
     <!-- Script(s) -->
     <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/pages/register.js" type="module"></script>
     <script src="vendors/jsSHA/sha.js"></script>
 </head>
 <body>
-<a href="index.html">
-    <button type="button" id="home" class="btn bg-red" style="width: 250px;">
-        <svg style="width: 35%; color: var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-        </svg>
-        Home
-    </button>
-</a>
-<div class="regi">
-    <h1>Meld je hier aan!</h1>
-    <form>
-        <label data-translate="profile.data.first_name">Voornaam</label>
-        <label id="tekstachternaam" data-translate="profile.data.last_name">Achternaam</label>
-        <br>
-        <span id="voornaam"><input type="text" name="firstname" placeholder="Voornaam"></span>
-        <span id="achternaam"><input type="text" name="lastname" placeholder="Achternaam"></span><br><br>
-        <label data-translate="profile.data.email">Email</label><br>
-        <input type="email" name="email" placeholder="Email"><br><br>
-        <label data-translate="profile.data.new_password">Nieuw wachtwoord</label><br>
-        <input type="password" name="password" autocomplete="current-password" placeholder="Wachtwoord"><br><br>
-        <label data-translate="profile.data.birthday">Geboortedatum</label><br>
-        <input type="date" name="birthday"><br>
+<div id="nav"></div>
+<div class="wrapper__registration">
+    <div class="registration">
+        <div class="registration__top">
+            <h1 class="registration__title" data-translate="register.btn_register">Aanmelden</h1>
+            <p class="registration__description">Vul de gegevens onderaan in om door te gaan.</p>
+            <div class="errorWrapper"></div>
+        </div>
+        <form class="registration__form">
+            <input type="text" name="firstname" class="registration__input" placeholder="Voornaam" autofocus>
+            <input type="text" name="lastname" class="registration__input" placeholder="Achternaam">
+            <input type="email" name="email" class="registration__input" placeholder="Email">
+            <input type="password" name="password" autocomplete="current-password" class="registration__input" placeholder="Wachtwoord">
+            <input type="date" name="birthday" class="registration__input">
 
-        <label data-translate="profile.data.gender">Geslacht</label><br>
-        <input type="radio" value="male" name="gender" id="gender_men" placeholder="Man">
-        <label for="gender_men">Man</label>
-        <input type="radio" value="female" name="gender" id="gender_whoman" placeholder="Vrouw">
-        <label for="gender_whoman">Vrouw</label>
-        <input type="radio" value="neutral"  name="gender" id="gender_else" placeholder="Anders">
-        <label for="gender_else">Anders</label>
-        <div id="countrie_selector" style="margin-left: 10px;"></div>
-    </form>
-    <a>
-        <button type="button" id="aanmelden">Aanmelden</button>
-    </a>
-    <p><span class="WV" data-translate="register.btn_pass_forgot" >Wachtwoord vergeten?</span></p>
-    <hr>
-    <a href="login.html">
-        <button type="button" id="inloggen" >Heb je al een account? Login</button>
-    </a>
+            <select name="genderList" id="gender">
+                <option selected>Kies een geslacht</option>
+                <option value="male">Man</option>
+                <option value="female">Vrouw</option>
+                <option value="other">Anders</option>
+            </select>
+
+            <div id="country_selector"></div>
+        </form>
+        <div class="registration__button">
+            <button type="button" class="registration__button" id="aanmelden">
+                <span class="button__text" data-translate="register.btn_register">Aanmelden</span>
+                <img src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
+            </button>
+        </div>
+        <div>
+            <span data-translate="register.has_account">Heb je al een account?</span>
+            <a href="login.html" class="registration__signup" data-translate="register.has_account_link">Inloggen</a>
+        </div>
+    </div>
 </div>
 <div id="footer"></div>
 </body>

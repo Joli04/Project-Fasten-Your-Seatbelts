@@ -7,11 +7,11 @@ const profiel = new Profile();
 document.addEventListener("DOMContentLoaded", function () {
     var registerBtn = document.querySelector("#aanmelden");
     registerBtn.addEventListener('click', register);
-    Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
+    Countries.initCountrieSelector(document.querySelector("#country_selector"));
 });
 
 function register(){
-    var elements = document.querySelectorAll("form input");
+    let elements = document.querySelectorAll("form input");
     if(validate(elements)){
 
         const firstname =  document.querySelector('input[name="firstname"]');
@@ -24,10 +24,11 @@ function register(){
         const hash = shaObj.getHash("HEX");
 
         const birthday = document.querySelector('input[name="birthday"]');
-        const gender = document.querySelector('input[name="gender"]')
-        const countrie = document.getElementById("countries")
+        const genderValue = document.querySelector('#gender');
+        const gender = genderValue.options[genderValue.selectedIndex].value;
+        const country = document.getElementById("countries")
         try{
-            profiel.registerProfile(firstname.value,lastname.value,email.value,hash,birthday.value,gender.value,countrie.value);
+            profiel.registerProfile(firstname.value,lastname.value,email.value,hash,birthday.value,gender,country.value);
             redirect("profiel.html");
         }catch (e){
             console.log(e);

@@ -1,126 +1,137 @@
-body {
-    height: 90vh;
-    background-image: url("../../img/register.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+#nav .topnav {
+    padding-bottom: 0;
 }
 
-.regi {
-    bottom: 40px;
-    position: relative;
-    left: 470px;
-    width: 600px;
-    text-align: center;
-    box-shadow: 0 10px 34px -15px rgb(0 0 0 / 80%);
-    border-radius: 40px;
-    background-color: #ffffff;
+@media screen and (max-width: 600px) {
+    #nav .responsive {
+        border-radius: 0;
+    }
+}
+
+.wrapper__registration {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.registration {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.registration__top {
+    margin-bottom: 25px;
+}
+
+.registration__title {
     color: var(--red);
+    margin-bottom: 10px;
 }
 
-header h1,p {
-    margin: 0;
-    text-align: center;
+.registration__description {
+    margin-bottom: 25px;
+    color: var(--grey);
 }
 
-header p {
-    margin: 0;
+.registration__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
 }
 
-form {
-    position: relative;
-    left: 110px;
-    text-align: left;
-
+.registration__input {
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
 }
 
-form label{
-    margin-right: 50px;
+.registration__input:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
 }
 
-input {
-    border-radius: 10px;
-    padding: 10px;
-    width: 60%;
-    margin-right: 80px;
+.registration__button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /*justify-content: center;*/
+    margin-bottom: 15px;
 }
 
-input[type = radio]{
-    margin: 0 15px;
-}
-select{
-    position: relative;
-    right: 27px;
-    border-radius: 10px;
-    margin: 0 40px;
-}
-
-#aanmelden {
-    color: white;
-    margin: 0;
-    padding: 10px 90px;
-    position: relative;
-    top: 25px;
-    border-radius: 5px;
+.registration__button button {
+    text-decoration: none;
     background-color: var(--dark_green);
+    border-radius: 5px;
+    transition: background-color .5s;
+    cursor: pointer;
 }
-#aanmelden:hover {
+
+.registration__button button:hover {
     background-color: var(--green);
 }
-#voornaam input{
-    width:125px;
+.registration__button button:hover > .button__text {
+    background-color: var(--dark_green);
 }
 
-#achternaam input{
-    width:125px;
-}
-#tekstachternaam{
-    padding: 10px;
-    width: 60%;
-    margin-left:105px;
-}
-
-#inloggen {
-    color: white;
-    margin: 0;
-    padding: 10px 100px;
-    position: relative;
-    top: 75px;
-    border-radius: 5px;
-    background-color: var(--red);
-
-}
-#inloggen:hover{
-    background-color: var(--dark_red);
+.button__text {
+    width: 77%;
+    background-color: var(--green);
+    font-size: 25px;
+    color: var(--white);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-.WV {
-    position: relative;
-    top: 35px;
+.button__icon {
+    width: 19px;
+    margin-left: 15px;
 }
 
-
-hr {
-    background-color: black;
-    position: relative;
-    top: 70px;
+.registration__signup {
+    color: var(--red);
+    text-decoration: none;
 }
 
-#home{
-    margin: 0;
-    padding: 10px 100px;
-    position: relative;
-    border-radius: 5px;
+.registration__login:hover {
+    color: var(--dark_red);
+    text-decoration: underline;
 }
-#home:hover{
-    background-color: var(--dark_red);
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .wrapper__registration {
+        padding: 150px 0;
+    }
+
+    .button__text {
+        width: 74%;
+    }
+
+    #nav .topnav a {
+        padding: 14px 10px;
+    }
+
+    #nav .topnav__item {
+        margin-top: 5px;
+    }
 }
-.copyright{
-    position: relative;
-    left: 23px;
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .wrapper__registration {
+        padding: 0;
+    }
 }
-footer{
-    text-align: center;
-    position: relative;
-    top:104px;
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    #nav .topnav a {
+        padding: 14px 16px;
+    }
 }

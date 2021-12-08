@@ -160,8 +160,12 @@
       "en": "Forgotten password"
     },
     "has_account": {
-      "nl": "Heb je al een account? Login",
-      "en": "Already registered? Login"
+      "nl": "Heb je al een account?",
+      "en": "Already registered?"
+    },
+    "has_account_link": {
+      "nl": "Inloggen",
+      "en": "Login"
     }
   },
   "login": {
