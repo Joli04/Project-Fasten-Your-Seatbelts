@@ -31,10 +31,20 @@ Setup defaults
 /*    visibility: visible;*/
 /*}*/
 
-.error {
-    width: 60%;
-    color: var(--white);
+.errorWrapper {
+    width: 100%;
     background-color: var(--red);
+}
+
+.error {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 20px;
+    color: var(--white);
+}
+
+.error:first-child {
+    padding: 20px 0;
 }
 
 .btn {
@@ -369,11 +379,6 @@ h3 {
         padding: 0 50px 15px 50px;
     }
 
-    .fourSteps__steps {
-        flex-direction: row;
-        text-align: left;
-    }
-
     .stepContainer__title {
         font-size: 25px;
     }
@@ -387,6 +392,11 @@ h3 {
 
     .fourSteps {
         padding: 0 100px 15px 100px;
+    }
+
+    .fourSteps__steps {
+        flex-direction: row;
+        text-align: left;
     }
 
     .stepContainer {
