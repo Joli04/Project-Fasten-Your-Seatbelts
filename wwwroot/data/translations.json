@@ -147,17 +147,9 @@
     }
   },
   "register": {
-    "registerNewAccount": {
-      "nl": "Een nieuw account maken",
-      "en": "Create a new account"
-    },
     "btn_register": {
       "nl": "Aanmelden",
       "en": "Registration"
-    },
-    "btn_pass_forgot": {
-      "nl": "Wachtwoord vergeten?",
-      "en": "Forgotten password"
     },
     "has_account": {
       "nl": "Heb je al een account?",
@@ -166,9 +158,17 @@
     "has_account_link": {
       "nl": "Inloggen",
       "en": "Login"
+    },
+    "gender_default": {
+      "nl": "Kies een geslacht",
+      "en": "Choose an gender"
     }
   },
   "login": {
+    "desc": {
+      "nl": "Vul de gegevens onderaan in om door te gaan.",
+      "en": "Fill in all your details down below to continue."
+    },
     "no_account": {
       "nl": "Heb je geen account?",
       "en": "Don't have an account?"
@@ -208,8 +208,8 @@
   },
   "faq": {
     "header": {
-      "nl": "Veel gestelde vragen",
-      "en": "Most asked questions"
+      "nl": "Veelgestelde vragen",
+      "en": "Frequently Asked Questions"
     }
   },
   "country": {

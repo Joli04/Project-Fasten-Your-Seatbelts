@@ -23,7 +23,7 @@
     <div class="registration">
         <div class="registration__top">
             <h1 class="registration__title" data-translate="register.btn_register">Aanmelden</h1>
-            <p class="registration__description">Vul de gegevens onderaan in om door te gaan.</p>
+            <p class="registration__description" data-translate="login.desc">Vul de gegevens onderaan in om door te gaan.</p>
             <div class="errorWrapper"></div>
         </div>
         <form class="registration__form">
@@ -34,10 +34,10 @@
             <input type="date" name="birthday" class="registration__input">
 
             <select name="genderList" id="gender">
-                <option selected>Kies een geslacht</option>
-                <option value="male">Man</option>
-                <option value="female">Vrouw</option>
-                <option value="other">Anders</option>
+                <option selected data-translate="register.gender_default">Kies een geslacht</option>
+                <option value="male" data-translate="match.data.filter.gender.data.male">Man</option>
+                <option value="female" data-translate="match.data.filter.gender.data.female">Vrouw</option>
+                <option value="other" data-translate="match.data.filter.gender.data.other">Overig</option>
             </select>
 
             <div id="country_selector"></div>
