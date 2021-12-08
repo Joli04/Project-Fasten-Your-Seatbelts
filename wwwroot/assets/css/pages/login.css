@@ -51,12 +51,14 @@
     color: var(--grey);
     border: none;
     border-bottom: solid 2px var(--grey);
+    outline: none;
 }
 
 .login__input:focus {
     color: var(--dark_red);
     border: none;
     border-bottom: solid 2px var(--dark_red);
+    outline: none;
 }
 
 .login__button {
