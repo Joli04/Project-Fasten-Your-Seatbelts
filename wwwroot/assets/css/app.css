@@ -196,7 +196,7 @@ h3 {
 /* --------------------------- */
 .topnav {
     overflow: hidden;
-    padding: 15px 50px 75px 50px;
+    padding: 15px 50px 15px 20px;
 }
 
 .topnav a {
@@ -308,7 +308,7 @@ h3 {
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
     .topnav {
         overflow: hidden;
-        padding: 15px 25px 75px 25px;
+        padding: 15px 25px 15px 20px;
     }
 }
 
