@@ -1,16 +1,22 @@
 body {
-    height: 100vh;
-    background-image: url("../../img/hero.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: var(--white);
+}
+
+#nav .topnav {
+    padding-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+    #nav .responsive {
+        border-radius: 0;
+    }
 }
 
 .wrapper__login {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 75px 35px;
     background-color: var(--white);
 }
 
@@ -60,7 +66,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /*justify-content: center;*/
     margin-bottom: 15px;
 }
 
@@ -80,6 +86,7 @@ body {
 }
 
 .button__text {
+    width: 77%;
     background-color: var(--green);
     font-size: 25px;
     color: var(--white);
@@ -89,7 +96,7 @@ body {
 
 .button__icon {
     width: 19px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .login__signup {
@@ -102,6 +109,26 @@ body {
     text-decoration: underline;
 }
 
-#footer {
-    display: none;
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .wrapper__login {
+        padding: 50px 0;
+    }
+
+    .button__text {
+        width: 74%;
+    }
+
+    #nav .topnav a {
+        padding: 14px 10px;
+    }
+
+    #nav .topnav__item {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .wrapper__login {
+        padding: 0;
+    }
 }
