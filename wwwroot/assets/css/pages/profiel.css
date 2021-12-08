@@ -150,3 +150,59 @@
         margin-bottom: 0;
     }
 }
+
+/* ------------------------------------ */
+/* ----------[ EDIT PROFILE ]---------- */
+/* ------------------------------------ */
+.profile__edit .profile__image {
+    margin-bottom: 5px;
+}
+
+.profile__edit .edit__item {
+    margin-bottom: 15px;
+}
+
+.profile__edit .edit__item:last-of-type {
+    margin-bottom: 0;
+}
+
+.profile__edit .edit__input {
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+    outline: none;
+}
+
+.profile__edit .edit__input:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+    outline: none;
+}
+
+.profile__edit .edit__gender {
+    background-color: var(--white);
+}
+
+.profile__edit .edit__country label {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--grey);
+}
+
+.profile__edit .edit__country #countries {
+    margin-bottom: 25px;
+    background-color: var(--white);
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+    outline: none;
+}
+.profile__edit .edit__country #countries:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+    outline: none;
+}

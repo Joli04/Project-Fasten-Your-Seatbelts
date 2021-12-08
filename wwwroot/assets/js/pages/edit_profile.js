@@ -2,7 +2,7 @@ import Profile from "../classes/Profile.js";
 import Countries from "../Objects/Countries.js";
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import {validateEmail,addError} from "../app.js";
+import {validateEmail, addError, redirect} from "../app.js";
 
 const profiel = new Profile();
 await profiel.setProfile();
@@ -55,6 +55,7 @@ function ve(){
 function save() {
     const names = name.value.split(" ");
     profiel.updateProfile(names[0], names[1],email.value,age.value,gender.value,country.value,quill.container.firstChild.innerHTML());
+    redirect("profiel.html");
 }
 
 fileInput.onchange = () => {

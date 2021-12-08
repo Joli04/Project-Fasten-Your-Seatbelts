@@ -4,6 +4,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CommonFlight | Profiel</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+
+    <!-- stylesheet(s) -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="vendors/quill/css/theme/white.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/profiel.css"/>
@@ -12,71 +16,73 @@
     <script src="assets/js/app.js" type="module"></script>
     <script src="vendors/quill/quill.js"></script>
     <script src="assets/js/pages/edit_profile.js" type="module"></script>
-
-    <title>Fasten your seat belts</title>
 </head>
 <body>
-
-<div class="main">
-    <div id="nav"></div>
-    <h2 class="align_left" data-translate="profile.header">Profiel</h2>
-    <div class="card">
-        <div class="grid-container">
-            <div class="grid-child left">
-
-                <div class="container">
-                    <img id="avatar" alt="Avatar" class="image" style="width:100%">
-                    <div class="middle">
-                            <label for="uplaud_img" class="uplaud" data-translate="file.choose">
-                                choose
-                            </label>
-                            <input id="uplaud_img" type="file">
-                    </div>
-                </div>
-                <h4 data-translate="profile.data.age">Age</h4>
-                <input type="date" id="profiel_age" value=""> <!-- Leeftijd -->
-                <h4 data-translate="profile.data.gender">Gender</h4>
-                <select id="profiel_gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="neutral">neutral</option>
-                </select> <!-- Geslacht -->
-                <h4 data-translate="profile.data.nationality">Nationality</h4>
-                <div id="profiel_country" style="margin-left: 10px;"></div> <!-- Land van origin -->
-                <!--                    <p>Dutch, English</p> &lt;!&ndash; Talen &ndash;&gt;-->
+<div id="nav"></div>
+<div class="profile__wrapper profile__edit">
+    <h2 class="profile__title">Profiel - <span class="profile_name">Jonah Brandwagt</span></h2>
+    <div class="profile__container">
+        <div class="profile__left">
+            <img class="profile__image" id="avatar" alt="Profile Picture">
+            <div class="edit__item">
+                <label for="uplaud_img" class="uplaud" data-translate="file.choose">
+                    choose
+                </label>
+                <input id="uplaud_img" type="file">
             </div>
-            <div class="grid-child">
-                <div class="form-group profile_name">
-                    <label for="form_profile_name">Profile name: </label>
-                    <input id="form_profile_name" class="profile_name" value="Jonah Brandwagt"/><!-- Naam -->
+            <div class="profile__info">
+                <div class="edit__item">
+                    <p class="profile__label">Email</p>
+                    <input id="form_profile_email" class="profile__item edit__input" />
                 </div>
-                <div class="form-group profile_name">
-                    <label for="form_profile_email">Email: </label>
-                    <input id="form_profile_email" class="profile_name" /><!-- Naam -->
+                <div class="edit__item">
+                    <p class="profile__label">Naam</p>
+                    <input id="form_profile_name" class="profile__item edit__input" />
                 </div>
-
-                <!-- Create the editor container -->
-                <div id="editor">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-                        a galley of type and scrambled it to make a type specimen book. It has survived not only five
-                        centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-                        more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                        Ipsum.</p>
+                <div class="edit__item">
+                    <p class="profile__label">Geboortedatum</p>
+                    <input type="date" id="profiel_age" class="profile__item edit__input" />
                 </div>
-                <button id="profile_save" class="btn_edit">save</button>
-                <div class="profile_intress">
-
+                <div class="edit__item">
+                    <p for="profiel_gender" class="profile__label">Geslacht</p>
+                    <select id="profiel_gender" class="profile__item edit__input edit__gender">
+                        <option value="male" data-translate="match.data.filter.gender.data.male">Man</option>
+                        <option value="female" data-translate="match.data.filter.gender.data.female">Vrouw</option>
+                        <option value="other" data-translate="match.data.filter.gender.data.other">Overig</option>
+                    </select>
                 </div>
-                <p>Intresset in</p>
-                <p>Japan, United States</p> <!-- In geintreseerde landen -->
-                <p>Programming, Fitness, Sneakers</p> <!-- Andere intresses -->
+                <div class="edit__item">
+                    <label for="profiel_country" class="profile__label">Geboorteland</label>
+                    <div id="profiel_country" class="profile__item edit__country"></div>
+                </div>
+<!--                <label for="intrest__country" class="profile__label">Geïnteresseerde land(en)</label>-->
+<!--                <p id="intrest__country" class="profile__item">Japan, United States</p>-->
+<!--                <label for="intrest__hobbies" class="profile__label">Interesses</label>-->
+<!--                <p id="intrest__hobbies" class="profile__item">Programming, Fitness, Sneakers</p>-->
+            </div>
+            <div class="profile__button">
+                <button type="button" class="profile__button" id="profile_save">
+                    <span class="button__text">Opslaan</span>
+                    <img src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
+                </button>
+            </div>
+        </div>
+        <div class="profile__right">
+            <label for="profile__bio" class="profile__label">Beschrijving</label>
+            <div id="editor">
+                <p class="profile__bio" id="profile__bio">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                    a galley of type and scrambled it to make a type specimen book. It has survived not only five
+                    centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
+                    more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                    Ipsum.
+                </p> <!-- Bio -->
             </div>
         </div>
     </div>
 </div>
 <div id="footer"></div>
 </body>
-
 </html>
