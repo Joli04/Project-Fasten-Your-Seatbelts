@@ -4,49 +4,56 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CommonFlight | Profiel</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+
+    <!-- stylesheet(s) -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/profiel.css"/>
+
     <!-- Script(s) -->
     <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/pages/profiel.js" type="module"></script>
-    <title>Fasten your seat belts</title>
 </head>
 <body>
-
-<div class="main">
-    <div id="nav"></div>
-    <h2 class="align_left" id="header_label" data-translate="profile.header">Profiel</h2>
-    <div class="card">
-        <div class="grid-container">
-            <div class="grid-child left">
-                <img class="align_image" id="avatar"
-                     alt="Profile Picture"> <!-- Profiel Foto -->
-                <h4 data-translate="profile.data.age">Age</h4>
-                <p id="profiel_age"></p> <!-- Leeftijd -->
-                <h4 data-translate="profile.data.gender">Gender</h4>
-                <p id="profiel_gender">Male</p> <!-- Geslacht -->
-                <h4 data-translate="profile.data.nationality">Nationality</h4>
-                <p id="profiel_country">The Netherlands</p> <!-- Land van origin -->
-                <!--                    <p>Dutch, English</p> &lt;!&ndash; Talen &ndash;&gt;-->
+<div id="nav"></div>
+<div class="profile__wrapper">
+    <h2 class="profile__title">Profiel - <span class="profile_name">Jonah Brandwagt</span></h2>
+    <div class="profile__container">
+        <div class="profile__left">
+            <img class="profile__image" id="avatar" alt="Profile Picture">
+            <div class="profile__info">
+                <label for="profiel_age" class="profile__label">Geboorte datum</label>
+                <p id="profiel_age" class="profile__item"></p>
+                <label for="profiel_gender" class="profile__label">Geslacht</label>
+                <p id="profiel_gender" class="profile__item"></p>
+                <label for="profiel_country" class="profile__label">Geboorteland</label>
+                <p id="profiel_country" class="profile__item"></p>
+                <label for="intrest__country" class="profile__label">Geïnteresseerde land(en)</label>
+                <p id="intrest__country" class="profile__item">Japan, United States</p>
+                <label for="intrest__hobbies" class="profile__label">Interesses</label>
+                <p id="intrest__hobbies" class="profile__item">Programming, Fitness, Sneakers</p>
             </div>
-            <div class="grid-child">
-                <p class="profile_name">Jonah Brandwagt</p> <!-- Naam -->
-                <p class="profile_bio">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-                    a galley of type and scrambled it to make a type specimen book. It has survived not only five
-                    centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-                    more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                    Ipsum.</p> <!-- Bio -->
-                <div class="profile_intress">
-
-                </div>
-                <p>Intresset in</p>
-                <p>Japan, United States</p> <!-- In geintreseerde landen -->
-                <p>Programming, Fitness, Sneakers</p> <!-- Andere intresses -->
-                <button class="btn_edit" id="edit_btn">Verander profiel</button>
-                <button class="btn_edit" id="contact_btn">Contact Gebruiker</button>
+            <div class="profile__button">
+                <button type="button" class="profile__button" id="edit_btn">
+                    <span class="button__text">Verander profiel</span>
+                    <img src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
+                </button>
+                <button class="profile__button" id="contact_btn">
+                    <span class="button__text">Contact gebruiker</span>
+                    <img src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
+                </button>
             </div>
+        </div>
+        <div class="profile__right">
+            <label for="profile__bio" class="profile__label">Beschrijving</label>
+            <p class="profile__bio" id="profile__bio">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                a galley of type and scrambled it to make a type specimen book. It has survived not only five
+                centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
+                more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                Ipsum.</p> <!-- Bio -->
         </div>
     </div>
 </div>
