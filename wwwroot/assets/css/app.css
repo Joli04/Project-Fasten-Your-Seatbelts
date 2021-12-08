@@ -81,7 +81,7 @@ html, * {
 }
 
 body {
-    background-color: #484848;
+    background-color: var(--white);
     cursor: default;
 }
 
