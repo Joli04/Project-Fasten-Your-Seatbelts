@@ -8,7 +8,7 @@
     }
 }
 
-.wrapper__login {
+.wrapper__auth {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -107,7 +107,7 @@
 }
 
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
-    .wrapper__login {
+    .wrapper__auth {
         padding: 50px 0;
     }
 
@@ -125,7 +125,7 @@
 }
 
 @media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
-    .wrapper__login {
+    .wrapper__auth {
         padding: 0;
     }
 }
