@@ -279,11 +279,11 @@ export function addError(element, errorMsg = "Dit veld is een verplicht veld") {
 
     function myFunction(sm,lg) {
         if (lg.matches) {
-            document.querySelector('.wrapper__login').style.padding = '0';
+            document.querySelector('.wrapper__auth').style.padding = '0';
         } else if(sm.matches) {
-            document.querySelector('.wrapper__login').style.padding = '100px 0';
+            document.querySelector('.wrapper__auth').style.padding = '100px 0';
         } else {
-            document.querySelector('.wrapper__login').style.padding = '50px 0';
+            document.querySelector('.wrapper__auth').style.padding = '50px 0';
         }
     }
 
