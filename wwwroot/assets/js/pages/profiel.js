@@ -7,6 +7,7 @@ let query = FYSCloud.URL.queryString()
 
 if(query.id > 0) {
     document.getElementById('edit_btn').style.display = 'none';
+    document.getElementById('header_label').style.display = 'none'
 
     var user = await FYSCloud.API.queryDatabase('SELECT * FROM users WHERE id = ?', [query.id])
 
