@@ -31,10 +31,20 @@ Setup defaults
 /*    visibility: visible;*/
 /*}*/
 
-.error {
-    width: 60%;
-    color: var(--white);
+.errorWrapper {
+    width: 100%;
     background-color: var(--red);
+}
+
+.error {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 20px;
+    color: var(--white);
+}
+
+.error:first-child {
+    padding: 20px 0;
 }
 
 .btn {

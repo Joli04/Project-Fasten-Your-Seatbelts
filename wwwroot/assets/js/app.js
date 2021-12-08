@@ -275,5 +275,19 @@ export function addError(element, errorMsg = "Dit veld is een verplicht veld") {
     error.className = "error";
     error.style.display = 'block';
     error.innerText = errorMsg;
-    element.parentElement.appendChild(error);
+    document.querySelector('.errorWrapper').appendChild(error);
+
+    function myFunction(sm,lg) {
+        if (lg.matches) {
+            document.querySelector('.wrapper__login').style.padding = '0';
+        } else if(sm.matches) {
+            document.querySelector('.wrapper__login').style.padding = '100px 0';
+        } else {
+            document.querySelector('.wrapper__login').style.padding = '50px 0';
+        }
+    }
+
+    let sm = window.matchMedia("(min-width: 576px)");
+    let lg = window.matchMedia("(min-width: 992px)");
+    myFunction(sm,lg)
 }
