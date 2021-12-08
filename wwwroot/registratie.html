@@ -33,14 +33,14 @@
             <input type="password" name="password" autocomplete="current-password" class="registration__input" placeholder="Wachtwoord">
             <input type="date" name="birthday" class="registration__input">
 
-            <select name="genderList" id="gender">
+            <select name="genderList" id="gender" class="registration__input registration__gender">
                 <option selected data-translate="register.gender_default">Kies een geslacht</option>
                 <option value="male" data-translate="match.data.filter.gender.data.male">Man</option>
                 <option value="female" data-translate="match.data.filter.gender.data.female">Vrouw</option>
                 <option value="other" data-translate="match.data.filter.gender.data.other">Overig</option>
             </select>
 
-            <div id="country_selector"></div>
+            <div id="country_selector" class="registration__country"></div>
         </form>
         <div class="registration__button">
             <button type="button" class="registration__button" id="aanmelden">

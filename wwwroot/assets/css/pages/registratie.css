@@ -59,6 +59,30 @@
     border-bottom: solid 2px var(--dark_red);
 }
 
+.registration__gender {
+    background-color: var(--white);
+}
+
+.registration__country label {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--grey);
+}
+
+.registration__country #countries {
+    margin-bottom: 25px;
+    background-color: var(--white);
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+}
+.registration__country #countries:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+}
+
 .registration__button {
     width: 100%;
     display: flex;
