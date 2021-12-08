@@ -51,41 +51,38 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="interests_table" id="interests_table">
+                    <svg viewBox="0 0 0 0" style="position: absolute; z-index: -1; opacity: 0;">
+                        <defs>
+                            <linearGradient id="boxGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="25" y2="25">
+                                <stop offset="0%"   stop-color="#27FDC7"/>
+                                <stop offset="100%" stop-color="#0FC0F5"/>
+                            </linearGradient>
 
-                        <a class="interests_item">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                            </svg>
-                            <p>demo</p>
-                        </a>
+                            <linearGradient id="lineGradient">
+                                <stop offset="0%"    stop-color="#0FC0F5"/>
+                                <stop offset="100%"  stop-color="#27FDC7"/>
+                            </linearGradient>
+
+                            <path id="todo__line" stroke="url(#lineGradient)" d="M21 12.3h168v0.1z"></path>
+                            <path id="todo__box" stroke="url(#boxGradient)" d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4"></path>
+                            <path id="todo__check" stroke="url(#boxGradient)" d="M10 13l2 2 5-5"></path>
+                            <circle id="todo__circle" cx="13.5" cy="12.5" r="10"></circle>
+                        </defs>
+                    </svg>
+                    <div class="todo-list" id="interests_table">
+
                     </div>
                 </div>
 
                 <div class="wizard-step">
-                    <div class="form-group">
-                        <label for="titleNoti">Title</label>
-                        <input type="text" name="title" class="form-control required banner-info" id="titleNoti"
-                               placeholder="Example: Message title">
-                    </div>
+                    <div class="todo-list" id="qounties_table">
 
-                    <div class="form-group">
-                        <label for="bodyNoti">Body</label>
-                        <input type="text" name="body" class="form-control required banner-info" id="bodyNoti"
-                               placeholder="Example: Message body">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="imageNoti">Image</label>
-                        <input type="file" name="image" class="form-control banner-info" id="imageNoti">
                     </div>
                 </div>
                 <div class="wizard-step">
                     <div class="form-group">
                         <label for="titleNoti">Action</label>
-                        <textarea class="form-control required fetch-info">🍍</textarea>>
+                        <textarea id="titleNoti" class="form-control required fetch-info">🍍</textarea>>
                     </div>
 
                 </div>
