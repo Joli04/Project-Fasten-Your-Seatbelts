@@ -28,8 +28,8 @@ function register(){
         const gender = genderValue.options[genderValue.selectedIndex].value;
         const country = document.getElementById("countries")
         try{
-            profiel.registerProfile(firstname.value,lastname.value,email.value,hash,birthday.value,gender,country.value);
-            redirect("profiel.html");
+            return profiel.registerProfile(firstname.value,lastname.value,email.value,hash,birthday.value,gender,country.value);
+            //redirect("profiel.html");
         }catch (e){
             console.log(e);
         }
