@@ -133,3 +133,9 @@ body {
         padding: 0;
     }
 }
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    #nav .topnav a {
+        padding: 14px 16px;
+    }
+}
