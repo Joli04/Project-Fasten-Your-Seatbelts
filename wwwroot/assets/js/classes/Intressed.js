@@ -13,7 +13,7 @@ export default class Intressed {
     }
 
     async filter() {
-        this.removeAllChildNodes(this.el)
+        await this.removeAllChildNodes(this.el)
         await this.get()
         await this.create_elements(this.el)
     }
@@ -37,12 +37,7 @@ export default class Intressed {
             const intress = findObjectByLabel(this.intressed[i]);
             const label = document.createElement('label');
             label.classList.add('todo');
-            const some_function = (data) => {
-                return (e) => {
-                    this.select(data);
-                }
-            }
-            label.addEventListener("click",some_function(intress.id));
+            label.id = this.intressed[i].id;
 
             label.innerHTML = " <input class=\"todo__state\" value="+intress.id+" type=\"checkbox\" />\n" +
                 "      \n" +
@@ -55,28 +50,32 @@ export default class Intressed {
                 "        \n" +
                 "                                    <div class=\"todo__text\">"+intress.name+"</div>";
             this.el.appendChild(label);
+
+            document.getElementById(this.intressed[i].id).addEventListener("change",this.select.bind(this,intress.id));
         }
     }
     searchForId(id) {
-        for (const instress in this.selected) {
-
-            if(this.selected[instress].id === id){
-                return instress;
+            if(this.selected.includes(id)){
+                return true;
+            } else {
+                return false;
             }
-            console.log("intress search "+ this.selected[instress] +"id "+ id);
-        }
-
-        return null;
     }
     select(id){
        const key = this.searchForId(id);
-       console.log(key);
+
        if(!key){
-           console.log("Push to array")
            this.search = "";
            this.selected.push(id);
+       } else {
+            this.selected = this.arrayRemove(this.selected, id);
        }
+    }
 
+    arrayRemove(arr, value) { 
+        return arr.filter(function(ele){ 
+            return ele != value; 
+        });
     }
 
 }
