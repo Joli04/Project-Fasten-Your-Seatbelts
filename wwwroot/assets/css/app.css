@@ -688,3 +688,27 @@ footer {
         width: 100%;
     }
 }
+
+/* ------------------------------------ */
+/* ----------[ AUTH WRAPPER ]---------- */
+/* ------------------------------------ */
+.wrapper__auth {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: var(--white);
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .wrapper__auth {
+        padding: 75px 50px;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .wrapper__auth {
+        padding: 75px 100px;
+    }
+}

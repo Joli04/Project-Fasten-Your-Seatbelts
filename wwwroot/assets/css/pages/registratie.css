@@ -8,14 +8,6 @@
     }
 }
 
-.wrapper__auth {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--white);
-}
-
 .registration {
     display: flex;
     justify-content: center;
@@ -135,10 +127,6 @@
 }
 
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
-    .wrapper__auth {
-        padding: 150px 0;
-    }
-
     .button__text {
         width: 74%;
     }
@@ -149,12 +137,6 @@
 
     #nav .topnav__item {
         margin-top: 5px;
-    }
-}
-
-@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
-    .wrapper__auth {
-        padding: 0;
     }
 }
 
