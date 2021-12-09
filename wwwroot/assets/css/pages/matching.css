@@ -118,7 +118,7 @@ h1 {
 
 h2 {
     font-family: 'robotobold' !important;
-    color: white;
+    color: var(--red);
     margin-bottom: 1%;
 }
 
