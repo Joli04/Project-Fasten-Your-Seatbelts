@@ -125,7 +125,7 @@ h2 {
 
 
 .card {
-    background-color: #484848;
+    background-color: var(--red);;
     color: white;
     border-radius: 20px;
     left: 350px;
@@ -197,11 +197,13 @@ h2 {
     margin: auto;
     margin-top: 8%;
     margin-bottom: 3%;
+    font-weight: bold;
 }
 
 .matching-container .card #info {
     justify-content: center;
     display: flex;
+    padding-bottom: 4%;
 }
 
 .matching-container .card #info p {
