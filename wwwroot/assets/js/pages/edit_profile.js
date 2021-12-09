@@ -17,6 +17,8 @@ var country = document.querySelector('#countries');
 var name = document.querySelector("#form_profile_name");
 var email = document.querySelector("#form_profile_email");
 var age = document.querySelector('#profiel_age');
+const current_name = document.querySelector("#form_current_name");
+
 
 document.getElementById("avatar").src = profiel.getProfilePicture();
 console.log(profiel);
@@ -24,7 +26,8 @@ var quill = new Quill('#editor', {
     theme: 'snow'
 });
 
-
+current_name.innerHTML = profiel.getFullName();
+console.log(current_name);
 name.value = profiel.getFullName();
 age.value = d;
 email.value = profiel.email;
