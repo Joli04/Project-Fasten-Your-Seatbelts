@@ -123,7 +123,7 @@ export default class Profile {
     verify() {
         var time = new Date().getTime();
         console.log(time);
-        // this.update('email_verified_at',time);
+        this.update('email_verified_at',time);
     }
 
     async sendVerification() {
