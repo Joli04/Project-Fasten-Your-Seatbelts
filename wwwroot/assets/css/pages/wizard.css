@@ -389,7 +389,7 @@
 }
  .searchTerm {
     width: 100%;
-    border: 3px solid #00B4CC;
+    border: 3px solid  var(--blue);
     border-right: none;
     padding: 5px;
     border-radius: 5px 0 0 5px;
@@ -397,13 +397,13 @@
     color: #9DBFAF;
 }
  .searchTerm:focus{
-    color: #00B4CC;
+    color:  var(--blue);
 }
 .searchButton {
     width: 40px;
     height: 50px;
-    border: 1px solid #00B4CC;
-    background: #00B4CC;
+    border: 1px solid  var(--blue);
+    background: var(--blue);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -448,7 +448,7 @@
     height: auto;
     margin: auto;
     fill: none;
-    stroke: #27FDC7;
+    stroke: var(--blue);
     stroke-width: 2;
     stroke-linejoin: round;
     stroke-linecap: round;
@@ -497,7 +497,7 @@
     transition-delay: 0.16s;
 }
 .todo__check {
-    stroke: #27FDC7;
+    stroke: var(--red);
     stroke-dasharray: 9.8995, 9.8995;
     stroke-dashoffset: 9.8995;
     transition-duration: 0.32s;
@@ -514,7 +514,7 @@
 }
 .todo__state:checked ~ .todo__text {
     transition-delay: 0s;
-    color: #5EBEC1;
+    color: var(--red);
     opacity: 0.6;
 }
 .todo__state:checked ~ .todo__icon .todo__box {
