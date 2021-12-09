@@ -36,6 +36,10 @@
       "en": "This has to be translated as well"
     },
     "data": {
+      "bio": {
+        "en": "Describe  who you are",
+        "nl": "Beschrijf wie je bent"
+      },
       "first_name": {
         "nl": "Voornaam",
         "en": "First name"
@@ -87,7 +91,7 @@
       "nl": "Land voorkeuren",
       "en": "Preferred country"
     },
-    "wizard.finish": {
+    "finish": {
       "nl": "Profiel voltooien",
       "en": "Finish profile"
     }
@@ -143,6 +147,7 @@
           "nl": "Jouw profiel",
           "en": "Your profile"
         }
+
       }
     }
   },

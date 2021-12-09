@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="assets/css/app.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/profiel.css"/>
     <link rel="stylesheet" href="assets/css/pages/wizard.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="vendors/quill/css/theme/white.css"/>
     <script src="assets/js/classes/wizard.js"></script>
     <!-- Script(s) -->
     <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/pages/wizard_page.js" type="module"></script>
+    <script src="vendors/quill/quill.js"></script>
     <title>Fasten your seat belts</title>
     <style>
         body {
@@ -73,10 +75,9 @@
 
                     </div>
                 </div>
-
                 <div class="wizard-step">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="Search for interests">
+                        <input type="text" class="searchTerm" placeholder="Search for countries">
                         <button type="button" class="searchButton">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -109,8 +110,15 @@
                 </div>
                 <div class="wizard-step">
                     <div class="form-group">
-                        <label for="titleNoti">Action</label>
-                        <textarea id="titleNoti" class="form-control required fetch-info">🍍</textarea>>
+                        <lable  data-translate="profile.data.bio">
+                            Beschrijf wie je bent</lable>
+                            <div id="editor">
+                                <p class="profile__bio" id="profile__bio">
+
+                                </p> <!-- Bio -->
+                            </div>
+
+
                     </div>
 
                 </div>
@@ -132,6 +140,7 @@
         wz_button: ".wizard-btn",
         wz_step: ".wizard-step",
         wz_form: ".wizard-form",
+
         wz_next: ".next",
         wz_prev: ".prev",
         wz_finish: ".finish",
@@ -140,7 +149,7 @@
         // Number of steps
         steps: 3,
         // 'all', 'nav', or 'buttons'
-        navigation: "all",
+        navigation: "buttons",
         // Show buttons
         buttons: true,
         // Custom label text
@@ -154,14 +163,8 @@
         //alert("Prev Step");
     });
 
-    document.addEventListener("nextWizard", function (e) {
-        //alert("Next Step");
-    });
-
-    document.addEventListener("submitWizard", function (e) {
-        //alert("Form Submit");
-    });
 
 
+    document.querySelector(".wizard-buttons button:last-child").style.display = "block";
 </script>
 </html>

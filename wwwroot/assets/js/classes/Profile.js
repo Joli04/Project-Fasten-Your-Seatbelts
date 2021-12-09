@@ -290,7 +290,7 @@ export default class Profile {
                         "                                    <td bgcolor=\"#ffffff\" align=\"center\" style=\"padding: 20px 30px 60px 30px;\">\n" +
                         "                                        <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
                         "                                            <tr>\n" +
-                        "                                                <td align=\"center\" style=\"border-radius: 3px;\" bgcolor=\"#1e8410\"><a href=\"#\" target=\"_blank\" style=\"font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #1e8410; display: inline-block;\">Confirm Account</a></td>\n" +
+                        "                                                <td align=\"center\" style=\"border-radius: 3px;\" bgcolor=\"#1e8410\"><a href="+domain + "/"+ url + " target=\"_blank\" style=\"font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #1e8410; display: inline-block;\">Confirm Account</a></td>\n" +
                         "                                            </tr>\n" +
                         "                                        </table>\n" +
                         "                                    </td>\n" +

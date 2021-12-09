@@ -218,19 +218,24 @@ class Wizard {
         let current_step = this.getCurrentStep();
         let n_steps = this.steps - 1;
 
-        if (current_step == 0) {
+        if (current_step === 0) {
             prev.setAttribute("disabled", true);
         } else {
             prev.removeAttribute("disabled");
         }
-
-        if (current_step == n_steps) {
+        if(current_step === this.last_step){
+            finish.style.display = "none";
+            next.setAttribute("disabled", true);
+        }
+        if (current_step === n_steps) {
             next.setAttribute("disabled", true);
             finish.style.display = "block";
-        } else {
-            finish.style.display = "none";
+        }
+        else {
+           // finish.style.display = "none";
             next.removeAttribute("disabled");
         }
+
     }
 
     onClick(e) {
