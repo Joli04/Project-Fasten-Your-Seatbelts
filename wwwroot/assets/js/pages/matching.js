@@ -94,6 +94,7 @@ function getData() {
 }
 
 //get filter changes
+document.querySelector('#countrie_selector_2 #countries').addEventListener("change", search)
 document.getElementById('countries').addEventListener("change", search)
 document.getElementById('genders').addEventListener("change", search)
 
