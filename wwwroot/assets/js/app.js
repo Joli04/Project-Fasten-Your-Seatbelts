@@ -2,8 +2,11 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
 import {isLoggedIn, logout} from './pages/login.js';
 
+//Todo Added web.js to work with Custom spa routes
+
 import Profile from "./classes/Profile.js";
 import Countries from "./Objects/Countries.js";
+
 
 document.addEventListener("DOMContentLoaded", async function () {
     checkNeedsLogin(GetCurrentPage());
