@@ -1,5 +1,5 @@
 import {GetCurrentPage, addError, validate,redirect} from "../app.js";
-import Profile from "../classes/Profile.js";
+import Profile from "../Classes/Profile.js";
 import Countries from "../Objects/Countries.js";
 const profiel = new Profile();
 

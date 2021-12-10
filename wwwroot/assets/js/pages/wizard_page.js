@@ -1,5 +1,5 @@
-import Profile from "../classes/Profile.js";
-import Filter from "../classes/Filter.js";
+import Profile from "../Classes/Profile.js";
+import Filter from "../Classes/Filter.js";
 import {redirect} from "../app.js";
 //Create elements for each in intress table
 const profiel = new Profile();
@@ -29,7 +29,7 @@ document.addEventListener("submitWizard", function (e) {
 
 
 /**
- * Finish a profile
+ * Finish a profile_Controller
  * Inset all data to the correct table
  */
 

@@ -1,4 +1,11 @@
-function Router(routes){
+/**
+ *
+ * @param routes
+ * @constructor
+ * @author Pepijn dik
+ * @namespace Router
+ */
+export default function Router(routes){
     try{
         if(!routes){
             throw 'Error: There must be a routes parameter';
@@ -15,6 +22,7 @@ Router.prototype = {
     rootElement: undefined,
     constructor: function (routes) {
         this.routes = routes;
+        //Todo use rootElement from View
         this.rootElement = document.getElementById("app");
     },
     init: function (){
@@ -29,23 +37,24 @@ Router.prototype = {
     hasChanged: function (scope,r){
         this.loopRoutes(scope,r,window.location.hash.length);
     },
-    loopRoutes: function (scope,r,hash_length){
-        for(let i = 0; i< r.length; i++){
+    loopRoutes: async function (scope, r, hash_length) {
+        for (let i = 0; i < r.length; i++) {
             const route = r[i];
-            if(hash_length >0){
-                if(route.isActiveRoute(window.location.hash.substring(1))){
-                    scope.goToRoute(route.htmlName);
+            if (hash_length > 0) {
+                if (route.isActiveRoute(window.location.hash.substring(1))) {
+                    scope.goToRoute(route.controller.render());
                 }
-            }else{
-                if(route.default){
-                    scope.goToRoute(route.htmlName);
+            } else {
+                if (route.default) {
+                    console.log(route.render());
+                    scope.goToRoute(  await route.render());
                 }
             }
         }
     },
-    goToRoute: function (htmlName){
+    goToRoute: function (view){
         (function (scope){
-            const url = 'views/' + htmlName,
+            const url = view,
                 http = new XMLHttpRequest();
             http.onreadystatechange = function (){
                if(this.readyState === 4 && this.status === 200){

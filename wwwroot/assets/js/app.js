@@ -1,14 +1,18 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "./config.js";
-import {isLoggedIn, logout} from './pages/login.js';
+// import {isLoggedIn, logout} from './pages/login.js';
 
 //Todo Added web.js to work with Custom spa routes
-
-import Profile from "./classes/Profile.js";
+import {web} from './Routes/web.js';
+import {isLoggedIn, logout} from "./pages/login.js";
+import Profile from "./Classes/Profile.js";
+import App from "./Classes/app.js";
 import Countries from "./Objects/Countries.js";
 
-
+const app = new App();
 document.addEventListener("DOMContentLoaded", async function () {
+
+
     checkNeedsLogin(GetCurrentPage());
 
     //Set default translations
@@ -16,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
     translate(initialLanguage);
 
-    const headerData = await FYSCloud.Utils.fetchAndParseHtml("_header.html");
+    const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
     //Add the header to the page
     if (document.querySelector("#nav") !== null) {
         addHeader(headerData);
@@ -40,9 +44,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     }
 
-
     //Add the footer to the page
-    const footerData = await FYSCloud.Utils.fetchAndParseHtml("_footer.html");
+    const footerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_footer.html");
     if (document.querySelector("#footer") !== null) {
         addFooter(footerData);
     }
@@ -104,7 +107,7 @@ function setActivePage() {
         var nav_page = null;
         const current_page = GetCurrentPage().split('.html')[0];
         if (current_page !== "") {
-             nav_page = document.querySelector(".topnav #" + current_page);
+            nav_page = document.querySelector(".topnav #" + current_page);
         }
 
         if (nav_page) {
@@ -294,3 +297,4 @@ export function addError(element, errorMsg = "Dit veld is een verplicht veld") {
     let lg = window.matchMedia("(min-width: 992px)");
     myFunction(sm,lg)
 }
+

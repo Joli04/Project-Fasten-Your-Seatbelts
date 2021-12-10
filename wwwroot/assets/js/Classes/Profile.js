@@ -1,5 +1,7 @@
 /**
  * Profile object
+ * @author Pepijn dik
+ * @namespace Model
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
@@ -36,7 +38,7 @@ export default class Profile {
     }
 
     /**
-     * Update all profile data
+     * Update all profile_Controller data
      * @param first
      * @param last
      * @param email
@@ -74,7 +76,7 @@ export default class Profile {
     }
 
     /**
-     * Register a new Profile and set this profile data
+     * Register a new Profile and set this profile_Controller data
      * @return {Promise<{}|*>}
      */
     async registerProfile(first, last, email, password, birthday, gender, country_origin_id, account_type = 'user') {
@@ -82,7 +84,7 @@ export default class Profile {
             let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,gender,account_type,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?,?);", [first, last, password, email, gender, account_type, birthday, country_origin_id]);
             let user = await FYSCloud.API.queryDatabase("SELECT id from users where email = ?", [email]);
             this.setId(user[0].id) //Set registerd user
-            await this.setProfile(); //Set all profile data
+            await this.setProfile(); //Set all profile_Controller data
         } catch (e) {
             console.log("Profile error: " + e);
             return {};
@@ -448,7 +450,7 @@ export default class Profile {
     }
 
     /**
-     * Get profile picture
+     * Get profile_Controller picture
      */
     getProfilePicture() {
         if (!!this.profile) {
@@ -463,7 +465,7 @@ export default class Profile {
 
 
     /**
-     * Set profile picture
+     * Set profile_Controller picture
      * @param uplaudEl
      * @param previewEl
      * @return {Promise<void>}
@@ -491,7 +493,7 @@ export default class Profile {
     async getData() {
         if (this.id > 0) {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile_Controller,users.account_type,users.birthday,countries.names as orgin_country ,users.profile_Controller,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
                 return {};

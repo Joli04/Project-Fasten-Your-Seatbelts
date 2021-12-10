@@ -1,5 +1,7 @@
 /**
  * Faq object
+ * @author Pepijn dik
+ * @namespace Faq
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";

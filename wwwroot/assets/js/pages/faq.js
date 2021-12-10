@@ -1,6 +1,6 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import faq from "../classes/Faq.js";
+import faq from "../Classes/Faq.js";
 
 const questionsObject = new faq();
 const questions = await questionsObject.getData();
