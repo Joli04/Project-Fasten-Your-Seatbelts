@@ -44,7 +44,8 @@ async function search() {
 
 function getData() {
     if(users.length == 0) {
-        document.getElementById('card-container').innerHTML += "Geen resultaten gevonden"
+        document.getElementById('card-container').innerHTML +=
+            "<h3 class='users__noResult'>Geen resultaten gevonden...</h3>"
     }
     
     for(var user in users) {
