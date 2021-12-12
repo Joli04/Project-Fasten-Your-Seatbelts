@@ -4,13 +4,7 @@ import App from "../Classes/app.js";
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (App.GetCurrentPage() === "login.html") {
-        var login_bt = document.querySelector("#login_button");
-        login_bt.addEventListener('click', login);
-        if (isLoggedIn()) {
-            FYSCloud.URL.redirect("profiel.html");
-        }
-    }
+
 });
 
 /**
