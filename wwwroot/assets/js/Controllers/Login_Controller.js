@@ -8,13 +8,18 @@ import view from "../Classes/View.js";
 import App from "../Classes/app.js";
 
 export default class Login_Controller extends Controller {
-    async show() {
 
-        const login_bt = document.querySelector("#login_button");
-        console.log(login_bt);
-        login_bt.addEventListener('click', this.Excutelogin);
-        if (Login_Controller.isLoggedIn()) {
-            App.redirect("profiel");
+    async show() {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "./vendors/jsSHA/sha.js";
+        document.head.appendChild(script);
+        window.onload = function () {
+            const login_bt = document.querySelector("#login_button");
+            login_bt.addEventListener('click', Login_Controller.Excutelogin);
+            if (Login_Controller.isLoggedIn()) {
+                App.redirect("profiel");
+            }
         }
     }
 
@@ -26,7 +31,7 @@ export default class Login_Controller extends Controller {
         return false;
     }
 
-    Excutelogin() {
+    static Excutelogin() {
         //Valideer input
         var elements = document.querySelectorAll("input");
         if (App.validate(elements)) {
@@ -38,11 +43,11 @@ export default class Login_Controller extends Controller {
             const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
             shaObj.update(password.value);
             const hash = shaObj.getHash("HEX");
-            getLogin(email.value, hash);
+            Login_Controller.getLogin(email.value, hash);
         }
     }
 
-    getLogin(email, password) {
+    static getLogin(email, password) {
         FYSCloud.API.queryDatabase(
             "SELECT id, email, password FROM users WHERE email = ?", [email]
         ).then(function (data) {
@@ -50,7 +55,7 @@ export default class Login_Controller extends Controller {
             if (data[0].password === password) {
                 FYSCloud.Session.set("user_id", data[0].id);
                 //Redirect page to an URL with querystring
-                App.redirect("profiel");
+                App.redirect("#/profiel");
 
             } else {
                 App.addError(document.querySelector("form"), "Wachtwoord is incorrect");
@@ -66,7 +71,7 @@ export default class Login_Controller extends Controller {
         FYSCloud.Session.clear();
         //Set basic lang to nl
         FYSCloud.Session.set('lang', 'nl');
-        App.redirect("home");
+        App.redirect("#/home");
     }
 
     render() {

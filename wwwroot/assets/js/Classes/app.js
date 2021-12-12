@@ -175,7 +175,7 @@ export default class App {
     }
 
     static redirectToLogin() {
-        if (!isLoggedIn()) {
+        if (!Login_Controller.isLoggedIn()) {
             App.redirect("login");
         }
     }
