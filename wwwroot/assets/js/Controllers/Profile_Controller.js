@@ -2,11 +2,12 @@
  * Profile controller
  */
 import Controller from './Controller.js';
-import View from "../Classes/View.js";
+import view from "../Classes/View.js";
 
 export default class Profile_Controller extends Controller
 {
-     async render() {
-        return  new View('profiel.html');
+     show() {
+         document.title = "Commonflight Profiel";
+        return  new view('profiel.html');
      }
 }

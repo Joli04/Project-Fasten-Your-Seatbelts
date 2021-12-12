@@ -41,10 +41,13 @@ Route.prototype = {
         this.default = defaultRoute;
 
     },
-    render(){
-        return this.controller[this.method];
+    render() {
+        return this.controller.render();
     },
-    isActiveRoute: function (hasedPath) {
-        return hasedPath.replace('/', "") === this.name;
+    runScript(){
+        return this.controller[this.method]();
+    },
+    isActiveRoute: function (hashedPath) {
+        return hashedPath.replace('/', "") === this.name;
     }
 }

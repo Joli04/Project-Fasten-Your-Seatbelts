@@ -6,7 +6,7 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import Intressed from "./Intressed.js";
-import {GetCurrentPage, redirect} from "../app.js";
+import App from "./app.js";
 
 
 export default class Profile {
@@ -118,7 +118,7 @@ export default class Profile {
         console.log(this.verified_at);
         if (this.verified_at === null && GetCurrentPage() !== 'verify.html') {
             await this.sendVerification();
-            redirect('verify.html')
+            App.redirect('verify');
         }
     }
 

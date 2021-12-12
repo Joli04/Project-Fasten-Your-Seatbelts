@@ -5,16 +5,15 @@
  * @author Pepijn dik
  * @namespace Router
  */
-export default function Router(routes){
-    try{
-        if(!routes){
+export default function Router(routes) {
+    try {
+        if (!routes) {
             throw 'Error: There must be a routes parameter';
         }
         this.constructor(routes);
         this.init();
-    }
-    catch (e) {
-        console.log("Router error: "+e);
+    } catch (e) {
+        console.log("Router error: " + e);
     }
 }
 Router.prototype = {
@@ -22,47 +21,49 @@ Router.prototype = {
     rootElement: undefined,
     constructor: function (routes) {
         this.routes = routes;
-        //Todo use rootElement from View
+        //Todo use rootElement from extended view;
         this.rootElement = document.getElementById("app");
     },
-    init: function (){
+    init: function () {
         var r = this.routes;
-        (function (scope, r){
-            window.addEventListener('hashchange', function (e){
-               scope.hasChanged(scope,r);
+        (function (scope, r) {
+            window.addEventListener('hashchange', function (e) {
+                scope.hasChanged(scope, r);
             });
-        })(this,r);
-        this.hasChanged(this,r);
+        })(this, r);
+        this.hasChanged(this, r);
     },
-    hasChanged: function (scope,r){
-        this.loopRoutes(scope,r,window.location.hash.length);
+    hasChanged: async function (scope, r) {
+        await this.loopRoutes(scope, r, window.location.hash.length);
     },
     loopRoutes: async function (scope, r, hash_length) {
         for (let i = 0; i < r.length; i++) {
             const route = r[i];
+
             if (hash_length > 0) {
-                if (route.isActiveRoute(window.location.hash.substring(1))) {
-                    scope.goToRoute(route.controller.render());
+                if (route.isActiveRoute(window.location.hash.slice(1) || '/')) {
+                    scope.goToRoute(route);
                 }
             } else {
                 if (route.default) {
-                    console.log(route.render());
-                    scope.goToRoute(  await route.render());
+                    scope.goToRoute(route);
                 }
             }
         }
     },
-    goToRoute: function (view){
-        (function (scope){
-            const url = view,
+    goToRoute: function (route) {
+        (async function (scope) {
+            const url = await route.render().view,
                 http = new XMLHttpRequest();
-            http.onreadystatechange = function (){
-               if(this.readyState === 4 && this.status === 200){
-                   scope.rootElement.innerHTML = this.responseText;
-               }
-           };
-           http.open('GET', url,true);
-           http.send();
+            http.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    scope.rootElement.innerHTML = this.responseText;
+                }
+            };
+            http.open('GET', url, true);
+            http.send();
+            //Run the controller script
+            await route.runScript();
         })(this);
     }
 }
