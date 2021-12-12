@@ -11,7 +11,6 @@ export default class App {
     constructor() {
         this.rootElement = document.getElementById("app");
         web.init();
-        this.activeRoute = web.active;
     }
     async load() {
         App.checkNeedsLogin(App.GetCurrentPage());
