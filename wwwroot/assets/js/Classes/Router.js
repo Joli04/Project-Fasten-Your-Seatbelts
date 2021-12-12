@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  *
  * @param routes
@@ -11,13 +13,13 @@ export default function Router(routes) {
             throw 'Error: There must be a routes parameter';
         }
         this.constructor(routes);
-        this.init();
     } catch (e) {
         console.log("Router error: " + e);
     }
 }
 Router.prototype = {
     routes: undefined,
+    active: undefined,
     rootElement: undefined,
     constructor: function (routes) {
         this.routes = routes;
@@ -28,10 +30,11 @@ Router.prototype = {
         var r = this.routes;
         (function (scope, r) {
             window.addEventListener('hashchange', function (e) {
-                scope.hasChanged(scope, r);
+                scope.hasChanged(scope, r).then();
             });
         })(this, r);
-        this.hasChanged(this, r);
+
+        this.hasChanged(this, r).then();
     },
     hasChanged: async function (scope, r) {
         await this.loopRoutes(scope, r, window.location.hash.length);
@@ -42,6 +45,7 @@ Router.prototype = {
 
             if (hash_length > 0) {
                 if (route.isActiveRoute(window.location.hash.slice(1) || '/')) {
+                    this.active = route.name;
                     scope.goToRoute(route);
                 }
             } else {
@@ -63,6 +67,7 @@ Router.prototype = {
             http.open('GET', url, true);
             http.send();
             //Run the controller script
+
             await route.runScript();
         })(this);
     }

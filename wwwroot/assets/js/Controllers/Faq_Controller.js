@@ -15,8 +15,8 @@ export default class Faq_Controller extends Controller {
 
         const lang = FYSCloud.Session.get("lang");
         const container = document.querySelector("#faqContainer");
+        container.innerHTML = "";
 
-        console.log(questions);
         for (const topic in questions) {
             if (questions.hasOwnProperty(topic)) {
                 addTopics(topic);

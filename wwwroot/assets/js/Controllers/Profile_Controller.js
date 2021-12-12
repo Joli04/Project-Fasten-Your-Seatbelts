@@ -7,7 +7,9 @@ import view from "../Classes/View.js";
 export default class Profile_Controller extends Controller
 {
      show() {
-         document.title = "Commonflight Profiel";
-        return  new view('profiel.html');
+
+     }
+     render() {
+         return  new view('profiel.html', "Commonflight Profiel");
      }
 }

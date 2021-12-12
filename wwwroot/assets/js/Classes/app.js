@@ -1,19 +1,19 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import {web} from "../Routes/web.js";
-import AddScript from "../Elements/AddScript.js";
 
-import {isLoggedIn, logout} from "../pages/login.js";
+
+// import {isLoggedIn, logout} from "../pages/login.js";
+import Login_Controller from "../Controllers/Login_Controller.js";
 import Profile from "./Profile.js";
 
 export default class App {
     constructor() {
         this.rootElement = document.getElementById("app");
         web.init();
-       customElements.define("script-add", AddScript);
+        this.activeRoute = web.active;
     }
     async load() {
-
         App.checkNeedsLogin(App.GetCurrentPage());
 
         //Set default translations
@@ -26,7 +26,7 @@ export default class App {
         if (document.querySelector("#nav") !== null) {
             this.addHeader(headerData);
             var logout_btn = document.querySelector("#nav_logout");
-            logout_btn.addEventListener('click', logout);
+            logout_btn.addEventListener('click', Login_Controller.logout);
 
             App.setActivePage();
             document.querySelector("#languageSwitch").value = initialLanguage;
@@ -83,7 +83,8 @@ export default class App {
      * @constructor
      */
     static GetCurrentPage() {
-        return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
+       //return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
+        return window.location.hash.split("#/")[1];
     }
 
     static setActivePage() {
@@ -95,7 +96,7 @@ export default class App {
 
                 } else {
                     other_links[i].classList.remove("active");
-                    if (isLoggedIn()) {
+                    if (Login_Controller.isLoggedIn()) {
                         other_links[i].style.display = "block";
                         this.HandleLinks(false);
                     }
@@ -104,7 +105,8 @@ export default class App {
 
             }
             var nav_page = null;
-            const current_page = App.GetCurrentPage().split('.html')[0];
+
+            const current_page = App.GetCurrentPage();
             if (current_page !== "") {
                 nav_page = document.querySelector(".topnav #" + current_page);
             }
@@ -150,7 +152,7 @@ export default class App {
                 break;
             case "verify":
                 const profiel = new Profile();
-                var queryString = FYSCloud.URL.queryString();
+                const queryString = FYSCloud.URL.queryString();
                 if (queryString.id > 0) {
                     profiel.setId(queryString.id);
                     profiel.update('email_verified_at', queryString.timestamp);
@@ -159,7 +161,7 @@ export default class App {
 
                 break;
             case "registratie":
-                if (isLoggedIn()) {
+                if (Login_Controller.isLoggedIn()) {
                     FYSCloud.URL.redirect("profiel.html");
                 }
                 break;
@@ -175,7 +177,7 @@ export default class App {
 
     static redirectToLogin() {
         if (!isLoggedIn()) {
-            FYSCloud.URL.redirect("login");
+            App.redirect("login");
         }
     }
 
