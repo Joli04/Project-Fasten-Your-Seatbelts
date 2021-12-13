@@ -40,8 +40,8 @@ export default class Profile_Controller extends Controller {
             var fullName = document.querySelector('.profile_name');
             fullName.innerHTML = profiel.getFullName();
 
-            var bio = document.querySelector('.profile_bio');
-            console.log(profiel.bio);
+            var bio = document.querySelector('.profile__bio');
+
             bio.innerHTML = profiel.bio || "";
             var intress = document.querySelector('.profile_name');
 
