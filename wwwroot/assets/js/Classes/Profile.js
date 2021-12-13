@@ -117,7 +117,7 @@ export default class Profile {
         this.country = data.orgin_country;
         this.country_id = data.country_origin_id;
         console.log(this.verified_at);
-        if (this.verified_at === null && GetCurrentPage() !== 'verify.html') {
+        if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
             App.redirect('verify');
         }

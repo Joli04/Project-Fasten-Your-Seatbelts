@@ -30,14 +30,19 @@ export default class Profile_Controller extends Controller {
                 console.log(profiel);
                 document.getElementById('contact_btn').style.display = 'none'
                 const change_profile = document.querySelector("#edit_btn")
-                change_profile.addEventListener('click', this.edit);
+                change_profile.addEventListener('click', edit());
+                function edit() {
+                    App.redirect('#/profiel/edit')
+                    return null;
+                }
             }
 
             var fullName = document.querySelector('.profile_name');
             fullName.innerHTML = profiel.getFullName();
 
             var bio = document.querySelector('.profile_bio');
-            bio.innerHTML = profiel.bio;
+            console.log(profiel.bio);
+            bio.innerHTML = profiel.bio || "";
             var intress = document.querySelector('.profile_name');
 
             var age = document.querySelector('#profiel_age');
@@ -67,9 +72,6 @@ export default class Profile_Controller extends Controller {
         };
     }
 
-    edit() {
-        App.redirect('#/profiel/edit')
-    }
 
     generateAvatar(foregroundColor = "white", backgroundColor = "black", first_name, last_name) {
         const canvas = document.createElement("canvas");
