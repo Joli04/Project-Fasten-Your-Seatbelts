@@ -17,7 +17,7 @@ const routes = [
         controller: new Home_Controller,
         method: 'index'
     },true),
-    new Route('profile', {
+    new Route('profiel', {
         controller: new Profile_Controller,
         method: 'show'
     }),
@@ -33,10 +33,7 @@ const routes = [
         controller: new Register_Controller,
         method: 'show'
     }),
-    // new Route('register','registratie.html'),
-    // new Route('profile', 'profiel.html'),
-    // new Route('profile_Controller/edit', 'profile_edit.html'),
-    // new Route('profile_Controller/wizard', 'profile_edit.html')
+
 ];
 
 export const web = new Router(routes);

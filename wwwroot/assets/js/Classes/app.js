@@ -3,7 +3,7 @@ import "../config.js";
 import {web} from "../Routes/web.js";
 
 
-// import {isLoggedIn, logout} from "../pages/login.js";
+
 import Login_Controller from "../Controllers/Login_Controller.js";
 import Profile from "./Profile.js";
 
@@ -176,7 +176,7 @@ export default class App {
 
     static redirectToLogin() {
         if (!Login_Controller.isLoggedIn()) {
-            App.redirect("login");
+            App.redirect("#/login");
         }
     }
 
