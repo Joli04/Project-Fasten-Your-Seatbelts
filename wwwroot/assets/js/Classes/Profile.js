@@ -112,6 +112,7 @@ export default class Profile {
         this.birthday = data.birthday;
         this.profile = data.profile;
         this.gender = data.gender;
+        this.bio = data.bio;
         this.verified_at = data.email_verified_at;
         this.country = data.orgin_country;
         this.country_id = data.country_origin_id;
