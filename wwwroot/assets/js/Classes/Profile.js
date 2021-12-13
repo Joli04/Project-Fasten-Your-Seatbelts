@@ -132,7 +132,7 @@ export default class Profile {
     async sendVerification() {
         if (this.verified_at === null) {
             const domain = "https://" + window.location.hostname;
-            const url = FYSCloud.Utils.createUrl("verify.html", {
+            const url = FYSCloud.Utils.createUrl("verify", {
                 id: this.id,
                 timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
             });

@@ -12,7 +12,7 @@ import Profile from "../Classes/Profile.js";
 export default class Profile_Controller extends Controller {
 
     async show() {
-        window.onload = async function () {
+
             const profiel = new Profile();
             let query = FYSCloud.URL.queryString()
 
@@ -30,10 +30,9 @@ export default class Profile_Controller extends Controller {
                 console.log(profiel);
                 document.getElementById('contact_btn').style.display = 'none'
                 const change_profile = document.querySelector("#edit_btn")
-                change_profile.addEventListener('click', edit());
+                change_profile.addEventListener('click', edit);
                 function edit() {
                     App.redirect('#/profiel/edit')
-                    return null;
                 }
             }
 
@@ -69,7 +68,7 @@ export default class Profile_Controller extends Controller {
             country.innerHTML = formatted_country_name
 
             document.getElementById("avatar").src = profiel.getProfilePicture();
-        };
+
     }
 
 
