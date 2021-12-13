@@ -18,21 +18,21 @@ export default class Profile_Controller extends Controller {
 
             if (query.id > 0) {
                 document.getElementById('edit_btn').style.display = 'none';
-
                 profiel().setId(query.id);
-
                 function contact() {
                     window.open(`mailto:${profiel.email}`);
                 }
-
                 const change_profile = document.querySelector("#contact_btn");
                 change_profile.addEventListener('click', contact);
             } else {
-                document.getElementById('contact_btn').style.display = 'none'
+                console.log(profiel.id);
                 await profiel.setProfile();
+                console.log(profiel);
+                document.getElementById('contact_btn').style.display = 'none'
                 const change_profile = document.querySelector("#edit_btn")
                 change_profile.addEventListener('click', this.edit);
             }
+
             var fullName = document.querySelector('.profile_name');
             fullName.innerHTML = profiel.getFullName();
 

@@ -381,7 +381,7 @@ export default class Profile {
     }
     async sendRequest(match_user){
         const domain = "https://" + window.location.hostname;
-        const url = FYSCloud.Utils.createUrl("verify.html", {
+        const url = FYSCloud.Utils.createUrl("verify", {
             id: this.id,
             timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
         });
@@ -494,9 +494,10 @@ export default class Profile {
     async getData() {
         if (this.id > 0) {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile_Controller,users.account_type,users.birthday,countries.names as orgin_country ,users.profile_Controller,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
+                console.log(e);
                 return {};
             }
 
