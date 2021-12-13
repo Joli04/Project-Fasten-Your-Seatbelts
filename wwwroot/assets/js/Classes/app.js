@@ -3,7 +3,6 @@ import "../config.js";
 import {web} from "../Routes/web.js";
 
 
-
 import Login_Controller from "../Controllers/Login_Controller.js";
 import Profile from "./Profile.js";
 
@@ -12,6 +11,7 @@ export default class App {
         this.rootElement = document.getElementById("app");
         web.init();
     }
+
     async load() {
         App.checkNeedsLogin(App.GetCurrentPage());
 
@@ -50,6 +50,7 @@ export default class App {
             this.addFooter(footerData);
         }
     }
+
     addHeader(data) {
         const firstElement = data[0];
         var nav = document.querySelector("#nav");
@@ -64,7 +65,7 @@ export default class App {
     addFooter(data) {
         const firstElement = data[0];
         document.querySelector("#footer").appendChild(firstElement);
-        var copyright_year = document.querySelector(".copyright .year");
+        const copyright_year = document.querySelector(".copyright .year");
         copyright_year.innerHTML = new Date().getFullYear();
     }
 
@@ -82,7 +83,7 @@ export default class App {
      * @constructor
      */
     static GetCurrentPage() {
-       //return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
+        //return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
         return window.location.hash.split("#/")[1];
     }
 
@@ -107,7 +108,10 @@ export default class App {
 
             const current_page = App.GetCurrentPage();
             if (current_page !== "") {
-                nav_page = document.querySelector(".topnav #" + current_page);
+
+
+                nav_page = document.querySelector(".topnav #" + current_page.replace('/', '_'));
+
             }
 
             if (nav_page) {
