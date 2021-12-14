@@ -108,9 +108,12 @@ export default class App {
 
             const current_page = App.GetCurrentPage();
             if (current_page !== "") {
+                if(current_page.includes('/')){
+                    nav_page = document.querySelector(".topnav #" + current_page.replace('/', '_'));
+                }else{
+                    nav_page = document.querySelector(".topnav #" + current_page);
+                }
 
-
-                nav_page = document.querySelector(".topnav #" + current_page.replace('/', '_'));
 
             }
 

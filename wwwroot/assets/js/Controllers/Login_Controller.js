@@ -18,7 +18,7 @@ export default class Login_Controller extends Controller {
             const login_bt = document.querySelector("#login_button");
             login_bt.addEventListener('click', Login_Controller.Excutelogin);
             if (Login_Controller.isLoggedIn()) {
-                App.redirect("profiel");
+                App.redirect("#/profiel");
             }
         }
     }

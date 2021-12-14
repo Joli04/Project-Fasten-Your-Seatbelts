@@ -7,6 +7,7 @@ import Faq_Controller from '../Controllers/Faq_Controller.js';
 import Home_Controller from '../Controllers/Home_Controller.js';
 import Login_Controller from '../Controllers/Login_Controller.js';
 import Register_Controller from '../Controllers/Register_Controller.js';
+
 /**
  *
  * @type {Route[]}
@@ -17,15 +18,15 @@ const routes = [
     new Route('home', {
         controller: new Home_Controller,
         method: 'index'
-    },true),
+    }, false, true),
     new Route('profiel', {
         controller: new Profile_Controller,
-        method: 'show'
-    }),
+        method: 'show',
+    }, true),
     new Route('profiel/edit', {
         controller: new ProfileEdit_Controller,
         method: 'edit'
-    }),
+    }, true),
     new Route('faq', {
         controller: new Faq_Controller,
         method: 'index'
