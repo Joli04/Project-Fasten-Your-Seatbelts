@@ -103,9 +103,15 @@ export default class App {
                     if (Login_Controller.isLoggedIn()) {
                         other_links[i].style.display = "block";
                         this.HandleLinks(false);
+
+                    }
+                    if(!Login_Controller.isLoggedIn()){
+                           if(other_links[i].attributes.getNamedItem('needLogin')){
+                               other_links[i].style.display = "none";
+                           }
+                        this.HandleLinks(true);
                     }
                 }
-
 
             }
             var nav_page = null;
@@ -166,13 +172,13 @@ export default class App {
                 if (queryString.id > 0) {
                     profiel.setId(queryString.id);
                     profiel.update('email_verified_at', queryString.timestamp);
-                    this.redirect('profiel/wizard');
+                    this.redirect('#/profiel/wizard');
                 }
 
                 break;
             case "registratie":
                 if (Login_Controller.isLoggedIn()) {
-                    FYSCloud.URL.redirect("profiel.html");
+                    this.redirect('#/profiel');
                 }
                 break;
             case "matching":

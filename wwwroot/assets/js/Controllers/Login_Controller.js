@@ -77,8 +77,9 @@ export default class Login_Controller extends Controller {
         const logoutEvent = document.createEvent('Event');
         // Define that the event name is 'build'.
         logoutEvent.initEvent('logout', true, true);
-        document.dispatchEvent(logoutEvent);
         App.redirect("#/home");
+        document.dispatchEvent(logoutEvent);
+
     }
 
 
@@ -86,7 +87,8 @@ export default class Login_Controller extends Controller {
     static Listen() {
         document.addEventListener('logout', function (e) {
             console.log("Logout");
-            App.setActivePage();
+           App.setActivePage();
+
         }, false);
     }
 

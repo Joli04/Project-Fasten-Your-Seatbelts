@@ -116,7 +116,6 @@ export default class Profile {
         this.verified_at = data.email_verified_at;
         this.country = data.orgin_country;
         this.country_id = data.country_origin_id;
-        console.log(this.verified_at);
         if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
             App.redirect('verify');
@@ -125,7 +124,6 @@ export default class Profile {
 
     verify() {
         var time = new Date().getTime();
-        console.log(time);
         this.update('email_verified_at',time);
     }
 

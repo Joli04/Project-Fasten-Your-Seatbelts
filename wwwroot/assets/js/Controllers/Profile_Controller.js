@@ -25,9 +25,7 @@ export default class Profile_Controller extends Controller {
                 const change_profile = document.querySelector("#contact_btn");
                 change_profile.addEventListener('click', contact);
             } else {
-                console.log(profiel.id);
                 await profiel.setProfile();
-                console.log(profiel);
                 document.getElementById('contact_btn').style.display = 'none'
                 const change_profile = document.querySelector("#edit_btn")
                 change_profile.addEventListener('click', edit);
@@ -51,9 +49,7 @@ export default class Profile_Controller extends Controller {
             var gender = document.querySelector('#profiel_gender');
 
             //capitalizing first letter of gender
-            const formatted_gender = profiel.gender.charAt(0).toUpperCase() + profiel.gender.slice(1)
-
-            gender.innerHTML = formatted_gender
+            gender.innerHTML = profiel.gender.charAt(0).toUpperCase() + profiel.gender.slice(1)
 
             var country = document.querySelector('#profiel_country');
 
@@ -63,37 +59,11 @@ export default class Profile_Controller extends Controller {
                 arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
 
             }
-            const formatted_country_name = arr.join(" ");
-
-            country.innerHTML = formatted_country_name
+            country.innerHTML = arr.join(" ");
 
             document.getElementById("avatar").src = profiel.getProfilePicture();
 
     }
-
-
-    generateAvatar(foregroundColor = "white", backgroundColor = "black", first_name, last_name) {
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-
-        canvas.width = 200;
-        canvas.height = 200;
-
-        // Draw background
-        context.fillStyle = backgroundColor;
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Draw text
-        context.font = "bold 100px Assistant";
-        context.fillStyle = foregroundColor;
-        context.textAlign = "center";
-        context.textBaseline = "middle";
-        const intials = first_name.charAt(0) + last_name.charAt(0);
-        context.fillText(intials, canvas.width / 2, canvas.height / 2);
-
-        return canvas.toDataURL("image/png");
-    }
-
     render() {
         return new view('profiel.html', "Commonflight Profiel");
     }
