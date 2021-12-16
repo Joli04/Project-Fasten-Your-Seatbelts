@@ -42,6 +42,6 @@ export default class Wizard_Controller extends Controller {
     }
 
     render() {
-        return new view('verify.html', "Commonflight Verify account");
+        return new view('profile_wizard.html', "Commonflight Verify account");
     }
 }

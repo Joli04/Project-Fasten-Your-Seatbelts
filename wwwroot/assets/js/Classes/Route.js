@@ -49,6 +49,7 @@ Route.prototype = {
         return this.controller[this.method]();
     },
     isActiveRoute: function (hashedPath) {
-        return hashedPath.replace('/', "") === this.name;
+        //hashedPath.replace('/', "").split("?")[0];
+        return  hashedPath.replace('/', "").split("?")[0] === this.name;
     }
 }

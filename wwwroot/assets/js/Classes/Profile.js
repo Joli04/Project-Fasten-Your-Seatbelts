@@ -118,7 +118,7 @@ export default class Profile {
         this.country_id = data.country_origin_id;
         if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
-            alert("Check email!");
+            App.redirect("#/profile/wizard");
         }
     }
 
