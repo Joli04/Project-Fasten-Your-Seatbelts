@@ -89,16 +89,30 @@ export default class App {
     static GetCurrentPage() {
         //return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
         var url = window.location.hash.split("#/")[1];
-        if(url.includes("?")){
-            url = url.split("?")[0];
+        if(url){
+            if(url.includes("?")){
+                url = url.split("?")[0];
+            }
+            return url;
         }
+        return "home";
+    }
+      /**
 
-        return url;
+     * @description Get the querystring as an object
+     *
+     * @returns {Object} Returns the querystring as an object
+     * 
+     */
+    static getFromQueryString() {
+        const [hash, query] = window.location.hash.split('#')[1].split('?')
+        const params = Object.fromEntries(new URLSearchParams(query))
+        return params;
     }
 
     static setActivePage() {
         const other_links = document.querySelectorAll(".topnav a");
-        if (App.GetCurrentPage() !== "profile/wizard") {
+        if (App.GetCurrentPage() !== "profiel/wizard") {
 
             for (let i = 0; i < other_links.length; i++) {
                 if (other_links[i].classList.contains('icon')) {
@@ -172,16 +186,7 @@ export default class App {
             case "profiel":
                 this.redirectToLogin();
                 break;
-            case "verify":
-                const profiel = new Profile();
-                const queryString = FYSCloud.URL.queryString();
-                if (queryString.id > 0) {
-                    profiel.setId(queryString.id);
-                    profiel.update('email_verified_at', queryString.timestamp);
-                    this.redirect('#/profiel/wizard');
-                }
 
-                break;
             case "registratie":
                 if (Login_Controller.isLoggedIn()) {
                     this.redirect('#/profiel');

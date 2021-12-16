@@ -40,7 +40,11 @@ const routes = [
         controller: new Register_Controller,
         method: 'show'
     }),
-    new Route('profile/wizard', {
+    new Route('profiel/verify', {
+        controller: new Profile_Controller,
+        method: 'verify'
+    }),
+    new Route('profiel/wizard', {
         controller: new Wizard_Controller,
         method: 'show'
     }),

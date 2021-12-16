@@ -13,11 +13,6 @@ import view from "../Classes/View.js";
 
 export default class Wizard_Controller extends Controller {
     show() {
-        //Construct profile
-        const profiel = new Profile();
-        profiel.setProfile();
-        //Verify profile
-        profiel.verify();
         const intressFilter = new Filter(document.querySelector("#interests_table"), "intressed", "name", "name", profiel.id);
         const CountrieFilter = new Filter(document.querySelector("#countries_table"), "countries", "names", "lang_short", profiel.id);
 

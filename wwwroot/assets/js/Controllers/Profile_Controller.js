@@ -64,6 +64,18 @@ export default class Profile_Controller extends Controller {
             document.getElementById("avatar").src = profiel.getProfilePicture();
 
     }
+    verify(){
+        console.log("Verify started");
+        const profiel = new Profile();
+        const queryString = App.getFromQueryString();
+        console.log(queryString);
+        if (queryString.id > 0) {
+
+            profiel.setId(queryString.id);
+            profiel.update('email_verified_at', queryString.timestamp);
+            App.redirect('#/profiel/wizard');
+        }
+    }
     render() {
         return new view('profiel.html', "Commonflight Profiel");
     }
