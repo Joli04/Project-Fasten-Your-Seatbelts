@@ -102,9 +102,9 @@ export default class App {
      * @description Get the querystring as an object
      *
      * @returns {Object} Returns the querystring as an object
-     * 
+     *
      */
-    static getFromQueryString() {
+    static getFromQueryObject() {
         const [hash, query] = window.location.hash.split('#')[1].split('?')
         const params = Object.fromEntries(new URLSearchParams(query))
         return params;

@@ -67,7 +67,7 @@ export default class Profile_Controller extends Controller {
     verify(){
         console.log("Verify started");
         const profiel = new Profile();
-        const queryString = App.getFromQueryString();
+        const queryString = App.getFromQueryObject();
         console.log(queryString);
         if (queryString.id > 0) {
 
