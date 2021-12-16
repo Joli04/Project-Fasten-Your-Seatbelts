@@ -1,6 +1,7 @@
 import Profile from "../Classes/Profile.js";
 import Filter from "../Classes/Filter.js";
-import {redirect} from "../app.js";
+import App from "../Classes/app.js";
+
 //Create elements for each in intress table
 const profiel = new Profile();
 const intressFilter = new Filter(document.querySelector("#interests_table"),"intressed","name","name",profiel.id);
@@ -8,8 +9,6 @@ const CountrieFilter = new Filter(document.querySelector("#countries_table"),"co
 
 
 //Get intress
-
-
 await intressFilter.filter();
 await CountrieFilter.filter();
 
@@ -24,7 +23,7 @@ var quill = new Quill('#editor', {
 // }
 document.addEventListener("submitWizard", function (e) {
     finishProfile();
-    redirect('matching.html');
+    App.redirect('#/matching');
 });
 
 

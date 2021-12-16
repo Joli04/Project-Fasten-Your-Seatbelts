@@ -49,9 +49,9 @@ export default class Profile {
      * @param account_type
      * @return {Promise<{}|*>}
      */
-    async updateProfile(first, last, email, birthday, gender, country_origin_id,bio, account_type = 'user') {
+    async updateProfile(first, last, email, birthday, gender, country_origin_id, bio, account_type = 'user') {
         try {
-            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?,email =?,gender=?,account_type=?,birthday = ?,bio = ?,country_origin_id =? where users.id=" + this.id, [first, last, password, email, gender, account_type, birthday,bio, country_origin_id]);
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?,email =?,gender=?,account_type=?,birthday = ?,bio = ?,country_origin_id =? where users.id=" + this.id, [first, last, password, email, gender, account_type, birthday, bio, country_origin_id]);
             return data[0];
         } catch (e) {
             console.log('Profile : ' + e);
@@ -118,19 +118,19 @@ export default class Profile {
         this.country_id = data.country_origin_id;
         if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
-            App.redirect('verify');
+            alert("Check email!");
         }
     }
 
     verify() {
         var time = new Date().getTime();
-        this.update('email_verified_at',time);
+        this.update('email_verified_at', time);
     }
 
     async sendVerification() {
         if (this.verified_at === null) {
             const domain = "https://" + window.location.hostname;
-            const url = FYSCloud.Utils.createUrl("verify", {
+            const url = FYSCloud.Utils.createUrl("#/wizard", {
                 id: this.id,
                 timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
             });
@@ -291,7 +291,7 @@ export default class Profile {
                         "                                    <td bgcolor=\"#ffffff\" align=\"center\" style=\"padding: 20px 30px 60px 30px;\">\n" +
                         "                                        <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
                         "                                            <tr>\n" +
-                        "                                                <td align=\"center\" style=\"border-radius: 3px;\" bgcolor=\"#1e8410\"><a href="+domain + "/"+ url + " target=\"_blank\" style=\"font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #1e8410; display: inline-block;\">Confirm Account</a></td>\n" +
+                        "                                                <td align=\"center\" style=\"border-radius: 3px;\" bgcolor=\"#1e8410\"><a href=" + domain + "/" + url + " target=\"_blank\" style=\"font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #1e8410; display: inline-block;\">Confirm Account</a></td>\n" +
                         "                                            </tr>\n" +
                         "                                        </table>\n" +
                         "                                    </td>\n" +
@@ -306,7 +306,7 @@ export default class Profile {
                         "                    </tr> <!-- COPY -->\n" +
                         "                    <tr>\n" +
                         "                        <td bgcolor=\"#ffffff\" align=\"left\" style=\"padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;\">\n" +
-                        "                            <p style=\"margin: 0;\"><a href="+domain + "/"+ url + " target=\"_blank\" style=\"color: #1e8410;\">" + domain+"/"+url + "</a></p>\n" +
+                        "                            <p style=\"margin: 0;\"><a href=" + domain + "/" + url + " target=\"_blank\" style=\"color: #1e8410;\">" + domain + "/" + url + "</a></p>\n" +
                         "                        </td>\n" +
                         "                    </tr>\n" +
                         "                    <tr>\n" +
@@ -356,7 +356,8 @@ export default class Profile {
 
         }
     }
-    async destroy(){
+
+    async destroy() {
         if (this.id > 0) {
             try {
                 let data = await FYSCloud.API.queryDatabase("DELETE FROM users WHERE user_id = ?", [this.id]);
@@ -367,7 +368,7 @@ export default class Profile {
                 this.birthday = null;
                 this.profile = null;
                 this.gender = null;
-                this.verified_at =null;
+                this.verified_at = null;
                 this.country = null;
                 return data[0];
 
@@ -377,7 +378,8 @@ export default class Profile {
 
         }
     }
-    async sendRequest(match_user){
+
+    async sendRequest(match_user) {
         const domain = "https://" + window.location.hostname;
         const url = FYSCloud.Utils.createUrl("verify", {
             id: this.id,
@@ -403,11 +405,11 @@ export default class Profile {
                 subject: "CommonFlight Match request",
                 html: "<p>1</p>"
             });
-        }
-        catch (e) {
+        } catch (e) {
 
         }
     }
+
     generateAvatar(foregroundColor = "white", backgroundColor = "black") {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
@@ -433,18 +435,22 @@ export default class Profile {
     getBirthdayDateObject() {
         return new Date(this.birthday);
     }
-    getBirtdayStringFormatedLocale(initialLanguage){
-        function pad(s) { return (s < 10) ? '0' + s : s; }
+
+    getBirtdayStringFormatedLocale(initialLanguage) {
+        function pad(s) {
+            return (s < 10) ? '0' + s : s;
+        }
+
         var d = new Date(this.birthday)
 
-        if(initialLanguage == null){
-         initialLanguage  = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
+        if (initialLanguage == null) {
+            initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
         }
-        if(initialLanguage === "nl"){
-            return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-');
+        if (initialLanguage === "nl") {
+            return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('-');
         }
-        if(initialLanguage === "en"){
-            return [d.getFullYear(), pad(d.getMonth()+1),pad(d.getDate())].join('-');
+        if (initialLanguage === "en") {
+            return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
         }
     }
 

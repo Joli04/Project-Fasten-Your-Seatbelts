@@ -53,7 +53,8 @@ export default class Register_Controller extends Controller
             return profiel.registerProfile(firstname.value,lastname.value,email.value,hash,birthday.value,gender,country.value);
             //redirect("profiel.html");
         }catch (e){
-            console.log(e);
+            App.addError(elements.parent,"Gebruiker bestaadt al")
+            console.log('Register:'+ e);
         }
 
     }
