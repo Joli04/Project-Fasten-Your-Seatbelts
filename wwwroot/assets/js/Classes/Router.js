@@ -69,6 +69,7 @@ Router.prototype = {
             //Run the controller script
 
             await route.runScript();
+
         })(this);
     }
 }

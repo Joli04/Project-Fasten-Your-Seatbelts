@@ -12,6 +12,9 @@ export default class App {
         web.init();
     }
 
+    initEvents(){
+        Login_Controller.Listen();
+    }
     async load() {
         App.checkNeedsLogin(App.GetCurrentPage());
 
@@ -49,6 +52,7 @@ export default class App {
         if (document.querySelector("#footer") !== null) {
             this.addFooter(footerData);
         }
+        this.initEvents();
     }
 
     addHeader(data) {
@@ -177,8 +181,13 @@ export default class App {
         }
     }
 
+    /**
+     * Custom redirect change hash
+     *
+     * @param endpoint
+     */
     static redirect(endpoint) {
-        FYSCloud.URL.redirect(endpoint);
+        window.location.hash = endpoint;
     }
 
     static redirectToLogin() {

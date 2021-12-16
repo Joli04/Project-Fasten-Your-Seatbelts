@@ -22,7 +22,7 @@ Route.prototype = {
     controller: undefined,
     method: undefined, view: undefined,
     default: undefined,
-    constructor: function (name, options, defaultRoute) {
+    constructor: function (name, options,auth, defaultRoute) {
         const errors = [];
         if (!options.controller) {
             errors.push("*Controller missing for Route" + name);
@@ -38,6 +38,7 @@ Route.prototype = {
         this.name = name;
         this.controller = options.controller;
         this.method = options.method;
+        this.auth = auth;
         this.default = defaultRoute;
 
     },

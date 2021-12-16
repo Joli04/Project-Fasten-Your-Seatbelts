@@ -14,9 +14,11 @@ export default class Login_Controller extends Controller {
         script.type = "text/javascript";
         script.src = "./vendors/jsSHA/sha.js";
         document.head.appendChild(script);
-        window.onload = function () {
+        window.onchange = function () {
             const login_bt = document.querySelector("#login_button");
-            login_bt.addEventListener('click', Login_Controller.Excutelogin);
+            if(login_bt){
+                login_bt.addEventListener('click', Login_Controller.Excutelogin);
+            }
             if (Login_Controller.isLoggedIn()) {
                 App.redirect("#/profiel");
             }
@@ -71,7 +73,21 @@ export default class Login_Controller extends Controller {
         FYSCloud.Session.clear();
         //Set basic lang to nl
         FYSCloud.Session.set('lang', 'nl');
+        //LogoutEvents
+        const logoutEvent = document.createEvent('Event');
+        // Define that the event name is 'build'.
+        logoutEvent.initEvent('logout', true, true);
+        document.dispatchEvent(logoutEvent);
         App.redirect("#/home");
+    }
+
+
+
+    static Listen() {
+        document.addEventListener('logout', function (e) {
+            console.log("Logout");
+            App.setActivePage();
+        }, false);
     }
 
     render() {
