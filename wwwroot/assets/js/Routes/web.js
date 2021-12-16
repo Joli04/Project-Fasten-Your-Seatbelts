@@ -7,7 +7,7 @@ import Faq_Controller from '../Controllers/Faq_Controller.js';
 import Home_Controller from '../Controllers/Home_Controller.js';
 import Login_Controller from '../Controllers/Login_Controller.js';
 import Register_Controller from '../Controllers/Register_Controller.js';
-import Wizard_Controller from "../Controllers/Verify_Controller.js";
+import Wizard_Controller from "../Controllers/Wizard_Controller.js";
 
 /**
  *
@@ -40,7 +40,7 @@ const routes = [
         controller: new Register_Controller,
         method: 'show'
     }),
-    new Route('wizard', {
+    new Route('profile/wizard', {
         controller: new Wizard_Controller,
         method: 'show'
     }),

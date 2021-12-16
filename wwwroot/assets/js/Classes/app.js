@@ -88,7 +88,12 @@ export default class App {
      */
     static GetCurrentPage() {
         //return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
-        return window.location.hash.split("#/")[1];
+        var url = window.location.hash.split("#/")[1];
+        if(url.includes("?")){
+            url = url.split("?")[0];
+        }
+
+        return url;
     }
 
     static setActivePage() {

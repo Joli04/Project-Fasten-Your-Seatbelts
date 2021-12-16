@@ -3,7 +3,8 @@
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import {findObjectByLabel} from "../app.js";
+import App from './app.js';
+
 
 export default class Filter {
     constructor(el, table, select, where,user) {
@@ -92,7 +93,7 @@ export default class Filter {
 
     create_elements() {
         for (const i in this.selections) {
-            const selection = findObjectByLabel(this.selections[i]);
+            const selection = App.findObjectByLabel(this.selections[i]);
             const label = document.createElement('label');
             label.classList.add('todo');
             label.id = this.selections[i].id;
