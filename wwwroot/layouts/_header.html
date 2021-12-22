@@ -1,0 +1,23 @@
+<div class="topnav">
+    <a class="topnav__title">CommonFlight</a>
+    <a href="javascript:void(0);" id="mobile_nav" class="icon" >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </a>
+    <span>
+        <a id="nav_logout" class="topnav__item option" style="display: none"  needLogin="true" data-translate="nav.logout">Uitloggen</a>
+        <a id="profiel" class="topnav__item" style="display: none" href="#/profiel" needLogin="true"><span id="profiel_edit" data-translate="nav.profile">Profile</span></a>
+       <a class="topnav__item" style="display: none" needLogin="true"><span id="profile_wizard"></span></a>
+
+        <a id="login" class="topnav__item" href="#/login"  needLogin="false" data-translate="nav.login">Login</a>
+        <a id="registratie" class="topnav__item" href="#/registratie"  needLogin="false"  data-translate="nav.register">Aanmelden</a>
+        <a id="matching" class="topnav__item" style="display: none" href="#/matching" needLogin="true" data-translate="nav.matching">Matching</a>
+        <a id="faq" class="topnav__item" href="#/faq">F.A.Q</a>
+        <a id="home" class="topnav__item" href="#/home">Home</a>
+    </span>
+    <a href="javascript:void(0)">
+        <select id="languageSwitch" class="topnav__langSwitch">
+            <option data-thumbnail="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/LetterA.svg/2000px-LetterA.svg.png" value="nl">Nederlands</option>
+            <option value="en">English</option>
+        </select>
+    </a>
+</div>

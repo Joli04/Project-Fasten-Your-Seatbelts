@@ -118,50 +118,14 @@ h1 {
 
 h2 {
     font-family: 'robotobold' !important;
+    color: var(--red);
+    margin-bottom: 1%;
 }
 
-.nav {
-    margin: 2%;
-}
 
-.nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-.nav ul li {
-    float: right;
-    font-size: 50px;
-    margin-left: 35px;
-    cursor: default;
-}
-.nav ul li:last-of-type {
-    margin: 0;
-}
-.nav ul li a {
-    display: block;
-    color: #000000;
-    text-align: center;
-    text-decoration: none;
-}
-.nav ul li a:hover {
-    text-decoration: underline;
-}
-.nav ul .nav_title {
-    float: left;
-    margin: 0;
-    font-size: 55px;
-    font-weight: bold;
-}
-
-.nav ul .nav_item {
-    margin-top: 15px;
-    font-size: 30px;
-}
 
 .card {
-    background-color: #484848;
+    background-color: var(--red);;
     color: white;
     border-radius: 20px;
     left: 350px;
@@ -227,15 +191,23 @@ h2 {
     display: flex;
 }
 
+#user_name {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+
 .matching-container .card #info {
     justify-content: center;
     display: flex;
+    padding-bottom: 4%;
 }
 
 .matching-container .card #info p {
     margin: auto;
-    margin-top: 8%;
-    margin-bottom: 8%;
 }
 
 .grid-container .card .bar {

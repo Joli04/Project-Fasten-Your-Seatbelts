@@ -1,0 +1,39 @@
+<div>
+    <link rel="stylesheet" href="assets/css/pages/registratie.css">
+    <div class="wrapper__auth">
+        <div class="registration">
+            <div class="registration__top">
+                <h1 class="registration__title" data-translate="register.btn_register">Aanmelden</h1>
+                <p class="registration__description" data-translate="login.desc">Vul de gegevens onderaan in om door te gaan.</p>
+                <div class="errorWrapper"></div>
+            </div>
+            <form class="registration__form">
+                <input type="text" name="firstname" class="registration__input" placeholder="Voornaam" autofocus>
+                <input type="text" name="lastname" class="registration__input" placeholder="Achternaam">
+                <input type="email" name="email" class="registration__input" placeholder="Email">
+                <input type="password" name="password" autocomplete="current-password" class="registration__input" placeholder="Wachtwoord">
+                <input type="date" name="birthday" class="registration__input">
+
+                <select name="genderList" id="gender" class="registration__input registration__gender">
+                    <option selected data-translate="register.gender_default">Kies een geslacht</option>
+                    <option value="male" data-translate="match.data.filter.gender.data.male">Man</option>
+                    <option value="female" data-translate="match.data.filter.gender.data.female">Vrouw</option>
+                    <option value="other" data-translate="match.data.filter.gender.data.other">Overig</option>
+                </select>
+
+                <div id="country_selector" class="registration__country"></div>
+            </form>
+            <div class="registration__button">
+                <button type="button" class="registration__button" id="aanmelden">
+                    <span class="button__text" data-translate="register.btn_register">Aanmelden</span>
+                    <img src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
+                </button>
+            </div>
+            <div>
+                <span data-translate="register.has_account">Heb je al een account?</span>
+                <a href="login.html" class="registration__signup" data-translate="register.has_account_link">Inloggen</a>
+            </div>
+        </div>
+    </div>
+</div>
+

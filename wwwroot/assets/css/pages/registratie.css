@@ -1,113 +1,147 @@
-body {
-    background-color: #f8f9fd;
+#nav .topnav {
+    padding-bottom: 0;
 }
 
-.regi {
-    bottom: 40px;
-    position: relative;
-    left: 470px;
-    width: 600px;
-    height: 625px;
-    text-align: center;
-    box-shadow: 0 10px 34px -15px rgb(0 0 0 / 80%);
-    border-radius: 40px;
-    background-color: #ffffff;
+@media screen and (max-width: 600px) {
+    #nav .responsive {
+        border-radius: 0;
+    }
 }
 
-header h1,p {
-    margin: 0;
-    text-align: center;
+.registration {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-header p {
-    margin: 0;
+.registration__top {
+    margin-bottom: 25px;
 }
 
-form {
-    position: relative;
-    left: 110px;
-    top: 30px;
-    text-align: left;
-
+.registration__title {
+    color: var(--red);
+    margin-bottom: 10px;
 }
 
-form label{
-    margin-right: 50px;
+.registration__description {
+    margin-bottom: 25px;
+    color: var(--grey);
 }
 
-input[type = text] {
-    border-radius: 10px;
-    padding: 10px;
-    width: 60%;
-    margin-right: 80px;
-}
-input[type = radio]{
-    margin: 0 15px;
+.registration__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
 }
 
-select{
-    position: relative;
-    right: 27px;
-    border-radius: 10px;
-    margin: 0 40px;
+.registration__input {
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+    outline: none;
 }
 
-#aanmelden {
-    color: white;
-    margin: 0;
-    padding: 10px 90px;
-    position: relative;
-    top: 50px;
+.registration__input:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+    outline: none;
+}
+
+.registration__gender {
+    background-color: var(--white);
+}
+
+.registration__country label {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--grey);
+}
+
+.registration__country #countries {
+    margin-bottom: 25px;
+    background-color: var(--white);
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+    outline: none;
+}
+.registration__country #countries:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+    outline: none;
+}
+
+.registration__button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /*justify-content: center;*/
+    margin-bottom: 15px;
+}
+
+.registration__button button {
+    text-decoration: none;
+    background-color: var(--dark_green);
     border-radius: 5px;
-    background-color: #1089ff;
-
-
+    transition: background-color .5s;
+    cursor: pointer;
 }
 
-#voornaam input{
-    width:125px;
+.registration__button button:hover {
+    background-color: var(--green);
+}
+.registration__button button:hover > .button__text {
+    background-color: var(--dark_green);
 }
 
-#achternaam input{
-    width:125px;
-}
-#test{
-    padding: 10px;
-    width: 60%;
-    margin-left:105px;
-}
-
-#inloggen {
-    color: white;
-    margin: 0;
-    padding: 10px 100px;
-    position: relative;
-    top: 80px;
-    border-radius: 5px;
-    background-color: #dc3545;
-
+.button__text {
+    width: 77%;
+    background-color: var(--green);
+    font-size: 25px;
+    color: var(--white);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-.WV {
-    position: relative;
-    top: 60px;
+.button__icon {
+    width: 19px;
+    margin-left: 15px;
 }
 
-
-hr {
-    background-color: black;
-    position: relative;
-    top: 70px;
+.registration__signup {
+    color: var(--red);
+    text-decoration: none;
 }
 
-#home{
-    margin: 0;
-    padding: 10px 100px;
-    position: relative;
-    border-radius: 5px;
+.registration__login:hover {
+    color: var(--dark_red);
+    text-decoration: underline;
 }
-.copyright{
-    left:30px;
-    position: relative;
-    bottom:40px;
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .button__text {
+        width: 74%;
+    }
+
+    #nav .topnav a {
+        padding: 14px 10px;
+    }
+
+    #nav .topnav__item {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    #nav .topnav a {
+        padding: 14px 16px;
+    }
 }

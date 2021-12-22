@@ -1,15 +1,10 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import {GetCurrentPage} from "../app.js";
+import App from "../Classes/app.js";
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (GetCurrentPage() === "login.html") {
-        var login_bt = document.querySelector("#login_button");
-        login_bt.addEventListener('click', login);
-        if (isLoggedIn()) {
-            FYSCloud.URL.redirect("profiel.html");
-        }
-    }
+
 });
 
 /**
@@ -28,6 +23,8 @@ export function isLoggedIn() {
  */
 export function logout() {
     FYSCloud.Session.clear();
+    //Set basic lang to nl
+    FYSCloud.Session.set('lang','nl');
     FYSCloud.URL.redirect("index.html");
 }
 
@@ -37,7 +34,8 @@ export function logout() {
  */
 function login() {
     //Valideer input
-    if (validate()) {
+    var elements = document.querySelectorAll("input");
+    if (App.validate(elements)) {
         const email = document.getElementById('email');
         var password = document.getElementById('pass');
 
@@ -71,50 +69,3 @@ export function getLogin(email, password) {
 
 }
 
-function validate() {
-    var isValid = true;
-    var elements = document.querySelectorAll("input");
-    var errorMsg = "";
-    const errors = document.querySelectorAll('.error');
-    errors.forEach(e => {
-        e.remove();
-    });
-    elements.forEach(e => {
-        if (e.type === "email") {
-            if (!validateEmail(e.value)) {
-                errorMsg = "Geen geldig email addres";
-                addError(e, errorMsg);
-                isValid = false;
-            }
-        }
-        if (e.type === "password") {
-            if (e.value === "") {
-                errorMsg = "Wachtwoord is een verplicht veld";
-                console.log(e.value, errorMsg);
-                addError(e);
-                isValid = false;
-            }
-        }
-
-    });
-    console.log(isValid);
-    return isValid;
-}
-
-/**
- * Add Custom error block
- * @param element
- * @param errorMsg
- */
-function addError(element, errorMsg = "Dit veld is een verplicht veld") {
-    const error = document.createElement("p");
-    error.className = "error";
-    error.style.display = 'block';
-    error.innerText = errorMsg;
-    element.parentElement.appendChild(error);
-}
-
-function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}

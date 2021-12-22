@@ -1,5 +1,5 @@
 var back = document.getElementById('back');
-back.addEventListener('click',Previous());
+back.addEventListener('click',Previous);
 
 function Previous() {
     console.log("click?")
