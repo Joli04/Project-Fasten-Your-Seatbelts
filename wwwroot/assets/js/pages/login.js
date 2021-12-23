@@ -1,16 +1,10 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import {GetCurrentPage,addError,validate} from "../app.js";
+import App from "../Classes/app.js";
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (GetCurrentPage() === "login.html") {
-        var login_bt = document.querySelector("#login_button");
-        login_bt.addEventListener('click', login);
-        if (isLoggedIn()) {
-            FYSCloud.URL.redirect("profiel.html");
-        }
-    }
+
 });
 
 /**
@@ -41,7 +35,7 @@ export function logout() {
 function login() {
     //Valideer input
     var elements = document.querySelectorAll("input");
-    if (validate(elements)) {
+    if (App.validate(elements)) {
         const email = document.getElementById('email');
         var password = document.getElementById('pass');
 

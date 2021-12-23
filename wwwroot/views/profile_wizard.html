@@ -1,30 +1,6 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/app.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/profiel.css"/>
-    <link rel="stylesheet" href="assets/css/pages/wizard.css"/>
+<div>
+    <link rel="stylesheet"  type="text/css" href="assets/css/pages/wizard.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="vendors/quill/css/theme/white.css"/>
-    <script src="assets/js/classes/wizard.js"></script>
-    <!-- Script(s) -->
-    <script src="assets/js/app.js" type="module"></script>
-    <script src="assets/js/pages/wizard_page.js" type="module"></script>
-    <script src="vendors/quill/quill.js"></script>
-    <title>Fasten your seat belts</title>
-    <style>
-        body {
-            background: gray;
-        }
-    </style>
-</head>
-<body>
-
-<div class="main">
-
-    <div id="nav"></div>
     <div class="wizard_form" style="margin-top: 4%">
         <section class="wizard">
             <aside class="wizard-nav">
@@ -110,7 +86,7 @@
                 </div>
                 <div class="wizard-step">
                     <div class="form-group">
-                        <lable  data-translate="profile.data.bio">
+                        <lable  data-translate="profile_Controller.data.bio">
                             Beschrijf wie je bent</lable>
                             <div id="editor">
                                 <p class="profile__bio" id="profile__bio">
@@ -126,45 +102,43 @@
             </aside>
         </section>
     </div>
-    <div id="footer"></div>
+    <script src="vendors/quill/quill.js"></script>
+    <script>
+        const wizard = new Wizard({
+            // Default CSS classes
+            wz_class: ".wizard",
+            wz_nav: ".wizard-nav",
+            wz_nav_style: "dots", // or 'progress'
+            wz_content: ".wizard-content",
+            wz_buttons: ".wizard-buttons",
+            wz_button: ".wizard-btn",
+            wz_step: ".wizard-step",
+            wz_form: ".wizard-form",
+
+            wz_next: ".next",
+            wz_prev: ".prev",
+            wz_finish: ".finish",
+            // Current step. 0 = Step 1
+            current_step: 0,
+            // Number of steps
+            steps: 3,
+            // 'all', 'nav', or 'buttons'
+            navigation: "buttons",
+            // Show buttons
+            buttons: true,
+            // Custom label text
+            next: "Volgende",
+            prev: "Vorige",
+            finish: "Versturen",
+        });
+        wizard.init();
+
+        document.addEventListener("prevWizard", function (e) {
+            //alert("Prev Step");
+        });
+
+
+
+        document.querySelector(".wizard-buttons button:last-child").style.display = "block";
+    </script>
 </div>
-</body>
-<script>
-    const wizard = new Wizard({
-        // Default CSS classes
-        wz_class: ".wizard",
-        wz_nav: ".wizard-nav",
-        wz_nav_style: "dots", // or 'progress'
-        wz_content: ".wizard-content",
-        wz_buttons: ".wizard-buttons",
-        wz_button: ".wizard-btn",
-        wz_step: ".wizard-step",
-        wz_form: ".wizard-form",
-
-        wz_next: ".next",
-        wz_prev: ".prev",
-        wz_finish: ".finish",
-        // Current step. 0 = Step 1
-        current_step: 0,
-        // Number of steps
-        steps: 3,
-        // 'all', 'nav', or 'buttons'
-        navigation: "buttons",
-        // Show buttons
-        buttons: true,
-        // Custom label text
-        next: "Volgende",
-        prev: "Vorige",
-        finish: "Versturen",
-    });
-    wizard.init();
-
-    document.addEventListener("prevWizard", function (e) {
-        //alert("Prev Step");
-    });
-
-
-
-    document.querySelector(".wizard-buttons button:last-child").style.display = "block";
-</script>
-</html>

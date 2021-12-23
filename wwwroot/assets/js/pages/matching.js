@@ -1,5 +1,5 @@
 import {GetCurrentPage} from "../app.js";
-import Profile from "../classes/Profile.js";
+import Profile from "../Classes/Profile.js";
 import Countries from "../Objects/Countries.js";
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
