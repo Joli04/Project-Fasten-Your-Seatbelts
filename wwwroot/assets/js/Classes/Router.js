@@ -64,7 +64,7 @@ Router.prototype = {
 
     goToRoute: function (route) {
         (async function (scope) {
-            console.log(scope.auth)
+
             if(route.auth && !scope.auth){
               return App.redirect('#/login');
             }

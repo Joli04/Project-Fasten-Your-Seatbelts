@@ -16,7 +16,7 @@ export default class Wizard_Controller extends Controller {
         this.currentTab = 0; // Current tab is set to be the first tab (0)
         const profiel = new Profile();
         await profiel.setProfile();
-
+        
         document.querySelector("#nextBtn")
             .addEventListener("click", this.nextPrev(1));
         document.querySelector("#prevBtn")
@@ -50,8 +50,7 @@ export default class Wizard_Controller extends Controller {
     showTab(n) {
         // This function will display the specified tab of the form...
         var x = document.getElementsByClassName("tab");
-        console.log(n);
-        console.log(x[n]);
+
         x[n].style.display = "block";
         //... and fix the Previous/Next buttons:
         if (n === 0) {
@@ -69,7 +68,7 @@ export default class Wizard_Controller extends Controller {
     }
 
     nextPrev(tab) {
-        console.log(tab);
+
         // This function will figure out which tab to display
         var x = document.getElementsByClassName("tab");
         // Exit the function if any field in the current tab is invalid:
