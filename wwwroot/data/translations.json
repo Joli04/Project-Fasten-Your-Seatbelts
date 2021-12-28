@@ -8,11 +8,11 @@
   "verify": {
     "header": {
       "nl": "Verifieer profiel",
-      "en": "Verify Login Code"
+      "en": "Verify profile"
     },
     "explain": {
-      "nl": "Het lijkt er op dat jouw account nog niet is gevalideerd\n  Er is een email verstuurd klik op deze link om je account te verifieren",
-      "en": "It looks like you're trying to use your account.\n But your account is'nt valided yet, so check your email and click on the verify link"
+      "nl": "Het lijkt er op dat jouw account nog niet is gevalideerd.\n  Er is een email naar jou verstuurd, klik op deze link om je account te verifieren.",
+      "en": "It looks like your account hasn't been validated yet. An email has been send to you, click on this link to verify your account."
     }
 
   },
@@ -37,8 +37,8 @@
     },
     "data": {
       "bio": {
-        "en": "Describe  who you are",
-        "nl": "Beschrijf wie je bent"
+        "en": "Describe who you are.",
+        "nl": "Beschrijf wie je bent."
       },
       "first_name": {
         "nl": "Voornaam",
@@ -49,16 +49,16 @@
         "en": "Last name"
       },
       "email": {
-        "nl": "Email adres",
-        "en": "Email"
+        "nl": "E-mailadres",
+        "en": "E-mail address"
       },
       "password": {
         "nl": "Wachtwoord",
         "en": "Password"
       },
       "birthday": {
-        "nl": "Geboorte datum",
-        "en": "Birthday"
+        "nl": "Geboortedatum",
+        "en": "Date of Birth"
       },
       "gender": {
         "nl": "Geslacht",
@@ -89,11 +89,11 @@
     },
     "country": {
       "nl": "Land voorkeuren",
-      "en": "Preferred country"
+      "en": "Country preferences"
     },
     "finish": {
       "nl": "Profiel voltooien",
-      "en": "Finish profile"
+      "en": "Complete profile"
     }
   },
   "match": {
@@ -154,11 +154,11 @@
   "register": {
     "btn_register": {
       "nl": "Aanmelden",
-      "en": "Registration"
+      "en": "Sign Up"
     },
     "has_account": {
       "nl": "Heb je al een account?",
-      "en": "Already registered?"
+      "en": "Do you already have an account?"
     },
     "has_account_link": {
       "nl": "Inloggen",
@@ -171,16 +171,16 @@
   },
   "login": {
     "desc": {
-      "nl": "Vul de gegevens onderaan in om door te gaan.",
-      "en": "Fill in all your details down below to continue."
+      "nl": "Vul de onderstaande gegevens in om door te gaan.",
+      "en": "Please fill in the information below to continue."
     },
     "no_account": {
       "nl": "Heb je geen account?",
-      "en": "Don't have an account?"
+      "en": "Do not have an account?"
     },
     "no_account_link": {
       "nl": "Registreer hier",
-      "en": "Sign up here"
+      "en": "Register here"
     }
   },
   "nav": {
@@ -207,8 +207,8 @@
   },
   "fourSteps": {
     "title": {
-      "nl": "De vier stappen van onze website",
-      "en": "The four steps of our website"
+      "nl": "De vier stappen van onze website.",
+      "en": "The four steps of our website."
     }
   },
   "faq": {
