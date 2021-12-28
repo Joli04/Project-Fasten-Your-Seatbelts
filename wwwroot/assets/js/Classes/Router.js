@@ -1,5 +1,8 @@
 'use strict';
 
+import Profile from "./Profile.js";
+import App from "./app.js";
+
 /**
  *
  * @param routes
@@ -21,10 +24,13 @@ Router.prototype = {
     routes: undefined,
     active: undefined,
     rootElement: undefined,
+    auth: undefined,
     constructor: function (routes) {
         this.routes = routes;
         //Todo use rootElement from extended view;
         this.rootElement = document.getElementById("app");
+        const p = new Profile();
+        this.auth = p.isLoggedInUser();
     },
     init: function () {
         var r = this.routes;
@@ -55,8 +61,13 @@ Router.prototype = {
             }
         }
     },
+
     goToRoute: function (route) {
         (async function (scope) {
+            console.log(scope.auth)
+            if(route.auth && !scope.auth){
+              return App.redirect('#/login');
+            }
             const url = await route.render().view,
                 http = new XMLHttpRequest();
             http.onreadystatechange = function () {

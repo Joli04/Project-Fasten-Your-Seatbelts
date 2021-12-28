@@ -4,14 +4,15 @@
  * @namespace Route
  * @param name
  * @param options
+ * @param auth
  * @param defaultRoute
  */
-export default function Route(name, options, defaultRoute) {
+export default function Route(name, options,auth, defaultRoute) {
     try {
         if (!name || !options) {
             throw 'Error: There must be a routes parameter';
         }
-        this.constructor(name, options, defaultRoute);
+        this.constructor(name, options,auth, defaultRoute);
     } catch (e) {
         console.log("Route error: " + e);
     }
@@ -20,8 +21,10 @@ export default function Route(name, options, defaultRoute) {
 Route.prototype = {
     name: undefined,
     controller: undefined,
-    method: undefined, view: undefined,
+    method: undefined,
+    view: undefined,
     default: undefined,
+    auth: false,
     constructor: function (name, options,auth, defaultRoute) {
         const errors = [];
         if (!options.controller) {

@@ -20,6 +20,9 @@ Setup defaults
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.bg-gray {
+    background-color: var(--light_grey);
+}
 
 /* Dit zorgt ervoor dat de rest van de nav niet zichtbaar is.
 /* Alleen nadat je Engels als taal kiest wordt het zichtbaar.
@@ -688,6 +691,60 @@ footer {
     100% {
         width: 100%;
     }
+}
+
+/* ------------------------------------ */
+/* ----------[ Wizard ]---------- */
+/* ------------------------------------ */
+.wizard_container {
+    background-color: #ffffff;
+    margin: 100px auto;
+    font-family: Raleway, serif;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+
+/* Hide all steps by default: */
+.wizard_container .tab {
+    display: none;
+}
+
+.wizard_container button {
+    background-color: #04AA6D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+}
+
+.wizard_container button:hover {
+    opacity: 0.8;
+}
+.wizard_container .prevBtn {
+    background-color: #bbbbbb;
+}
+/* Make circles that indicate the steps of the form: */
+.wizard_container .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.wizard_container .step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.wizard_container .step.finish {
+    background-color: #04AA6D;
 }
 
 /* ------------------------------------ */
