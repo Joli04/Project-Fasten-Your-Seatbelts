@@ -8,7 +8,7 @@ import Home_Controller from '../Controllers/Home_Controller.js';
 import Login_Controller from '../Controllers/Login_Controller.js';
 import Register_Controller from '../Controllers/Register_Controller.js';
 import Wizard_Controller from "../Controllers/Wizard_Controller.js";
-
+import Matches_Controller from "../Controllers/Matches_Controller.js";
 /**
  *
  * @type {Route[]}
@@ -38,6 +38,10 @@ const routes = [
     }),
     new Route('registratie', {
         controller: new Register_Controller,
+        method: 'show'
+    }),
+    new Route('matching', {
+        controller: new Matches_Controller,
         method: 'show'
     }),
     new Route('profiel/verify', {

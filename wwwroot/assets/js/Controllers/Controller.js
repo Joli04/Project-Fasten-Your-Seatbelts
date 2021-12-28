@@ -5,6 +5,7 @@
  * @namespace Model
  */
 
+
 export default class Controller{
     constructor(model, view) {
         this.view = view;

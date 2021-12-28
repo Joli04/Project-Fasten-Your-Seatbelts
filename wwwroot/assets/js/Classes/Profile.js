@@ -29,6 +29,14 @@ export default class Profile {
         return this.first_name + " " + this.last_name;
     }
 
+    isLoggedInUser(){
+        if (FYSCloud.Session.get("user_id") === this.id) {
+            return true;
+        }
+        return false;
+    }
+
+
     getMatches() {
         this.matches = [];
     }
@@ -52,6 +60,15 @@ export default class Profile {
     async updateProfile(first, last, email, birthday, gender, country_origin_id, bio, account_type = 'user') {
         try {
             let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?,email =?,gender=?,account_type=?,birthday = ?,bio = ?,country_origin_id =? where users.id=" + this.id, [first, last, email, gender, account_type, birthday, bio, country_origin_id]);
+            return data[0];
+        } catch (e) {
+            console.log('Profile : ' + e);
+            return {};
+        }
+    }
+    async updatePassword(old,newPass,ConfirmPass){
+        try {
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set password = ?,  where users.id=" + this.id, [first, last, email, gender, account_type, birthday, bio, country_origin_id]);
             return data[0];
         } catch (e) {
             console.log('Profile : ' + e);
@@ -103,7 +120,10 @@ export default class Profile {
      *
      * @return {Promise<void>}
      */
-    async setProfile() {
+    async setProfile(id = null) {
+        if(id){
+            this.id = id;
+        }
         const data = await this.getData();
         this.first_name = data.first_name;
         this.last_name = data.last_name;
@@ -458,6 +478,7 @@ export default class Profile {
      * Get profile_Controller picture
      */
     getProfilePicture() {
+
         if (!!this.profile) {
             return this.profile;
         } else {
@@ -496,7 +517,6 @@ export default class Profile {
     }
 
     async getData() {
-        if (this.id > 0) {
             try {
                 let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
                 return data[0]
@@ -504,8 +524,6 @@ export default class Profile {
                 console.log(e);
                 return {};
             }
-
-        }
     }
 
 

@@ -1,20 +1,5 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/matching.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
-    <!-- Script(s) -->
-    <script src="assets/js/app.js" type="module"></script>
-    <script src="assets/js/pages/matching.js" type="module"></script>
-    <title>Fasten your seat belts</title>
-</head>
-<body>
-
-    <div class="main">
-        <div id="nav"></div>
+<div>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/matching.css"/>
         <h2 class="align_left">Matching</h2>
         <div class="grid-container">
             <div class="grid-child" style="margin-left: 2%;">
@@ -26,7 +11,7 @@
                         <p class="header">Filter</p>
                         <label for="countrie_selector" data-translate="match.data.filter.countryTo">Country to travel to:</label>
                         <div id="countrie_selector" style="margin-left: 10px;"></div>
-                       <br><br>
+                        <br><br>
                         <label for="genders" data-translate="match.data.filter.gender">Gender:</label>
                         <select name="genders" id="genders">
                             <option value="male" data-translate="match.data.filter.gender.data.male">Male</option>
@@ -44,7 +29,7 @@
                 </div>
                 <div class="card">
                     <div id="profile_card">
-                        <p class="header" data-translate="match.data.profile_Controller.header">Your profile_Controller</p>
+                        <p class="header" data-translate="match.data.profile.header">Your profile</p>
                         <p>Naam: <span id="mathing_profile_name"></span></p>
                         <p>Bios / Description <span id="mathing_profile_bio"></span></p>
                         <p>Age <span id="mathing_profile_age"></span></p>
@@ -54,9 +39,5 @@
                 </div>
             </div>
         </div>
-    </div>
-<div id="footer">
 
 </div>
-</body>
-</html>
