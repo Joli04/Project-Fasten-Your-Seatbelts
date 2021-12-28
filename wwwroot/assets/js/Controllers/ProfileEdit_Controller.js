@@ -24,7 +24,8 @@ export default class ProfileEdit_Controller extends Controller {
         const fileInput = document.getElementById('uplaud_img');
         const preview = document.getElementById('avatar');
         const d = profiel.getBirtdayStringFormatedLocale("en");
-
+        const bio = document.getElementById("profile__bio");
+        bio.innerHTML = profiel.bio;
         var gender = document.querySelector('#profiel_gender');
         await Countries.initCountrieSelector(document.querySelector("#profiel_country"));
         var country = document.querySelector('#countries');
@@ -41,27 +42,27 @@ export default class ProfileEdit_Controller extends Controller {
         });
 
         current_name.innerHTML = profiel.getFullName();
-        console.log(current_name);
+
         name.value = profiel.getFullName();
         age.value = d;
         email.value = profiel.email;
         saveBtn.addEventListener('click', save);
         email.addEventListener('change', ve);
         gender.value = profiel.gender;
-        if(country){
+        if (country) {
             country.value = profiel.country_id;
         }
 
         /**
          * Validate email and throw visible error
          */
-        function ve(){
+        function ve() {
             const errors = document.querySelectorAll('.error');
             errors.forEach(e => {
                 e.remove();
             });
-            if(!App.validateEmail(email.value)){
-                App.addError(this,"Email is niet juist");
+            if (!App.validateEmail(email.value)) {
+                App.addError(this, "Email is niet juist");
             }
         }
 
@@ -70,8 +71,10 @@ export default class ProfileEdit_Controller extends Controller {
          */
         function save() {
             const names = name.value.split(" ");
-            profiel.updateProfile(names[0], names[1],email.value,age.value,gender.value,country.value,quill.container.firstChild.innerHTML());
+            console.log(quill.container.firstChild.innerHTML);
+            profiel.updateProfile(names[0], names[1], email.value, age.value, gender.value, country.value, quill.container.firstChild.innerHTML);
             App.redirect("profiel");
+
         }
 
         fileInput.onchange = () => {
