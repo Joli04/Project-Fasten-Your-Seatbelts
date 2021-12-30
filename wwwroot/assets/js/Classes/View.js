@@ -5,12 +5,12 @@
  */
 
 
-export default function view(path, title,script) {
+export default function view(path, title,extend = "app.html") {
     try {
         if (!path) {
             throw 'Error: There must be a path parameter';
         }
-        this.constructor(path, title);
+        this.constructor(path, title,extend);
 
     } catch (e) {
         console.log("Route error: " + e);
@@ -18,11 +18,11 @@ export default function view(path, title,script) {
 };
 
 view.prototype = {
-    constructor: function (path, title,script) {
+    constructor: function (path, title,extend = "app.html") {
         this.view = "./views/" + path;
         this.html = "";
         this.setTitle(title);
-        this.setScript = script;
+        this.extendLayout = "layouts/"+extend;
     },
     setTitle: function (title) {
         document.title = title;

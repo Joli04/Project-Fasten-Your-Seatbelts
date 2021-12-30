@@ -9,6 +9,8 @@ import Login_Controller from '../Controllers/Login_Controller.js';
 import Register_Controller from '../Controllers/Register_Controller.js';
 import Wizard_Controller from "../Controllers/Wizard_Controller.js";
 import Matches_Controller from "../Controllers/Matches_Controller.js";
+
+import Admin_Controller from '../Controllers/Admin_Controller.js';
 /**
  *
  * @type {Route[]}
@@ -52,7 +54,10 @@ const routes = [
         controller: new Wizard_Controller,
         method: 'show'
     }),
-
+    new Route('admin', {
+        controller: new Admin_Controller,
+        method: 'index'
+    },true),
 ];
 
 export const web = new Router(routes);

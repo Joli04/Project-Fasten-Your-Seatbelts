@@ -12,9 +12,11 @@ import Countries from "../Objects/Countries.js";
 export default class Matches_Controller extends Controller {
 
     async show() {
+
         this.profiel = new Profile();
         await this.profiel.setProfile();
-
+        const heroButton = document.querySelector(".hero__button");
+        heroButton.style.display = "none";
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
 
@@ -35,6 +37,7 @@ export default class Matches_Controller extends Controller {
 
         //initial search
         await searchMatch()
+
         async function searchMatch() {
             document.getElementById('card-container').innerHTML = ""
             const profiel = new Profile();
@@ -106,7 +109,6 @@ export default class Matches_Controller extends Controller {
             }
         };
     }
-
 
 
     render() {

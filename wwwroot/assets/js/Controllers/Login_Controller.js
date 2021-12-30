@@ -17,7 +17,7 @@ export default class Login_Controller extends Controller {
         document.head.appendChild(script);
         window.onchange = function () {
             const login_bt = document.querySelector("#login_button");
-            if(login_bt){
+            if (login_bt) {
                 login_bt.addEventListener('click', Login_Controller.Excutelogin);
             }
             if (Login_Controller.isLoggedIn()) {
@@ -62,9 +62,10 @@ export default class Login_Controller extends Controller {
 
             } else {
                 App.addError(document.querySelector("form"), "Wachtwoord is incorrect");
+                App.ShowNotifyError("Login", "Helaas, jouw wachtwoord komt niet overeen met wat bekent is")
             }
         }).catch(function (reason) {
-            //Log reason
+            App.ShowNotifyError("Login", "Er is een fatale fout ontstaan")
             console.log(reason);
         });
 
@@ -84,11 +85,10 @@ export default class Login_Controller extends Controller {
     }
 
 
-
     static Listen() {
         document.addEventListener('logout', function (e) {
             console.log("Logout");
-           App.setActivePage();
+            App.setActivePage();
 
         }, false);
     }

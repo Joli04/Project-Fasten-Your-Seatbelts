@@ -64,6 +64,7 @@ export default class ProfileEdit_Controller extends Controller {
             });
             if (!App.validateEmail(email.value)) {
                 App.addError(this, "Email is niet juist");
+                App.ShowNotifyError("Validatie", "Chit, Het lijkt er op dat je email niet correct is")
             }
         }
 
@@ -73,24 +74,7 @@ export default class ProfileEdit_Controller extends Controller {
         function save() {
             const names = name.value.split(" ");
             profiel.updateProfile(names[0], names[1], email.value, age.value, gender.value, country.value, quill.container.firstChild.innerHTML);
-            new Notify({
-                status: 'success',
-                title: 'Profile saved',
-                text: 'Profiel succesvol opgeslagen',
-                effect: 'fade',
-                speed: 300,
-                customClass: null,
-                customIcon: null,
-                showIcon: true,
-                showCloseButton: true,
-                autoclose: true,
-                autotimeout: 3000,
-                gap: 20,
-                distance: 20,
-                type: 1,
-                position: 'right top'
-            })
-
+            App.ShowNotifySuccess("Profiel saved","Yes, jouw profiel is bijgewerkt!")
             App.redirect("profiel");
 
         }

@@ -5,6 +5,7 @@ import {web} from "../Routes/web.js";
 
 import Login_Controller from "../Controllers/Login_Controller.js";
 import Profile from "./Profile.js";
+import Notify from "../../../vendors/Notify/notify.js";
 
 export default class App {
     constructor() {
@@ -12,9 +13,10 @@ export default class App {
         web.init();
     }
 
-    initEvents(){
+    initEvents() {
         Login_Controller.Listen();
     }
+
     async load() {
         App.checkNeedsLogin(App.GetCurrentPage());
 
@@ -89,15 +91,16 @@ export default class App {
     static GetCurrentPage() {
         //return window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.length);
         var url = window.location.hash.split("#/")[1];
-        if(url){
-            if(url.includes("?")){
+        if (url) {
+            if (url.includes("?")) {
                 url = url.split("?")[0];
             }
             return url;
         }
         return "home";
     }
-      /**
+
+    /**
 
      * @description Get the querystring as an object
      *
@@ -124,33 +127,28 @@ export default class App {
                         this.HandleLinks(false);
 
                     }
-                    if(!Login_Controller.isLoggedIn()){
-                           if(other_links[i].attributes.getNamedItem('needLogin')){
-                               other_links[i].style.display = "none";
-                           }
+                    if (!Login_Controller.isLoggedIn()) {
+                        if (other_links[i].attributes.getNamedItem('needLogin')) {
+                            other_links[i].style.display = "none";
+                        }
                         this.HandleLinks(true);
                     }
                 }
-
             }
             var nav_page = null;
 
             const current_page = App.GetCurrentPage();
             if (current_page !== "") {
 
-                if(current_page.includes('/')){
+                if (current_page.includes('/')) {
                     nav_page = document.querySelector(".topnav #" + current_page.replace('/', '_'));
-                }else{
+                } else {
                     nav_page = document.querySelector(".topnav #" + current_page);
                 }
-
-
             }
-
             if (nav_page) {
                 nav_page.classList.add("active");
             }
-
         } else {
 
         }
@@ -196,6 +194,46 @@ export default class App {
                 this.redirectToLogin()
                 break;
         }
+    }
+
+    static ShowNotifyError(title, message) {
+        new Notify({
+            status: 'error',
+            title: title,
+            text: message,
+            effect: 'fade',
+            speed: 300,
+            customClass: null,
+            customIcon: null,
+            showIcon: true,
+            showCloseButton: true,
+            autoclose: true,
+            autotimeout: 3000,
+            gap: 20,
+            distance: 20,
+            type: 1,
+            position: 'right top'
+        })
+    }
+
+    static ShowNotifySuccess(title, message) {
+        new Notify({
+            status: 'success',
+            title: title,
+            text: message,
+            effect: 'fade',
+            speed: 300,
+            customClass: null,
+            customIcon: null,
+            showIcon: true,
+            showCloseButton: true,
+            autoclose: true,
+            autotimeout: 3000,
+            gap: 20,
+            distance: 20,
+            type: 1,
+            position: 'right top'
+        })
     }
 
     /**

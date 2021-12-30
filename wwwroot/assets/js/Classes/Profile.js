@@ -6,10 +6,14 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import Intressed from "./Intressed.js";
+
+import FileManager from "./FileManager.js";
 import App from "./app.js";
+import Notify from "../../../vendors/Notify/notify.js";
 
 
 export default class Profile {
+
 
 
     constructor() {
@@ -498,12 +502,20 @@ export default class Profile {
      */
     async setProfilePicture(uplaudEl, previewEl) {
         try {
-            const dataUrl = await FYSCloud.Utils.getDataUrl(uplaudEl);
-            const result = await FYSCloud.API.uploadFile("userprofile_" + this.id + ".png", dataUrl.url, true);
-            await this.update('profile', result)
-            this.updateProfilePreview(previewEl, result);
-        } catch (e) {
 
+            const dataUrl = await FYSCloud.Utils.getDataUrl(uplaudEl);
+            const bestand = new FileManager(dataUrl);
+            if(bestand.isImage()){
+                const result = await FYSCloud.API.uploadFile("userprofile_" + this.id + ".png", dataUrl.url, true);
+                await this.update('profile', result)
+                this.updateProfilePreview(previewEl, result);
+                App.ShowNotifySuccess("Profiel foto","Succesvol opgeslagen")
+            }else{
+                App.ShowNotifyError("Profiel foto","Bestand is geen foto, of extensie wordt niet gesupport");
+            }
+        } catch (e) {
+            App.ShowNotifyError("Foto niet kunnen veranderen",'Foutje:' + e);
+            console.log(e);
         }
     }
 

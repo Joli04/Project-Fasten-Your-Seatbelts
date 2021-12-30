@@ -15,15 +15,11 @@ export default class Profile_Controller extends Controller {
 
             const profiel = new Profile();
             const query = App.getFromQueryObject();
-            console.log(query);
             if (query.id > 0) {
                 await profiel.setProfile(query.id);
                     document.getElementById('edit_btn').style.display = 'none';
                     const change_profile = document.querySelector("#contact_btn");
                     change_profile.addEventListener('click', contact);
-
-              //  document.getElementById('edit_btn').style.display = 'none';
-
                 function contact() {
                     window.open(`mailto:${profiel.email}`);
                 }

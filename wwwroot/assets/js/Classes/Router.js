@@ -64,13 +64,12 @@ Router.prototype = {
 
     goToRoute: function (route) {
         (async function (scope) {
-
-            if(route.auth && !scope.auth){
-              return App.redirect('#/login');
+            if (route.auth && !scope.auth) {
+                return App.redirect('#/login');
             }
             const url = await route.render().view,
                 http = new XMLHttpRequest();
-            http.onreadystatechange = function () {
+            http.onreadystatechange = async function () {
                 if (this.readyState === 4 && this.status === 200) {
                     scope.rootElement.innerHTML = this.responseText;
                 }

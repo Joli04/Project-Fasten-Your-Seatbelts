@@ -16,15 +16,12 @@ export default class Wizard_Controller extends Controller {
         this.currentTab = 0; // Current tab is set to be the first tab (0)
         const profiel = new Profile();
         await profiel.setProfile();
-        
-        document.querySelector("#nextBtn")
-            .addEventListener("click", this.nextPrev(1));
-        document.querySelector("#prevBtn")
-            .addEventListener("click", this.nextPrev(-1));
+
         const intressFilter = new Filter(document.querySelector("#interests_table"), "intressed", "name", "name", profiel.id);
         //const CountrieFilter = new Filter(document.querySelector("#countries_table"), "countries", "names", "lang_short", profiel.id);
 
-
+        document.querySelector("#nextBtn").addEventListener("click", this.nextPrev(1));
+        document.querySelector("#prevBtn").addEventListener("click", this.nextPrev(-1));
         //Get intress
         await intressFilter.filter();
         //await CountrieFilter.filter();
@@ -68,7 +65,7 @@ export default class Wizard_Controller extends Controller {
     }
 
     nextPrev(tab) {
-
+        console.log("clicked");
         // This function will figure out which tab to display
         var x = document.getElementsByClassName("tab");
         // Exit the function if any field in the current tab is invalid:
@@ -119,6 +116,6 @@ export default class Wizard_Controller extends Controller {
     }
 
     render() {
-        return new view('profile_wizard.html', "Commonflight Verify account");
+        return new view('profile_wizard.html', "Commonflight profiel wizard");
     }
 }
