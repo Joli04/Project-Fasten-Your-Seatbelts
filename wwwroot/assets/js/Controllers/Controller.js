@@ -14,23 +14,24 @@ export default class Controller{
         this.model = model;
 
     }
-    async loadTemplate(){
-        const profiel = new Profile();
-        await profiel.setProfile();
-        //Remove Basic layouts
-        document.querySelector("body").remove();
-        document.querySelector("html").append(document.createElement("body"))
 
-        //Load admin layout
-        const url = "layouts/app.html",
-            http = new XMLHttpRequest();
-        http.onreadystatechange = async function () {
-            if (this.readyState === 4 && this.status === 200) {
-                document.querySelector("body").innerHTML = this.response;
-            }
+    async loadTemplate(){
+        window.onchange = function () {
+            //Remove Basic layouts
+            document.querySelector("body").remove();
+            document.querySelector("html").append(document.createElement("body"))
+
+            //Load admin layout
+            const url = "layouts/app.html",
+                http = new XMLHttpRequest();
+            http.onreadystatechange = async function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.querySelector("body").innerHTML = this.response;
+                }
+            };
+            http.open('GET', url, true);
+            http.send();
         };
-        http.open('GET', url, true);
-        http.send();
     }
     /**
      * Return a list

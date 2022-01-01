@@ -67,6 +67,9 @@ Router.prototype = {
             if (route.auth && !scope.auth) {
                 return App.redirect('#/login');
             }
+
+            await route.controller.loadTemplate();
+
             const url = await route.render().view,
                 http = new XMLHttpRequest();
             http.onreadystatechange = async function () {

@@ -10,13 +10,11 @@ export default class AdminBaseController extends Controller {
 
     constructor(model, view) {
         super(model, view);
-
     }
     async loadTemplate()
     {
         const profiel = new Profile();
         await profiel.setProfile();
-        console.log(profiel.account_type);
         if(profiel.account_type === "user"){
             App.redirect("#/profiel")
             App.ShowNotifyError("Geen toegang", "Je hebt helaas geen toegang tot deze pagina")
