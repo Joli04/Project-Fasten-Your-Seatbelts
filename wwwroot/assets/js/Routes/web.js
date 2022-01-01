@@ -11,6 +11,7 @@ import Wizard_Controller from "../Controllers/Wizard_Controller.js";
 import Matches_Controller from "../Controllers/Matches_Controller.js";
 
 import Admin_Controller from '../Controllers/Admin_Controller.js';
+import MatchRequestController from "../Controllers/MatchRequestController.js";
 /**
  *
  * @type {Route[]}
@@ -57,6 +58,10 @@ const routes = [
     new Route('admin', {
         controller: new Admin_Controller,
         method: 'index'
+    },true),
+    new Route('match/request', {
+        controller: new MatchRequestController,
+        method: 'request'
     },true),
 ];
 

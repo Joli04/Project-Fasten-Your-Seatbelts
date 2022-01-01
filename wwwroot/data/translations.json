@@ -222,5 +222,19 @@
       "nl": "Selecteer een land",
       "en": "Select a country"
     }
+  },
+  "matchRequest": {
+    "from": {
+      "nl": "Match aanvraag van",
+      "en": "match request from"
+    },
+    "accept": {
+      "nl": "Accepteer",
+      "en": "Accept"
+    },
+    "deny": {
+      "nl": "Weiger",
+      "en": "deny"
+    }
   }
 }

@@ -12,18 +12,14 @@ import Profile from "../Classes/Profile.js";
 export default class Profile_Controller extends Controller {
 
     async show() {
-
         this.profiel = new Profile();
         const query = App.getFromQueryObject();
         if (query.id > 0) {
             await this.profiel.setProfile(query.id);
             document.getElementById('edit_btn').style.display = 'none';
             const change_profile = document.querySelector("#contact_btn");
-            change_profile.addEventListener('click', contact);
+            change_profile.addEventListener('click', this.contact.bind(this,this.profiel));
 
-            function contact() {
-                window.open(`mailto:${this.profiel.email}`);
-            }
 
         } else {
             await this.profiel.setProfile();
@@ -51,7 +47,13 @@ export default class Profile_Controller extends Controller {
 
 
     }
-
+    async contact(p) {
+        const user = new Profile();
+        await user.setProfile(); //Get loggedin user data
+        await user.sendRequest(p.id);
+        // window.open(`mailto:${this.profiel.email}`);
+        return null;
+    }
     async loadPublicProfile() {
         var fullName = document.querySelector('.profile_name');
         fullName.innerHTML = this.profiel.getFullName();
