@@ -1,4 +1,0 @@
-
-Wizard.prototype = {
-
-}

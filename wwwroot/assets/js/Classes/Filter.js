@@ -96,10 +96,9 @@ export default class Filter {
             const selection = App.findObjectByLabel(this.selections[i]);
             const label = document.createElement('label');
             label.classList.add('todo');
-            label.id = this.selections[i].id;
+            label.id = "filter_"+this.query_table+ this.selections[i].id;
 
             var param = selection[this.query_select];
-            console.log(param);
             label.innerHTML = " <input class=\"todo__state\" value=" + selection.id + " type=\"checkbox\" />\n" +
                 "      \n" +
                 "                                  <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 200 25\" class=\"todo__icon\">\n" +
@@ -112,7 +111,7 @@ export default class Filter {
                 "                                    <div class=\"todo__text\">" + param + "</div>";
             this.el.appendChild(label);
 
-            document.getElementById(this.selections[i].id).addEventListener("change", this.select.bind(this, selection.id));
+            document.getElementById("filter_"+this.query_table+ this.selections[i].id).addEventListener("change", this.select.bind(this, selection.id));
         }
     }
 

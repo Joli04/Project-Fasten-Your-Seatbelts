@@ -68,7 +68,10 @@ Router.prototype = {
                 return App.redirect('#/login');
             }
 
-            await route.controller.loadTemplate();
+           if(!document.body || route.name ==="admin"){
+               await route.controller.loadTemplate();
+           }
+
 
             const url = await route.render().view,
                 http = new XMLHttpRequest();

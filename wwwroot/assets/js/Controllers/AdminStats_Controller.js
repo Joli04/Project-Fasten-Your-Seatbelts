@@ -17,6 +17,6 @@ export default class Admin_Controller extends AdminBaseController
     }
     render() {
 
-        return new view('admin/dashboard.html',"Commonflight Admin");
+        return new view('dashboard.html',"Commonflight Admin");
     }
 }

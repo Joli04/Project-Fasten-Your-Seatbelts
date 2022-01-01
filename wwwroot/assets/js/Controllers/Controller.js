@@ -16,7 +16,6 @@ export default class Controller{
     }
 
     async loadTemplate(){
-        window.onchange = function () {
             //Remove Basic layouts
             document.querySelector("body").remove();
             document.querySelector("html").append(document.createElement("body"))
@@ -31,7 +30,7 @@ export default class Controller{
             };
             http.open('GET', url, true);
             http.send();
-        };
+
     }
     /**
      * Return a list

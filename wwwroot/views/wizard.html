@@ -1,0 +1,43 @@
+<div class="container bg-gray">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/wizard.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="vendors/quill/css/theme/white.css"/>
+    <div class="wizard_container">
+        <h1 class="header">Profiel afronden</h1>
+        <div class="tab">
+            <h4  class="sub_text">Selecteer je interesses</h4>
+            <div>
+                <div id="interests_table" class="todo-list"></div>
+            </div>
+        </div>
+
+        <div class="tab">
+            <h4 class="sub_text"> Selectie van landen waarnaar je naar toe zou willen </h4>
+            <div>
+                <div id="countries_table" class="todo-list"></div>
+            </div>
+        </div>
+        <div class="tab bio">
+            <h4>Bio toevoegen</h4>
+            <div id="editor">
+                <p class="profile__bio" id="profile__bio">
+
+                </p> <!-- Bio -->
+            </div>
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" onclick="nextPrev(-1)" id="prevBtn">Vorige</button>
+                <button type="button" onclick="nextPrev(1)" id="nextBtn">Volgende</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </div>
+    <script>
+
+    </script>
+</div>

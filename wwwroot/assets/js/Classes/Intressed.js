@@ -37,7 +37,7 @@ export default class Intressed {
             const intress = App.findObjectByLabel(this.intressed[i]);
             const label = document.createElement('label');
             label.classList.add('todo');
-            label.id = this.intressed[i].id;
+            label.id = "intress_"+this.intressed[i].id;
 
             label.innerHTML = " <input class=\"todo__state\" value="+intress.id+" type=\"checkbox\" />\n" +
                 "      \n" +
@@ -63,7 +63,6 @@ export default class Intressed {
     }
     select(id){
        const key = this.searchForId(id);
-
        if(!key){
            this.search = "";
            this.selected.push(id);
@@ -74,7 +73,7 @@ export default class Intressed {
 
     arrayRemove(arr, value) { 
         return arr.filter(function(ele){ 
-            return ele != value; 
+            return ele !== value;
         });
     }
 
