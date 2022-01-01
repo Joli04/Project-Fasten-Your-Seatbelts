@@ -5,11 +5,9 @@
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
-import Intressed from "./Intressed.js";
 
 import FileManager from "./FileManager.js";
 import App from "./app.js";
-import Notify from "../../../vendors/Notify/notify.js";
 
 
 export default class Profile {
@@ -41,12 +39,51 @@ export default class Profile {
     }
 
 
-    getMatches() {
+    async getMatches() {
         this.matches = [];
+        try {
+            let data = await FYSCloud.API.queryDatabase("SELECT * from user_matches where user_id=" + this.id);
+            this.matches = data;
+        } catch (e) {
+            console.log('Matches : ' + e);
+            this.matches = {};
+        }
     }
 
-    getIntress() {
+    async getCountry() {
+        this.countries = [];
+        try {
+            this.countries = await FYSCloud.API.queryDatabase("SELECT created_at,names,user_countries.id FROM user_countries INNER JOIN countries ON user_countries.countries_id = countries.id where user_countries.user_id=" + this.id);
+        } catch (e) {
+            console.log('Profile : ' + e);
+            this.countries = {};
+        }
+    }
+    async getIntress() {
+        this.intressed = [];
+        try {
+            this.intressed = await FYSCloud.API.queryDatabase("SELECT created_at,name,user_intressed.id FROM user_intressed INNER JOIN intressed ON user_intressed.intressed_id = intressed.id where user_intressed.user_id=" + this.id);
+        } catch (e) {
+            console.log('Profile : ' + e);
+            this.intressed = {};
+        }
+    }
 
+    async GetIntressCountryString(){
+        var CountryString ="";
+        await this.getCountry();
+        for (const country in this.countries) {
+            CountryString = CountryString +" "+ this.countries[country].names;
+        }
+        return CountryString;
+    }
+    async GetIntressString(){
+        var InstressString ="";
+        await this.getIntress();
+        for (const instress in this.intressed) {
+            InstressString = InstressString +" "+ this.intressed[instress].name;
+        }
+        return InstressString;
     }
 
     /**
