@@ -140,6 +140,7 @@ export default class Profile {
         this.verified_at = data.email_verified_at;
         this.country = data.orgin_country;
         this.country_id = data.country_origin_id;
+        this.public = data.public;
         if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
             App.redirect("#/profile/wizard");
@@ -149,6 +150,10 @@ export default class Profile {
     verify() {
         var time = new Date().getTime();
         this.update('email_verified_at', time);
+    }
+
+    getPublic() {
+        return this.public;
     }
 
     async sendVerification() {
@@ -530,7 +535,7 @@ export default class Profile {
 
     async getData() {
             try {
-                let data = await FYSCloud.API.queryDatabase("SELECT users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
+                let data = await FYSCloud.API.queryDatabase("SELECT users.public,users.country_origin_id,users.email_verified_at,users.id,users.first_name,users.last_name,users.password,users.email,users.account_type,users.profile,users.account_type,users.birthday,countries.names as orgin_country ,users.profile,users.gender,users.bio FROM users INNER JOIN countries ON users.country_origin_id = countries.id where users.id = ?", [this.id]);
                 return data[0]
             } catch (e) {
                 console.log(e);

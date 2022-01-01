@@ -13,19 +13,19 @@ export default class Profile_Controller extends Controller {
 
     async show() {
 
-            const profiel = new Profile();
+            this.profiel = new Profile();
             const query = App.getFromQueryObject();
             if (query.id > 0) {
-                await profiel.setProfile(query.id);
+                await this.profiel.setProfile(query.id);
                     document.getElementById('edit_btn').style.display = 'none';
                     const change_profile = document.querySelector("#contact_btn");
                     change_profile.addEventListener('click', contact);
                 function contact() {
-                    window.open(`mailto:${profiel.email}`);
+                    window.open(`mailto:${this.profiel.email}`);
                 }
 
             } else {
-                await profiel.setProfile();
+                await this.profiel.setProfile();
                 document.getElementById('contact_btn').style.display = 'none'
                 const change_profile = document.querySelector("#edit_btn")
                 change_profile.addEventListener('click', edit);
@@ -34,36 +34,58 @@ export default class Profile_Controller extends Controller {
                 }
             }
 
-            var fullName = document.querySelector('.profile_name');
-            fullName.innerHTML = profiel.getFullName();
+            if(this.profiel.getPublic()){
+                console.log("Public");
+                this.loadPublicProfile();
+            } else {
+                if(query.id > 0){
+                    console.log("Private");
+                    this.loadPrivateProfile();
+                } else {
+                    console.log("Private (but personal)");
+                    this.loadPublicProfile();
+                }
+            }
+
+        
+    }
+
+    loadPublicProfile() {
+        var fullName = document.querySelector('.profile_name');
+            fullName.innerHTML = this.profiel.getFullName();
 
             var bio = document.querySelector('.profile__bio');
 
-            bio.innerHTML = profiel.bio || "";
+            bio.innerHTML = this.profiel.bio || "";
             var intress = document.querySelector('.profile_name');
 
             var age = document.querySelector('#profiel_age');
-            const d = new Date(profiel.birthday);
+            const d = new Date(this.profiel.birthday);
             age.innerHTML = d.toLocaleDateString().replace("T", " ");
 
             var gender = document.querySelector('#profiel_gender');
 
             //capitalizing first letter of gender
-            gender.innerHTML = profiel.gender.charAt(0).toUpperCase() + profiel.gender.slice(1)
+            gender.innerHTML = this.profiel.gender.charAt(0).toUpperCase() + this.profiel.gender.slice(1)
 
             var country = document.querySelector('#profiel_country');
 
             //capitalizing first letter of country name
-            const arr = profiel.getQountry().split(" ");
+            const arr = this.profiel.getQountry().split(" ");
             for (var i = 0; i < arr.length; i++) {
                 arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
 
             }
             country.innerHTML = arr.join(" ");
 
-            document.getElementById("avatar").src = profiel.getProfilePicture();
-
+            document.getElementById("avatar").src = this.profiel.getProfilePicture();
     }
+
+    loadPrivateProfile() {
+        var fullName = document.querySelector('.profile_name');
+            fullName.innerHTML = this.profiel.getFullName();
+    }
+
     verify(){
         console.log("Verify started");
         const profiel = new Profile();
