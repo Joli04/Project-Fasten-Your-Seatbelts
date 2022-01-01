@@ -1,20 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
 
-.wrapper {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+.faq {
+    padding: 50px 20px 0 20px;
 }
 
-.faqTitle{
-    text-align: center;
+.faq__title {
+    color: var(--red);
 }
 
+.faq__content {
+    margin-bottom: 25px;
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .faq {
+        padding: 75px 50px 15px 50px;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .faq {
+        padding: 75px 100px 15px 100px;
+    }
+}
+
+/* --------------------------------- */
+/* ----------[ ACCORDION ]---------- */
+/* --------------------------------- */
 .accordion .accordion-item {
     border-bottom: 1px solid #e5e5e5;
 }
 
 .accordion .accordion-item button[aria-expanded='true'] {
-    border-bottom: 1px solid #00bce2;
+    border-bottom: 1px solid var(--dark_red);
 }
 
 .accordion button {
@@ -23,7 +41,7 @@
     text-align: left;
     width: 100%;
     padding: 1em 0;
-    color: #7288a2;
+    color: var(--grey);
     font-size: 1.15rem;
     font-weight: 400;
     border: none;
@@ -34,14 +52,14 @@
 .accordion button:hover,
 .accordion button:focus {
     cursor: pointer;
-    color: #00bce2;
+    color: var(--dark_red);
 }
 
 .accordion button:hover::after,
 .accordion button:focus::after {
     cursor: pointer;
-    color: #00bce2;
-    border: 1px solid #00bce2;
+    color: var(--dark_red);
+    border: 1px solid var(--dark_red);
 }
 
 .accordion button .accordion-title {
@@ -81,7 +99,7 @@
 }
 
 .accordion button[aria-expanded='true'] {
-    color: #03b5d2;
+    color: var(--dark_red);
 }
 .accordion button[aria-expanded='true'] .icon::after {
     width: 0;
@@ -98,6 +116,7 @@
     overflow: hidden;
     transition: opacity 200ms linear, max-height 200ms linear;
     will-change: opacity, max-height;
+    color: var(--grey);
 }
 .accordion .accordion-content p {
     font-size: 1rem;

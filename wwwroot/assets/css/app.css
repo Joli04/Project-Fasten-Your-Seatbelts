@@ -9,7 +9,8 @@ Setup defaults
     --green:#26a514;
     --light_blue:#00bce2;
     --white:#ffffff;
-    --grey: #666;
+    --grey: #666666;
+    --light_grey: #F0F0F0;
     --breakpoint-sm: 576px /* var(--breakpoint-sm) */;
     --breakpoint-md: 768px /* var(--breakpoint-md) */;
     --breakpoint-lg: 992px /* var(--breakpoint-lg) */;
@@ -19,6 +20,9 @@ Setup defaults
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.bg-gray {
+    background-color: var(--light_grey);
+}
 
 /* Dit zorgt ervoor dat de rest van de nav niet zichtbaar is.
 /* Alleen nadat je Engels als taal kiest wordt het zichtbaar.
@@ -31,10 +35,20 @@ Setup defaults
 /*    visibility: visible;*/
 /*}*/
 
-.error {
-    width: 60%;
-    color: var(--white);
+.errorWrapper {
+    width: 100%;
     background-color: var(--red);
+}
+
+.error {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 20px;
+    color: var(--white);
+}
+
+.error:first-child {
+    padding: 20px 0;
 }
 
 .btn {
@@ -71,7 +85,7 @@ html, * {
 }
 
 body {
-    background-color: #484848;
+    background-color: var(--white);
     cursor: default;
 }
 
@@ -196,7 +210,7 @@ h3 {
 /* --------------------------- */
 .topnav {
     overflow: hidden;
-    padding: 15px 50px 75px 50px;
+    padding: 15px 50px 15px 20px;
 }
 
 .topnav a {
@@ -241,6 +255,7 @@ h3 {
 @media screen and (max-width: 600px) {
     .topnav {
         padding: 0;
+        z-index: 1;
     }
 
     .topnav span {
@@ -308,7 +323,7 @@ h3 {
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
     .topnav {
         overflow: hidden;
-        padding: 15px 25px 75px 25px;
+        padding: 15px 25px 15px 20px;
     }
 }
 
@@ -366,12 +381,7 @@ h3 {
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
 
     .fourSteps {
-        padding: 0 50px 15px 50px;
-    }
-
-    .fourSteps__steps {
-        flex-direction: row;
-        text-align: left;
+        padding: 75px 50px 15px 50px;
     }
 
     .stepContainer__title {
@@ -386,7 +396,12 @@ h3 {
 @media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
 
     .fourSteps {
-        padding: 0 100px 15px 100px;
+        padding: 75px 100px 15px 100px;
+    }
+
+    .fourSteps__steps {
+        flex-direction: row;
+        text-align: left;
     }
 
     .stepContainer {
@@ -434,7 +449,6 @@ h3 {
 /* ---------------------------- */
 .info {
     padding-bottom: 20px;
-    background-color: #F0F0F0;
 }
 
 .infoContainer {
@@ -462,7 +476,7 @@ h3 {
     margin: 0 20px;
 }
 
-.infoContainer__divider {
+.separator {
     position: relative;
 }
 
@@ -470,7 +484,7 @@ h3 {
     color: var(--red);
 }
 
-.infoContainer__divider hr {
+.separator hr {
     width: 35%;
     display: inline-block;
     vertical-align: middle;
@@ -478,7 +492,7 @@ h3 {
     border: solid 2px var(--dark_red);
 }
 
-.infoContainer__divider:after {
+.separator:after {
     display: inline-block;
     position: absolute;
     height: 35px;
@@ -504,6 +518,10 @@ h3 {
 @media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
     .infoContainer__image {
         height: 425px;
+    }
+
+    .separator:after {
+        left: 35%;
     }
 }
 
@@ -536,27 +554,59 @@ h3 {
 /* ----------[ FOOTER ]---------- */
 /* ------------------------------ */
 footer {
-    height: 2%;
-    width: 100%;
-    left: 0;
-    position: relative;
-    bottom: 0;
     display: flex;
     flex-direction: column;
 }
 
-.footer_content {
-    background-color: #666;
+.footer__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px 0 20px;
+    background-color: var(--light_grey);
 }
 
-.copyright_container {
-    background: #666;
-    width: 100%;
+.footer__title {
+    color: var(--red);
+}
+
+.footer__item {
+    color: var(--red);
+    text-decoration: none;
+}
+
+.footer__item:hover {
+    color: var(--dark_red);
+    text-decoration: underline;
+}
+
+.footer__corendon img {
+    width: 150px;
+    height: auto;
+    margin: 75px 0 15px;
 }
 
 .copyright {
-    text-align: center;
+    padding: 10px 0;
+    background-color: var(--red);
     color: var(--white);
+    font-weight: bold;
+    text-align: center;
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .footer__wrapper {
+        padding: 75px 50px 15px 50px;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .footer__wrapper {
+        padding: 75px 100px 15px 100px;
+    }
+
+    .footer__corendon img {
+        float: right;
+    }
 }
 
 /* ----------------------------------- */
@@ -640,5 +690,29 @@ footer {
     }
     100% {
         width: 100%;
+    }
+}
+
+/* ------------------------------------ */
+/* ----------[ AUTH WRAPPER ]---------- */
+/* ------------------------------------ */
+.wrapper__auth {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: var(--white);
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .wrapper__auth {
+        padding: 75px 50px;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .wrapper__auth {
+        padding: 75px 100px;
     }
 }

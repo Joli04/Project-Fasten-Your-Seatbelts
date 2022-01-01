@@ -21,7 +21,6 @@ export default class Countries {
         const countries = await c.get();
         for (const countrie in countries) {
             const option = document.createElement('option');
-            console.log(countries[countrie].id);
             option.value = countries[countrie].id;
             option.innerHTML = countries[countrie].names;
             Selector.appendChild(option);

@@ -1,227 +1,208 @@
-@font-face {
-    font-family: 'robotoblack';
-    src: url('../../fonts/roboto-black-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-black-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+#nav .topnav {
+    padding-bottom: 0;
 }
 
-@font-face {
-    font-family: 'robotoblack_italic';
-    src: url('../../fonts/roboto-blackitalic-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-blackitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+@media screen and (max-width: 600px) {
+    #nav .responsive {
+        border-radius: 0;
+    }
 }
 
-@font-face {
-    font-family: 'robotobold';
-    src: url('../../fonts/roboto-bold-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    #nav .topnav a {
+        padding: 14px 10px;
+    }
 
+    #nav .topnav__item {
+        margin-top: 10px;
+        font-size: 15px;
+    }
 }
 
-@font-face {
-    font-family: 'robotobold_italic';
-    src: url('../../fonts/roboto-bolditalic-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-bolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    #nav .topnav a {
+        padding: 14px 16px;
+    }
 
+    #nav .topnav__item {
+        margin-top: 5px;
+        font-size: 20px;
+    }
 }
 
-@font-face {
-    font-family: 'robotoitalic';
-    src: url('../../fonts/roboto-italic-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+/* ------------------------------- */
+/* ----------[ PROFILE ]---------- */
+/* ------------------------------- */
 
+.profile__wrapper {
+    padding: 50px 20px 0 20px;
 }
 
-@font-face {
-    font-family: 'robotolight';
-    src: url('../../fonts/roboto-light-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+.profile__title {
+    color: var(--red);
 }
 
-@font-face {
-    font-family: 'robotolight_italic';
-    src: url('../../fonts/roboto-lightitalic-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+.profile__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
 }
 
-@font-face {
-    font-family: 'robotomedium';
-    src: url('../../fonts/roboto-medium-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'robotomedium_italic';
-    src: url('../../fonts/roboto-mediumitalic-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-mediumitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'robotoregular';
-    src: url('../../fonts/roboto-regular-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'robotothin';
-    src: url('../../fonts/roboto-thin-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-thin-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'robotothin_italic';
-    src: url('../../fonts/roboto-thinitalic-webfont.woff2') format('woff2'),
-         url('../../fonts/roboto-thinitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-/* --------------------------------------------------------------------------------------------- */
-
-*{
-    font-family: 'robotoregular';
-}
-
-h1 {
-    font-family: 'robotobold' !important;
-}
-
-h2 {
-    font-family: 'robotobold' !important;
-}
-
-.card {
-    background-color: var(--white);
-    color: black;
-    border-radius: 20px;
-    left: 350px;
-    padding: 0;
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
-.grid-container .left {
-    margin-left: 10%;
-    margin-top: 8%;
-    height: 60%;
-    margin-bottom: 10%;
-}
-
-.card .right {
-    margin-left: 5%;
-    display: inline-block;
-}
-
-.card .profile_name {
-    border: none;
-    font-family: 'robotobold', serif !important;
-    font-size: x-large;
-}
-
-.card .profile_bio {
-    margin-right: 40px;
-}
-
-
-.card .align_image {
-    margin-top: 3%;
-    margin-bottom: 1%;
-    width: 80%;
-}
-
-
-.container {
-    position: relative;
-    width: 60%;
-}
-.card .container .image{
-    border-radius: 150px;
-    width: 80%;
-    margin-top: 3%;
-    margin-bottom: 1%;
-    opacity: 1;
-    display: block;
+.profile__image {
+    width: 150px;
     height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-}
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-}
-.uplaud {
-    border-radius: 100px;
-    background-color: var(--dark_green);
-    color: white;
-    font-size: 20px;
-    padding: 16px 32px;
-}
- input[type="file"] {
-    opacity: 0; /* make transparent */
-    z-index: -1; /* move under anything else */
-    position: absolute; /* don't let it take up space */
+    margin-bottom: 25px;
+    border: solid 2px var(--red);
+    border-radius: 5px;
 }
 
-.container:hover .image {
-    opacity: 0.3;
+.profile__info {
+    margin-bottom: 25px;
 }
 
-.container:hover .middle {
-    opacity: 1;
-}
-
-
-.main .align_left {
-    display: inline-block;
-    margin-left: 2%;
-}
-
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 20px;
-}
-
-.active {
+.profile__label {
+    color: var(--red);
+    font-size: 18px;
     font-weight: bold;
-    text-decoration: underline;
-    cursor: default;
+}
+
+.profile__item {
+    margin: 0 0 15px 5px;
+}
+
+.profile__item:last-of-type {
+    margin-bottom: 0;
+}
+
+.profile__button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /*justify-content: center;*/
+    margin-bottom: 15px;
+}
+
+.profile__button button {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    background-color: var(--dark_green);
+    border-radius: 5px;
+    transition: background-color .5s;
+    cursor: pointer;
+}
+
+.profile__button button:hover {
+    background-color: var(--green);
+}
+.profile__button button:hover > .button__text {
+    background-color: var(--dark_green);
+}
+
+.button__text {
+    width: 78%;
+    background-color: var(--green);
+    font-size: 25px;
+    color: var(--white);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.button__icon {
+    width: 19px;
+    margin: auto;
+}
+
+.profile__right {
+    margin-bottom: 50px;
+}
+
+.profile__bio {
+    margin: 0 0 15px 5px;
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .profile__wrapper {
+        padding: 75px 50px 15px 50px;
+    }
+
+    .profile__button {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .profile__wrapper {
+        padding: 75px 100px 15px 100px;
+    }
+}
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    .profile__container {
+        flex-direction: row;
+    }
+
+    .profile__left, .profile__right {
+        width: 625px;
+    }
+
+    .profile__right {
+        margin-bottom: 0;
+    }
+}
+
+/* ------------------------------------ */
+/* ----------[ EDIT PROFILE ]---------- */
+/* ------------------------------------ */
+.profile__edit .profile__image {
+    margin-bottom: 5px;
+}
+
+.profile__edit .edit__item {
+    margin-bottom: 15px;
+}
+
+.profile__edit .edit__item:last-of-type {
+    margin-bottom: 0;
+}
+
+.profile__edit .edit__input {
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+    outline: none;
+}
+
+.profile__edit .edit__input:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+    outline: none;
+}
+
+.profile__edit .edit__gender {
+    background-color: var(--white);
+}
+
+.profile__edit .edit__country label {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--grey);
+}
+
+.profile__edit .edit__country #countries {
+    margin-bottom: 25px;
+    background-color: var(--white);
+    font-size: 20px;
+    color: var(--grey);
+    border: none;
+    border-bottom: solid 2px var(--grey);
+    outline: none;
+}
+.profile__edit .edit__country #countries:focus {
+    color: var(--dark_red);
+    border: none;
+    border-bottom: solid 2px var(--dark_red);
+    outline: none;
 }
