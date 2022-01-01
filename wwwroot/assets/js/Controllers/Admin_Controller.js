@@ -11,12 +11,13 @@ export default class Admin_Controller extends AdminBaseController
 {
     constructor() {
         super();
+        super.loadTemplate();
     }
     async index() {
 
     }
     render() {
-        super.loadTemplate();
+
         return new view('dashboard.html',"Commonflight Admin");
     }
 }
