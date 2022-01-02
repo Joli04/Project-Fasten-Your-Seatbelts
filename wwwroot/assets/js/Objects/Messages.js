@@ -3,6 +3,7 @@
  */
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
+import App from "../Classes/app.js";
 export default class Message {
     constructor(user) {
         this.user_id = user.id;
@@ -23,7 +24,8 @@ export default class Message {
         try {
             return await FYSCloud.API.queryDatabase("INSERT INTO messages(from_user_id,to_user_id,msg) VALUES (?,?,?);",[this.user_id,to,message]);
         } catch (e) {
-            console.log(e);
+           App.ShowNotifyError("Chat","Versturen mislukt");
+           console.log(e);
             return {};
         }
     }
