@@ -12,7 +12,6 @@ export default class Chat_controller extends Controller {
         await this.profiel.setProfile();
         this.messages = new Messages(this.profiel);
         const form = document.querySelector(".typing-area"),
-            incoming_id = form.querySelector(".incoming_id").value,
             inputField = form.querySelector(".input-field"),
             sendBtn = form.querySelector("button"),
             chatBox = document.querySelector(".chat-box");
@@ -29,8 +28,9 @@ export default class Chat_controller extends Controller {
             }
         }
 
-        sendBtn.onclick = () => {
-            if(this.messages.new(inputField.value,this.profiel.id)){
+        sendBtn.onclick = async () => {
+           console.log(await this.messages.send(inputField.value, 30));
+            if (true) {
                 inputField.value = "";
                 scrollToBottom();
             }
