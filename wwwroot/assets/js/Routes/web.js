@@ -12,6 +12,7 @@ import Matches_Controller from "../Controllers/Matches_Controller.js";
 
 import Admin_Controller from '../Controllers/Admin_Controller.js';
 import MatchRequestController from "../Controllers/MatchRequestController.js";
+import Chat_controller from "../Controllers/Chat_controller.js";
 /**
  *
  * @type {Route[]}
@@ -51,6 +52,10 @@ const routes = [
         controller: new Profile_Controller,
         method: 'verify'
     }),
+    new Route('profiel/chat', {
+        controller: new Chat_controller,
+        method: 'chat'
+    },true),
     new Route('profiel/wizard', {
         controller: new Wizard_Controller,
         method: 'show'

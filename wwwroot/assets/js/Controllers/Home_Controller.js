@@ -1,5 +1,5 @@
 /**
- * Profile controller
+ * Home controller
  */
 import Controller from './Controller.js';
 
