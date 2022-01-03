@@ -12,6 +12,11 @@ import Messages from "../Objects/Messages.js";
 export default class Chat_controller extends Controller {
 
     async chat() {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "./vendors/EmojiPicker/emojiPicker.js";
+        document.head.appendChild(script);
+
         this.message_id_set = new Set()
         this.message_list = []
 
@@ -58,6 +63,8 @@ export default class Chat_controller extends Controller {
         const otherUserProfilePic = document.querySelector('#profile_pic');
         const otherUserProfileName =  document.querySelector('.bar .name');
 
+
+
         for (let i = 0; i < allChats.length; i++) {
             let currentChat = allChats[i]
             var otherUserId = new Profile()
@@ -71,12 +78,12 @@ export default class Chat_controller extends Controller {
 
             if(currentChat.id == this.chat_id) {
                 const messages = await this.messages.get(this.chat_id);
-                menu_element.innerHTML += `<div class="contact"><div class="pic" style="background-image: url(${otherUserId.getProfilePicture()});"` +
+                menu_element.innerHTML += `<div class="contact" onclick=""><div class="pic" style="background-image: url(${otherUserId.getProfilePicture()});"` +
                    `></div><div class="badge">${messages.length}</div><div class="name">${otherUserId.getFullName()}</div>\n` +
                     `                <div class="message">` +
                     `                    Last chat` +
                     `                </div>` +
-                    `            </div>`;
+                    `            </a></div>`;
                 //menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}" class="active">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             } else {
                 //Show non active user
@@ -96,6 +103,16 @@ export default class Chat_controller extends Controller {
             inputField = form.querySelector(".input-field"),
             sendBtn = form.querySelector(".send"),
             chatBox = document.querySelector(".chat-box");
+
+        new FgEmojiPicker({
+            trigger: ['.emojiBtn'],
+            position: ['bottom', 'right'],
+            dir:'vendors/EmojiPicker/',
+            emit(obj, EmojiBtn) {
+                const emoji = obj.emoji;
+                inputField.value += emoji;
+            }
+        });
         form.onsubmit = (e) => {
             e.preventDefault();
             scrollToBottom()
