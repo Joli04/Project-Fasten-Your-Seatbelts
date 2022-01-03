@@ -23,15 +23,15 @@ export default class Chat_controller extends Controller {
             this.chat_id = query.id;
             let valid = await this.messages.checkValid(this.chat_id)
 
-            if(valid == false) {
+            if (valid == false) {
                 document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
-                App.ShowNotifyError("Chat","Chat bestaat niet / of geen toegang");
+                App.ShowNotifyError("Chat", "Chat bestaat niet / of geen toegang");
                 return;
             }
             App.ShowNotifySuccess("Chat", "Chat met id: " + query.id);
         } else {
             document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
-            App.ShowNotifyError("Chat","Chat id is missing");
+            App.ShowNotifyError("Chat", "Chat id is missing");
             return
         }
 
@@ -41,10 +41,10 @@ export default class Chat_controller extends Controller {
             inputField = form.querySelector(".input-field"),
             sendBtn = form.querySelector("button"),
             chatBox = document.querySelector(".chat-box");
-            form.onsubmit = (e) => {
-                e.preventDefault();
-                scrollToBottom()
-            }
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            scrollToBottom()
+        }
 
         inputField.focus();
         inputField.onkeyup = () => {
@@ -58,6 +58,7 @@ export default class Chat_controller extends Controller {
         sendBtn.onclick = async () => {
             await this.messages.send(this.chat_id, inputField.value, this.other_id)
             if (true) {
+                chatBox.classList.remove("active");
                 inputField.value = "";
                 scrollToBottom();
             }
@@ -77,14 +78,14 @@ export default class Chat_controller extends Controller {
 
             for (let i = 0; i < messages.length; i++) {
                 let message = messages[i]
-                if(this.message_id_set.has(message.msg_id)){
+                if (this.message_id_set.has(message.msg_id)) {
                 } else {
                     this.message_id_set.add(message.msg_id)
                     this.message_list.push(message);
 
                     let chat_element = document.getElementById('chat')
 
-                    if(message.from_user_id == this.profiel.id){
+                    if (message.from_user_id == this.profiel.id) {
                         chat_element.innerHTML += `<div class="chat outgoing">
                         <div class="details">
                             <p>${message.msg}</p>
