@@ -6,7 +6,7 @@ import {web} from "../Routes/web.js";
 import Login_Controller from "../Controllers/Login_Controller.js";
 import Profile from "./Profile.js";
 import Notify from "../../../vendors/Notify/notify.js";
-import OneSignal from "../../../vendors/OneSignal/OneSignalSDK.js";
+
 export default class App {
     constructor() {
         this.rootElement = document.getElementById("app");
