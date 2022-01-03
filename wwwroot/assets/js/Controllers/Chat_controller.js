@@ -68,17 +68,25 @@ export default class Chat_controller extends Controller {
             } else {
                 await otherUserId.setProfile(currentChat.first_user)
             }
-            if(currentChat.id == this.chat_id) {
 
-                menu_element.innerHTML += '<div class="contact"><div class="pic" style="background-image: url('+otherUserId.getProfilePicture()+');"' +
-                    '></div><div class="badge">14</div><div class="name">'+otherUserId.first_name+' '+ otherUserId.last_name+'</div>\n' +
-                    '                <div class="message">\n' +
-                    '                    Last chat' +
-                    '                </div>\n' +
-                    '            </div>';
+            if(currentChat.id == this.chat_id) {
+                const messages = await this.messages.get(this.chat_id);
+                menu_element.innerHTML += `<div class="contact"><div class="pic" style="background-image: url(${otherUserId.getProfilePicture()});"` +
+                   `></div><div class="badge">${messages.length}</div><div class="name">${otherUserId.getFullName()}</div>\n` +
+                    `                <div class="message">` +
+                    `                    Last chat` +
+                    `                </div>` +
+                    `            </div>`;
                 //menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}" class="active">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             } else {
-                //Show active user
+                //Show non active user
+                const messages = await this.messages.get(currentChat.id);
+                menu_element.innerHTML += `<div class="contact"><div class="pic" style="background-image: url(${otherUserId.getProfilePicture()});"` +
+                    `></div><div class="badge">${messages.length}</div><div class="name">${otherUserId.getFullName()}</div>\n` +
+                    `                <div class="message">` +
+                    `                    Last chat` +
+                    `                </div>` +
+                    `            </div>`;
                // menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             }
 
