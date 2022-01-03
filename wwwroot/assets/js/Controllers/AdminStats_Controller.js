@@ -8,13 +8,12 @@ import App from '../Classes/app.js';
 import AdminBaseController from "./AdminBaseController.js";
 import Profile from "../Classes/Profile.js";
 
-export default class Admin_Controller extends AdminBaseController
+export default class AdminStats_Controller extends AdminBaseController
 {
     constructor() {
         super();
     }
     async index() {
-        await super.loadTemplate();
         const user = new Profile();
         await user.setProfile();
 
