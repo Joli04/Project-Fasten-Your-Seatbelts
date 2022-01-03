@@ -119,18 +119,11 @@ export default class Chat_controller extends Controller {
         }
 
         //inputField.focus();
-        inputField.onkeyup = () => {
-            if (inputField.value !== "") {
-                sendBtn.classList.add("active");
-            } else {
-                sendBtn.classList.remove("active");
-            }
-        }
+
 
         sendBtn.onclick = async () => {
             await this.messages.send(this.chat_id, inputField.value, this.other_id)
             if (true) {
-                chatBox.classList.remove("active");
                 inputField.value = "";
                 scrollToBottom();
             }

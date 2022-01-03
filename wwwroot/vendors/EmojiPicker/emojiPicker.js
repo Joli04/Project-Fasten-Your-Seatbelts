@@ -59,15 +59,21 @@ const FgEmojiPicker = function(options) {
         search(e) {
             const val = e.target.value;
             if (!Array.isArray(this.emojiItems)) {
-                this.emojiItems = Array.from(e.target.closest('.fg-emoji-picker').querySelectorAll('.fg-emoji-picker-all-categories li'));
-            }
-            this.emojiItems.filter(emoji => {
-                if (!emoji.getAttribute('data-name').match(val)) {
-                    emoji.style.display = 'none'
-                } else {
-                    emoji.style.display = ''
+                if(e.target.closest('.fg-emoji-picker')){
+                    this.emojiItems = Array.from(e.target.closest('.fg-emoji-picker').querySelectorAll('.fg-emoji-picker-all-categories li'));
                 }
-            })
+
+            }
+            if(this.emojiItems >0){
+                this.emojiItems.filter(emoji => {
+                    if (!emoji.getAttribute('data-name').match(val)) {
+                        emoji.style.display = 'none'
+                    } else {
+                        emoji.style.display = ''
+                    }
+                })
+            }
+
 
             if (!val.length) this.emojiItems = undefined;
         },
