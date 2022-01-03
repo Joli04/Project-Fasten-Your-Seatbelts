@@ -6,7 +6,7 @@ import {web} from "../Routes/web.js";
 import Login_Controller from "../Controllers/Login_Controller.js";
 import Profile from "./Profile.js";
 import Notify from "../../../vendors/Notify/notify.js";
-
+import OneSignal from "../../../vendors/OneSignal/OneSignalSDK.js";
 export default class App {
     constructor() {
         this.rootElement = document.getElementById("app");
@@ -55,6 +55,14 @@ export default class App {
             this.addFooter(footerData);
         }
         this.initEvents();
+
+        //Init OneSignal for popup messages
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "4e42b8c3-8236-4855-8392-02923f49449f",
+            });
+        });
     }
 
     addHeader(data) {
