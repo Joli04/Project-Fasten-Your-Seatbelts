@@ -18,6 +18,7 @@ export default class Chat_controller extends Controller {
         this.messages = new Messages(this.profiel);
 
         const query = App.getFromQueryObject();
+
         if (query.id > 0) {
             this.chat_id = query.id;
             let valid = await this.messages.checkValid(this.chat_id)
@@ -29,7 +30,9 @@ export default class Chat_controller extends Controller {
             }
             App.ShowNotifySuccess("Chat", "Chat met id: " + query.id);
         } else {
+            document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
             App.ShowNotifyError("Chat","Chat id is missing");
+            return
         }
 
         this.other_id = await this.messages.getOther(this.chat_id)
