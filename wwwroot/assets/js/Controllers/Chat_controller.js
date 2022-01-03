@@ -3,6 +3,7 @@
  */
 import Controller from './Controller.js';
 
+import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import App from '../Classes/app.js';
 import view from "../Classes/View.js";
 import Profile from "../Classes/Profile.js";
@@ -21,6 +22,16 @@ export default class Chat_controller extends Controller {
 
         if (query.id > 0) {
             this.chat_id = query.id;
+            if(query.checknew == 1) {
+                const result = await this.messages.checkNew(this.chat_id)
+            
+                if(result != false) {
+                    App.redirect(`#/chat?id=${result[0].id}`)
+                }
+                return
+            }
+
+
             let valid = await this.messages.checkValid(this.chat_id)
 
             if (valid == false) {
@@ -36,6 +47,10 @@ export default class Chat_controller extends Controller {
         }
 
         this.other_id = await this.messages.getOther(this.chat_id)
+
+        this.other_profile = new Profile();
+        await this.other_profile.setProfile(this.other_id);
+        this.other_profile = await this.other_profile.getData()
 
         const form = document.querySelector(".typing-area"),
             inputField = form.querySelector(".input-field"),
@@ -76,14 +91,24 @@ export default class Chat_controller extends Controller {
         setInterval(async () => {
             const messages = await this.messages.get(this.chat_id);
 
+            let chat_element = document.getElementById('chat')
+
+            if(messages.length <= 0){
+                chat_element.innerHTML = `<p>Start de chat met het sturen van een leuk bericht naar ${this.other_profile.first_name}!</p>`
+                this.empty_chat = true
+            } else {
+                if(this.empty_chat == true) {
+                    chat_element.innerHTML = ""
+                    this.empty_chat = false
+                }
+            }
+
             for (let i = 0; i < messages.length; i++) {
                 let message = messages[i]
                 if (this.message_id_set.has(message.msg_id)) {
                 } else {
                     this.message_id_set.add(message.msg_id)
                     this.message_list.push(message);
-
-                    let chat_element = document.getElementById('chat')
 
                     if (message.from_user_id == this.profiel.id) {
                         chat_element.innerHTML += `<div class="chat outgoing">

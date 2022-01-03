@@ -20,10 +20,15 @@ export default class Profile_Controller extends Controller {
             const change_profile = document.querySelector("#contact_btn");
             change_profile.addEventListener('click', this.contact.bind(this,this.profiel));
 
+            const chat_btn = document.querySelector('#chat_btn')
+            chat_btn.addEventListener('click', () => {
+                App.redirect(`#/chat?id=${this.profiel.id}&checknew=1`);
+            })
 
         } else {
             await this.profiel.setProfile();
             document.getElementById('contact_btn').style.display = 'none'
+            document.getElementById('chat_btn').style.display = 'none';
             const change_profile = document.querySelector("#edit_btn")
             change_profile.addEventListener('click', edit);
 

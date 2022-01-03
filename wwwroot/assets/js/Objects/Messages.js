@@ -66,6 +66,21 @@ export default class Message {
         }
     }
 
+    async checkNew(userid) {
+        try {
+            var result = await FYSCloud.API.queryDatabase(`SELECT * FROM chat WHERE first_user=${this.user_id} AND second_user=${userid} OR first_user=${userid} AND second_user=${this.user_id}`);
+            if(result.length <= 0){
+                await FYSCloud.API.queryDatabase("INSERT INTO chat(first_user,second_user) VALUES (?,?);", [this.user_id, userid]);
+                result = await FYSCloud.API.queryDatabase(`SELECT * FROM chat WHERE first_user=${this.user_id} AND second_user=${userid} OR first_user=${userid} AND second_user=${this.user_id}`);
+            }
+            return result
+        } catch (e) {
+            App.ShowNotifyError("Chat", "Creëren van chat mislukt");
+            console.log(e);
+            return false;
+        }
+    }
+
     async get(chatid) {
         try {
             return await FYSCloud.API.queryDatabase("SELECT * from messages where chat_id=" + chatid + " and from_user_id=" + this.user_id + " or chat_id=" + chatid + " and to_user_id=" + this.user_id)
