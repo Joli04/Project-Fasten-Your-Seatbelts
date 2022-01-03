@@ -58,20 +58,20 @@ export default class Chat_controller extends Controller {
         await this.other_profile.setProfile(this.other_id);
         this.other_profile = await this.other_profile.getData()
 
+        
         let allChats = await this.messages.getAllChats(this.profiel.id)
         let menu_element = document.querySelector('.contacts')
         const otherUserProfilePic = document.querySelector('#profile_pic');
         const otherUserProfileName = document.querySelector('.bar .name');
 
-
+        otherUserProfilePic.style.backgroundImage = this.other_profile.profile
+        otherUserProfileName.innerHTML = this.other_profile.first_name + " " + this.other_profile.last_name
 
         for (let i = 0; i < allChats.length; i++) {
             let currentChat = allChats[i]
             var otherUserId = new Profile()
             if (currentChat.first_user == this.profiel.id) {
                 await otherUserId.setProfile(currentChat.second_user)
-                otherUserProfilePic.style.backgroundImage = otherUserId.getProfilePicture();
-                otherUserProfileName.innerHTML = otherUserId.getFullName();
             } else {
                 await otherUserId.setProfile(currentChat.first_user)
             }
