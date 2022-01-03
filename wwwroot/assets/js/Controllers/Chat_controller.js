@@ -8,6 +8,7 @@ import App from '../Classes/app.js';
 import view from "../Classes/View.js";
 import Profile from "../Classes/Profile.js";
 import Messages from "../Objects/Messages.js";
+
 export default class Chat_controller extends Controller {
 
     async chat() {
@@ -17,9 +18,10 @@ export default class Chat_controller extends Controller {
         this.profiel = new Profile();
         await this.profiel.setProfile();
         this.messages = new Messages(this.profiel);
-
         const query = App.getFromQueryObject();
-
+        var chat = document.getElementById('chat');
+        chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+        const time = document.querySelector('.time');
         if (query.id > 0) {
             this.chat_id = query.id;
             if(query.checknew == 1) {
@@ -39,7 +41,7 @@ export default class Chat_controller extends Controller {
                 App.ShowNotifyError("Chat", "Chat bestaat niet / of geen toegang");
                 return;
             }
-            App.ShowNotifySuccess("Chat", "Chat met id: " + query.id);
+            App.ShowNotifySuccess("Chat", "Chat met profiel: " + query.id);
         } else {
             document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
             App.ShowNotifyError("Chat", "Chat id is missing");
@@ -52,36 +54,46 @@ export default class Chat_controller extends Controller {
         this.other_profile = await this.other_profile.getData()
 
         let allChats = await this.messages.getAllChats(this.profiel.id)
-        let menu_element = document.getElementById('menu')
+        let menu_element = document.querySelector('.contacts')
+        const otherUserProfilePic = document.querySelector('#profile_pic');
+        const otherUserProfileName =  document.querySelector('.bar .name');
 
         for (let i = 0; i < allChats.length; i++) {
             let currentChat = allChats[i]
             var otherUserId = new Profile()
             if(currentChat.first_user == this.profiel.id) {
-                otherUserId.setProfile(currentChat.second_user)
+                await otherUserId.setProfile(currentChat.second_user)
+                otherUserProfilePic.style.backgroundImage = otherUserId.getProfilePicture();
+                otherUserProfileName.innerHTML = otherUserId.getFullName();
             } else {
-                otherUserId.setProfile(currentChat.first_user)
+                await otherUserId.setProfile(currentChat.first_user)
             }
-
-            otherUserId = await otherUserId.getData()
-
             if(currentChat.id == this.chat_id) {
-                menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}" class="active">${otherUserId.first_name} ${otherUserId.last_name}</a>`
+
+                menu_element.innerHTML += '<div class="contact"><div class="pic" style="background-image: url('+otherUserId.getProfilePicture()+');"' +
+                    '></div><div class="badge">14</div><div class="name">'+otherUserId.first_name+' '+ otherUserId.last_name+'</div>\n' +
+                    '                <div class="message">\n' +
+                    '                    Last chat' +
+                    '                </div>\n' +
+                    '            </div>';
+                //menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}" class="active">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             } else {
-                menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}">${otherUserId.first_name} ${otherUserId.last_name}</a>`
+                //Show active user
+               // menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             }
+
         }
 
         const form = document.querySelector(".typing-area"),
             inputField = form.querySelector(".input-field"),
-            sendBtn = form.querySelector("button"),
+            sendBtn = form.querySelector(".send"),
             chatBox = document.querySelector(".chat-box");
         form.onsubmit = (e) => {
             e.preventDefault();
             scrollToBottom()
         }
 
-        inputField.focus();
+        //inputField.focus();
         inputField.onkeyup = () => {
             if (inputField.value !== "") {
                 sendBtn.classList.add("active");
@@ -100,13 +112,6 @@ export default class Chat_controller extends Controller {
 
 
         }
-        chatBox.onmouseenter = () => {
-            chatBox.classList.add("active");
-        }
-
-        chatBox.onmouseleave = () => {
-            chatBox.classList.remove("active");
-        }
 
         setInterval(async () => {
             const messages = await this.messages.get(this.chat_id);
@@ -122,6 +127,12 @@ export default class Chat_controller extends Controller {
                     this.empty_chat = false
                 }
             }
+            const Latest_chat = new Date(Math.max(...messages.map(e => new Date(e.message_send_at))));
+            var time_text = "";
+            if(isToday(Latest_chat)){
+                time_text = "Today";
+            }
+            time.innerHTML= time_text +' '+Latest_chat.getUTCHours() + ':' + Latest_chat.getUTCMinutes();
 
             for (let i = 0; i < messages.length; i++) {
                 let message = messages[i]
@@ -131,16 +142,14 @@ export default class Chat_controller extends Controller {
                     this.message_list.push(message);
 
                     if (message.from_user_id == this.profiel.id) {
-                        chat_element.innerHTML += `<div class="chat outgoing">
-                        <div class="details">
-                            <p>${message.msg}</p>
-                        </div>
-                    </div>`
+                        chat_element.innerHTML += `<div class="message parker">
+                            ${message.msg}
+                        </div>`
                     } else {
-                        chat_element.innerHTML += `<div class="chat incoming">
-                        <div class="details">
-                            <p>${message.msg}</p>
-                        </div>
+
+                        chat_element.innerHTML += `
+                    <div class="message stark">
+                        ${message.msg}
                     </div>`
                     }
                     scrollToBottom()
@@ -149,7 +158,14 @@ export default class Chat_controller extends Controller {
         }, 500);
 
         function scrollToBottom() {
-            chatBox.scrollTop = chatBox.scrollHeight;
+            var chat = document.getElementById('chat');
+            chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+        }
+        const isToday = (someDate) => {
+            const today = new Date()
+            return someDate.getDate() == today.getDate() &&
+                someDate.getMonth() == today.getMonth() &&
+                someDate.getFullYear() == today.getFullYear()
         }
     }
 

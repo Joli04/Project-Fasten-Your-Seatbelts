@@ -23,6 +23,7 @@ export default class AdminBaseController extends Controller {
             document.querySelector("body").remove();
             document.querySelector("html").append(document.createElement("body"))
 
+
             //Load admin layout
             const url = "layouts/admin.html",
                 http = new XMLHttpRequest();

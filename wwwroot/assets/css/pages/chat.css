@@ -28,6 +28,10 @@
     font-size: 17px;
     font-weight: 500;
 }
+.typing-area .assets{
+    background: #747474;
+    transform: rotate(-45.99deg);
+}
 .chat-box{
     position: relative;
     min-height: 500px;
