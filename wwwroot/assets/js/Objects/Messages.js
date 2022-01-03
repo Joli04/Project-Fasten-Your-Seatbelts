@@ -81,6 +81,16 @@ export default class Message {
         }
     }
 
+    async getAllChats(userid) {
+        try {
+            return await FYSCloud.API.queryDatabase(`SELECT * FROM chat WHERE first_user=${this.user_id} OR second_user=${this.user_id}`);
+        } catch (e) {
+            App.ShowNotifyError("Chat", "Ophalen mislukt");
+            console.log(e);
+            return {};
+        }
+    }
+
     async get(chatid) {
         try {
             return await FYSCloud.API.queryDatabase("SELECT * from messages where chat_id=" + chatid + " and from_user_id=" + this.user_id + " or chat_id=" + chatid + " and to_user_id=" + this.user_id)

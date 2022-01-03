@@ -117,6 +117,27 @@
     pointer-events: auto;
 }
 
+.user_menu {
+    width: 400px;
+  }
+  
+  .user_menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  
+  .user_menu a:hover {
+    background-color: #ccc;
+  }
+  
+  .user_menu a.active {
+    background-color: #D81E05;
+    color: white;
+  }
+
 /* Responive media query */
 @media screen and (max-width: 450px) {
     .form, .users{

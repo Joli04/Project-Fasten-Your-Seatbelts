@@ -47,10 +47,30 @@ export default class Chat_controller extends Controller {
         }
 
         this.other_id = await this.messages.getOther(this.chat_id)
-
         this.other_profile = new Profile();
         await this.other_profile.setProfile(this.other_id);
         this.other_profile = await this.other_profile.getData()
+
+        let allChats = await this.messages.getAllChats(this.profiel.id)
+        let menu_element = document.getElementById('menu')
+
+        for (let i = 0; i < allChats.length; i++) {
+            let currentChat = allChats[i]
+            var otherUserId = new Profile()
+            if(currentChat.first_user == this.profiel.id) {
+                otherUserId.setProfile(currentChat.second_user)
+            } else {
+                otherUserId.setProfile(currentChat.first_user)
+            }
+
+            otherUserId = await otherUserId.getData()
+
+            if(currentChat.id == this.chat_id) {
+                menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}" class="active">${otherUserId.first_name} ${otherUserId.last_name}</a>`
+            } else {
+                menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}">${otherUserId.first_name} ${otherUserId.last_name}</a>`
+            }
+        }
 
         const form = document.querySelector(".typing-area"),
             inputField = form.querySelector(".input-field"),
