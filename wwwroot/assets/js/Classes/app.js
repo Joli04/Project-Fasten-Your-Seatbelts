@@ -58,10 +58,19 @@ export default class App {
 
         //Init OneSignal for popup messages
         window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "4e42b8c3-8236-4855-8392-02923f49449f",
-            });
+        var OneSignal = window.OneSignal || [];
+        var initConfig = {
+            appId: "4e42b8c3-8236-4855-8392-02923f49449f",
+            notifyButton: {
+                enable: true
+            },
+        };
+    
+        OneSignal.push(function () {
+            OneSignal.SERVICE_WORKER_PARAM = { scope: '/vendors/OneSignal/' };
+            OneSignal.SERVICE_WORKER_PATH = 'vendors/OneSignal/OneSignalSDKWorker.js'
+            OneSignal.SERVICE_WORKER_UPDATER_PATH = 'vendors/OneSignal/OneSignalSDKUpdaterWorker.js'
+            OneSignal.init(initConfig);
         });
     }
 
