@@ -147,15 +147,6 @@ body {
     margin-top: 35px;
 }
 
-.page-header .admin-menu li:nth-last-child(2) {
-    margin-bottom: 35px;
-}
-
-.page-header .admin-menu li:last-child {
-    margin-top: auto;
-    margin-bottom: 20px;
-}
-
 .page-header .admin-menu li > * {
     width: 100%;
     padding: 12px 15px;

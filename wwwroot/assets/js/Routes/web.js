@@ -26,18 +26,6 @@ const routes = [
         controller: new Home_Controller,
         method: 'index'
     }, false, true),
-    new Route('profiel', {
-        controller: new Profile_Controller,
-        method: 'show',
-    }, true),
-    new Route('profiel/edit', {
-        controller: new ProfileEdit_Controller,
-        method: 'edit'
-    }, true),
-    new Route('faq', {
-        controller: new Faq_Controller,
-        method: 'index'
-    }),
     new Route('login', {
         controller: new Login_Controller,
         method: 'show'
@@ -46,33 +34,53 @@ const routes = [
         controller: new Register_Controller,
         method: 'show'
     }),
+    new Route('profiel', {
+        controller: new Profile_Controller,
+        method: 'show',
+    }, true),
+    new Route('profiel/verify', {
+        controller: new Profile_Controller,
+        method: 'verify'
+    }),
+    new Route('profiel/wizard', {
+        controller: new Wizard_Controller,
+        method: 'show'
+    }),
+    new Route('profiel/edit', {
+        controller: new ProfileEdit_Controller,
+        method: 'edit'
+    }, true),
     new Route('matching', {
         controller: new Matches_Controller,
         method: 'show'
     }),
-    new Route('profiel/verify', {
-        controller: new Profile_Controller,
-        method: 'verify'
+    new Route('match/request', {
+        controller: new MatchRequestController,
+        method: 'request'
+    },true),
+    new Route('match/request', {
+        controller: new MatchRequestController,
+        method: 'request'
+    },true),
+    new Route('faq', {
+        controller: new Faq_Controller,
+        method: 'index'
     }),
     new Route('chat', {
         controller: new Chat_controller,
         method: 'chat'
     },true),
-    new Route('profiel/wizard', {
-        controller: new Wizard_Controller,
-        method: 'show'
-    }),
     new Route('admin', {
         controller: new Admin_Controller,
         method: 'index'
     },true),
+    new Route('admin/users', {
+        controller: new Admin_Controller,
+        method: 'show'
+    },true),
     new Route('admin/stats', {
         controller: new AdminStats_Controller,
         method: 'index'
-    },true),
-    new Route('match/request', {
-        controller: new MatchRequestController,
-        method: 'request'
     },true),
 ];
 
