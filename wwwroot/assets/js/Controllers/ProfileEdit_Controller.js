@@ -75,7 +75,7 @@ export default class ProfileEdit_Controller extends Controller {
             const names = name.value.split(" ");
             profiel.updateProfile(names[0], names[1], email.value, age.value, gender.value, country.value, quill.container.firstChild.innerHTML);
             App.ShowNotifySuccess("Profiel saved","Yes, jouw profiel is bijgewerkt!")
-            App.redirect("profiel");
+            App.redirect("/profiel");
 
         }
 
