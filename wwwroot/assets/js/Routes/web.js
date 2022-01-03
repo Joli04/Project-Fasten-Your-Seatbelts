@@ -52,7 +52,7 @@ const routes = [
         controller: new Profile_Controller,
         method: 'verify'
     }),
-    new Route('profiel/chat', {
+    new Route('chat', {
         controller: new Chat_controller,
         method: 'chat'
     },true),

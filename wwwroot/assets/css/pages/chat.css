@@ -81,7 +81,7 @@
     max-width: calc(100% - 130px);
 }
 .incoming .details p{
-    background: #fff;
+    background: rgb(218, 218, 218);
     color: #333;
     border-radius: 18px 18px 18px 0;
 }
