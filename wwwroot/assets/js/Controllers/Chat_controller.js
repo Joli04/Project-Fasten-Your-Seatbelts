@@ -3,7 +3,7 @@
  */
 import Controller from './Controller.js';
 
-import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
+
 import App from '../Classes/app.js';
 import view from "../Classes/View.js";
 import Profile from "../Classes/Profile.js";
@@ -22,10 +22,10 @@ export default class Chat_controller extends Controller {
 
         if (query.id > 0) {
             this.chat_id = query.id;
-            if(query.checknew == 1) {
+            if(query.checknew === 1) {
                 const result = await this.messages.checkNew(this.chat_id)
             
-                if(result != false) {
+                if(result !== false) {
                     App.redirect(`#/chat?id=${result[0].id}`)
                 }
                 return
@@ -34,7 +34,7 @@ export default class Chat_controller extends Controller {
 
             let valid = await this.messages.checkValid(this.chat_id)
 
-            if (valid == false) {
+            if (valid === false) {
                 document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
                 App.ShowNotifyError("Chat", "Chat bestaat niet / of geen toegang");
                 return;
