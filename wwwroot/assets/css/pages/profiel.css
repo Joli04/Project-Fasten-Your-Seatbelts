@@ -75,15 +75,16 @@
 }
 
 .profile__button {
-    width: 100%;
+    width: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     /*justify-content: center;*/
     margin-bottom: 15px;
 }
 
 .profile__button button {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     text-decoration: none;
     background-color: var(--dark_green);
@@ -144,6 +145,10 @@
 
     .profile__left, .profile__right {
         width: 625px;
+    }
+
+    .profile__button {
+        width: 90%;
     }
 
     .profile__right {
