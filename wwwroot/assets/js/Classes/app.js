@@ -21,38 +21,38 @@ export default class App {
         App.checkNeedsLogin(App.GetCurrentPage());
 
         //Set default translations
-        FYSCloud.Localization.setTranslations(await App.getTransable());
-        const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
-        App.translate(initialLanguage);
+        // FYSCloud.Localization.setTranslations(await App.getTransable());
+        // const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
+        // App.translate(initialLanguage);
 
         //Add the header to the page
-        if (document.querySelector("#nav") !== null) {
-
-            var logout_btn = document.querySelector("#nav_logout");
-            logout_btn.addEventListener('click', Login_Controller.logout);
-
-
-            document.querySelector("#languageSwitch").value = initialLanguage;
-            document.querySelector("#languageSwitch").addEventListener("change", function () {
-                App.translate(this.value)
-            });
-            document.querySelector("#mobile_nav").addEventListener("click", function () {
-                var x = document.querySelector(".topnav");
-                console.log(x);
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            });
-
-        }
-
-        //Add the footer to the page
-
-        if (document.querySelector("#footer") !== null) {
-           // await App.addFooter();
-        }
+        // if (document.querySelector("#nav") !== null) {
+        //
+        //     var logout_btn = document.querySelector("#nav_logout");
+        //     logout_btn.addEventListener('click', Login_Controller.logout);
+        //
+        //
+        //     document.querySelector("#languageSwitch").value = initialLanguage;
+        //     document.querySelector("#languageSwitch").addEventListener("change", function () {
+        //         App.translate(this.value)
+        //     });
+        //     document.querySelector("#mobile_nav").addEventListener("click", function () {
+        //         var x = document.querySelector(".topnav");
+        //         console.log(x);
+        //         if (x.className === "topnav") {
+        //             x.className += " responsive";
+        //         } else {
+        //             x.className = "topnav";
+        //         }
+        //     });
+        //
+        // }
+        //
+        // //Add the footer to the page
+        //
+        // if (document.querySelector("#footer") !== null) {
+        //    // await App.addFooter();
+        // }
         this.initEvents();
 
         //Init OneSignal for popup messages
@@ -300,7 +300,13 @@ export default class App {
         FYSCloud.Localization.switchLanguage(lang_code);
         FYSCloud.Localization.translate();
     }
-
+    static setSession(name,value){
+        FYSCloud.Session.set(name, value);
+        return name;
+    }
+    static getSession(name){
+        return FYSCloud.Session.get(name);
+    }
     static validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());

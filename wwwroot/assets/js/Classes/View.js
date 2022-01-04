@@ -6,6 +6,9 @@
 
 
 import App from "./app.js";
+import Login_Controller from "../Controllers/Login_Controller.js";
+import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
+import "../config.js";
 
 export default function view(path, title, extend = "app.html") {
     try {
@@ -31,39 +34,56 @@ view.prototype = {
         document.title = title;
     },
     LoadPageContent: async function () {
-        await this.SetLayout();
+        if(App.getSession('Layout') !== this.extendLayout){
+            console.log("Laad nieuwe layout");
+            await this.SetLayout();
+        }
         const AppContent = document.querySelector("#app");
         AppContent.innerHTML = '';
+
         const page = await App.getData(this.view);
         await AppContent.appendChild(page[0]);
-        await App.addHeader();
+        if(this.extendLayout === "layouts/app.html"){
+            if(!document.querySelector("#nav").hasChildNodes()){
+                await App.addHeader();
+                if (document.querySelector("#nav") !== null) {
+                    var logout_btn = document.querySelector("#nav_logout");
+                    logout_btn.addEventListener('click', Login_Controller.logout);
+
+                    FYSCloud.Localization.setTranslations(await App.getTransable());
+                    const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
+                    App.translate(initialLanguage);
+
+                    document.querySelector("#languageSwitch").value = initialLanguage;
+                    document.querySelector("#languageSwitch").addEventListener("change", function () {
+                        App.translate(this.value)
+                    });
+                    document.querySelector("#mobile_nav").addEventListener("click", function () {
+                        var x = document.querySelector(".topnav");
+                        console.log(x);
+                        if (x.className === "topnav") {
+                            x.className += " responsive";
+                        } else {
+                            x.className = "topnav";
+                        }
+                    });
+
+                }
+            }
+            if(!document.querySelector("#footer").hasChildNodes()){
+            await App.addFooter();
+            }
+        }
+
         App.setActivePage();
-        await App.addFooter();
-        // const url = this.view,
-        //     http = new XMLHttpRequest();
-        // http.onreadystatechange = async function () {
-        //     if (this.readyState === 4 && this.status === 200) {
-        //         app.innerHTML = this.responseText;
-        //     }
-        // };
-        // http.open('GET', url, true);
-        // http.send();
+
     },
     SetLayout: async function () {
         //Reset main
         const main = document.querySelector("#main");
         main.innerHTML = '';
-        // //Set new layout
-        // const url = this.extendLayout,
-        //     http = new XMLHttpRequest();
-        // http.onreadystatechange = async function () {
-        //     if (this.readyState === 4 && this.status === 200) {
-        //         main.innerHTML = this.response;
-        //     }
-        // }
-        // http.open('GET', url, true);
-        // http.send();
         const Layout = await App.getData(this.extendLayout);
+        App.setSession('Layout',this.extendLayout);
        await main.appendChild(Layout[0]);
     },
     extends: function (layout) {
