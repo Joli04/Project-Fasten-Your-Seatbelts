@@ -20,13 +20,13 @@ export default class Matches_Controller extends Controller {
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
 
-        var profile_name = document.querySelector('#mathing_profile_name');
+        var profile_name = document.querySelector('#matching_profile_name');
         profile_name.innerHTML = this.profiel.getFullName();
 
-        var profile_age = document.querySelector('#mathing_profile_age');
+        var profile_age = document.querySelector('#matching_profile_age');
         profile_age.innerHTML = this.profiel.birthday;
 
-        var profile_orgin = document.querySelector('#mathing_profile_orgin');
+        var profile_orgin = document.querySelector('#matching_profile_origin');
         profile_orgin.innerHTML = this.profiel.getQountry();
 
         const countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
