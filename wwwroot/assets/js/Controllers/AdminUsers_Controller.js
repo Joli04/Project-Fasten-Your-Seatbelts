@@ -15,6 +15,7 @@ export default class AdminUsers_Controller extends AdminBaseController
     }
 
     async index() {
+        await super.CheckAcces();
         // const admin = new Admin();
         // await admin.getUsers();
         //
@@ -24,7 +25,6 @@ export default class AdminUsers_Controller extends AdminBaseController
     }
 
     render() {
-
-        return new view('admin/users.html',"Commonflight GebruikerLijst");
+        return new view('admin/users.html',"Commonflight GebruikerLijst").extends("admin.html");
     }
 }

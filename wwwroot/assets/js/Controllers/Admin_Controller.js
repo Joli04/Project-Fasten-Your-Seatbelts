@@ -15,11 +15,10 @@ export default class Admin_Controller extends AdminBaseController
     }
 
     async index() {
-
+        await super.CheckAcces();
     }
 
     render() {
-
-        return new view('admin/dashboard.html',"Commonflight Admin");
+        return new view('admin/dashboard.html',"Commonflight Admin").extends("admin.html");
     }
 }

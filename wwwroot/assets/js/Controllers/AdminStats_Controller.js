@@ -14,6 +14,7 @@ export default class AdminStats_Controller extends AdminBaseController
         super();
     }
     async index() {
+        await super.CheckAcces();
         const user = new Profile();
         await user.setProfile();
 
@@ -57,6 +58,6 @@ export default class AdminStats_Controller extends AdminBaseController
     }
     render() {
 
-        return new view('admin/chars.html',"Commonflight Admin");
+        return new view('admin/chars.html',"Commonflight Admin").extends("admin.html");;
     }
 }
