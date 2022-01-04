@@ -74,20 +74,13 @@ Router.prototype = {
                 return App.redirect('#/login');
             }
 
-            if (route.name.includes("admin")) {
-                await route.render().SetLayout();
-                scope.setRootElement(); //Reset RootElement
-            }
+            // if (route.name.includes("admin")) {
+            //     await route.render().SetLayout();
+            //     scope.setRootElement(); //Reset RootElement
+            // }
+            //set page content
+            await route.render().LoadPageContent();
 
-            const url = await route.render().view,
-                http = new XMLHttpRequest();
-                http.onreadystatechange = async function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    scope.getRootElement().innerHTML = this.responseText;
-                }
-            };
-            http.open('GET', url, true);
-            http.send();
             //Run the controller script
             await route.runScript();
         })(this);

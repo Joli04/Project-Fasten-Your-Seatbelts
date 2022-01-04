@@ -25,14 +25,13 @@ export default class App {
         const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
         App.translate(initialLanguage);
 
-        const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
         //Add the header to the page
         if (document.querySelector("#nav") !== null) {
-            this.addHeader(headerData);
+
             var logout_btn = document.querySelector("#nav_logout");
             logout_btn.addEventListener('click', Login_Controller.logout);
 
-            App.setActivePage();
+
             document.querySelector("#languageSwitch").value = initialLanguage;
             document.querySelector("#languageSwitch").addEventListener("change", function () {
                 App.translate(this.value)
@@ -50,9 +49,9 @@ export default class App {
         }
 
         //Add the footer to the page
-        const footerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_footer.html");
+
         if (document.querySelector("#footer") !== null) {
-            this.addFooter(footerData);
+           // await App.addFooter();
         }
         this.initEvents();
 
@@ -74,8 +73,9 @@ export default class App {
         });
     }
 
-    addHeader(data) {
-        const firstElement = data[0];
+   static async addHeader() {
+        const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
+        const firstElement = headerData[0];
         var nav = document.querySelector("#nav");
         // checkLoggedIn(firstElement);
         // const nav =document.querySelector("#nav");
@@ -85,8 +85,9 @@ export default class App {
         nav.insertBefore(firstElement, nav.firstElementChild);
     }
 
-    addFooter(data) {
-        const firstElement = data[0];
+    static async addFooter() {
+        const footerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_footer.html");
+        const firstElement = footerData[0];
         document.querySelector("#footer").appendChild(firstElement);
         const copyright_year = document.querySelector(".copyright .year");
         copyright_year.innerHTML = new Date().getFullYear();
@@ -171,7 +172,9 @@ export default class App {
         }
 
     }
-
+    static async getData(url) {
+       return await FYSCloud.Utils.fetchAndParseHtml(url);
+    }
     static HandleLinks(show) {
         const login = document.querySelector(".topnav #login");
         const register = document.querySelector(".topnav #registratie");
