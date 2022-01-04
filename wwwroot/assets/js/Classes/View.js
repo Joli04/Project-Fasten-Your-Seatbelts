@@ -43,6 +43,8 @@ view.prototype = {
 
         const page = await App.getData(this.view);
         await AppContent.appendChild(page[0]);
+
+        //Fronted Logic
         if(this.extendLayout === "layouts/app.html"){
             if(!document.querySelector("#nav").hasChildNodes()){
                 await App.addHeader();
@@ -74,9 +76,7 @@ view.prototype = {
             await App.addFooter();
             }
         }
-
         App.setActivePage();
-
     },
     SetLayout: async function () {
         //Reset main
@@ -89,9 +89,5 @@ view.prototype = {
     extends: function (layout) {
         this.extendLayout = "./layouts/" + layout;
         return this;
-    },
-    parseHtml: function (html) {
-        const htmlDocument = this.domParser.parseFromString(html, "text/html");
-        return htmlDocument.body.childNodes;
     }
 }
