@@ -45,6 +45,9 @@ export default class Chat_controller extends Controller {
                 return;
             }
             App.ShowNotifySuccess("Chat", "Chat met profiel: " + query.id);
+            setInterval(async () => {
+                reloadData()
+            }, 1500);
         } else {
             document.querySelector('#chat').innerHTML = "";
             //App.ShowNotifyError("Chat", "Chat id is missing");
@@ -134,9 +137,7 @@ export default class Chat_controller extends Controller {
 
         }
 
-        setInterval(async () => {
-            reloadData()
-        }, 1500);
+
 
         var self = this;
 
