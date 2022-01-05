@@ -92,6 +92,6 @@ export default class ProfileEdit_Controller extends Controller {
     }
 
     render() {
-        return new view('profiel_edit.html', "Commonflight Edit Profiel");
+        return new view('profiel_edit.html', "Commonflight Edit Profiel").extends("blank.html");
     }
 }

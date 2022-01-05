@@ -208,6 +208,6 @@ export default class Chat_controller extends Controller {
     }
 
     render() {
-        return new view('chat.html', "Commonflight Home");
+        return new view('chat.html', "Commonflight Chat").extends("blank.html");
     }
 }

@@ -111,6 +111,6 @@ export default class Profile_Controller extends Controller {
     }
 
     render() {
-        return new view('profiel.html', "Commonflight Profiel");
+        return new view('profiel.html', "Commonflight Profiel").extends("blank.html");
     }
 }

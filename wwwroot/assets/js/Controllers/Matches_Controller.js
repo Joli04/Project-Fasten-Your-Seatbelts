@@ -112,7 +112,7 @@ export default class Matches_Controller extends Controller {
 
 
     render() {
-        return new view('matching.html', "Commonflight Matching");
+        return new view('matching.html', "Commonflight Matching").extends("blank.html");
     }
 
 

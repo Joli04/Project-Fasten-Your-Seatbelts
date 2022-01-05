@@ -94,6 +94,6 @@ export default class Login_Controller extends Controller {
     }
 
     render() {
-        return new view('login.html', "Commonflight Profiel");
+        return new view('login.html', "Commonflight Login").extends("blank.html");
     }
 }

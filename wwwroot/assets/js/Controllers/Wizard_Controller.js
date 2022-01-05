@@ -67,6 +67,6 @@ export default class Wizard_Controller extends Controller {
 
 
     render() {
-        return new view('wizard.html', "Commonflight profiel wizard");
+        return new view('wizard.html', "Commonflight profiel wizard").extends("blank.html");
     }
 }
