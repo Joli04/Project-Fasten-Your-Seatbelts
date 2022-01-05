@@ -37,20 +37,17 @@ export default class Chat_controller extends Controller {
                 }
                 return
             }
-
-
             let valid = await this.messages.checkValid(this.chat_id)
 
             if (valid == false) {
-                document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
+                document.querySelector('#chat').innerHTML = ""
                 App.ShowNotifyError("Chat", "Chat bestaat niet / of geen toegang");
                 return;
             }
             App.ShowNotifySuccess("Chat", "Chat met profiel: " + query.id);
         } else {
-            document.getElementsByClassName('chat_wrapper')[0].innerHTML = ""
-            App.ShowNotifyError("Chat", "Chat id is missing");
-            return
+            document.querySelector('#chat').innerHTML = "";
+            //App.ShowNotifyError("Chat", "Chat id is missing");
         }
 
         this.other_id = await this.messages.getOther(this.chat_id)
@@ -165,7 +162,6 @@ export default class Chat_controller extends Controller {
                 }
             }
             const Latest_chat = new Date(Math.max(...messages.map(e => new Date(e.message_send_at))));
-            console.log(Latest_chat)
             var time_text = "";
             if (isToday(Latest_chat)) {
                 time_text = "Today";
