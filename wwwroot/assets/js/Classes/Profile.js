@@ -182,7 +182,7 @@ export default class Profile {
         this.public = data.public;
         if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
-            App.redirect("#/profile/wizard");
+            App.redirect("#/profiel/wizard");
         }
     }
 
@@ -198,7 +198,7 @@ export default class Profile {
     async sendVerification() {
         if (this.verified_at === null) {
             const domain = "https://" + window.location.hostname;
-            const url = FYSCloud.Utils.createUrl("#/wizard", {
+            const url = FYSCloud.Utils.createUrl("#/profiel/wizard", {
                 id: this.id,
                 timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
             });
