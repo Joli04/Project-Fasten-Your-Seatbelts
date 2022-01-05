@@ -45,7 +45,7 @@ view.prototype = {
         await AppContent.appendChild(page[0]);
 
         //Fronted Logic
-        if(this.extendLayout === "layouts/app.html"){
+        if(this.extendLayout === "layouts/app.html" || this.extendLayout === "./layouts/blank.html"){
             if(!document.querySelector("#nav").hasChildNodes()){
                 await App.addHeader();
                 if (document.querySelector("#nav") !== null) {
