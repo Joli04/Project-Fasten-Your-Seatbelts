@@ -50,7 +50,9 @@
 
 .profile__image {
     width: 150px;
-    height: auto;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
     margin-bottom: 25px;
     border: solid 2px var(--red);
     border-radius: 5px;
