@@ -82,3 +82,15 @@ td, th {
         width: 100%;
     }
 }
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .userList {
+        height: 900px;
+    }
+}
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    .userList {
+        height: 600px;
+    }
+}
