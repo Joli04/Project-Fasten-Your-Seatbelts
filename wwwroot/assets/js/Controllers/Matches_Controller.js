@@ -27,7 +27,7 @@ export default class Matches_Controller extends Controller {
         profile_name.innerHTML = this.profiel.getFullName();
 
         var profile_age = document.querySelector('#matching_profile_age');
-        profile_age.innerHTML = this.profiel.birthday;
+        profile_age.innerHTML = new Date().getFullYear() - new Date(this.profiel.birthday).getFullYear();
 
         var profile_orgin = document.querySelector('#matching_profile_origin');
         profile_orgin.innerHTML = this.profiel.getQountry();
