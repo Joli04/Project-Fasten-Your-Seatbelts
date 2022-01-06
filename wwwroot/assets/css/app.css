@@ -612,12 +612,14 @@ footer {
 /* ----------------------------------- */
 /* ----------[ BACK TO TOP ]---------- */
 /* ----------------------------------- */
-.back-to-top img {
+.chatBtn svg {
     width: 25px;
     margin-top: 12px;
+    transition: background 0.5s;
+    color: var(--white);
 }
 
-.back-to-top {
+.chatBtn {
     position: fixed;
     display: inline;
     background-color: var(--green);
@@ -633,17 +635,21 @@ footer {
     z-index: 11;
 }
 
-.back-to-top:hover {
+.chatBtn:hover {
     background-color: var(--dark_green);
 }
 
+.chatBtn:hover svg {
+    color: var(--light_grey);
+}
+
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
-    .back-to-top img {
+    .chatBtn svg {
         width: 32px;
         margin-top: 13px;
     }
 
-    .back-to-top {
+    .chatBtn {
         width: 60px;
         height: 60px;
     }
