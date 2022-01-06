@@ -3,9 +3,19 @@
     flex-direction: column;
 }
 
+@media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
+    .chatbox {
+        flex-direction: row;
+    }
+}
+
 /* --------------------------------- */
 /* ----------[ CONTACTEN ]---------- */
 /* --------------------------------- */
+.chatbox__contacts {
+    background-color: var(--light_grey);
+}
+
 .contacts__title {
     font-weight: bold;
     color: var(--red);
@@ -17,7 +27,6 @@
     flex-direction: row;
     overflow-x: scroll;
     padding: 20px;
-    background-color: var(--light_grey);
 }
 
 .contact {
@@ -49,6 +58,7 @@
 
 .contact a:hover {
     color: var(--red);
+    font-weight: bold;
 }
 .contact a:hover .pic {
     width: 149px;
@@ -62,12 +72,43 @@
 
 .activeChat {
     color: var(--red);
+    font-weight: bold;
 }
 
 .activeChat .pic {
     width: 149px;
     height: 149px;
     border: solid 1px var(--red);
+}
+
+@media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
+    .chatbox__contacts {
+        flex: 1 0 0;
+        border-right: 1px solid var(--grey);
+    }
+
+    .contacts__users {
+        flex-direction: column;
+        overflow-x: unset;
+        overflow-y: scroll;
+    }
+
+    .activeChat, .contact a {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--grey);
+    }
+
+    .activeChat, .contact a {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .contact__info {
+        margin: auto auto auto 15px;
+    }
 }
 
 /* ------------------------------------ */
@@ -96,6 +137,12 @@
 
 .contactInfo__last {
     color: var(--light_grey);
+}
+
+@media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
+    .chatbox__chat {
+        flex: 2 0 0;
+    }
 }
 
 /* ------------------------------------- */
@@ -153,6 +200,12 @@
 
 .chat__messages .stark .message__time {
     color: var(--grey);
+}
+
+@media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
+    .chat__messages {
+        height: auto;
+    }
 }
 
 /* ---------------------------------- */
@@ -220,4 +273,3 @@
     transform: rotate(90deg);
     color: var(--white);
 }
-
