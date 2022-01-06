@@ -60,6 +60,6 @@ export default class Register_Controller extends Controller
     }
 }
     render() {
-        return new view('registratie.html',"Commonflight Register").extends("blank.html");
+        return new view('registratie.html',"CommonFlight | Registratie").extends("blank.html");
     }
 }

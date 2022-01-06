@@ -94,7 +94,7 @@ export default class Faq_Controller extends Controller {
      * @return {view}
      */
     render() {
-        return new view('faq.html', "Commonflight Faq");
+        return new view('faq.html', "CommonFlight | F.A.Q");
     }
 }
 

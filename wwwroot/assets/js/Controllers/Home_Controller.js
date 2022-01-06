@@ -11,6 +11,6 @@ export default class Home_Controller extends Controller
 
     }
     render() {
-        return new view('home.html',"Commonflight Home");
+        return new view('home.html',"CommonFlight | Home");
     }
 }

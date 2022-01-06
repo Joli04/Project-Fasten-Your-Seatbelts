@@ -58,6 +58,6 @@ export default class AdminStats_Controller extends AdminBaseController
     }
     render() {
 
-        return new view('admin/chars.html',"Commonflight Admin").extends("admin.html");;
+        return new view('admin/chars.html',"CommonFlight | Admin Stats").extends("admin.html");;
     }
 }

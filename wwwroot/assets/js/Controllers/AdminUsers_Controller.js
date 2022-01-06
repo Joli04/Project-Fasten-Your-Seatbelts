@@ -25,6 +25,6 @@ export default class AdminUsers_Controller extends AdminBaseController
     }
 
     render() {
-        return new view('admin/users.html',"Commonflight GebruikerLijst").extends("admin.html");
+        return new view('admin/users.html',"CommonFlight | Admin Gebruikers").extends("admin.html");
     }
 }
