@@ -91,6 +91,13 @@ export default class App {
         document.querySelector("#footer").appendChild(firstElement);
         const copyright_year = document.querySelector(".copyright .year");
         copyright_year.innerHTML = new Date().getFullYear();
+
+        const chatButton = document.querySelector(".chatBtn");
+        if (Login_Controller.isLoggedIn()){
+            chatButton.style.display = 'block';
+        } else {
+            chatButton.style.display = 'none';
+        }
     }
 
     /**
@@ -182,14 +189,17 @@ export default class App {
         if (show) {
             login.style.display = "block";
             register.style.display = "block";
-            heroButton.style.display = "flex";
+            if (App.getSession('Layout') !== "./layouts/blank.html") {
+                heroButton.style.display = "flex";
+            }
         } else {
             login.style.display = "none";
             register.style.display = "none";
-            if (heroButton) {
-                heroButton.style.display = "none";
+            if (App.getSession('Layout') !== "./layouts/blank.html") {
+                if (heroButton) {
+                    heroButton.style.display = "none";
+                }
             }
-
         }
 
     }

@@ -5,6 +5,7 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import Controller from './Controller.js';
 import view from "../Classes/View.js";
+import App from "../Classes/app.js";
 import Profile from "../Classes/Profile.js";
 import Countries from "../Objects/Countries.js";
 
@@ -16,7 +17,9 @@ export default class Matches_Controller extends Controller {
         this.profiel = new Profile();
         await this.profiel.setProfile();
         const heroButton = document.querySelector(".hero__button");
-        heroButton.style.display = "none";
+        if (App.getSession('Layout') !== "./layouts/blank.html") {
+            heroButton.style.display = "none";
+        }
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
 
