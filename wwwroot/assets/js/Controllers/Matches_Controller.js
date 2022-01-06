@@ -17,7 +17,7 @@ export default class Matches_Controller extends Controller {
         this.profiel = new Profile();
         await this.profiel.setProfile();
         const heroButton = document.querySelector(".hero__button");
-        if (App.getSession('Layout') !== "./layouts/blank.html") {
+        if (App.getSession('Layout') === "./layouts/app.html") {
             heroButton.style.display = "none";
         }
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));

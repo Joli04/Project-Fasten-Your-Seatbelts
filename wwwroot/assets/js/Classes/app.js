@@ -189,13 +189,13 @@ export default class App {
         if (show) {
             login.style.display = "block";
             register.style.display = "block";
-            if (App.getSession('Layout') !== "./layouts/blank.html") {
+            if (App.getSession('Layout') === "./layouts/app.html") {
                 heroButton.style.display = "flex";
             }
         } else {
             login.style.display = "none";
             register.style.display = "none";
-            if (App.getSession('Layout') !== "./layouts/blank.html") {
+            if (App.getSession('Layout') === "./layouts/app.html") {
                 if (heroButton) {
                     heroButton.style.display = "none";
                 }
