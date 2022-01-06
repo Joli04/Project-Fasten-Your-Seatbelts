@@ -18,11 +18,9 @@ export default class AdminBaseController extends Controller {
     {
         const profiel = new Profile();
         await profiel.setProfile();
-        if(profiel.account_type === "admin"){
-
-        }else{
-            App.redirect("#/home")
-            App.ShowNotifyError("Geen toegang", "Je hebt helaas geen toegang tot deze pagina")
+        if (profiel.account_type !== "admin") {
+            App.redirect("#/home");
+            App.ShowNotifyError("Geen toegang", "Je hebt helaas geen toegang tot deze pagina");
         }
 
     }

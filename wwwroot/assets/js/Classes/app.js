@@ -148,7 +148,14 @@ export default class App {
                 } else {
                     other_links[i].classList.remove("active");
                     if (Login_Controller.isLoggedIn()) {
-                        other_links[i].style.display = "block";
+                        if (other_links[i].id === "admin") {
+                            other_links[i].style.display = "none";
+                            if (FYSCloud.Session.get('account_type') === "admin") {
+                                other_links[i].style.display = "block";
+                            }
+                        } else {
+                            other_links[i].style.display = "block";
+                        }
                         this.HandleLinks(false);
 
                     }
