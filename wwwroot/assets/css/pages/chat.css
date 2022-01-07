@@ -166,7 +166,31 @@
     padding: 10px;
     border-radius: 10px;
 }
-
+.chat__messages .chat__block .header {
+    align-items: center;
+    background-color: var(--white);
+    color: var(--grey);
+    height: 25px;
+}
+.chat__messages .chat__block {
+    border-radius: 20px;
+    margin: 15px 0 auto auto;
+    background-color: var(--grey);
+    color: var(--white);
+}
+.chat__messages .chat__block .content {
+    align-items: center;
+}
+.chat__messages .chat__block .content button svg {
+    width: 25px;
+    height: 25px;
+}
+.chat__messages .chat__block .content button {
+    background-color: var(--dark_green);
+    border-radius: 20px;
+    width: 100%;
+    color: var(--white);
+}
 .chat__messages .stark {
     background-color: #e0e0e0;
 }
@@ -219,7 +243,7 @@
 /* ---------------------------------- */
 /* ----------[ CHAT INPUT ]---------- */
 /* ---------------------------------- */
-.chat__input {
+.chat__input message parker{
     display: flex;
     flex-direction: row;
     width: 100%;
