@@ -87,7 +87,7 @@
 
 .button__icon {
     width: 19px;
-    margin-left: 15px;
+    margin: auto;
 }
 
 .login__signup {
