@@ -19,40 +19,6 @@ export default class App {
 
     async load() {
         App.checkNeedsLogin(App.GetCurrentPage());
-
-        //Set default translations
-        // FYSCloud.Localization.setTranslations(await App.getTransable());
-        // const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
-        // App.translate(initialLanguage);
-
-        //Add the header to the page
-        // if (document.querySelector("#nav") !== null) {
-        //
-        //     var logout_btn = document.querySelector("#nav_logout");
-        //     logout_btn.addEventListener('click', Login_Controller.logout);
-        //
-        //
-        //     document.querySelector("#languageSwitch").value = initialLanguage;
-        //     document.querySelector("#languageSwitch").addEventListener("change", function () {
-        //         App.translate(this.value)
-        //     });
-        //     document.querySelector("#mobile_nav").addEventListener("click", function () {
-        //         var x = document.querySelector(".topnav");
-        //         console.log(x);
-        //         if (x.className === "topnav") {
-        //             x.className += " responsive";
-        //         } else {
-        //             x.className = "topnav";
-        //         }
-        //     });
-        //
-        // }
-        //
-        // //Add the footer to the page
-        //
-        // if (document.querySelector("#footer") !== null) {
-        //    // await App.addFooter();
-        // }
         this.initEvents();
 
         //Init OneSignal for popup messages
@@ -77,11 +43,6 @@ export default class App {
         const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
         const firstElement = headerData[0];
         var nav = document.querySelector("#nav");
-        // checkLoggedIn(firstElement);
-        // const nav =document.querySelector("#nav");
-        // if(nav !== undefined){
-        //     nav.appendChild(firstElement);
-        // }
         nav.insertBefore(firstElement, nav.firstElementChild);
     }
 
@@ -213,9 +174,6 @@ export default class App {
 
 
     static checkNeedsLogin(endpoint) {
-        //Todo
-        //Check if user is on a page that needs login
-        //Redirect user to login page with message
 
         switch (endpoint) {
             case "profiel":
