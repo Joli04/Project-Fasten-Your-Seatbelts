@@ -171,6 +171,10 @@
     margin-top: 5px;
 }
 
+.chat__messages .stark:last-of-type {
+    border-bottom-left-radius: 0;
+}
+
 .chat__messages .parker {
     margin: 15px 0 auto auto;
     background-color: var(--grey);
