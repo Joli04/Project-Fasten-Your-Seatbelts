@@ -8,7 +8,7 @@ import App from '../Classes/app.js';
 import view from "../Classes/View.js";
 import Profile from "../Classes/Profile.js";
 import Messages from "../Objects/Messages.js";
-
+import Modal from "../Objects/Modal.js";
 export default class Chat_controller extends Controller {
 
     async chat() {
@@ -109,11 +109,16 @@ export default class Chat_controller extends Controller {
 
         }
 
+
         const form = document.querySelector(".typing-area"),
             inputField = form.querySelector(".input-field"),
             sendBtn = form.querySelector(".send"),
+            uplaudBtn = form.querySelector(".input__imgUpload"),
             chatBox = document.querySelector(".chat-box");
 
+        const UploadModal = new Modal(uplaudBtn);
+        UploadModal.setTitle("Uplaud afbeelding");
+        UploadModal.setContent("<h1>Uplaud bestanden ofz</h1>")
         if (!window.FgEmojiPicker) {
             new FgEmojiPicker({
                 trigger: ['.emojiBtn'],

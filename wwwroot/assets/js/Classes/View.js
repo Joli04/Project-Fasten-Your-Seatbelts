@@ -92,7 +92,6 @@ view.prototype = {
     },
     extends: function (layout) {
         this.extendLayout = "./layouts/" + layout;
-
         return this;
     }
 }
