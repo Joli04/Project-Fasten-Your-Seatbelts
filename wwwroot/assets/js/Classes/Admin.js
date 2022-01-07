@@ -14,8 +14,18 @@ export default class Admin {
         try {
             this.users = await FYSCloud.API.queryDatabase("SELECT * from users ORDER BY email_verified_at DESC");
         } catch (e) {
-            console.log('Users : ' + e);
+            console.log('Admin Users : ' + e);
             this.users = {};
         }
     }
+    async getMatches() {
+        this.matches = [];
+        try {
+            this.matches = await FYSCloud.API.queryDatabase("SELECT * from user_matches where is_match='yes'");
+        } catch (e) {
+            console.log('admin matches : ' + e);
+            this.matches = {};
+        }
+    }
+
 }
