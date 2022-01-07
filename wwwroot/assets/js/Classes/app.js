@@ -12,7 +12,6 @@ export default class App {
     constructor() {
         this.rootElement = document.getElementById("app");
         web.init();
-
     }
 
     initEvents() {
@@ -168,7 +167,7 @@ export default class App {
         } else {
             login.style.display = "none";
             register.style.display = "none";
-            if (App.getSession('Layout') !== "./layouts/app.html") {
+            if (App.getSession('Layout') !== "./layouts/app.html" && App.getSession('Layout') !== "./layouts/admin.html") {
                 const link = document.createElement("link");
                 link.href = "assets/css/blank.css"
                 link.rel = "stylesheet";

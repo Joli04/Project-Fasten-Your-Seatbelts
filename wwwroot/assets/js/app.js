@@ -1,4 +1,5 @@
 import App from "./Classes/app.js";
+
 const app = new App();
 //Load all first data
 await app.load();
@@ -6,7 +7,7 @@ await app.load();
 /**
  * Handle Links when route changes
  */
-window.addEventListener("hashchange", function (){
+window.addEventListener("hashchange", async function () {
     App.checkNeedsLogin(App.GetCurrentPage());
     App.setActivePage();
 });

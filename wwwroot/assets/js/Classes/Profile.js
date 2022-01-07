@@ -139,9 +139,9 @@ export default class Profile {
      * Register a new Profile and set this profile_Controller data
      * @return {Promise<{}|*>}
      */
-    async registerProfile(first, last, email, password, birthday, gender, country_origin_id, account_type = 'user') {
+    async registerProfile(first, last, email, password, birthday, gender, country_origin_id) {
         try {
-            let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,gender,account_type,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?,?);", [first, last, password, email, gender, account_type, birthday, country_origin_id]);
+            let data = await FYSCloud.API.queryDatabase("INSERT INTO users (first_name, last_name, password,email,gender,birthday,country_origin_id) VALUES (?,?,?,?,?,?,?);", [first, last, password, email, gender, birthday, country_origin_id]);
             let user = await FYSCloud.API.queryDatabase("SELECT id from users where email = ?", [email]);
             this.setId(user[0].id) //Set registerd user
             await this.setProfile(); //Set all profile_Controller data

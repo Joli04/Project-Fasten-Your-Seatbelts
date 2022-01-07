@@ -23,7 +23,7 @@ export default function view(path, title, extend) {
 };
 
 view.prototype = {
-    constructor: function (path, title, extend = "blank.html") {
+    constructor: function (path, title, extend = "app.html") {
         this.view = "./views/" + path;
         this.html = "";
         this.setTitle(title);
@@ -44,7 +44,7 @@ view.prototype = {
         await AppContent.appendChild(page[0]);
 
         //Fronted Logic
-        if (this.extendLayout === "./layouts/app.html" || this.extendLayout === "./layouts/blank.html") {
+        if (this.extendLayout === "layouts/app.html" || this.extendLayout === "./layouts/blank.html") {
             if (document.querySelector("#nav")) {
                 if (!document.querySelector("#nav").hasChildNodes()) {
                     await App.addHeader();
