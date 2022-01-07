@@ -228,6 +228,7 @@
 }
 
 .input__emoji, .input__imgUpload, .input__send {
+    align-items: center;
     border: 0;
 }
 

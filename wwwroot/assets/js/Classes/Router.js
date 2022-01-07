@@ -32,12 +32,6 @@ Router.prototype = {
         const user = new Profile();
         this.auth = user.isLoggedInUser();
     },
-    setRootElement: function () {
-        this.rootElement = document.getElementById("app");
-    },
-    getRootElement: function () {
-        return this.rootElement;
-    },
     init: function () {
         var r = this.routes;
         (function (scope, r) {
