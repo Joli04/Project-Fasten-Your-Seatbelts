@@ -243,7 +243,7 @@
 /* ---------------------------------- */
 /* ----------[ CHAT INPUT ]---------- */
 /* ---------------------------------- */
-.chat__input message parker{
+.chat__input{
     display: flex;
     flex-direction: row;
     width: 100%;
