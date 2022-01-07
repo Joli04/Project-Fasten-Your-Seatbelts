@@ -4,13 +4,15 @@ import {web} from "../Routes/web.js";
 
 
 import Login_Controller from "../Controllers/Login_Controller.js";
-import Profile from "./Profile.js";
+
 import Notify from "../../../vendors/Notify/notify.js";
+
 
 export default class App {
     constructor() {
         this.rootElement = document.getElementById("app");
         web.init();
+
     }
 
     initEvents() {
@@ -30,16 +32,16 @@ export default class App {
                 enable: true
             },
         };
-    
+
         OneSignal.push(function () {
-            OneSignal.SERVICE_WORKER_PARAM = { scope: '/vendors/OneSignal/' };
+            OneSignal.SERVICE_WORKER_PARAM = {scope: '/vendors/OneSignal/'};
             OneSignal.SERVICE_WORKER_PATH = 'vendors/OneSignal/OneSignalSDKWorker.js'
             OneSignal.SERVICE_WORKER_UPDATER_PATH = 'vendors/OneSignal/OneSignalSDKUpdaterWorker.js'
             OneSignal.init(initConfig);
         });
     }
 
-   static async addHeader() {
+    static async addHeader() {
         const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
         const firstElement = headerData[0];
         var nav = document.querySelector("#nav");
@@ -54,7 +56,7 @@ export default class App {
         copyright_year.innerHTML = new Date().getFullYear();
 
         const chatButton = document.querySelector(".chatBtn");
-        if (Login_Controller.isLoggedIn()){
+        if (Login_Controller.isLoggedIn()) {
             chatButton.style.display = 'block';
         } else {
             chatButton.style.display = 'none';
@@ -147,13 +149,16 @@ export default class App {
         }
 
     }
+
     static async getData(url) {
-       return await FYSCloud.Utils.fetchAndParseHtml(url);
+        return await FYSCloud.Utils.fetchAndParseHtml(url);
     }
+
     static HandleLinks(show) {
         const login = document.querySelector(".topnav #login");
         const register = document.querySelector(".topnav #registratie");
         const heroButton = document.querySelector(".hero__button");
+        const hero = document.querySelector(".hero");
         if (show) {
             login.style.display = "block";
             register.style.display = "block";
@@ -163,7 +168,14 @@ export default class App {
         } else {
             login.style.display = "none";
             register.style.display = "none";
-            if (App.getSession('Layout') === "./layouts/app.html") {
+            if (App.getSession('Layout') !== "./layouts/app.html") {
+                const link = document.createElement("link");
+                link.href = "assets/css/blank.css"
+                link.rel = "stylesheet";
+                document.head.appendChild(link);
+                if (hero) {
+                    hero.style.display = 'none';
+                }
                 if (heroButton) {
                     heroButton.style.display = "none";
                 }
@@ -275,13 +287,16 @@ export default class App {
         FYSCloud.Localization.switchLanguage(lang_code);
         FYSCloud.Localization.translate();
     }
-    static setSession(name,value){
+
+    static setSession(name, value) {
         FYSCloud.Session.set(name, value);
         return name;
     }
-    static getSession(name){
+
+    static getSession(name) {
         return FYSCloud.Session.get(name);
     }
+
     static validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());

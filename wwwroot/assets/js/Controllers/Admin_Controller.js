@@ -58,7 +58,7 @@ export default class Admin_Controller extends AdminBaseController
 
     }
 
-    render() {
-        return new view('admin/dashboard.html',"CommonFlight | Admin").extends("admin.html");
+    async render() {
+        return  new view('admin/dashboard.html', "CommonFlight | Admin").extends("admin.html");
     }
 }
