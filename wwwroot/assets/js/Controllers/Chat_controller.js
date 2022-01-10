@@ -276,6 +276,10 @@ export default class Chat_controller extends Controller {
                 someDate.getMonth() == today.getMonth() &&
                 someDate.getFullYear() == today.getFullYear()
         }
+
+        // Removes chat button on the chat page
+        const chatBtn = document.querySelector(".chatBtn");
+        chatBtn.style.display = "none";
     }
     async createShareMyPref() {
         console.log("Share")
