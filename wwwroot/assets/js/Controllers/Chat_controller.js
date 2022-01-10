@@ -159,7 +159,7 @@ export default class Chat_controller extends Controller {
         //add click listner to share
         document.querySelector(".modal-content .btn-share").addEventListener("click",this.createShareMyPref.bind(this));
 
-        if (!window.FgEmojiPicker) {
+            if (!window.FgEmojiPicker) {
             new FgEmojiPicker({
                 trigger: ['.emojiBtn'],
                 position: ['bottom', 'right'],
@@ -240,18 +240,26 @@ export default class Chat_controller extends Controller {
                     } else if (messageTimeMinutes < 10) {
                         messageTimeMinutes = "0" + messageTimeMinutes;
                     }
+                    if(!message.msg.includes("chat__block")){
+                        if (message.from_user_id == self.profiel.id) {
+                            chat_element.innerHTML += `<div class="message parker">` +
+                                `<div class="message__content">${message.msg}</div>` +
+                                `<div class="message__time">${messageTimeHours + ':' + messageTimeMinutes}</div>` +
+                                `</div>`
+                        } else {
 
-                    if (message.from_user_id == self.profiel.id) {
+                            chat_element.innerHTML += `<div class="message stark">` +
+                                `<div class="message__content">${message.msg}</div>` +
+                                `<div class="message__time">${messageTimeHours + ':' + messageTimeMinutes}</div>` +
+                                `</div>`
+                        }
+                    }else{
                         chat_element.innerHTML += `<div class="message parker">` +
                             `<div class="message__content">${message.msg}</div>` +
                             `<div class="message__time">${messageTimeHours + ':' + messageTimeMinutes}</div>` +
                             `</div>`
-                    } else {
-                        chat_element.innerHTML += `<div class="message stark">` +
-                            `<div class="message__content">${message.msg}</div>` +
-                            `<div class="message__time">${messageTimeHours + ':' + messageTimeMinutes}</div>` +
-                            `</div>`
                     }
+
                     scrollToBottom()
                 }
             }
@@ -274,7 +282,25 @@ export default class Chat_controller extends Controller {
         const intresses = await this.profiel.getIntress();
         const countries = await this.profiel.getCountry();
         const html = "<div class='chat__block'> " +
-            "<div class='header'><h1>Mijn voorkeuren:</h1></div>" +
+            "<div class='header'><h1>Mijn reis voorkeuren:</h1></div>" +
+            "<div class='content'> " +
+            "<button>" +
+            "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
+            "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5\"></path>" +
+            "</svg>" +
+            "Like</button>" +
+            "</div>" +
+            "</div>";
+
+        await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);
+        return null;
+    }
+    async findBooking() {
+        console.log("Share")
+        const intresses = await this.profiel.getIntress();
+        const countries = await this.profiel.getCountry();
+        const html = "<div class='chat__block'> " +
+            "<div class='header'><h1>Mijn reis voorkeuren:</h1></div>" +
             "<div class='content'> " +
             "<button>" +
             "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
