@@ -85,9 +85,7 @@ export default class Chat_controller extends Controller {
                     <div class="contact__info">
                     <div class="badge">${messages.length}</div>
                     <div class="name">${otherUserId.getFullName()}</div>\n` +
-                    `<div class="message">` +
-                    `    Last chat` +
-                    `</div> </div>` +
+                    `</div>` +
                     `</a></div>`;
 
                 otherUserProfilePic.innerHTML +=
@@ -102,9 +100,7 @@ export default class Chat_controller extends Controller {
                     <div class="contact__info">
                     <div class="badge">${messages.length}</div>
                     <div class="name">${otherUserId.getFullName()}</div>\n` +
-                    `<div class="message">` +
-                    `    Last chat` +
-                    `</div></div>` +
+                    `</div>` +
                     `</a>`;
                 // menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             }

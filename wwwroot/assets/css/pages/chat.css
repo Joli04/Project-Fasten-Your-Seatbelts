@@ -48,8 +48,8 @@
 
 .contact .pic, .contactInfo__image {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     object-position: center;
     border-radius: 5px;
@@ -62,8 +62,8 @@
     font-weight: bold;
 }
 .contact a:hover .pic {
-    width: 149px;
-    height: 149px;
+    width: 99px;
+    height: 99px;
     border: solid 1px var(--red);
 }
 
@@ -77,8 +77,8 @@
 }
 
 .activeChat .pic {
-    width: 149px;
-    height: 149px;
+    width: 99px;
+    height: 99px;
     border: solid 1px var(--red);
 }
 
