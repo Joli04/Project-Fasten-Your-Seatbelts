@@ -93,8 +93,14 @@ export default class Profile_Controller extends Controller {
     }
 
     loadPrivateProfile() {
+        //document.getElementById("avatar").style.display = 'none';
+        document.getElementById("avatar").src = this.profiel.generateAvatar("white", getComputedStyle(document.documentElement).getPropertyValue('--dark_green'));
+        App.ShowNotifyError("Profiel","Profiel is prive: Contact gebruiker om meer over elkaar te weten te komen")
+        //document.getElementById('contact_btn').style.display = 'none'
+        document.getElementById('chat_btn').style.display = 'none';
         var fullName = document.querySelector('.profile_name');
         fullName.innerHTML = this.profiel.getFullName();
+
     }
 
     verify() {
