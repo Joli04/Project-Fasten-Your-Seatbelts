@@ -6,6 +6,7 @@
 @media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
     .chatbox {
         flex-direction: row;
+        height: auto;
     }
 }
 
@@ -89,6 +90,7 @@
 
     .contacts__users {
         flex-direction: column;
+        height: 490px;
         overflow-x: unset;
         overflow-y: scroll;
     }
@@ -236,7 +238,7 @@
 
 @media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
     .chat__messages {
-        height: auto;
+        height: 385px;
     }
 }
 
