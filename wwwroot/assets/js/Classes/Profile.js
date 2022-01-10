@@ -155,6 +155,7 @@ export default class Profile {
      *
      * @return {Promise<void>}
      */
+
     getQountry() {
         return this.country;
     }
