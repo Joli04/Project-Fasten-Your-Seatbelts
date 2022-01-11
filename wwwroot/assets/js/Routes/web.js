@@ -15,6 +15,7 @@ import AdminUsers_Controller from '../Controllers/AdminUsers_Controller.js';
 
 import MatchRequestController from "../Controllers/MatchRequestController.js";
 import Chat_controller from "../Controllers/Chat_controller.js";
+import Wachtwoord_vergeten from "../pages/wachtwoord_vergeten.js";
 /**
  *
  * @type {Route[]}
@@ -29,6 +30,10 @@ const routes = [
     new Route('login', {
         controller: new Login_Controller,
         method: 'show'
+    }),
+    new Route('wachtoord/vergeten', {
+        controller: new Wachtwoord_vergeten,
+        method: 'index'
     }),
     new Route('registratie', {
         controller: new Register_Controller,

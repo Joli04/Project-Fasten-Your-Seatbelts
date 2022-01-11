@@ -4,7 +4,7 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import App from './app.js';
-
+import Countries from "../Objects/Countries.js";
 
 export default class Filter {
     constructor(el, table, select, where,user) {
@@ -18,7 +18,10 @@ export default class Filter {
         this.user_id = user;
     }
 
-    async filter() {
+    async filter(where = null) {
+        if(where){
+            this.query_where = where;
+        }
         await this.removeAllChildNodes(this.el)
         await this.get()
 
@@ -41,8 +44,13 @@ export default class Filter {
     }
 
     async get() {
+        const c = new Countries;
         try {
-            this.selections = await FYSCloud.API.queryDatabase("SELECT * FROM " + this.query_table + " WHERE " + this.query_where + " LIKE ?;", ['%' + this.search + '%']);
+            if(this.query_table === "countries"){
+                this.selections =await c.getCountries();
+            }else{
+                this.selections = await FYSCloud.API.queryDatabase("SELECT * FROM " + this.query_table + " WHERE " + this.query_where + " LIKE ?;", ['%' + this.search + '%']);
+            }
         } catch (e) {
             return {};
         }
@@ -56,10 +64,10 @@ export default class Filter {
 
     create_list() {
         const div = document.createElement('div');
-        div.innerHTML = "<div className=\"search\">\n" +
-            "            <input type=\"text\" className=\"searchTerm\" placeholder=\"Search for " + this.query_table + "\">\n" +
-            "                <button type=\"button\" className=\"searchButton\">\n" +
-            "                    <svg className=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"\n" +
+        div.innerHTML = "<div class=\"search\">\n" +
+            "            <input type=\"text\" class=\"searchTerm\" placeholder=\"Search for " + this.query_table + "\">\n" +
+            "                <button type=\"button\" class=\"searchButton\">\n" +
+            "                    <svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"\n" +
             "                         xmlns=\"http://www.w3.org/2000/svg\">\n" +
             "                        <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"\n" +
             "                              d=\"M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z\"></path>\n" +
@@ -90,8 +98,28 @@ export default class Filter {
             "        </div>";
         this.el.append(div);
     }
+    create_search() {
+        const search = document.createElement("div");
+        search.classList.add("search")
+
+        const searchInput = document.createElement("input");
+        searchInput.type = "text";
+        searchInput.classList.add("searchTerm");
+        searchInput.placeholder = "Search for " + this.query_table;
+        searchInput.addEventListener("change",this.filter.bind(this,searchInput.value));
+        search.appendChild(searchInput);
+
+        const btn = document.createElement("button");
+        btn.classList.add("searchButton");
+        btn.innerHTML = "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z\"></path></svg>";
+        search.appendChild(btn);
+
+        return search;
+    }
 
     create_elements() {
+
+        this.el.appendChild(this.create_search());
         for (const i in this.selections) {
             const selection = App.findObjectByLabel(this.selections[i]);
             const label = document.createElement('label');

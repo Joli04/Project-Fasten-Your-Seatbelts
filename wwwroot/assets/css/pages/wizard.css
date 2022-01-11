@@ -18,7 +18,7 @@
 }
  .searchTerm {
     width: 100%;
-    border: 3px solid  var(--blue);
+    border: 3px solid  var(--green);
     border-right: none;
     padding: 5px;
     border-radius: 5px 0 0 5px;
@@ -26,13 +26,13 @@
     color: #9DBFAF;
 }
  .searchTerm:focus{
-    color:  var(--blue);
+    color:  var(--green);
 }
 .searchButton {
     width: 40px;
     height: 50px;
-    border: 1px solid  var(--blue);
-    background: var(--blue);
+    border: 1px solid  var(--green);
+    background: var(--green);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -46,6 +46,8 @@
     margin: auto;
     padding: 0.5em 1em;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    max-height: 400px;
+    overflow-y: scroll;
 }
 .todo {
     display: block;

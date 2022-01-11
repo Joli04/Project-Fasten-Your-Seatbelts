@@ -14,12 +14,13 @@ export default class Countries {
             const data = await response.json();
             data.forEach(element => {
                 //create an array to hold all countries
-                this.country.push({code: element.alpha3Code, name: element.name, currency: element.currencies});
+                this.country.push({id: element.alpha3Code, names: element.name, currency: element.currencies});
             });
         } catch (err) {
             console.error(err);
             // Handle errors here
         }
+        return this.country;
     }
 
     async get() {
