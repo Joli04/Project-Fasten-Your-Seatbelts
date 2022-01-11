@@ -20,7 +20,7 @@
 .contacts__title {
     font-weight: bold;
     color: var(--red);
-    margin: 20px 20px 10px 20px;
+    margin: 20px 20px 0 20px;
 }
 
 .contacts__users {
@@ -238,8 +238,33 @@
 
 @media only screen and (min-width: 1200px /* var(--breakpoint-xl) */) {
     .chat__messages {
-        height: 385px;
+        height: 315px;
     }
+}
+
+/* ----------------------------- */
+/* ----------[ DEALS ]---------- */
+/* ----------------------------- */
+.chat__deals {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    background-color: var(--light_grey);
+}
+
+.deals__button {
+    padding: 10px;
+    background-color: var(--yellow);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.deals__button:hover {
+    background-color: var(--dark_yellow);
+}
+
+.deals__booking {
+    margin-right: 15px;
 }
 
 /* ---------------------------------- */
