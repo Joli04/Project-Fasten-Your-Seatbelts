@@ -28,10 +28,6 @@ td, th {
     border-right: 1px solid var(--grey);
 }
 
-.userList__user:last-of-type th {
-    border-bottom: none;
-}
-
 .userList__user th {
     border: 1px solid var(--grey);
 }
