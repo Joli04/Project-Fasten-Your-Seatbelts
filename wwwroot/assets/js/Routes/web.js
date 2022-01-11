@@ -15,7 +15,7 @@ import AdminUsers_Controller from '../Controllers/AdminUsers_Controller.js';
 
 import MatchRequestController from "../Controllers/MatchRequestController.js";
 import Chat_controller from "../Controllers/Chat_controller.js";
-import Wachtwoord_vergeten from "../pages/wachtwoord_vergeten.js";
+import Wachtwoord_vergeten from "../Controllers/WachtwoordVergeten_Controller.js";
 /**
  *
  * @type {Route[]}
