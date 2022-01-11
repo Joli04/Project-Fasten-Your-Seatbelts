@@ -430,7 +430,7 @@ export default class Profile {
         try {
             let data = await FYSCloud.API.queryDatabase("INSERT INTO request (user_id,to_user) VALUES (?,?)", [this.id, to]);
             console.log(data);
-            return data[0];
+            return data;
         } catch (e) {
             console.log('Profile : ' + e);
             return {};

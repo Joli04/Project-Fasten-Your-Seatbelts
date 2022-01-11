@@ -93,7 +93,7 @@ export default class Filter {
             "                <circle id=\"todo__circle\" cx=\"13.5\" cy=\"12.5\" r=\"10\"></circle>\n" +
             "            </defs>\n" +
             "        </svg>\n" +
-            "        <div className=\"todo-list\" id=\"intress\">\n" +
+            "        <div class=\"todo-list\" id=\"intress\">\n" +
             "\n" +
             "        </div>";
         this.el.append(div);

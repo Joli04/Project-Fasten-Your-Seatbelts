@@ -18,7 +18,7 @@ export default class Profile_Controller extends Controller {
             await this.profiel.setProfile(query.id);
             document.getElementById('edit_btn').style.display = 'none';
             const change_profile = document.querySelector("#contact_btn");
-            change_profile.addEventListener('click', this.contact.bind(this,this.profiel));
+            change_profile.addEventListener('click', this.contact.bind(this, this.profiel));
 
             const chat_btn = document.querySelector('#chat_btn')
             chat_btn.addEventListener('click', () => {
@@ -42,8 +42,19 @@ export default class Profile_Controller extends Controller {
             await this.loadPublicProfile();
         } else {
             if (query.id > 0) {
-                console.log("Private");
-                this.loadPrivateProfile();
+                await this.profiel.getMatches()
+                let match = false;
+                this.profiel.matches.filter(function (item) {
+                    if (item.user_id == query.id) {
+                        match = true;
+                    }
+                });
+                if(match){
+                    console.log("Load public because is match")
+                    await this.loadPublicProfile();
+                }else{
+                    this.loadPrivateProfile();
+                }
             } else {
                 console.log("Private (but personal)");
                 await this.loadPublicProfile();
@@ -52,6 +63,7 @@ export default class Profile_Controller extends Controller {
 
 
     }
+
     async contact(p) {
         const user = new Profile();
         await user.setProfile(); //Get loggedin user data
@@ -59,6 +71,7 @@ export default class Profile_Controller extends Controller {
         // window.open(`mailto:${this.profiel.email}`);
         return null;
     }
+
     async loadPublicProfile() {
         var fullName = document.querySelector('.profile_name');
         fullName.innerHTML = this.profiel.getFullName();
@@ -94,7 +107,7 @@ export default class Profile_Controller extends Controller {
 
     loadPrivateProfile() {
         document.getElementById("avatar").src = this.profiel.generateAvatar("white", getComputedStyle(document.documentElement).getPropertyValue('--dark_green'));
-        App.ShowNotifyError("Profiel","Profiel is prive: Contact gebruiker om meer over elkaar te weten te komen")
+        App.ShowNotifyError("Profiel", "Profiel is prive: Contact gebruiker om meer over elkaar te weten te komen")
         document.getElementById('chat_btn').style.display = 'none';
         var fullName = document.querySelector('.profile_name');
         fullName.innerHTML = this.profiel.getFullName();
