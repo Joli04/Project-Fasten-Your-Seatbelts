@@ -75,6 +75,9 @@ export default class Modal {
     setContent(html) {
         this.modal.querySelector(".modal-content .modal-body").innerHTML = html;
     }
+    getId(){
+        return this.modal.id;
+    }
 
     open() {
         this.modal.style.display = "block";

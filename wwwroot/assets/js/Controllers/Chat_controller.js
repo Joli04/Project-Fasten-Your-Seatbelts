@@ -112,16 +112,20 @@ export default class Chat_controller extends Controller {
             inputField = form.querySelector(".input-field"),
             sendBtn = form.querySelector(".send"),
             uploadBtn = form.querySelector(".input__imgUpload"),
-            preferenceBtn = document.querySelector(".deals__preference");
+            preferenceBtn = document.querySelector(".deals__preference"),
+            bookingBtn = document.querySelector(".deals__booking")
+        ;
 
         const DeelVoorkeuren = new Modal(preferenceBtn);
-        this.sharePrefModal = DeelVoorkeuren;
         DeelVoorkeuren.setTitle("Deel mijn reis voorkeuren");
-        DeelVoorkeuren.setContent(`
+
+        const DeelBooking = new Modal(bookingBtn);
+        DeelBooking.setTitle("Deel booking");
+        DeelBooking.setContent(`
         <div> 
-             <h4>Geinteresserde landen:</h4> <br> 
-            ${ await this.profiel.GetIntressCountryString()} :<br> 
-            <button class="btn-share">
+             <h4>Zoek een booking</h4> <br> 
+             <iframe id="bookingDetials" src="https://www.corendon.nl/vakanties" width="800px" height="600px"></iframe>
+            <button class="btn-share" id="shareBooking">
                 <span class="btn-text">Deel</span>
                 <span class="btn-icon">
                     <svg t="1580465783605" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9773" width="18" height="18">
@@ -130,11 +134,26 @@ export default class Chat_controller extends Controller {
                 </span>
             </button>
          </div>`);
-
+        DeelVoorkeuren.setContent(`
+        <div> 
+             <h4>Geinteresserde landen:</h4> <br> 
+            ${ await this.profiel.GetIntressCountryString()} :<br> 
+            <button class="btn-share" id="shareCountry">
+                <span class="btn-text">Deel</span>
+                <span class="btn-icon">
+                    <svg t="1580465783605" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9773" width="18" height="18">
+                        <path d="M767.99994 585.142857q75.995429 0 129.462857 53.394286t53.394286 129.462857-53.394286 129.462857-129.462857 53.394286-129.462857-53.394286-53.394286-129.462857q0-6.875429 1.170286-19.456l-205.677714-102.838857q-52.589714 49.152-124.562286 49.152-75.995429 0-129.462857-53.394286t-53.394286-129.462857 53.394286-129.462857 129.462857-53.394286q71.972571 0 124.562286 49.152l205.677714-102.838857q-1.170286-12.580571-1.170286-19.456 0-75.995429 53.394286-129.462857t129.462857-53.394286 129.462857 53.394286 53.394286 129.462857-53.394286 129.462857-129.462857 53.394286q-71.972571 0-124.562286-49.152l-205.677714 102.838857q1.170286 12.580571 1.170286 19.456t-1.170286 19.456l205.677714 102.838857q52.589714-49.152 124.562286-49.152z" p-id="9774" fill="#ffffff"></path>
+                    </svg>
+                </span>
+            </button>
+         </div>`);
+        this.sharePrefModal = DeelVoorkeuren;
+        this.shareBooking = DeelBooking;
         //add click listener to share
-        document.querySelector(".modal-content .btn-share").addEventListener("click",this.createShareMyPref.bind(this));
+        document.querySelector("#shareCountry").addEventListener("click",this.createShareMyPref.bind(this));
+        document.querySelector("#shareBooking").addEventListener("click",this.findBooking.bind(this));
 
-            if (!window.FgEmojiPicker) {
+        if (!window.FgEmojiPicker) {
             new FgEmojiPicker({
                 trigger: ['.emojiBtn'],
                 position: ['bottom', 'right'],
@@ -279,12 +298,22 @@ export default class Chat_controller extends Controller {
     }
     async findBooking() {
         console.log("Share")
-        const intresses = await this.profiel.getIntress();
-        const countries = await this.profiel.getCountry();
-
+        const url =document.getElementById("bookingDetials").src
+        const frame = document.getElementById('bookingDetials');
+        frame.contentWindow.postMessage({curURL: location.href}, 'https://www.corendon.nl');
+        window.addEventListener("message", function(e){
+            //Get the data
+          //  console.log(e);
+          //  if(e.origin !== "http://localhost::63342")
+            const frame = document.getElementById('bookingDetials');
+            var elements = frame.contentWindow.document;
+            var data = e.data;
+            console.log(data.contentWindow.document);
+        }, false);
         const html = "<div class='chat__block'> " +
-            "<div class='header'><h1>Mijn reis voorkeuren:</h1></div>" +
+            "<div class='header'><h1>Mijn voorstel booking:</h1></div>" +
             "<div class='content'> " +
+            "<a href="+url+">Bekijk deal op corendon website</a>"+
             "<button>" +
             "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
             "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5\"></path>" +
@@ -293,7 +322,8 @@ export default class Chat_controller extends Controller {
             "</div>" +
             "</div>";
 
-        //await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);
+      //  await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);
+        this.shareBooking.close();
         return null;
     }
     render() {
