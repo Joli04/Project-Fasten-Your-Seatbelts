@@ -47,10 +47,10 @@ export default class Filter {
         const c = new Countries;
         try {
             if(this.query_table === "countries"){
-                this.selections =await c.getCountries();
-            }else{
-                this.selections = await FYSCloud.API.queryDatabase("SELECT * FROM " + this.query_table + " WHERE " + this.query_where + " LIKE ?;", ['%' + this.search + '%']);
+               // this.selections =await c.getCountries();
             }
+            this.selections = await FYSCloud.API.queryDatabase("SELECT * FROM " + this.query_table + " WHERE " + this.query_where + " LIKE ?;", ['%' + this.search + '%']);
+
         } catch (e) {
             return {};
         }
