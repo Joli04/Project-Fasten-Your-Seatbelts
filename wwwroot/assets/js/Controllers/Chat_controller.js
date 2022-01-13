@@ -15,6 +15,7 @@ export default class Chat_controller extends Controller {
 
 
     async chat() {
+        var stopped = false
         const script = document.createElement("script");
         script.type = "text/javascript";
         script.src = "./vendors/EmojiPicker/emojiPicker.js";
@@ -30,6 +31,7 @@ export default class Chat_controller extends Controller {
         var chat = document.getElementById('chat');
         chat.scrollTop = chat.scrollHeight - chat.clientHeight;
         const time = document.querySelector('.time');
+        const chatbox = document.querySelector('.chatbox__chat');
         if (query.id > 0) {
             this.chat_id = query.id;
             if (query.checknew == 1) {
@@ -48,27 +50,37 @@ export default class Chat_controller extends Controller {
                 return;
             }
             App.ShowNotifySuccess("Chat", "Chat met profiel: " + query.id);
+
+            stopped = false
             setInterval(async () => {
+                if(stopped == true) {
+                    return;
+                }
                 reloadData()
             }, 1500);
+
+            this.other_id = await this.messages.getOther(this.chat_id)
+            this.other_profile = new Profile();
+            await this.other_profile.setProfile(this.other_id);
+            this.other_profile = await this.other_profile.getData()
+
+            this.otherUserProfilePic = document.querySelector('#profile_pic');
+            this.otherUserProfileName = document.querySelector('.bar .name');
+
+            this.otherUserProfileName.innerHTML = this.other_profile.first_name + " " + this.other_profile.last_name
+            chatbox.style.visibility = "visible";
+            // otherUserProfilePic.style.backgroundImage = this.other_profile.profile
         } else {
             document.querySelector('#chat').innerHTML = "";
+            chatbox.style.visibility = "hidden";
             //App.ShowNotifyError("Chat", "Chat id is missing");
         }
-
-        this.other_id = await this.messages.getOther(this.chat_id)
-        this.other_profile = new Profile();
-        await this.other_profile.setProfile(this.other_id);
-        this.other_profile = await this.other_profile.getData()
 
 
         let allChats = await this.messages.getAllChats(this.profiel.id)
         let menu_element = document.querySelector('.contacts__users')
-        const otherUserProfilePic = document.querySelector('#profile_pic');
-        const otherUserProfileName = document.querySelector('.bar .name');
 
         // otherUserProfilePic.style.backgroundImage = this.other_profile.profile
-        otherUserProfileName.innerHTML = this.other_profile.first_name + " " + this.other_profile.last_name
 
         for (let i = 0; i < allChats.length; i++) {
             let currentChat = allChats[i]
@@ -89,7 +101,7 @@ export default class Chat_controller extends Controller {
                     `</div>` +
                     `</a></div>`;
 
-                otherUserProfilePic.innerHTML +=
+                this.otherUserProfilePic.innerHTML +=
                     `<img class="contactInfo__image" src="${otherUserId.getProfilePicture()}" alt="other user profile picture">`;
                 //menu_element.innerHTML += `<a href="#/chat?id=${currentChat.id}" class="active">${otherUserId.first_name} ${otherUserId.last_name}</a>`
             } else {
@@ -198,14 +210,13 @@ export default class Chat_controller extends Controller {
 
         }
 
-
         var self = this;
-
 
         async function reloadData() {
             const query = App.getFromQueryObject()
 
             if (query.id != self.chat_id) {
+                stopped = true
                 console.log("Stopped")
                 return
             }
