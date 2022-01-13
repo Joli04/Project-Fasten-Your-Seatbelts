@@ -69,20 +69,26 @@ export default class Profile {
         }
     }
 
+    const
+    countryList = [];
+
     async GetIntressCountryString() {
-        var CountryString = "";
         await this.getCountry();
-        for (const country in this.countries) {
-            CountryString = CountryString + " " + this.countries[country].names;
+        const countryList = [];
+        for (let i = 0; i < this.countries.length; i++) {
+            countryList[i] = this.countries[i].names;
         }
-        return CountryString;
+        return countryList.toString();
     }
 
     async GetIntressString() {
         var InstressString = "";
         await this.getIntress();
         for (const instress in this.intressed) {
-            InstressString = InstressString + " " + this.intressed[instress].name;
+            if (instress == 0) {
+                InstressString + this.intressed[instress].name;
+            }
+            InstressString = InstressString + ", " + this.intressed[instress].name;
         }
         return InstressString;
     }

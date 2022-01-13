@@ -115,13 +115,12 @@ export default class Chat_controller extends Controller {
             preferenceBtn = document.querySelector(".deals__preference");
 
         const DeelVoorkeuren = new Modal(preferenceBtn);
-        DeelVoorkeuren.setTitle("Deel mijn voorkeuren");
+        this.sharePrefModal = DeelVoorkeuren;
+        DeelVoorkeuren.setTitle("Deel mijn reis voorkeuren");
         DeelVoorkeuren.setContent(`
         <div> 
-            <h4>Mijn interesses:</h4> <br>
-            ${await this.profiel.GetIntressString()} <br> <br>
              <h4>Geinteresserde landen:</h4> <br> 
-            ${await this.profiel.GetIntressCountryString()} :<br> 
+            ${ await this.profiel.GetIntressCountryString()} :<br> 
             <button class="btn-share">
                 <span class="btn-text">Deel</span>
                 <span class="btn-icon">
@@ -259,18 +258,11 @@ export default class Chat_controller extends Controller {
     }
 
     async createShareMyPref() {
-        console.log("Share preferences")
-
-        const countryList = [];
-        for (let i = 0; i < this.profiel.countries.length; i++) {
-            countryList[i] = this.profiel.countries[i].names;
-        }
-
         const html = `<div class='chat__block'>` +
             `<div class='block__header'><h2>Reis voorkeuren van <span>${this.profiel.getFullName()}</span>:</h2></div>` +
             "<div class='block__content'> " +
             "<div class='block__preferences'>" +
-            countryList.toString() +
+            await this.profiel.GetIntressCountryString() +
             "</div>" +
             "<button>" +
             "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
@@ -282,6 +274,7 @@ export default class Chat_controller extends Controller {
             "</div>";
 
         await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);
+        this.sharePrefModal.close();
         return null;
     }
     async findBooking() {
