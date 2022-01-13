@@ -103,13 +103,11 @@ export default class Profile_Controller extends Controller {
 
         acceptMatchHTML.addEventListener('click', async () => {
             await this.acceptMatch()
-            App.redirect('#/profiel')
         })
 
 
         denyMatchHTML.addEventListener('click', async () => {
             await this.denyMatch()
-            App.redirect('#/profiel')
         })
     }
 
