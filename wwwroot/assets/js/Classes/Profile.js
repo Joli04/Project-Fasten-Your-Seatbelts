@@ -112,9 +112,9 @@ export default class Profile {
      * @param account_type
      * @return {Promise<{}|*>}
      */
-    async updateProfile(first, last, email, birthday, gender, country_origin_id, bio, account_type = 'user') {
+    async updateProfile(first, last, email, accountType, birthday, gender, country_origin_id, bio, account_type = 'user') {
         try {
-            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?,email =?,gender=?,account_type=?,birthday = ?,bio = ?,country_origin_id =? where users.id=" + this.id, [first, last, email, gender, account_type, birthday, bio, country_origin_id]);
+            let data = await FYSCloud.API.queryDatabase("UPDATE users set first_name = ?, last_name = ?,email =?,gender=?,account_type=?,birthday = ?,bio = ?,country_origin_id =?, public=" + accountType + " where users.id=" + this.id, [first, last, email, gender, account_type, birthday, bio, country_origin_id]);
             return data[0];
         } catch (e) {
             console.log('Profile : ' + e);

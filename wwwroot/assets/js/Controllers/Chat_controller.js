@@ -133,6 +133,8 @@ export default class Chat_controller extends Controller {
                         </div>
                     </div>`
                 }
+            } else {
+                chatbox.innerHTML += "Geen matches gevonden"
             }
         }
 
