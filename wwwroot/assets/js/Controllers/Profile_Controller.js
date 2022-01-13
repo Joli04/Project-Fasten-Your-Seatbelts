@@ -116,11 +116,13 @@ export default class Profile_Controller extends Controller {
     async acceptMatch() {
         let removeRequest = await FYSCloud.API.queryDatabase('DELETE FROM request WHERE user_id = ? AND to_user = ?', [this.profiel.id, this.ownProfiel.id]);
         let addMatch = await FYSCloud.API.queryDatabase('INSERT INTO user_matches (requested_id, is_match, user_id) VALUES (?, ?, ?)', [this.profiel.id, true, this.ownProfiel.id]);
+        App.redirect(`#/chat?id=${this.profiel.id}&checknew=1`);
     }
 
      async denyMatch() {
         let removeRequest = await FYSCloud.API.queryDatabase('DELETE FROM request WHERE user_id = ? AND to_user = ?', [this.profiel.id, this.ownProfiel.id]);
-     }
+        App.redirect(`#/chat`);
+    }
 
     async loadPublicProfile() {
         var fullName = document.querySelector('.profile_name');
