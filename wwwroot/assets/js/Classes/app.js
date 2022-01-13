@@ -136,10 +136,17 @@ export default class App {
 
                 if (current_page.includes('/')) {
                     nav_page = document.querySelector(".topnav #" + current_page.replace('/', '_'));
+
                 } else {
                     nav_page = document.querySelector(".topnav #" + current_page);
                 }
+
+                if(current_page == "chat") {
+                    nav_page = document.querySelector(".topnav #social");
+                }
+
             }
+
             if (nav_page) {
                 nav_page.classList.add("active");
             }
