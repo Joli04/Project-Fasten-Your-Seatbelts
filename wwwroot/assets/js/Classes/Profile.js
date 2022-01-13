@@ -82,15 +82,12 @@ export default class Profile {
     }
 
     async GetIntressString() {
-        var InstressString = "";
         await this.getIntress();
-        for (const instress in this.intressed) {
-            if (instress == 0) {
-                InstressString + this.intressed[instress].name;
-            }
-            InstressString = InstressString + ", " + this.intressed[instress].name;
+        const instressList = [];
+        for (let i = 0; i < this.intressed.length; i++) {
+            instressList[i] = this.intressed[i].name;
         }
-        return InstressString;
+        return instressList.toString();
     }
 
     /**
