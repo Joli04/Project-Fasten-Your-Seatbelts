@@ -34,6 +34,6 @@ export default class Wachtwoord_vergeten extends Controller
         })
     }
     render() {
-        return new view('wachtwoord_vergeten.html',"CommonFlight | Password forgot");
+        return new view('wachtwoord_vergeten.html',"CommonFlight | Password forgot").extends("blank.html");
     }
 }
