@@ -54,10 +54,23 @@ export default class Profile {
         try {
             this.countries = await FYSCloud.API.queryDatabase("SELECT created_at,names,user_countries.id FROM user_countries INNER JOIN countries ON user_countries.countries_id = countries.id where user_countries.user_id=" + this.id);
         } catch (e) {
-            console.log('Profile : ' + e);
+            console.log('Profile country : ' + e);
             this.countries = {};
         }
     }
+    async getCountryNames() {
+        await this.getCountry();
+        const countryList = [];
+        try {
+            for (let i = 0; i < this.countries.length; i++) {
+                countryList[i] = this.countries[i].names;
+            }
+            return countryList;
+        } catch (e) {
+            console.log('Profile country : ' + e);
+        }
+    }
+
 
     async getIntress() {
         this.intressed = [];
@@ -68,9 +81,6 @@ export default class Profile {
             this.intressed = {};
         }
     }
-
-    const
-    countryList = [];
 
     async GetIntressCountryString() {
         await this.getCountry();

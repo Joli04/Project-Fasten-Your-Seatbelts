@@ -10,6 +10,7 @@ import Profile from "../Classes/Profile.js";
 import Messages from "../Objects/Messages.js";
 import Modal from "../Objects/Modal.js";
 import Base64 from "../Objects/Base64.js";
+
 export default class Chat_controller extends Controller {
 
 
@@ -120,13 +121,26 @@ export default class Chat_controller extends Controller {
         DeelVoorkeuren.setTitle("Deel mijn reis voorkeuren");
 
         const DeelBooking = new Modal(bookingBtn);
+
+        await this.profiel.getCountry();
+
+        const other_profile = new Profile();
+        await other_profile.setProfile(this.other_id);
+        await other_profile.getCountryNames();
+        const countriesOfOtherUser = await other_profile.getCountryNames();
+        let comparedCountries = [];
+        for (let i = 0; i < this.profiel.countries.length; i++) {
+            if (countriesOfOtherUser.includes(this.profiel.countries[i].names)) {
+                comparedCountries.push(this.profiel.countries[i].names);
+            }
+        }
         DeelBooking.setTitle("Deel booking");
         DeelBooking.setContent(`
         <div> 
-             <h4>Zoek een booking</h4> <br> 
-             <iframe id="bookingDetials" src="https://www.corendon.nl/vakanties" width="800px" height="600px"></iframe>
+             <h4>Zoek een boeking</h4> <br> 
+            <p>Jullie overeenkomende landen zijn: ${comparedCountries.toString()}</p>
             <button class="btn-share" id="shareBooking">
-                <span class="btn-text">Deel</span>
+                <span class="btn-text">Deel met elkaar</span>
                 <span class="btn-icon">
                     <svg t="1580465783605" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9773" width="18" height="18">
                         <path d="M767.99994 585.142857q75.995429 0 129.462857 53.394286t53.394286 129.462857-53.394286 129.462857-129.462857 53.394286-129.462857-53.394286-53.394286-129.462857q0-6.875429 1.170286-19.456l-205.677714-102.838857q-52.589714 49.152-124.562286 49.152-75.995429 0-129.462857-53.394286t-53.394286-129.462857 53.394286-129.462857 129.462857-53.394286q71.972571 0 124.562286 49.152l205.677714-102.838857q-1.170286-12.580571-1.170286-19.456 0-75.995429 53.394286-129.462857t129.462857-53.394286 129.462857 53.394286 53.394286 129.462857-53.394286 129.462857-129.462857 53.394286q-71.972571 0-124.562286-49.152l-205.677714 102.838857q1.170286 12.580571 1.170286 19.456t-1.170286 19.456l205.677714 102.838857q52.589714-49.152 124.562286-49.152z" p-id="9774" fill="#ffffff"></path>
@@ -137,7 +151,7 @@ export default class Chat_controller extends Controller {
         DeelVoorkeuren.setContent(`
         <div> 
              <h4>Geinteresserde landen:</h4> <br> 
-            ${ await this.profiel.GetIntressCountryString()} :<br> 
+            ${await this.profiel.GetIntressCountryString()} :<br> 
             <button class="btn-share" id="shareCountry">
                 <span class="btn-text">Deel</span>
                 <span class="btn-icon">
@@ -150,8 +164,8 @@ export default class Chat_controller extends Controller {
         this.sharePrefModal = DeelVoorkeuren;
         this.shareBooking = DeelBooking;
         //add click listener to share
-        document.querySelector("#shareCountry").addEventListener("click",this.createShareMyPref.bind(this));
-        document.querySelector("#shareBooking").addEventListener("click",this.findBooking.bind(this));
+        document.querySelector("#shareCountry").addEventListener("click", this.createShareMyPref.bind(this));
+        document.querySelector("#shareBooking").addEventListener("click", this.findBooking.bind(this));
 
         if (!window.FgEmojiPicker) {
             new FgEmojiPicker({
@@ -234,7 +248,7 @@ export default class Chat_controller extends Controller {
                     } else if (messageTimeMinutes < 10) {
                         messageTimeMinutes = "0" + messageTimeMinutes;
                     }
-                    if(!message.msg.includes("chat__block")){
+                    if (!message.msg.includes("chat__block")) {
                         if (message.from_user_id == self.profiel.id) {
                             chat_element.innerHTML += `<div class="message parker">` +
                                 `<div class="message__content">${message.msg}</div>` +
@@ -247,7 +261,7 @@ export default class Chat_controller extends Controller {
                                 `<div class="message__time">${messageTimeHours + ':' + messageTimeMinutes}</div>` +
                                 `</div>`
                         }
-                    }else{
+                    } else {
                         chat_element.innerHTML += `<div class="message parker">` +
                             `<div class="message__content">${message.msg}</div>` +
                             `<div class="message__time">${messageTimeHours + ':' + messageTimeMinutes}</div>` +
@@ -296,36 +310,37 @@ export default class Chat_controller extends Controller {
         this.sharePrefModal.close();
         return null;
     }
+
     async findBooking() {
-        console.log("Share")
-        const url =document.getElementById("bookingDetials").src
-        const frame = document.getElementById('bookingDetials');
-        frame.contentWindow.postMessage({curURL: location.href}, 'https://www.corendon.nl');
-        window.addEventListener("message", function(e){
-            //Get the data
-          //  console.log(e);
-          //  if(e.origin !== "http://localhost::63342")
-            const frame = document.getElementById('bookingDetials');
-            var elements = frame.contentWindow.document;
-            var data = e.data;
-            console.log(data.contentWindow.document);
-        }, false);
+        await this.profiel.getCountry();
+
+        const other_profile = new Profile();
+        await other_profile.setProfile(this.other_id);
+        await other_profile.getCountryNames();
+        const countriesOfOtherUser = await other_profile.getCountryNames();
+        let comparedCountries = [];
+        for (let i = 0; i < this.profiel.countries.length; i++) {
+            if (countriesOfOtherUser.includes(this.profiel.countries[i].names)) {
+                comparedCountries.push(this.profiel.countries[i].names);
+            }
+        }
+        const url = "https://corendon.nl/" + comparedCountries[0];
         const html = "<div class='chat__block'> " +
             "<div class='header'><h1>Mijn voorstel booking:</h1></div>" +
             "<div class='content'> " +
-            "<a href="+url+">Bekijk deal op corendon website</a>"+
-            "<button>" +
+            "<a href='"+url+"'>" +
             "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
             "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5\"></path>" +
             "</svg>" +
-            "Like</button>" +
+            "Bekijk deal op corendon</a>" +
             "</div>" +
             "</div>";
 
-      //  await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);
+          await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);
         this.shareBooking.close();
         return null;
     }
+
     render() {
         return new view('chat.html', "CommonFlight | Chat").extends("blank.html");
     }
