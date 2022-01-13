@@ -14,8 +14,8 @@ export default class Matches_Controller extends Controller {
 
     async show() {
 
-        this.profiel = new Profile();
-        await this.profiel.setProfile();
+        let profiel = new Profile();
+        await profiel.setProfile();
         const heroButton = document.querySelector(".hero__button");
         if (App.getSession('Layout') === "./layouts/app.html") {
             heroButton.style.display = "none";
@@ -24,13 +24,13 @@ export default class Matches_Controller extends Controller {
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
 
         var profile_name = document.querySelector('#matching_profile_name');
-        profile_name.innerHTML = this.profiel.getFullName();
+        profile_name.innerHTML = profiel.getFullName();
 
         var profile_age = document.querySelector('#matching_profile_age');
-        profile_age.innerHTML = new Date().getFullYear() - new Date(this.profiel.birthday).getFullYear();
+        profile_age.innerHTML = new Date().getFullYear() - new Date(profiel.birthday).getFullYear();
 
         var profile_orgin = document.querySelector('#matching_profile_origin');
-        profile_orgin.innerHTML = this.profiel.getQountry();
+        profile_orgin.innerHTML = profiel.getQountry();
 
         const countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
         //get filter changes
@@ -66,6 +66,16 @@ export default class Matches_Controller extends Controller {
         }
 
         async function getData(users) {
+            let matches = await FYSCloud.API.queryDatabase('SELECT * FROM user_matches WHERE user_id = ? OR requested_id = ?', [profiel.id, profiel.id])
+
+            for (const match in matches) {
+                if(match[0].user_id === profiel.id){
+                    users.splice(users.indexOf(match[0].user_id), 1);
+                } else {
+                    users.splice(users.indexOf(match[0].requested_id), 1);
+                }
+            }
+
             if (users.length === 0) {
                 document.getElementById('card-container').innerHTML +=
                     "<h3 class='users__noResult'>Geen resultaten gevonden...</h3>"

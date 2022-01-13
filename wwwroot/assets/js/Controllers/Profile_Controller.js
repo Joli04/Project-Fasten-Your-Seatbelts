@@ -63,11 +63,12 @@ export default class Profile_Controller extends Controller {
                         match = true;
                     }
                 });
+
                 if(match){
                     console.log("Load public because is match")
                     this.change_profile.style.display = 'none';
                 }else{
-                    this.this.chat_btn.style.display = 'none';
+                    this.chat_btn.style.display = 'none';
                 }
             }
         } else {
