@@ -91,7 +91,7 @@ export default class Matches_Controller extends Controller {
                 //capitalizing first letter of gender
                 const formatted_gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
 
-                const url = FYSCloud.Utils.createUrl("#/profiel", {
+                const url = await FYSCloud.Utils.createUrl("#/profiel", {
                     id: user.id,
                 });
                 //adding user card to container

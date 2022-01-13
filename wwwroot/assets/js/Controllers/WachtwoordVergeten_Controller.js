@@ -10,7 +10,7 @@ import view from "../Classes/View.js";
 export default class Wachtwoord_vergeten extends Controller
 {
     index() {
-        window.addEventListener('load', () => {
+            console.log("test")
 
             document.querySelector(".zoeken").addEventListener("click", event => {
                 FYSCloud.API.queryDatabase(
@@ -31,7 +31,6 @@ export default class Wachtwoord_vergeten extends Controller
                     console.log(reason);
                 });
             })
-        })
     }
     render() {
         return new view('wachtwoord_vergeten.html',"CommonFlight | Password forgot").extends("blank.html");

@@ -95,6 +95,15 @@
     cursor: pointer;
 }
 
+#accept_match {
+    background-color: var(--dark_green);
+}
+
+#deny_match {
+    background-color: var(--dark_red);
+}
+
+
 .profile__button button:hover {
     background-color: var(--green);
 }
@@ -109,6 +118,14 @@
     color: var(--white);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+
+#accept {
+    background-color: var(--green) !important;
+}
+
+#deny {
+    background-color: var(--red) !important;
 }
 
 .button__icon {

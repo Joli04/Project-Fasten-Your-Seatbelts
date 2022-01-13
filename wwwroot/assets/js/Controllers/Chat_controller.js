@@ -3,7 +3,6 @@
  */
 import Controller from './Controller.js';
 
-
 import App from '../Classes/app.js';
 import view from "../Classes/View.js";
 import Profile from "../Classes/Profile.js";
@@ -11,8 +10,10 @@ import Messages from "../Objects/Messages.js";
 import Modal from "../Objects/Modal.js";
 import Base64 from "../Objects/Base64.js";
 
-export default class Chat_controller extends Controller {
+import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
+import "../config.js";
 
+export default class Chat_controller extends Controller {
 
     async chat() {
         var stopped = false
@@ -32,6 +33,15 @@ export default class Chat_controller extends Controller {
         chat.scrollTop = chat.scrollHeight - chat.clientHeight;
         const time = document.querySelector('.time');
         const chatbox = document.querySelector('.chatbox__chat');
+
+        const form = document.querySelector(".typing-area"),
+            inputField = form.querySelector(".input-field"),
+            sendBtn = form.querySelector(".send"),
+            uploadBtn = form.querySelector(".input__imgUpload"),
+            preferenceBtn = document.querySelector(".deals__preference"),
+            bookingBtn = document.querySelector(".deals__booking")
+        ;
+
         if (query.id > 0) {
             this.chat_id = query.id;
             if (query.checknew == 1) {
@@ -68,12 +78,62 @@ export default class Chat_controller extends Controller {
             this.otherUserProfileName = document.querySelector('.bar .name');
 
             this.otherUserProfileName.innerHTML = this.other_profile.first_name + " " + this.other_profile.last_name
-            chatbox.style.visibility = "visible";
             // otherUserProfilePic.style.backgroundImage = this.other_profile.profile
         } else {
+            document.querySelector('.matches').innerHTML = ""
+            this.chat_id = null
             document.querySelector('#chat').innerHTML = "";
-            chatbox.style.visibility = "hidden";
-            //App.ShowNotifyError("Chat", "Chat id is missing");
+            chatbox.innerHTML = '<h2 class="contacts__title">Mijn matches</h2><div class="users" id="card-container"></div>';
+
+            let requestbox = document.querySelector('#card-container');
+
+            let innerRequests = await FYSCloud.API.queryDatabase("SELECT * from request WHERE to_user = ?", [this.profiel.id]);
+
+            if (innerRequests.length != 0) {
+                const countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
+
+                for (var request in innerRequests) {
+                    let user = new Profile();
+                    await user.setProfile(innerRequests[request].user_id);
+
+                    let localUserName = user.getFullName()
+                    let localUserProfilePic = user.getProfilePicture()
+                    let localUserAge =  new Date().getFullYear() - new Date(user.birthday).getFullYear()
+
+                    //filtering to get users country (name)
+                    const country = countries.filter(country => country.id === user.country_id)[0]
+
+                    //capitalizing first letter of country name
+                    const arr = country.names.split(" ");
+                    for (var i = 0; i < arr.length; i++) {
+                        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+
+                    }
+                    const formatted_country_name = arr.join(" ");
+
+                    //capitalizing first letter of gender
+                    const formatted_gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
+
+                    const url = await FYSCloud.Utils.createUrl("#/profiel", {
+                        id: user.id,
+                    });
+                    
+                    requestbox.innerHTML += `
+                    <div class="grid-child">
+                        <div class="card" onclick="window.open('${url}');" style="cursor: pointer;">
+                            <div id="image">
+                                <img class="align_image" src="${localUserProfilePic}" alt="Profile Picture">
+                            </div>
+                            <p id="user_name">${localUserName}</p>
+                            <div id="info">
+                                <p>${localUserAge}</p>
+                                <p>${formatted_country_name}</p>
+                                <p>${formatted_gender}</p>
+                            </div>
+                        </div>
+                    </div>`
+                }
+            }
         }
 
 
@@ -119,15 +179,6 @@ export default class Chat_controller extends Controller {
             }
 
         }
-
-
-        const form = document.querySelector(".typing-area"),
-            inputField = form.querySelector(".input-field"),
-            sendBtn = form.querySelector(".send"),
-            uploadBtn = form.querySelector(".input__imgUpload"),
-            preferenceBtn = document.querySelector(".deals__preference"),
-            bookingBtn = document.querySelector(".deals__booking")
-        ;
 
         const DeelVoorkeuren = new Modal(preferenceBtn);
         DeelVoorkeuren.setTitle("Deel mijn reis voorkeuren");
@@ -226,7 +277,11 @@ export default class Chat_controller extends Controller {
             let chat_element = document.getElementById('chat')
 
             if (messages.length <= 0) {
-                chat_element.innerHTML = `<p>Start de chat met het sturen van een leuk bericht naar ${self.other_profile.first_name}!</p>`
+                try {
+                    chat_element.innerHTML = `<p>Start de chat met het sturen van een leuk bericht naar ${self.other_profile.first_name}!</p>`
+                } catch {
+                    stopped = true
+                }
                 self.empty_chat = true
             } else {
                 if (self.empty_chat == true) {

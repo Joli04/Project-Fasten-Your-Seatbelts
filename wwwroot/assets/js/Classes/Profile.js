@@ -41,7 +41,7 @@ export default class Profile {
     async getMatches() {
         this.matches = [];
         try {
-            let data = await FYSCloud.API.queryDatabase("SELECT * from user_matches where user_id=" + this.id);
+            let data = await FYSCloud.API.queryDatabase("SELECT * from user_matches where user_id=? OR requested_id=?", [this.id, this.id]);
             this.matches = data;
         } catch (e) {
             console.log('Matches : ' + e);
