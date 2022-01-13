@@ -53,6 +53,23 @@ export default class Profile_Controller extends Controller {
         if (this.profiel.getPublic()) {
             console.log("Public");
             await this.loadPublicProfile();
+
+            if(query.id > 0) {
+                await this.profiel.getMatches()
+                let match = false;
+
+                this.profiel.matches.filter(function (item) {
+                    if (item.user_id == ownProfiel.id) {
+                        match = true;
+                    }
+                });
+                if(match){
+                    console.log("Load public because is match")
+                    this.change_profile.style.display = 'none';
+                }else{
+                    this.this.chat_btn.style.display = 'none';
+                }
+            }
         } else {
             if (query.id > 0) {
                 await this.profiel.getMatches()
@@ -68,7 +85,7 @@ export default class Profile_Controller extends Controller {
                     this.change_profile.style.display = 'none';
                     await this.loadPublicProfile();
                 }else{
-                    this.this.chat_btn.style.display = 'none';
+                    this.chat_btn.style.display = 'none';
                     this.loadPrivateProfile();
                 }
             } else {
