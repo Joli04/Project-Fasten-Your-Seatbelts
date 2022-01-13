@@ -154,20 +154,15 @@ export default class Chat_controller extends Controller {
             }
 
             let chat = await FYSCloud.API.queryDatabase("SELECT * FROM chat WHERE first_user = ? AND second_user = ? OR first_user = ? AND second_user = ?", [this.profiel.id, otherUserId.id, otherUserId.id, this.profiel.id])
-            console.log(chat)
             var lastOpened
-            if(chat.first_user == this.profiel.id) {
-                console.log()
+
+            if(chat[0].first_user == this.profiel.id) {
                 lastOpened = chat[0].first_user_opened
             } else {
                 lastOpened = chat[0].second_user_opened
             }
 
-            console.log(lastOpened)
-
             let newMessages = await FYSCloud.API.queryDatabase("SELECT * FROM messages WHERE chat_id = ? AND message_send_at > ?", [currentChat.id, lastOpened])
-
-            console.log(newMessages)
 
             if (currentChat.id == this.chat_id) {
                 const messages = await this.messages.get(this.chat_id);
@@ -315,8 +310,6 @@ export default class Chat_controller extends Controller {
             time.innerHTML = time_text + ' ' + Latest_chat.getUTCHours() + ':' + Latest_chat.getUTCMinutes();
 
             let chatInfo = await FYSCloud.API.queryDatabase('SELECT * FROM chat WHERE id = ?', [self.chat_id])
-
-            console.log(chatInfo)
 
             if(chatInfo[0].first_user == self.profiel.id){
                 await FYSCloud.API.queryDatabase('UPDATE chat SET first_user_opened = now() WHERE id = ?', [self.chat_id])
