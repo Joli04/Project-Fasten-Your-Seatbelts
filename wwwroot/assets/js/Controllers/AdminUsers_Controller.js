@@ -60,7 +60,13 @@ export default class AdminUsers_Controller extends AdminBaseController
             userDelBtn.addEventListener("click", getUserDel);
 
             function getUserDel() {
-                console.log("userDelBtn");
+                const deletionConfirmation = confirm("Weet je zeker dat je de gebruiker: "+ admin.users[i].first_name + " "
+                    + admin.users[i].last_name +" wilt verwijderen?");
+
+                if (deletionConfirmation) {
+                    admin.destroy(admin.users[i].id);
+                    App.redirect(`#/admin/users`);
+                }
             }
         }
     }
