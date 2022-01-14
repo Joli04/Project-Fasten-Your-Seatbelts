@@ -164,12 +164,24 @@ export default class Chat_controller extends Controller {
 
             let newMessages = await FYSCloud.API.queryDatabase("SELECT * FROM messages WHERE chat_id = ? AND message_send_at > ?", [currentChat.id, lastOpened])
 
+            var newMessagesUrl = ""
+
+            if(newMessages.length > 0) {
+                var nieuw
+                if(newMessages.length == 1) {
+                    nieuw = " Nieuw bericht"
+                } else {
+                    nieuw = " Nieuwe berichten"
+                }
+                newMessagesUrl = `<div class="badge">${newMessages.length}${nieuw}</div>`
+            }
+
             if (currentChat.id == this.chat_id) {
                 const messages = await this.messages.get(this.chat_id);
                 menu_element.innerHTML += `<div class="contact activeChat">
                     <img class="pic" src="${otherUserId.getProfilePicture()}" alt="profile picture">
                     <div class="contact__info">
-                    <div class="badge">${newMessages.length}</div>
+                    ${newMessagesUrl}
                     <div class="name">${otherUserId.getFullName()}</div>\n` +
                     `</div>` +
                     `</a></div>`;
@@ -184,7 +196,7 @@ export default class Chat_controller extends Controller {
                     <div class="contact">
                     <img class="pic" src="${otherUserId.getProfilePicture()}" alt="profile picture">
                     <div class="contact__info">
-                    <div class="badge">${newMessages.length}</div>
+                    ${newMessagesUrl}
                     <div class="name">${otherUserId.getFullName()}</div>\n` +
                     `</div>` +
                     `</a>`;
@@ -335,6 +347,8 @@ export default class Chat_controller extends Controller {
                     } else if (messageTimeMinutes < 10) {
                         messageTimeMinutes = "0" + messageTimeMinutes;
                     }
+
+
                     if (!message.msg.includes("chat__block")) {
                         if (message.from_user_id == self.profiel.id) {
                             chat_element.innerHTML += `<div class="message parker">` +
