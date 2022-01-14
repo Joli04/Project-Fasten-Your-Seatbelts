@@ -11,8 +11,11 @@ import Wizard_Controller from "../Controllers/Wizard_Controller.js";
 import Matches_Controller from "../Controllers/Matches_Controller.js";
 
 import Admin_Controller from '../Controllers/Admin_Controller.js';
+import AdminUsers_Controller from '../Controllers/AdminUsers_Controller.js';
+
 import MatchRequestController from "../Controllers/MatchRequestController.js";
 import Chat_controller from "../Controllers/Chat_controller.js";
+import Wachtwoord_vergeten from "../Controllers/WachtwoordVergeten_Controller.js";
 /**
  *
  * @type {Route[]}
@@ -24,49 +27,61 @@ const routes = [
         controller: new Home_Controller,
         method: 'index'
     }, false, true),
-    new Route('profiel', {
-        controller: new Profile_Controller,
-        method: 'show',
-    }, true),
-    new Route('profiel/edit', {
-        controller: new ProfileEdit_Controller,
-        method: 'edit'
-    }, true),
-    new Route('faq', {
-        controller: new Faq_Controller,
-        method: 'index'
-    }),
     new Route('login', {
         controller: new Login_Controller,
         method: 'show'
+    }),
+    new Route('wachtoord/vergeten', {
+        controller: new Wachtwoord_vergeten,
+        method: 'index'
     }),
     new Route('registratie', {
         controller: new Register_Controller,
         method: 'show'
     }),
-    new Route('matching', {
-        controller: new Matches_Controller,
-        method: 'show'
-    }),
+    new Route('profiel', {
+        controller: new Profile_Controller,
+        method: 'show',
+    }, true),
     new Route('profiel/verify', {
         controller: new Profile_Controller,
         method: 'verify'
     }),
-    new Route('profiel/chat', {
-        controller: new Chat_controller,
-        method: 'chat'
-    },true),
     new Route('profiel/wizard', {
         controller: new Wizard_Controller,
         method: 'show'
     }),
-    new Route('admin', {
-        controller: new Admin_Controller,
-        method: 'index'
+    new Route('profiel/edit', {
+        controller: new ProfileEdit_Controller,
+        method: 'edit'
+    }, true),
+    new Route('matching', {
+        controller: new Matches_Controller,
+        method: 'show'
+    }),
+    new Route('match/request', {
+        controller: new MatchRequestController,
+        method: 'request'
     },true),
     new Route('match/request', {
         controller: new MatchRequestController,
         method: 'request'
+    },true),
+    new Route('faq', {
+        controller: new Faq_Controller,
+        method: 'index'
+    }),
+    new Route('chat', {
+        controller: new Chat_controller,
+        method: 'chat'
+    },true),
+    new Route('admin', {
+        controller: new Admin_Controller,
+        method: 'index'
+    },true),
+    new Route('admin/users', {
+        controller: new AdminUsers_Controller,
+        method: 'index'
     },true),
 ];
 

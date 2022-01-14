@@ -5,32 +5,39 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+
     <!-- stylesheet(s) -->
     <link rel="stylesheet" type="text/css" media="screen" href="vendors/Notify/notify.min.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
-
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/components/modal.css"/>
     <!-- Script(s) -->
     <script src="vendors/Notify/notify.js" type="module"></script>
+    <script src="vendors/chart/chart.js"></script>
+    <script src="vendors/OneSignal/OneSignalSDK.js" async></script>
     <script src="assets/js/app.js" type="module"></script>
 </head>
 <body>
-<div class="hero">
-    <h1 class="hero__title">CommonFlight</h1>
-    <h3 class="hero__slogan" data-translate="home.slogan">Match op CommonFlight om met Corendon wereldwijd te
-        reizen!</h3>
-    <div class="hero__button">
-        <a href="views/registratie.html">
-            <span class="button__text" data-translate="home.hero">Meld je aan!</span><img
-                src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
-        </a>
+<div id="main">
+    <div class="hero">
+        <h1 class="hero__title">CommonFlight</h1>
+        <h3 class="hero__slogan" data-translate="home.slogan">Match op CommonFlight om met Corendon wereldwijd te
+            reizen!</h3>
+        <div class="hero__button">
+            <a href="#/registratie">
+                <span class="button__text" data-translate="home.hero">Meld je aan!</span><img
+                    src="assets/img/icons/right-arrow.svg" class="button__icon" alt="right-arrow button icon">
+            </a>
+        </div>
     </div>
+    <div class="wrapper">
+        <div id="nav"></div>
+    </div>
+    <div id="app"></div>
+    <div id="footer"></div>
 </div>
-<div class="wrapper">
-    <div id="nav"></div>
-</div>
-<div id="app">
-</div>
-<div id="footer"></div>
+
+
 </body>
 
 </html>

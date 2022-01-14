@@ -4,8 +4,9 @@ import {web} from "../Routes/web.js";
 
 
 import Login_Controller from "../Controllers/Login_Controller.js";
-import Profile from "./Profile.js";
+
 import Notify from "../../../vendors/Notify/notify.js";
+
 
 export default class App {
     constructor() {
@@ -19,60 +20,46 @@ export default class App {
 
     async load() {
         App.checkNeedsLogin(App.GetCurrentPage());
-
-        //Set default translations
-        FYSCloud.Localization.setTranslations(await App.getTransable());
-        const initialLanguage = FYSCloud.Session.get('lang') !== undefined ? FYSCloud.Session.get('lang') : 'nl';
-        App.translate(initialLanguage);
-
-        const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
-        //Add the header to the page
-        if (document.querySelector("#nav") !== null) {
-            this.addHeader(headerData);
-            var logout_btn = document.querySelector("#nav_logout");
-            logout_btn.addEventListener('click', Login_Controller.logout);
-
-            App.setActivePage();
-            document.querySelector("#languageSwitch").value = initialLanguage;
-            document.querySelector("#languageSwitch").addEventListener("change", function () {
-                App.translate(this.value)
-            });
-            document.querySelector("#mobile_nav").addEventListener("click", function () {
-                var x = document.querySelector(".topnav");
-                console.log(x);
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            });
-
-        }
-
-        //Add the footer to the page
-        const footerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_footer.html");
-        if (document.querySelector("#footer") !== null) {
-            this.addFooter(footerData);
-        }
         this.initEvents();
+
+        //Init OneSignal for popup messages
+        window.OneSignal = window.OneSignal || [];
+        var OneSignal = window.OneSignal || [];
+        var initConfig = {
+            appId: "4e42b8c3-8236-4855-8392-02923f49449f",
+            notifyButton: {
+                enable: true
+            },
+        };
+
+        OneSignal.push(function () {
+            OneSignal.SERVICE_WORKER_PARAM = {scope: '/vendors/OneSignal/'};
+            OneSignal.SERVICE_WORKER_PATH = 'vendors/OneSignal/OneSignalSDKWorker.js'
+            OneSignal.SERVICE_WORKER_UPDATER_PATH = 'vendors/OneSignal/OneSignalSDKUpdaterWorker.js'
+            OneSignal.init(initConfig);
+        });
     }
 
-    addHeader(data) {
-        const firstElement = data[0];
+    static async addHeader() {
+        const headerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_header.html");
+        const firstElement = headerData[0];
         var nav = document.querySelector("#nav");
-        // checkLoggedIn(firstElement);
-        // const nav =document.querySelector("#nav");
-        // if(nav !== undefined){
-        //     nav.appendChild(firstElement);
-        // }
         nav.insertBefore(firstElement, nav.firstElementChild);
     }
 
-    addFooter(data) {
-        const firstElement = data[0];
+    static async addFooter() {
+        const footerData = await FYSCloud.Utils.fetchAndParseHtml("layouts/_footer.html");
+        const firstElement = footerData[0];
         document.querySelector("#footer").appendChild(firstElement);
         const copyright_year = document.querySelector(".copyright .year");
         copyright_year.innerHTML = new Date().getFullYear();
+
+        const chatButton = document.querySelector(".chatBtn");
+        if (Login_Controller.isLoggedIn()) {
+            chatButton.style.display = 'block';
+        } else {
+            chatButton.style.display = 'none';
+        }
     }
 
     /**
@@ -123,7 +110,14 @@ export default class App {
                 } else {
                     other_links[i].classList.remove("active");
                     if (Login_Controller.isLoggedIn()) {
-                        other_links[i].style.display = "block";
+                        if (other_links[i].id === "admin") {
+                            other_links[i].style.display = "none";
+                            if (FYSCloud.Session.get('account_type') === "admin") {
+                                other_links[i].style.display = "block";
+                            }
+                        } else {
+                            other_links[i].style.display = "block";
+                        }
                         this.HandleLinks(false);
 
                     }
@@ -142,10 +136,17 @@ export default class App {
 
                 if (current_page.includes('/')) {
                     nav_page = document.querySelector(".topnav #" + current_page.replace('/', '_'));
+
                 } else {
                     nav_page = document.querySelector(".topnav #" + current_page);
                 }
+
+                if(current_page == "chat") {
+                    nav_page = document.querySelector(".topnav #social");
+                }
+
             }
+
             if (nav_page) {
                 nav_page.classList.add("active");
             }
@@ -155,30 +156,42 @@ export default class App {
 
     }
 
+    static async getData(url) {
+        return await FYSCloud.Utils.fetchAndParseHtml(url);
+    }
+
     static HandleLinks(show) {
         const login = document.querySelector(".topnav #login");
         const register = document.querySelector(".topnav #registratie");
         const heroButton = document.querySelector(".hero__button");
+        const hero = document.querySelector(".hero");
         if (show) {
             login.style.display = "block";
             register.style.display = "block";
-            heroButton.style.display = "flex";
+            if (App.getSession('Layout') === "./layouts/app.html") {
+                heroButton.style.display = "flex";
+            }
         } else {
             login.style.display = "none";
             register.style.display = "none";
-            if (heroButton) {
-                heroButton.style.display = "none";
+            if (App.getSession('Layout') !== "./layouts/app.html" && App.getSession('Layout') !== "./layouts/admin.html") {
+                const link = document.createElement("link");
+                link.href = "assets/css/blank.css"
+                link.rel = "stylesheet";
+                document.head.appendChild(link);
+                if (hero) {
+                    hero.style.display = 'none';
+                }
+                if (heroButton) {
+                    heroButton.style.display = "none";
+                }
             }
-
         }
 
     }
 
 
     static checkNeedsLogin(endpoint) {
-        //Todo
-        //Check if user is on a page that needs login
-        //Redirect user to login page with message
 
         switch (endpoint) {
             case "profiel":
@@ -281,6 +294,15 @@ export default class App {
         FYSCloud.Localization.translate();
     }
 
+    static setSession(name, value) {
+        FYSCloud.Session.set(name, value);
+        return name;
+    }
+
+    static getSession(name) {
+        return FYSCloud.Session.get(name);
+    }
+
     static validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
@@ -313,7 +335,6 @@ export default class App {
                     this.addError(e, errorMsg);
                     isValid = false;
                 }
-                console.log(this.validatePassword(e.value));
                 if (!this.validatePassword(e.value)) {
                     errorMsg = "Wachtwoord voldoet niet aan de voorwaardes";
                     console.log(e.value, errorMsg);

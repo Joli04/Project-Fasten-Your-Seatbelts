@@ -52,11 +52,12 @@ export default class Login_Controller extends Controller {
 
     static getLogin(email, password) {
         FYSCloud.API.queryDatabase(
-            "SELECT id, email, password FROM users WHERE email = ?", [email]
+            "SELECT id, email, password, account_type FROM users WHERE email = ?", [email]
         ).then(function (data) {
             //Get User info
             if (data[0].password === password) {
                 FYSCloud.Session.set("user_id", data[0].id);
+                FYSCloud.Session.set("account_type", data[0].account_type);
                 //Redirect page to an URL with querystring
                 App.redirect("#/profiel");
 
@@ -87,13 +88,12 @@ export default class Login_Controller extends Controller {
 
     static Listen() {
         document.addEventListener('logout', function (e) {
-            console.log("Logout");
             App.setActivePage();
 
         }, false);
     }
 
     render() {
-        return new view('login.html', "Commonflight Profiel");
+        return new view('login.html', "CommonFlight | Login").extends("blank.html");
     }
 }

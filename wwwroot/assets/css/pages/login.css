@@ -75,7 +75,10 @@
 .login__button button:hover > .button__text {
     background-color: var(--dark_green);
 }
-
+.wv{
+    color: blue;
+    text-decoration: none;
+}
 .button__text {
     width: 77%;
     background-color: var(--green);
@@ -87,7 +90,7 @@
 
 .button__icon {
     width: 19px;
-    margin-left: 15px;
+    margin: auto;
 }
 
 .login__signup {

@@ -34,6 +34,7 @@ export default class ProfileEdit_Controller extends Controller {
         var email = document.querySelector("#form_profile_email");
         var age = document.querySelector('#profiel_age');
         const current_name = document.querySelector("#form_current_name");
+        const type = document.querySelector("#profiel_type");
 
 
         document.getElementById("avatar").src = profiel.getProfilePicture();
@@ -47,6 +48,7 @@ export default class ProfileEdit_Controller extends Controller {
         name.value = profiel.getFullName();
         age.value = d;
         email.value = profiel.email;
+        type.value = profiel.getPublic()
         saveBtn.addEventListener('click', save);
         email.addEventListener('change', ve);
         gender.value = profiel.gender;
@@ -73,9 +75,17 @@ export default class ProfileEdit_Controller extends Controller {
          */
         function save() {
             const names = name.value.split(" ");
-            profiel.updateProfile(names[0], names[1], email.value, age.value, gender.value, country.value, quill.container.firstChild.innerHTML);
+            var finalType = ""
+
+            if(type.value == 0) {
+                finalType = "0"
+            } else {
+                finalType = "1"
+            }
+
+            profiel.updateProfile(names[0], names[1], email.value, finalType, age.value, gender.value, country.value, quill.container.firstChild.innerHTML);
             App.ShowNotifySuccess("Profiel saved","Yes, jouw profiel is bijgewerkt!")
-            App.redirect("profiel");
+            App.redirect("/profiel");
 
         }
 
@@ -84,7 +94,6 @@ export default class ProfileEdit_Controller extends Controller {
         }
 
         function uplaud() {
-            console.log("click")
             profiel.setProfilePicture(fileInput, preview);
         }
 
@@ -92,6 +101,6 @@ export default class ProfileEdit_Controller extends Controller {
     }
 
     render() {
-        return new view('profiel_edit.html', "Commonflight Edit Profiel");
+        return new view('profiel_edit.html', "CommonFlight | Profiel bewerken").extends("blank.html");
     }
 }
