@@ -16,6 +16,7 @@ import AdminUsers_Controller from '../Controllers/AdminUsers_Controller.js';
 import MatchRequestController from "../Controllers/MatchRequestController.js";
 import Chat_controller from "../Controllers/Chat_controller.js";
 import Wachtwoord_vergeten from "../Controllers/WachtwoordVergeten_Controller.js";
+import Nieuw_wachtwoord from "../Controllers/Nieuwwachtwoord_Controller.js";
 /**
  *
  * @type {Route[]}
@@ -31,8 +32,12 @@ const routes = [
         controller: new Login_Controller,
         method: 'show'
     }),
-    new Route('wachtoord/vergeten', {
+    new Route('wachtwoord/vergeten', {
         controller: new Wachtwoord_vergeten,
+        method: 'index'
+    }),
+    new Route('nieuw/wachtwoord', {
+        controller: new Nieuw_wachtwoord,
         method: 'index'
     }),
     new Route('registratie', {
