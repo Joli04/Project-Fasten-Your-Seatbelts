@@ -56,11 +56,11 @@ export default class AdminUsers_Controller extends AdminBaseController
                 </tr>
             `;
 
-            const kutButton = document.querySelector('#'+deleteBtn);
-            kutButton.addEventListener("click", testButton);
+            const userDelBtn = document.querySelector('#'+deleteBtn);
+            userDelBtn.addEventListener("click", getUserDel);
 
-            function testButton() {
-                console.log("kut button");
+            function getUserDel() {
+                console.log("userDelBtn");
             }
         }
     }
