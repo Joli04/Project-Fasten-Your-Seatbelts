@@ -12,6 +12,7 @@ import Matches_Controller from "../Controllers/Matches_Controller.js";
 
 import Admin_Controller from '../Controllers/Admin_Controller.js';
 import AdminUsers_Controller from '../Controllers/AdminUsers_Controller.js';
+import AdminMatches_Controller from '../Controllers/AdminMatches_Controller.js';
 
 import MatchRequestController from "../Controllers/MatchRequestController.js";
 import Chat_controller from "../Controllers/Chat_controller.js";
@@ -81,6 +82,10 @@ const routes = [
     },true),
     new Route('admin/users', {
         controller: new AdminUsers_Controller,
+        method: 'index'
+    },true),
+    new Route('admin/matches', {
+        controller: new AdminMatches_Controller,
         method: 'index'
     },true),
 ];
