@@ -134,7 +134,7 @@ export default class Chat_controller extends Controller {
                     </div>`
                 }
             } else {
-                chatbox.innerHTML += "Geen matches gevonden"
+                chatbox.innerHTML += "<div class='chat__noMatches'>Geen matches gevonden</div>"
             }
         }
 
