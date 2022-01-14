@@ -6,8 +6,12 @@ import "../config.js";
 import App from './app.js';
 import Countries from "../Objects/Countries.js";
 
+/**
+ * Filterable db items
+ * @author Pepijn dik
+ */
 export default class Filter {
-    constructor(el, table, select, where,user) {
+    constructor(el, table, select, where, user) {
         this.el = el;
         this.search = "";
         this.selected = [];
@@ -19,7 +23,7 @@ export default class Filter {
     }
 
     async filter(where = null) {
-        if(where){
+        if (where) {
             this.query_where = where;
         }
         await this.removeAllChildNodes(this.el)
@@ -31,7 +35,7 @@ export default class Filter {
     async submit() {
         for (const selection in this.selected) {
             try {
-              await FYSCloud.API.queryDatabase("INSERT INTO user_"+this.query_table+" (user_id,"+this.query_table+"_id) VALUES (?,?);",[this.user_id, this.selected[selection]]);
+                await FYSCloud.API.queryDatabase("INSERT INTO user_" + this.query_table + " (user_id," + this.query_table + "_id) VALUES (?,?);", [this.user_id, this.selected[selection]]);
             } catch (e) {
                 console.log("Fyscloud Error");
                 console.log(e);
@@ -44,8 +48,8 @@ export default class Filter {
     async get() {
         const c = new Countries;
         try {
-            if(this.query_table === "countries"){
-               // this.selections =await c.getCountries();
+            if (this.query_table === "countries") {
+                // this.selections =await c.getCountries();
             }
             this.selections = await FYSCloud.API.queryDatabase("SELECT * FROM " + this.query_table + " WHERE " + this.query_where + " LIKE ?;", ['%' + this.search + '%']);
 
@@ -96,6 +100,7 @@ export default class Filter {
             "        </div>";
         this.el.append(div);
     }
+
     create_search() {
         const search = document.createElement("div");
         search.classList.add("search")
@@ -104,7 +109,7 @@ export default class Filter {
         searchInput.type = "text";
         searchInput.classList.add("searchTerm");
         searchInput.placeholder = "Search for " + this.query_table;
-        searchInput.addEventListener("change",this.filter.bind(this,searchInput.value));
+        searchInput.addEventListener("change", this.filter.bind(this, searchInput.value));
         search.appendChild(searchInput);
 
         const btn = document.createElement("button");
@@ -122,7 +127,7 @@ export default class Filter {
             const selection = App.findObjectByLabel(this.selections[i]);
             const label = document.createElement('label');
             label.classList.add('todo');
-            label.id = "filter_"+this.query_table+ this.selections[i].id;
+            label.id = "filter_" + this.query_table + this.selections[i].id;
 
             var param = selection[this.query_select];
             label.innerHTML = " <input class=\"todo__state\" value=" + selection.id + " type=\"checkbox\" />\n" +
@@ -137,7 +142,7 @@ export default class Filter {
                 "                                    <div class=\"todo__text\">" + param + "</div>";
             this.el.appendChild(label);
 
-            document.getElementById("filter_"+this.query_table+ this.selections[i].id).addEventListener("change", this.select.bind(this, selection.id));
+            document.getElementById("filter_" + this.query_table + this.selections[i].id).addEventListener("change", this.select.bind(this, selection.id));
         }
     }
 

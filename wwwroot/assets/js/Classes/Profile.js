@@ -58,6 +58,7 @@ export default class Profile {
             this.countries = {};
         }
     }
+
     async getCountryNames() {
         await this.getCountry();
         const countryList = [];

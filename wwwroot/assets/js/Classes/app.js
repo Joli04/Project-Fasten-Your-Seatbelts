@@ -141,7 +141,7 @@ export default class App {
                     nav_page = document.querySelector(".topnav #" + current_page);
                 }
 
-                if(current_page == "chat") {
+                if (current_page == "chat") {
                     nav_page = document.querySelector(".topnav #social");
                 }
 

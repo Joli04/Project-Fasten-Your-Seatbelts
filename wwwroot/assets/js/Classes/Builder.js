@@ -8,8 +8,8 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import {query} from "../../../vendors/quill/quill";
 
-export class Builder
-{
+export class Builder {
+
     constructor(model) {
         this.model = model;
         this.parameters = [];
@@ -21,19 +21,20 @@ export class Builder
      * @param attributes
      * @return {Promise<*>}
      */
-    async find(value,attributes = null) {
-        if(!attributes.id){
-           attributes = "id";
+    async find(value, attributes = null) {
+        if (!attributes.id) {
+            attributes = "id";
         }
-        this.query = "SELECT * FROM "+this.model.table + " WHERE "+ attributes + "=?" ;
+        this.query = "SELECT * FROM " + this.model.table + " WHERE " + attributes + "=?";
         this.parameters.push(value);
         await this.get();
     }
 
-    where(){
+    where() {
 
     }
-    whereHas(){
+
+    whereHas() {
 
     }
 
@@ -43,19 +44,22 @@ export class Builder
      */
     async get() {
         try {
-            let data = await FYSCloud.API.queryDatabase(this.query,this.parameters);
+            let data = await FYSCloud.API.queryDatabase(this.query, this.parameters);
             return data[0];
         } catch (e) {
             console.log('Query builder : ' + e);
             return {};
         }
     }
-    create(modelAttributes){
+
+    create(modelAttributes) {
 
     }
-    select(attributes){
+
+    select(attributes) {
 
     }
+
     /**
      * Update one specific colum
      * @param colum
@@ -63,20 +67,20 @@ export class Builder
      * @return {Promise<{}|*>}
      */
     update(colum, colum_data) {
-       this.query = "UPDATE "+this.model.table+" set " + colum + " = ? where "+this.model.identifier+"=" + this.model.id;
-       this.parameters.push(colum_data)
+        this.query = "UPDATE " + this.model.table + " set " + colum + " = ? where " + this.model.identifier + "=" + this.model.id;
+        this.parameters.push(colum_data)
     }
 
     /**
      * Destroy model and database Colum
      */
-    destroy(){
-        this.query = "DELETE "+this.model.table+" where "+this.model.identifier+"=" + this.model.id;
+    destroy() {
+        this.query = "DELETE " + this.model.table + " where " + this.model.identifier + "=" + this.model.id;
         this.parameters.push(colum_data)
         this.get(); //Execute
     }
 
-    hasOne(){
+    hasOne() {
 
     }
 }

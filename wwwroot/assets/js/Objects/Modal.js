@@ -41,7 +41,7 @@ export default class Modal {
         document.body.appendChild(modal);
         this.modal = modal;
 
-        this.close_btn = document.querySelector("#"+this.modal.id+" .close");
+        this.close_btn = document.querySelector("#" + this.modal.id + " .close");
         this.trigger.addEventListener('click', this.open.bind(this));
         this.close_btn.addEventListener('click', this.close.bind(this))
 

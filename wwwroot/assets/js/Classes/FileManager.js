@@ -1,17 +1,23 @@
 import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
+
+/**
+ * @author Pepijn dik
+ */
 export default class FileManager {
     constructor(file) {
         this.file = file;
     }
+
     getExtension() {
 
-        if(this.file.extension){
+        if (this.file.extension) {
             return this.file.extension;
-        }else{
+        } else {
             return null;
         }
     }
+
     isImage() {
         var ext = this.getExtension()
         switch (ext.toLowerCase()) {
@@ -25,6 +31,7 @@ export default class FileManager {
         }
         return false;
     }
+
     isVideo() {
         var ext = this.getExtension();
         switch (ext.toLowerCase()) {
@@ -36,6 +43,7 @@ export default class FileManager {
         }
         return false;
     }
+
     isDocument() {
         var ext = this.getExtension();
         switch (ext.toLowerCase()) {
@@ -48,6 +56,7 @@ export default class FileManager {
         }
         return false;
     }
+
     async uplaud(filename, url) {
         return await FYSCloud.API.uploadFile(filename, url, true);
     }
