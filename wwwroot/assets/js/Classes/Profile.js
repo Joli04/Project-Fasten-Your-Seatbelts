@@ -682,29 +682,6 @@ export default class Profile {
         }
     };
 
-    async destroy() {
-        if (this.id > 0) {
-            try {
-                let data = await FYSCloud.API.queryDatabase("DELETE FROM users WHERE user_id = ?", [this.id]);
-                this.first_name = null;
-                this.last_name = null;
-                this.email = null;
-                this.account_type = null;
-                this.birthday = null;
-                this.profile = null;
-                this.gender = null;
-                this.verified_at = null;
-                this.country = null;
-                return data[0];
-
-            } catch (e) {
-                return {};
-            }
-
-        }
-    }
-
-
     generateAvatar(foregroundColor = "white", backgroundColor = "black") {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
