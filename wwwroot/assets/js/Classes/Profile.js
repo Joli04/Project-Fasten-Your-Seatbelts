@@ -456,10 +456,8 @@ export default class Profile {
 
         //Create request
         const Request = await this.CreateRequest(user.id)
-        const url = FYSCloud.Utils.createUrl("#/match/request", {
-            request: Request.insertId,
-            to: user.id,
-            timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
+        const url = FYSCloud.Utils.createUrl("#/profiel", {
+            id: user.id
         });
 
         try {
