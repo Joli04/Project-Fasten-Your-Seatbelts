@@ -3,15 +3,34 @@ import "../config.js";
 
 export default class Countries {
     constructor() {
-
+        this.country = [];
     }
-    async get(){
+
+    async getCountries() {
+        const apiEndpoint = `https://restcountries.com/v2/all `;
+
+        try {
+            let response = await fetch(apiEndpoint);
+            const data = await response.json();
+            data.forEach(element => {
+                //create an array to hold all countries
+                this.country.push({id: element.alpha3Code, names: element.name, currency: element.currencies});
+            });
+        } catch (err) {
+            console.error(err);
+            // Handle errors here
+        }
+        return this.country;
+    }
+
+    async get() {
         try {
             return await FYSCloud.API.queryDatabase("SELECT * from countries")
         } catch (e) {
             return {};
         }
     }
+
     static async initCountrieSelector(parent) {
 
         const SelectorDoc = await FYSCloud.Utils.fetchAndParseHtml("_countrie_selector.html");
@@ -19,6 +38,7 @@ export default class Countries {
         const Selector = SelectorElement.querySelector("#countries");
         const c = new Countries();
         const countries = await c.get();
+
         for (const countrie in countries) {
             const option = document.createElement('option');
             option.value = countries[countrie].id;

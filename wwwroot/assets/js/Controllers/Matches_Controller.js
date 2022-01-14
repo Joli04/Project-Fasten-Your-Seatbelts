@@ -5,6 +5,7 @@ import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
 import "../config.js";
 import Controller from './Controller.js';
 import view from "../Classes/View.js";
+import App from "../Classes/app.js";
 import Profile from "../Classes/Profile.js";
 import Countries from "../Objects/Countries.js";
 
@@ -13,21 +14,23 @@ export default class Matches_Controller extends Controller {
 
     async show() {
 
-        this.profiel = new Profile();
-        await this.profiel.setProfile();
+        let profiel = new Profile();
+        await profiel.setProfile();
         const heroButton = document.querySelector(".hero__button");
-        heroButton.style.display = "none";
+        if (App.getSession('Layout') === "./layouts/app.html") {
+            heroButton.style.display = "none";
+        }
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
 
-        var profile_name = document.querySelector('#mathing_profile_name');
-        profile_name.innerHTML = this.profiel.getFullName();
+        var profile_name = document.querySelector('#matching_profile_name');
+        profile_name.innerHTML = profiel.getFullName();
 
-        var profile_age = document.querySelector('#mathing_profile_age');
-        profile_age.innerHTML = this.profiel.birthday;
+        var profile_age = document.querySelector('#matching_profile_age');
+        profile_age.innerHTML = new Date().getFullYear() - new Date(profiel.birthday).getFullYear();
 
-        var profile_orgin = document.querySelector('#mathing_profile_orgin');
-        profile_orgin.innerHTML = this.profiel.getQountry();
+        var profile_orgin = document.querySelector('#matching_profile_origin');
+        profile_orgin.innerHTML = profiel.getQountry();
 
         const countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
         //get filter changes
@@ -63,6 +66,16 @@ export default class Matches_Controller extends Controller {
         }
 
         async function getData(users) {
+            let matches = await FYSCloud.API.queryDatabase('SELECT * FROM user_matches WHERE user_id = ? OR requested_id = ?', [profiel.id, profiel.id])
+
+            for (const match in matches) {
+                if(match[0].user_id === profiel.id){
+                    users.splice(users.indexOf(match[0].user_id), 1);
+                } else {
+                    users.splice(users.indexOf(match[0].requested_id), 1);
+                }
+            }
+
             if (users.length === 0) {
                 document.getElementById('card-container').innerHTML +=
                     "<h3 class='users__noResult'>Geen resultaten gevonden...</h3>"
@@ -88,7 +101,7 @@ export default class Matches_Controller extends Controller {
                 //capitalizing first letter of gender
                 const formatted_gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
 
-                const url = FYSCloud.Utils.createUrl("#/profiel", {
+                const url = await FYSCloud.Utils.createUrl("#/profiel", {
                     id: user.id,
                 });
                 //adding user card to container
@@ -112,7 +125,7 @@ export default class Matches_Controller extends Controller {
 
 
     render() {
-        return new view('matching.html', "Commonflight Matching");
+        return new view('matching.html', "CommonFlight | Matching").extends("blank.html");
     }
 
 

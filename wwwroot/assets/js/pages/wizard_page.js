@@ -58,6 +58,10 @@ function validateForm() {
                 //Skip
                 continue;
             }
+            if(y[i].classList.contains("searchTerm")){
+                //Skip
+                continue;
+            }
             if (y[i].value === "") {
                 // add an "invalid" class to the field:
                 y[i].className += " errorWrapper";

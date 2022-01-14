@@ -1,49 +1,44 @@
 <div>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/pages/chat.css"/>
-    <div class="wrapper">
-        <div class="center">
-            <div class="contacts">
-                <svg class="menu" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                <h2>
-                    Contacts
-                </h2>
+    <div class="chatbox">
+        <div class="chatbox__contacts contacts">
+            <div class="matches">
+                <h2 class="contacts__title">Mijn Matches</h2>
             </div>
-            <div class="chat">
-                <div class="contact bar">
-                    <div class="pic" id="profile_pic"></div>
-                    <div class="name">
-
-                    </div>
-<!--                    <div class="seen">-->
-<!--                        Today at 12:56-->
-<!--                    </div>-->
+            <h2 class="contacts__title">Contacten</h2>
+            <div class="contacts__users"></div>
+        </div>
+        <div class="chatbox__chat">
+            <div class="chat__contactInfo bar">
+                <div id="profile_pic"></div>
+                <div class="contactInfo__fields">
+                    <h2 class="contactInfo__name name"></h2>
+                    <p class="contactInfo__last time"></p>
                 </div>
-                <div class="messages" id="chat">
-                    <div class="time">
-
-                    </div>
-
-                </div>
-                <div class="input typing-area">
-                    <button class="emojiBtn">
-                        <svg class="emoji" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </button>
-                    <button>
-                        <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
-                        </svg>
-                    </button>
-                    <input class="input-field" placeholder="Type your message here!" type="text"/>
-                    <button class="">
-                        <svg class="send" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                        </svg>
-                    </button>
-                </div>
+            </div>
+            <div id="chat" class="chat__messages">
+            </div>
+            <div class="chat__deals">
+                <div class="deals__button deals__booking">Voorstel boeking</div>
+                <div class="deals__button deals__preference">Deel voorkeuren</div>
+            </div>
+            <div class="chat__input typing-area">
+                <button class="input__emoji emojiBtn">
+                    <svg class="button__svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </button>
+                <button class="input__imgUpload">
+                    <svg class="button__svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                    </svg>
+                </button>
+                <input class="input__typingArea input-field" placeholder="Type your message here!" type="text"/>
+                <button class="input__send send">
+                    <svg class="button__svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>

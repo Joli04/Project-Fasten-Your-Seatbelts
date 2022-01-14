@@ -1,3 +1,5 @@
+import FYSCloud from "https://cdn.fys.cloud/fyscloud/0.0.4/fyscloud.es6.min.js";
+import "../config.js";
 export default class FileManager {
     constructor(file) {
         this.file = file;
@@ -12,7 +14,6 @@ export default class FileManager {
     }
     isImage() {
         var ext = this.getExtension()
-        console.log(ext);
         switch (ext.toLowerCase()) {
             case 'jpeg':
             case 'jpg':
@@ -46,5 +47,8 @@ export default class FileManager {
                 return true;
         }
         return false;
+    }
+    async uplaud(filename, url) {
+        return await FYSCloud.API.uploadFile(filename, url, true);
     }
 }

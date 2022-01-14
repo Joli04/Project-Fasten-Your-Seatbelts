@@ -50,7 +50,9 @@
 
 .profile__image {
     width: 150px;
-    height: auto;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
     margin-bottom: 25px;
     border: solid 2px var(--red);
     border-radius: 5px;
@@ -75,15 +77,16 @@
 }
 
 .profile__button {
-    width: 100%;
+    width: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     /*justify-content: center;*/
     margin-bottom: 15px;
 }
 
 .profile__button button {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     text-decoration: none;
     background-color: var(--dark_green);
@@ -91,6 +94,15 @@
     transition: background-color .5s;
     cursor: pointer;
 }
+
+#accept_match {
+    background-color: var(--dark_green);
+}
+
+#deny_match {
+    background-color: var(--dark_red);
+}
+
 
 .profile__button button:hover {
     background-color: var(--green);
@@ -106,6 +118,14 @@
     color: var(--white);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+
+#accept {
+    background-color: var(--green) !important;
+}
+
+#deny {
+    background-color: var(--red) !important;
 }
 
 .button__icon {
@@ -144,6 +164,10 @@
 
     .profile__left, .profile__right {
         width: 625px;
+    }
+
+    .profile__button {
+        width: 90%;
     }
 
     .profile__right {

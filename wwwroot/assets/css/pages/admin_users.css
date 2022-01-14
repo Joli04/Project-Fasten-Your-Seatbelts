@@ -1,0 +1,92 @@
+.listTitle {
+    margin-bottom: 10px;
+    color: var(--red);
+}
+
+.userList {
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid var(--grey);
+}
+
+.userList table {
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: left;
+    padding: 20px 10px;
+}
+
+.userList__labels th {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.labels__label {
+    border-right: 1px solid var(--grey);
+}
+
+.userList__user th {
+    border: 1px solid var(--grey);
+}
+
+.user__actions .action {
+    cursor: pointer;
+    text-align: center;
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.actions__profile {
+    padding: 10px 15px;
+    background-color: var(--green);
+    font-size: 16px;
+}
+
+.actions__profile:hover {
+    background-color: var(--dark_green);
+    color: var(--light_grey);
+}
+
+.actions__delete {
+    display: flex;
+    justify-content: center;
+    padding: 9px 15px;
+    margin-top: 10px;
+    background-color: var(--red);
+}
+
+.actions__delete:hover {
+    background-color: var(--dark_red);
+    color: var(--light_grey);
+}
+
+.actions__delete svg {
+    width: 20px;
+    height: auto;
+    fill: var(--white);
+}
+
+@media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
+    .userList {
+        height: 600px;
+    }
+
+    .userList table {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px /* var(--breakpoint-md) */) {
+    .userList {
+        height: 900px;
+    }
+}
+
+@media only screen and (min-width: 992px /* var(--breakpoint-lg) */) {
+    .userList {
+        height: 600px;
+    }
+}

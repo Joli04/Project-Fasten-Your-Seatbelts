@@ -21,6 +21,7 @@ export default class Message {
      * @return {Promise<void>}
      */
     async send(chatid, message_text, to_user_id) {
+        //message_text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         if (message_text.length > 0) {
             try {
                 return await FYSCloud.API.queryDatabase("INSERT INTO messages(chat_id,from_user_id,to_user_id,msg) VALUES (?,?,?,?);", [chatid, this.user_id, to_user_id, message_text]);

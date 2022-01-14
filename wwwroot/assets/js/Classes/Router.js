@@ -29,8 +29,8 @@ Router.prototype = {
         this.routes = routes;
         //Todo use rootElement from extended view;
         this.rootElement = document.getElementById("app");
-        const p = new Profile();
-        this.auth = p.isLoggedInUser();
+        const user = new Profile();
+        this.auth = user.isLoggedInUser();
     },
     init: function () {
         var r = this.routes;
@@ -68,24 +68,15 @@ Router.prototype = {
                 return App.redirect('#/login');
             }
 
-           if(!document.body || route.name ==="admin"){
-               await route.controller.loadTemplate();
-           }
+            // if (route.name.includes("admin")) {
+            //     await route.render().SetLayout();
+            //     scope.setRootElement(); //Reset RootElement
+            // }
+            //set page content
+            await route.render().LoadPageContent();
 
-
-            const url = await route.render().view,
-                http = new XMLHttpRequest();
-            http.onreadystatechange = async function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    scope.rootElement.innerHTML = this.responseText;
-                }
-            };
-            http.open('GET', url, true);
-            http.send();
             //Run the controller script
-
             await route.runScript();
-
         })(this);
     }
 }

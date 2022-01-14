@@ -140,6 +140,16 @@
         "moreSettings": {
           "nl": "Meer filter instellingen...",
           "en": "More filter settings..."
+        },
+        "type": {
+          "public": {
+            "nl": "Publiek",
+            "en": "Public"
+          },
+          "private": {
+            "nl": "Privé",
+            "en": "Private"
+          }
         }
       },
       "profile": {

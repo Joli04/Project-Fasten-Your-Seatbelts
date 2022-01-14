@@ -11,10 +11,11 @@ import Wizard_Controller from "../Controllers/Wizard_Controller.js";
 import Matches_Controller from "../Controllers/Matches_Controller.js";
 
 import Admin_Controller from '../Controllers/Admin_Controller.js';
-import AdminStats_Controller from '../Controllers/AdminStats_Controller.js';
+import AdminUsers_Controller from '../Controllers/AdminUsers_Controller.js';
 
 import MatchRequestController from "../Controllers/MatchRequestController.js";
 import Chat_controller from "../Controllers/Chat_controller.js";
+import Wachtwoord_vergeten from "../Controllers/WachtwoordVergeten_Controller.js";
 /**
  *
  * @type {Route[]}
@@ -29,6 +30,10 @@ const routes = [
     new Route('login', {
         controller: new Login_Controller,
         method: 'show'
+    }),
+    new Route('wachtoord/vergeten', {
+        controller: new Wachtwoord_vergeten,
+        method: 'index'
     }),
     new Route('registratie', {
         controller: new Register_Controller,
@@ -75,11 +80,7 @@ const routes = [
         method: 'index'
     },true),
     new Route('admin/users', {
-        controller: new Admin_Controller,
-        method: 'show'
-    },true),
-    new Route('admin/stats', {
-        controller: new AdminStats_Controller,
+        controller: new AdminUsers_Controller,
         method: 'index'
     },true),
 ];
