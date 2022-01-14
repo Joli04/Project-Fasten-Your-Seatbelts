@@ -68,7 +68,14 @@
 }
 
 .contact__info {
+    max-width: 100px;
     margin-top: 10px;
+    text-align: center;
+}
+
+.info__closeBtn svg {
+    width: 25px;
+    height: 25px;
 }
 
 .activeChat {
@@ -109,7 +116,23 @@
     }
 
     .contact__info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: none;
         margin: auto auto auto 15px;
+        text-align: left;
+    }
+
+    .contact__info .name {
+        margin: auto auto auto 0;
+    }
+
+    .info__closeBtn a {
+        display: block;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
     }
 }
 
