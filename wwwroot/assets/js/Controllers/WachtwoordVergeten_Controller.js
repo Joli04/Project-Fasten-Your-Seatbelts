@@ -15,11 +15,9 @@ export default class Wachtwoord_vergeten extends Controller
                 let ad = invoer.includes("@")
                     FYSCloud.API.queryDatabase('SELECT email FROM users WHERE email = ?', [invoer])
                         .then(function (data) {
-                            console.log(data)
                                 if(invoer === null || invoer === ""){
                                     document.getElementById("error").innerHTML = "Je moet iets invoeren"
                                     document.getElementById("error").style.color = "red"
-                                    console.log(data.length)
                                 }
                                 else if(invoer !== '@'){
                                     document.getElementById("error").innerHTML = "Je moet een emailadres invoeren."

@@ -83,7 +83,6 @@ export default class ProfileEdit_Controller extends Controller {
                 finalType = "1"
             }
 
-            console.log(finalType);
             profiel.updateProfile(names[0], names[1], email.value, finalType, age.value, gender.value, country.value, quill.container.firstChild.innerHTML);
             App.ShowNotifySuccess("Profiel saved","Yes, jouw profiel is bijgewerkt!")
             App.redirect("/profiel");
@@ -95,7 +94,6 @@ export default class ProfileEdit_Controller extends Controller {
         }
 
         function uplaud() {
-            console.log("click")
             profiel.setProfilePicture(fileInput, preview);
         }
 

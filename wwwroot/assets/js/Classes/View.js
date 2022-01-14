@@ -34,7 +34,6 @@ view.prototype = {
     },
     LoadPageContent: async function () {
         if (App.getSession('Layout') !== this.extendLayout) {
-            console.log("Laad nieuwe layout");
             await this.SetLayout();
         }
         const AppContent = document.querySelector("#app");
@@ -62,7 +61,6 @@ view.prototype = {
                         });
                         document.querySelector("#mobile_nav").addEventListener("click", function () {
                             var x = document.querySelector(".topnav");
-                            console.log(x);
                             if (x.className === "topnav") {
                                 x.className += " responsive";
                             } else {
@@ -85,7 +83,6 @@ view.prototype = {
         //Reset main
         const main = document.querySelector("#main");
         main.innerHTML = '';
-        console.log(this.extendLayout);
         const Layout = await App.getData(this.extendLayout);
         App.setSession('Layout', this.extendLayout);
         await main.appendChild(Layout[0]);

@@ -38,17 +38,14 @@ export default class MatchRequestController extends Controller
             let data = await FYSCloud.API.queryDatabase("SELECT * FROM request where id="+id+"");
             return data[0];
         } catch (e) {
-            console.log('Request error : ' + e);
             return {};
         }
     }
     async handleRequest(match,requested_id,user_id) {
-        console.log("started")
         try {
             await FYSCloud.API.queryDatabase("INSERT INTO user_matches (is_match,requested_id,user_id) VALUES (?,?,?)",[match,requested_id,user_id]);
             App.ShowNotifySuccess("matching", "Je bent Succesvol gematched met: ")
         } catch (e) {
-            console.log('Matching : ' + e);
             return {};
         }
     }

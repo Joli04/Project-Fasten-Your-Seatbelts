@@ -335,7 +335,6 @@ export default class App {
                     this.addError(e, errorMsg);
                     isValid = false;
                 }
-                console.log(this.validatePassword(e.value));
                 if (!this.validatePassword(e.value)) {
                     errorMsg = "Wachtwoord voldoet niet aan de voorwaardes";
                     console.log(e.value, errorMsg);

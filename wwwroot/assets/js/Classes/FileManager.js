@@ -14,7 +14,6 @@ export default class FileManager {
     }
     isImage() {
         var ext = this.getExtension()
-        console.log(ext);
         switch (ext.toLowerCase()) {
             case 'jpeg':
             case 'jpg':

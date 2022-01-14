@@ -31,9 +31,7 @@ export default class Filter {
     async submit() {
         for (const selection in this.selected) {
             try {
-              console.log(this.query_table +" "+this.selected[selection]);
               await FYSCloud.API.queryDatabase("INSERT INTO user_"+this.query_table+" (user_id,"+this.query_table+"_id) VALUES (?,?);",[this.user_id, this.selected[selection]]);
-              console.log("Item added to db")
             } catch (e) {
                 console.log("Fyscloud Error");
                 console.log(e);

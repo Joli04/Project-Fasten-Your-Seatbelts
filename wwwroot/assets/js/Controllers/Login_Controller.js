@@ -88,7 +88,6 @@ export default class Login_Controller extends Controller {
 
     static Listen() {
         document.addEventListener('logout', function (e) {
-            console.log("Logout");
             App.setActivePage();
 
         }, false);

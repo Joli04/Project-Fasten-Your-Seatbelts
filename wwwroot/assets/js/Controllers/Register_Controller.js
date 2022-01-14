@@ -54,7 +54,6 @@ export default class Register_Controller extends Controller
             //redirect("profiel.html");
         }catch (e){
             App.addError(elements.parent,"Gebruiker bestaat al")
-            console.log('Register:'+ e);
         }
 
     }

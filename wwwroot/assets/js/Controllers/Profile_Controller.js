@@ -51,7 +51,6 @@ export default class Profile_Controller extends Controller {
         }
 
         if (this.profiel.getPublic()) {
-            console.log("Public");
             await this.loadPublicProfile();
 
             if(query.id > 0) {
@@ -65,7 +64,6 @@ export default class Profile_Controller extends Controller {
                 });
 
                 if(match){
-                    console.log("Load public because is match")
                     this.change_profile.style.display = 'none';
                 }else{
                     this.chat_btn.style.display = 'none';
@@ -82,7 +80,6 @@ export default class Profile_Controller extends Controller {
                     }
                 });
                 if(match){
-                    console.log("Load public because is match")
                     this.change_profile.style.display = 'none';
                     await this.loadPublicProfile();
                 }else{
@@ -90,7 +87,6 @@ export default class Profile_Controller extends Controller {
                     this.loadPrivateProfile();
                 }
             } else {
-                console.log("Private (but personal)");
                 await this.loadPublicProfile();
             }
         }
@@ -107,7 +103,6 @@ export default class Profile_Controller extends Controller {
     }
 
     async isRequestedMatch() {
-        console.log("Is awaiting match")
         document.querySelector('#contact_btn').style.display = 'none';
         document.querySelector('#chat_btn').style.display = 'none';
 
@@ -183,10 +178,9 @@ export default class Profile_Controller extends Controller {
     }
 
     verify() {
-        console.log("Verify started");
         const profiel = new Profile();
         const queryString = App.getFromQueryObject();
-        console.log(queryString);
+
         if (queryString.id > 0) {
 
             profiel.setId(queryString.id);

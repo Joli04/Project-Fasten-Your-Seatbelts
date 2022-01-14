@@ -44,7 +44,6 @@ export default class Wizard_Controller extends Controller {
 
         //Document listner for matching
         document.addEventListener("wizard_finished", async function (e) {
-            console.log("Try finish")
             try {
                 await finishProfile();
                 await profiel.update("bio", quill.container.firstChild.innerHTML);
