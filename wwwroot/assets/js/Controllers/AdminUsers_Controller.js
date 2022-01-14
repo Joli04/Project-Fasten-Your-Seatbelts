@@ -55,11 +55,12 @@ export default class AdminUsers_Controller extends AdminBaseController
                     </th>
                 </tr>
             `;
+        }
+        for (let i = 0; i < admin.users.length; i++) {
+            let deleteBtn = "deleteBtn"+ admin.users[i].id;
 
-            const userDelBtn = document.querySelector('#'+deleteBtn);
-            userDelBtn.addEventListener("click", getUserDel);
-
-            function getUserDel() {
+            document.querySelector('#'+deleteBtn).addEventListener("click", getUserDelBtn);
+            function getUserDelBtn() {
                 const deletionConfirmation = confirm("Weet je zeker dat je de gebruiker: "+ admin.users[i].first_name + " "
                     + admin.users[i].last_name +" wilt verwijderen?");
 
