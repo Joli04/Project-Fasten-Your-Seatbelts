@@ -59,3 +59,9 @@ input{
     height: 50px;
 
 }
+.error{
+    margin-bottom: 0;
+    margin-left: 10%;
+    padding-bottom: 0;
+    color:red;
+}
