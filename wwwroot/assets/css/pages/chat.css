@@ -265,6 +265,29 @@
     font-size: 20px;
 }
 
+/* ----------------------------------------- */
+/* ----------[ SHARED DEAL BLOCK ]---------- */
+/* ----------------------------------------- */
+.sharedBlock .block__content {
+    padding-bottom: 20px;
+}
+
+.block__sharedCountry {
+    margin: 15px 0;
+}
+
+.sharedBlock .block__content a {
+    padding: 10px;
+    background-color: var(--green);
+    color: var(--white);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.sharedBlock .block__content a:hover {
+    background-color: var(--dark_green);
+}
+
 /* ----------------------------- */
 /* ----------[ DEALS ]---------- */
 /* ----------------------------- */
