@@ -29,7 +29,7 @@ export default class MatchRequestController extends Controller
             }
             document.querySelector("#from_user").innerHTML = From_user.getFullName();
         }else{
-            App.ShowNotifyError("mm matching error", "Er missen belangerijke gevens kopieer de link opnieuw")
+            App.ShowNotifyError("mm matching error", "Er missen belangrijke gevens kopieer de link opnieuw")
         }
 
     }
@@ -53,6 +53,6 @@ export default class MatchRequestController extends Controller
         }
     }
     render() {
-        return new view('matchRequest.html',"Commonflight Match request");
+        return new view('matchRequest.html',"CommonFlight Match request");
     }
 }

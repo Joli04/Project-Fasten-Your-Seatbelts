@@ -134,7 +134,7 @@ export default class Chat_controller extends Controller {
                     </div>`
                 }
             } else {
-                chatbox.innerHTML += "Geen matches gevonden"
+                chatbox.innerHTML += "<div class='chat__noMatches'>Geen matches gevonden</div>"
             }
         }
 
@@ -183,6 +183,11 @@ export default class Chat_controller extends Controller {
                     <div class="contact__info">
                     ${newMessagesUrl}
                     <div class="name">${otherUserId.getFullName()}</div>\n` +
+                    `<div class="info__closeBtn"><a href="#/chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    </a></div>` +
                     `</div>` +
                     `</a></div>`;
 
@@ -222,7 +227,7 @@ export default class Chat_controller extends Controller {
                 comparedCountries.push(this.profiel.countries[i].names);
             }
         }
-        DeelBooking.setTitle("Deel booking");
+        DeelBooking.setTitle("Deel boeking");
         DeelBooking.setContent(`
         <div> 
              <h4>Zoek een boeking</h4> <br> 
@@ -393,17 +398,11 @@ export default class Chat_controller extends Controller {
 
     async createShareMyPref() {
         const html = `<div class='chat__block'>` +
-            `<div class='block__header'><h2>Reis voorkeuren van <span>${this.profiel.getFullName()}</span>:</h2></div>` +
+            `<div class='block__header'><h2>Dit zijn mijn reis voorkeuren:</h2></div>` +
             "<div class='block__content'> " +
             "<div class='block__preferences'>" +
             await this.profiel.GetIntressCountryString() +
             "</div>" +
-            "<button>" +
-            "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
-            "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5\"></path>" +
-            "</svg>" +
-            "<div class='block__btnText'>Vergelijk</div>" +
-            "</button>" +
             "</div>" +
             "</div>";
 
@@ -426,14 +425,11 @@ export default class Chat_controller extends Controller {
             }
         }
         const url = "https://corendon.nl/" + comparedCountries[0];
-        const html = "<div class='chat__block'> " +
-            "<div class='header'><h1>Mijn voorstel booking:</h1></div>" +
-            "<div class='content'> " +
-            "<a href='"+url+"'>" +
-            "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
-            "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5\"></path>" +
-            "</svg>" +
-            "Bekijk deal op corendon</a>" +
+        const html = "<div class='chat__block sharedBlock'> " +
+            "<div class='block__header'><h2>Onze voorkeuren komen overeen op:</h2></div>" +
+            "<div class='block__content'> " +
+            `<div class='block__sharedCountry'>${comparedCountries[0]}</div>` +
+            "<a href='"+url+"'>Bekijk deal op corendon</a>" +
             "</div>" +
             "</div>";
 
