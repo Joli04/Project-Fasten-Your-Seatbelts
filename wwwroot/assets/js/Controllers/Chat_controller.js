@@ -222,7 +222,7 @@ export default class Chat_controller extends Controller {
                 comparedCountries.push(this.profiel.countries[i].names);
             }
         }
-        DeelBooking.setTitle("Deel booking");
+        DeelBooking.setTitle("Deel boeking");
         DeelBooking.setContent(`
         <div> 
              <h4>Zoek een boeking</h4> <br> 
