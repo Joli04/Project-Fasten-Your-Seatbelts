@@ -10,6 +10,9 @@ Waarna ze elkaar kunnen contacteren en vervolgens een (groeps) reis kunnen boeke
 Email: demo@demo.nl <br>
 Wachtwoord: Knoflook100!
 
+## Website handleiding
+[Klik hier](https://gitlab.fdmci.hva.nl/FYS/2122/is108/team-3/-/blob/master/CommonFlight_handleiding.pdf)
+
 ## Team leden
 | Leden |
 |------|
