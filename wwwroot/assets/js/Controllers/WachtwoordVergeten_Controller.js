@@ -7,14 +7,11 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
-export let invoer = document.getElementById("email").value;
-
-
 export default class Wachtwoord_vergeten extends Controller
 {
     index() {
             document.querySelector(".zoeken").addEventListener("click", event => {
-               export let invoer = document.getElementById("email").value;
+               let invoer = document.getElementById("email").value;
                 const apenstaartje = invoer.includes("@")
                     FYSCloud.API.queryDatabase('SELECT email FROM users WHERE email = ?', [invoer])
                         .then(function (data) {
