@@ -7,7 +7,6 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
-import {invoer} from './WachtwoordVergeten_Controller';
 export default class Nieuwwachtwoord_Controller extends Controller
 {
     index() {
@@ -19,7 +18,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
             }
 
 
-            FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [wachtwoord],invoer)
+            FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [wachtwoord])
                 .then(function (data) {
                     if(data.length === 1){
                         document.getElementById("titel").innerHTML = "Je wachtwoord is veranderd"
