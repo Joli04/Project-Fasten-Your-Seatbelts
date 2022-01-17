@@ -11,8 +11,8 @@ export default class Wachtwoord_vergeten extends Controller
 {
     index() {
             document.querySelector(".zoeken").addEventListener("click", event => {
-                let invoer = document.getElementById("email").value;
-                let ad = invoer.includes("@")
+               let invoer = document.getElementById("email").value;
+                const apenstaartje = invoer.includes("@")
                     FYSCloud.API.queryDatabase('SELECT email FROM users WHERE email = ?', [invoer])
                         .then(function (data) {
                                 if(invoer === null || invoer === ""){
@@ -23,15 +23,34 @@ export default class Wachtwoord_vergeten extends Controller
                                     document.getElementById("error").innerHTML = "Je moet een emailadres invoeren."
                                     document.getElementById("error").style.color = "red"
                                 }
+                                if(apenstaartje === true && data.length === 0){
+                                    document.getElementById("error").innerHTML = "Er bestaat geen account met dit emailadres."
+                                    document.getElementById("error").style.color = "red"
+                                }
                                 if(data.length === 1){
                                     document.getElementById("titel").innerHTML = "Er is een email verstuurd naar het ingevulde emailadres"
                                     document.getElementById("titel").style.backgroundColor = "green"
                                     document.getElementById("error").innerHTML = "Er is een account gevonden met dit emailadres!"
                                     document.getElementById("error").style.color = " green"
-                                }
-                                if(ad === true && data.length === 0){
-                                    document.getElementById("error").innerHTML = "Er bestaat geen account met dit emailadres."
-                                    document.getElementById("error").style.color = "red"
+
+                                    FYSCloud.API.sendEmail({
+                                        from: {
+                                            name: "IS108",
+                                            address: "IS108@fys.cloud"
+                                        },
+                                        to: [
+                                            {
+                                                name: "Gebruiker",
+                                                address: invoer
+                                            }
+                                        ],
+                                        subject: "CommonFlight -Een nieuw wachtwoord aanmaken",
+                                        html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen: </p>"
+                                    }).then(function(data) {
+                                        console.log(data);
+                                    }).catch(function(reason) {
+                                        console.log(reason);
+                                    });
                                 }
 
 
