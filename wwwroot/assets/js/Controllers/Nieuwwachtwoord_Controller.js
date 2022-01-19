@@ -21,7 +21,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
             }
             FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [wachtwoord,email])
                 .then(function (data) {
-                    if(invoer === null || invoer === ""){
+                    if(wachtwoord === null || wachtwoord === ""){
                         document.getElementById("error").innerHTML = "Je moet iets invoeren"
                         document.getElementById("error").style.color = "red"
                     }
