@@ -8,7 +8,7 @@ import Controller from './Controller.js';
 import view from "../Classes/View.js";
 
 
-export let invoer;
+
 
 const link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
 
@@ -16,7 +16,7 @@ export default class Wachtwoord_vergeten extends Controller
 {
     index() {
             document.querySelector(".zoeken").addEventListener("click", event => {
-                invoer = document.getElementById("email").value;
+                let invoer = document.getElementById("email").value;
                 const apenstaartje = invoer.includes("@")
                     FYSCloud.API.queryDatabase('SELECT email FROM users WHERE email = ?', [invoer])
                         .then(function (data) {
@@ -33,6 +33,7 @@ export default class Wachtwoord_vergeten extends Controller
                                     document.getElementById("error").style.color = "red"
                                 }
                                 if(data.length === 1){
+                                    export let email  = invoer;
                                     document.getElementById("titel").innerHTML = "Er is een email verstuurd naar het ingevulde emailadres"
                                     document.getElementById("titel").style.backgroundColor = "green"
                                     document.getElementById("error").innerHTML = "Er is een account gevonden met dit emailadres!"
@@ -49,7 +50,7 @@ export default class Wachtwoord_vergeten extends Controller
                                                 address: invoer
                                             }
                                         ],
-                                        subject: "CommonFlight -Een nieuw wachtwoord aanmaken",
+                                        subject: "CommonFlight-Een nieuw wachtwoord aanmaken",
                                         html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen:</p>"+link
                                     }).then(function(data) {
                                         console.log(data);
