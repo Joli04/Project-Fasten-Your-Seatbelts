@@ -7,10 +7,7 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
-
-export let link;
-
- link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
+const link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
 
 export default class Wachtwoord_vergeten extends Controller
 {
@@ -50,7 +47,7 @@ export default class Wachtwoord_vergeten extends Controller
                                                 address: invoer
                                             }
                                         ],
-                                        subject: "CommonFlight -Een nieuw wachtwoord aanmaken",
+                                        subject: "CommonFlight - Een nieuw wachtwoord aanmaken",
                                         html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen:</p>"+link
                                     }).then(function(data) {
                                         console.log(data);
@@ -58,8 +55,6 @@ export default class Wachtwoord_vergeten extends Controller
                                         console.log(reason);
                                     });
                                 }
-
-
                         }).catch(function (reason) {
                         console.log(reason);
                     });

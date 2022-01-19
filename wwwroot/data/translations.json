@@ -193,6 +193,42 @@
       "en": "Register here"
     }
   },
+  "nieuw_wachtwoord": {
+    "titel": {
+      "nl": "Kies een nieuw wachtwoord",
+      "en": "Choose a new password"
+    },
+    "subtekst": {
+      "nl": "Stel hier een nieuw wachtwoord in.",
+      "en": "Set a new password here."
+    },
+    "buttonL": {
+      "nl": "Annuleren",
+      "en": "Cancel"
+    },
+    "buttonR": {
+      "nl": "Wijzigen",
+      "en": "Change"
+    }
+  },
+  "wachtwoord_vergeten": {
+    "titel": {
+      "nl": "Je account zoeken",
+      "en": "Find your account"
+    },
+    "subtekst": {
+      "nl": "Voer je e-mailadres in om je account te zoeken.",
+      "en": "Enter your email adress to search for your account."
+    },
+    "buttonL": {
+      "nl": "Annuleren",
+      "en": "Cancel"
+    },
+    "buttonR": {
+      "nl": "Zoeken",
+      "en": "Search"
+    }
+  },
   "nav": {
     "login": {
       "nl": "Inloggen",
