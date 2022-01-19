@@ -7,11 +7,16 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
+
+export let invoer;
+
+const link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
+
 export default class Wachtwoord_vergeten extends Controller
 {
     index() {
             document.querySelector(".zoeken").addEventListener("click", event => {
-               let invoer = document.getElementById("email").value;
+                invoer = document.getElementById("email").value;
                 const apenstaartje = invoer.includes("@")
                     FYSCloud.API.queryDatabase('SELECT email FROM users WHERE email = ?', [invoer])
                         .then(function (data) {
@@ -35,8 +40,8 @@ export default class Wachtwoord_vergeten extends Controller
 
                                     FYSCloud.API.sendEmail({
                                         from: {
-                                            name: "IS108",
-                                            address: "IS108@fys.cloud"
+                                            name: "CommonFlight",
+                                            address: "IS108_3@fys.cloud"
                                         },
                                         to: [
                                             {
@@ -45,7 +50,7 @@ export default class Wachtwoord_vergeten extends Controller
                                             }
                                         ],
                                         subject: "CommonFlight -Een nieuw wachtwoord aanmaken",
-                                        html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen: </p>"
+                                        html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen:</p>"+link
                                     }).then(function(data) {
                                         console.log(data);
                                     }).catch(function(reason) {
