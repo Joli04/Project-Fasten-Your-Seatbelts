@@ -12,6 +12,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
 {
     index() {
         document.querySelector(".zoeken").addEventListener("click", event => {
+            console.log(invoer)
             const wachtwoord = document.getElementById("wachtwoord").value;
             if(wachtwoord === null || wachtwoord === ""){
                 document.getElementById("error").innerHTML = "Je moet iets invoeren"
@@ -19,12 +20,10 @@ export default class Nieuwwachtwoord_Controller extends Controller
             }
             FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [wachtwoord,invoer])
                 .then(function (data) {
-                    if(data.length === 1){
                         document.getElementById("titel").innerHTML = "Je wachtwoord is veranderd"
                         document.getElementById("titel").style.backgroundColor = "green"
                         document.getElementById("error").innerHTML = "Jouw wachtwoord is veranderd, ga terug naar het login scherm en probeer het uit."
                         document.getElementById("error").style.color = " green"
-                    }
                     console.log(data)
                 }).catch(function (reason) {
                 console.log(reason);
