@@ -8,9 +8,9 @@ import Controller from './Controller.js';
 import view from "../Classes/View.js";
 
 
+export let link;
 
-
-const link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
+ link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
 
 export default class Wachtwoord_vergeten extends Controller
 {
@@ -33,7 +33,7 @@ export default class Wachtwoord_vergeten extends Controller
                                     document.getElementById("error").style.color = "red"
                                 }
                                 if(data.length === 1){
-                                    export let email  = invoer;
+                                    localStorage.setItem("email",invoer);
                                     document.getElementById("titel").innerHTML = "Er is een email verstuurd naar het ingevulde emailadres"
                                     document.getElementById("titel").style.backgroundColor = "green"
                                     document.getElementById("error").innerHTML = "Er is een account gevonden met dit emailadres!"
@@ -42,7 +42,7 @@ export default class Wachtwoord_vergeten extends Controller
                                     FYSCloud.API.sendEmail({
                                         from: {
                                             name: "CommonFlight",
-                                            address: "IS108_3@fys.cloud"
+                                            address: "IS108-team3@fys.cloud"
                                         },
                                         to: [
                                             {
@@ -50,7 +50,7 @@ export default class Wachtwoord_vergeten extends Controller
                                                 address: invoer
                                             }
                                         ],
-                                        subject: "CommonFlight-Een nieuw wachtwoord aanmaken",
+                                        subject: "CommonFlight -Een nieuw wachtwoord aanmaken",
                                         html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen:</p>"+link
                                     }).then(function(data) {
                                         console.log(data);
