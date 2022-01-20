@@ -399,6 +399,13 @@ export default class Chat_controller extends Controller {
         // Removes chat button on the chat page
         const chatBtn = document.querySelector(".chatBtn");
         chatBtn.style.display = "none";
+
+        const url = await FYSCloud.Utils.createUrl("#/profiel", {
+            id: this.other_id,
+        });
+        document.querySelector(".chat__contactInfo").addEventListener("click", () => {
+            window.location.href = url;
+        });
     }
 
     async createShareMyPref() {

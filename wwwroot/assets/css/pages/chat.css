@@ -150,6 +150,10 @@
     padding: 20px;
     background-color: var(--dark_red);
 }
+.chat__contactInfo:hover h2,.chat__contactInfo:hover p {
+    cursor: pointer;
+    color: var(--light_grey);
+}
 
 .contactInfo__image {
     margin-right: 15px;
