@@ -296,10 +296,15 @@ export default class Chat_controller extends Controller {
         async function reloadData() {
             const query = App.getFromQueryObject()
 
-            if (query.id != self.chat_id) {
-                stopped = true
-                console.log("Stopped")
-                return
+            if(self.chat_id){
+                if (query.id != self.chat_id) {
+                    stopped = true
+                    console.log("Stopped")
+                    return
+                }
+            }else{
+                stopped = true;
+                return;
             }
 
             const messages = await self.messages.get(self.chat_id);
