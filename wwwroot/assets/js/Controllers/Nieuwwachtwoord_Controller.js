@@ -10,13 +10,16 @@ import view from "../Classes/View.js";
 export default class Nieuwwachtwoord_Controller extends Controller
 {
     index() {
+
         document.querySelector(".zoeken").addEventListener("click", event => {
             let email = localStorage.getItem("email")
             const wachtwoord = document.getElementById("wachtwoord").value;
-            if(wachtwoord === null || wachtwoord === ""){
-                document.getElementById("error").innerHTML = "Je moet iets invoeren"
-                document.getElementById("error").style.color = "red"
-            }
+
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "./vendors/jsSHA/sha.js";
+            document.head.appendChild(script);
+
             const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
             shaObj.update(wachtwoord);
             const hash = shaObj.getHash("HEX");
@@ -31,7 +34,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
                     setTimeout(
                         function( )
                         {
-                            window.location.replace("https://is108-3.fys.cloud/#/home")
+                            window.location.replace("https://dev-is108-3.fys.cloud/#/home")
                         }, 1500);
                 }).catch(function (reason) {
                 console.log(reason);
