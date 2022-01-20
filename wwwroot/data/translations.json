@@ -107,6 +107,10 @@
           "nl": "Land van herkomst:",
           "en": "Country of origin:"
         },
+        "intresses": {
+          "nl": "Interesses:",
+          "en": "Interests:"
+        },
         "gender": {
           "nl": "Geslacht:",
           "en": "Gender:",
@@ -267,6 +271,12 @@
     "select": {
       "nl": "Selecteer een land",
       "en": "Select a country"
+    }
+  },
+  "intress": {
+    "select": {
+      "nl": "Selecteer een interesse",
+      "en": "Select an interest"
     }
   },
   "matchRequest": {
