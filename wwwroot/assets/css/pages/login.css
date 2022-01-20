@@ -75,10 +75,7 @@
 .login__button button:hover > .button__text {
     background-color: var(--dark_green);
 }
-.wv{
-    color: blue;
-    text-decoration: none;
-}
+
 .button__text {
     width: 77%;
     background-color: var(--green);
@@ -93,14 +90,23 @@
     margin: auto;
 }
 
-.login__signup {
+.login__extra {
+    display: flex;
+    flex-direction: column;
+}
+
+.extra__links {
     color: var(--red);
     text-decoration: none;
 }
 
-.login__signup:hover {
+.extra__links:hover {
     color: var(--dark_red);
     text-decoration: underline;
+}
+
+.extra__forgottenPassword {
+    margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 576px /* var(--breakpoint-sm) */) {
