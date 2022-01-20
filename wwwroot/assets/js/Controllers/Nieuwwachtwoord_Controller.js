@@ -17,17 +17,22 @@ export default class Nieuwwachtwoord_Controller extends Controller
                 document.getElementById("error").innerHTML = "Je moet iets invoeren"
                 document.getElementById("error").style.color = "red"
             }
-            FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [wachtwoord,email])
-                .then(function (data) {
-                    shaObj.update(password.value);
-                    const hash = shaObj.getHash("HEX");
+            const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
+            shaObj.update(wachtwoord);
+            const hash = shaObj.getHash("HEX");
+
+            FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [hash,email])
+                .then(function(data) {
                         document.getElementById("titel").innerHTML = "Je wachtwoord is veranderd"
                         document.getElementById("titel").style.backgroundColor = "green"
                         document.getElementById("error").innerHTML = "Jouw wachtwoord is veranderd, ga terug naar het login scherm en probeer het uit."
                         document.getElementById("error").style.color = " green"
                         window.localStorage.clear();
-
-                    console.log(data)
+                    setTimeout(
+                        function( )
+                        {
+                            window.location.replace("https://is108-3.fys.cloud/#/home")
+                        }, 1500);
                 }).catch(function (reason) {
                 console.log(reason);
 
