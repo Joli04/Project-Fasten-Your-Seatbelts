@@ -24,7 +24,7 @@ export default class Chat_controller extends Controller {
 
         this.message_id_set = new Set()
         this.message_list = []
-
+        this.chat_id = null;
         this.profiel = new Profile();
         await this.profiel.setProfile();
         this.messages = new Messages(this.profiel);
