@@ -7,7 +7,7 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
-const link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
+const link = new URL('https://is108-3.fys.cloud/#/nieuw/wachtwoord');
 
 export default class Wachtwoord_vergeten extends Controller
 {
@@ -49,8 +49,15 @@ export default class Wachtwoord_vergeten extends Controller
                                         ],
                                         subject: "CommonFlight - Een nieuw wachtwoord aanmaken",
                                         html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen:</p>"+link
+
                                     }).then(function(data) {
                                         console.log(data);
+                                        setTimeout(
+                                            function ( )
+                                            {
+                                                window.location.replace("https://is108-3.fys.cloud/#/home")
+                                            }, 1500);
+
                                     }).catch(function(reason) {
                                         console.log(reason);
                                     });
