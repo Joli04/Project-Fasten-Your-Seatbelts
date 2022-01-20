@@ -205,6 +205,7 @@ export default class Profile {
     verify() {
         var time = new Date().getTime();
         this.update('email_verified_at', time);
+        this.verified_at = time;
         App.ShowNotifySuccess("Account is succesvol geverifieerd!");
         App.redirect("#/profiel/wizard");
     }
