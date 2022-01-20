@@ -197,13 +197,16 @@ export default class Profile {
         this.public = data.public;
         if (this.verified_at === null && App.GetCurrentPage() !== 'verify') {
             await this.sendVerification();
-            App.redirect("#/profiel/wizard");
+            App.redirect("#/home");
+            App.ShowNotifyError("Uw account moet geverifieerd worden!");
         }
     }
 
     verify() {
         var time = new Date().getTime();
         this.update('email_verified_at', time);
+        App.ShowNotifySuccess("Account is succesvol geverifieerd!");
+        App.redirect("#/profiel/wizard");
     }
 
     getPublic() {
@@ -213,7 +216,7 @@ export default class Profile {
     async sendVerification() {
         if (this.verified_at === null) {
             const domain = "https://" + window.location.hostname;
-            const url = FYSCloud.Utils.createUrl("#/profiel/wizard", {
+            const url = FYSCloud.Utils.createUrl("#/profiel/verify", {
                 id: this.id,
                 timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
             });
