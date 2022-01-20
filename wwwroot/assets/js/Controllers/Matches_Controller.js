@@ -8,6 +8,7 @@ import view from "../Classes/View.js";
 import App from "../Classes/app.js";
 import Profile from "../Classes/Profile.js";
 import Countries from "../Objects/Countries.js";
+import Intresses from "../Objects/Intress.js"
 
 
 export default class Matches_Controller extends Controller {
@@ -22,6 +23,13 @@ export default class Matches_Controller extends Controller {
         }
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector"));
         await Countries.initCountrieSelector(document.querySelector("#countrie_selector_2"));
+        await Intresses.initIntressSelector(document.querySelector("#intrest_selector_1"))
+
+        var list = document.getElementById('intresses');
+        var entry = document.createElement('option');
+        entry.value = 0
+        entry.appendChild(document.createTextNode("Geen voorkeur"));
+        list.appendChild(entry);
 
         var profile_name = document.querySelector('#matching_profile_name');
         profile_name.innerHTML = profiel.getFullName();
@@ -35,6 +43,7 @@ export default class Matches_Controller extends Controller {
         const countries = await FYSCloud.API.queryDatabase('SELECT * FROM countries')
         //get filter changes
         document.querySelector('#countrie_selector_2 #countries').addEventListener("change", searchMatch)
+        document.querySelector('#intrest_selector_1 #intresses').addEventListener("change", searchMatch)
         document.getElementById('countries').addEventListener("change", searchMatch)
         document.getElementById('genders').addEventListener("change", searchMatch)
 
@@ -60,7 +69,38 @@ export default class Matches_Controller extends Controller {
 
             query_string += ` AND country_origin_id = "${country_origin}"`
 
-            const users = await FYSCloud.API.queryDatabase(query_string)
+            var users = await FYSCloud.API.queryDatabase(query_string)
+            var users2 = []
+
+            let selected_intrest = document.getElementById('intresses').value
+
+            if (selected_intrest != 0) {
+                const intresses = await FYSCloud.API.queryDatabase(`SELECT * FROM user_intressed WHERE intressed_id = ${selected_intrest}`)
+                for (const intresse of intresses) {
+                    for (const user of users) {
+                        if (user.id == intresse.user_id) {
+                            users2.push(user)
+                        }
+                    }
+                }
+
+                if (users2.length == 0) {
+                    users = []
+                } else {
+                    for (const user of users) {
+                        let match = false
+                        for (const user2 of users2) {
+                            if (user.id == user2.id) {
+                                match = true
+                            }
+                        }
+
+                        if (match == false) {
+                            users.splice(users.indexOf(user), 1)
+                        }
+                    }
+                }
+            }
 
             await getData(users)
         }
@@ -69,7 +109,7 @@ export default class Matches_Controller extends Controller {
             let matches = await FYSCloud.API.queryDatabase('SELECT * FROM user_matches WHERE user_id = ? OR requested_id = ?', [profiel.id, profiel.id])
 
             for (const match in matches) {
-                if(match[0].user_id === profiel.id){
+                if (match[0].user_id === profiel.id) {
                     users.splice(users.indexOf(match[0].user_id), 1);
                 } else {
                     users.splice(users.indexOf(match[0].requested_id), 1);
