@@ -37,12 +37,14 @@ export default class Nieuwwachtwoord_Controller extends Controller
                     .then(function (data) {
                         document.getElementById("titel").innerHTML = "Je wachtwoord is veranderd"
                         document.getElementById("titel").style.backgroundColor = "green"
-                        document.getElementById("error").innerHTML = "Jouw wachtwoord is veranderd, ga terug naar het login scherm en probeer het uit."
+                        App.ShowNotifySuccess("Jouw wachtwoord is veranderd, ga terug naar het login scherm en probeer het uit.");
+                        //document.getElementById("error").innerHTML = "Jouw wachtwoord is veranderd, ga terug naar het login scherm en probeer het uit."
                         document.getElementById("error").style.color = " green"
                         window.localStorage.clear();
                         setTimeout(
                             function () {
-                                window.location.replace("https://dev-is108-3.fys.cloud/#/home")
+                                App.redirect("#/home");
+                                // window.location.replace("https://dev-is108-3.fys.cloud/#/home")
                             }, 2700);
                     }).catch(function (reason) {
                     console.log(reason);
