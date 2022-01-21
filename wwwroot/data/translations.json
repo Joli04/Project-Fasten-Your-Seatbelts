@@ -66,6 +66,7 @@
       "en": "Commonflight lets people who have no one to travel with find others who share similar interests,\n                         or want to travel to the same country connect and travel together.\n                                        What prevents many people from taking a vacation is that they have no one to travel with and we have solved this in the form of a web application."
     }
   },
+
   "profile": {
     "header": {
       "nl": "Mijn profiel",
@@ -160,49 +161,6 @@
       "en": "Next"
     }
   },
-  "profiel": {
-    "geboortedatum": {
-      "nl": "Geboortedatum",
-      "en": "Date of birth"
-    },
-    "geslacht": {
-      "nl": "Geslacht",
-      "en": "Gender"
-    },
-    "geboorteland": {
-      "nl": "Geboorteland",
-      "en": "Country of birth"
-    },
-    "geïntereseerde_landen": {
-      "nl": "Geïnteresseerde land(en)",
-      "en": "Interested country(ies)"
-    },
-    "interesses": {
-      "nl": "Interesses",
-      "en": "Interests"
-    },
-    "verander_profiel": {
-      "nl": "Verander profiel",
-      "en": "Change profile"
-    },
-    "aanvraag": {
-      "nl": "Stuur match aanvraag",
-      "en": "Send match request"
-    },
-    "chat": {
-      "nl": "Chat gebruiker",
-      "en": "Chat user"
-    },
-    "beschrijving": {
-      "nl": "Beschrijving",
-      "en": "Description"
-    }
-  },
-  "profiel_edit": {
-    "knop": {
-      "nl": "Opslaan",
-      "en": "Save"
-    },
   "match": {
     "data": {
       "filter": {
@@ -213,10 +171,6 @@
         "countryOrigin": {
           "nl": "Land van herkomst:",
           "en": "Country of origin:"
-        },
-        "intresses": {
-          "nl": "Interesses:",
-          "en": "Interests:"
         },
         "gender": {
           "nl": "Geslacht:",
@@ -308,6 +262,7 @@
       "en": "Forgot your password?"
     }
   },
+
   "nieuw_wachtwoord": {
     "titel": {
       "nl": "Kies een nieuw wachtwoord",
@@ -344,24 +299,6 @@
       "en": "Search"
     }
   },
-  "chat": {
-    "titel": {
-      "nl": "Mijn Matches",
-      "en": "My matches"
-    },
-    "contacten": {
-      "nl": "Contacten",
-      "en": "Contacts"
-    },
-    "voorstel": {
-      "nl": "Voorstel boeking",
-      "en": "Proposal booking"
-    },
-    "voorkeuren": {
-      "nl": "Deel voorkeuren",
-      "en": "Share preferences"
-    }
-  },
   "nav": {
     "login": {
       "nl": "Inloggen",
@@ -384,29 +321,6 @@
       "en": "Registration"
     }
   },
-  "matching": {
-    "description": {
-      "nl": "Vind hier de match waar jij mee op reis kan gaan!",
-      "en": "Find the match you can travel with here!"
-    },
-    "geslacht": {
-      "nl": "Geslacht:",
-      "en": "Gender:"
-    },
-    "jouw_gegevens": {
-      "nl": "Jouw Gegevens",
-      "en": "Your credentials"
-    },
-    "naam": {
-      "nl": "Naam",
-      "en": "Name"
-    },
-    "leeftijd": {
-      "nl": "Leeftijd",
-      "en": "Age"
-    }
-  },
-
   "fourSteps": {
     "title": {
       "nl": "De vier stappen van onze website.",
@@ -423,12 +337,6 @@
     "select": {
       "nl": "Selecteer een land",
       "en": "Select a country"
-    }
-  },
-  "intress": {
-    "select": {
-      "nl": "Selecteer een interesse",
-      "en": "Select an interest"
     }
   },
   "matchRequest": {
