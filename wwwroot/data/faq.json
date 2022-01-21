@@ -2,22 +2,22 @@
   "payments": {
     "invoices": {
       "title": {
-        "nl": "Facturen",
-        "en": "Invoices"
+        "nl": "Hoe ga ik een chat aan met een gebruiker?",
+        "en": "How do I chat with a user?"
       },
       "data": {
-        "nl": "Je factuur wordt incl btw verstuur per email",
-        "en": "Your invoices will be send with taxes to your email adres"
+        "nl": "Je moet eerst een match request naar een gebruiker hebben gestuurd, zodra deze gebruiker jouw match heeft geaccepteerd wordt er automatisch een chat aangemaakt tussen de twee onder het menu item 'Social'",
+        "en": "First you have to send a match request to a user on their profile, after they've accepted your request a chat will automatically be made between you two under the nav item 'Social'"
       }
     },
     "subscriptions": {
       "title": {
-        "nl": "Abonnement",
-        "en": "Subscriptions"
+        "nl": "Kan ik mijn profiel op privé zetten?",
+        "en": "Can I set my profile on private?"
       },
       "data": {
-        "nl": "Je abonnement wordt per maand automatisch vernieuwd",
-        "en": "Your subscription is automatically renewed each month"
+        "nl": "Op jouw profiel pagina klik je op 'verander profiel' en onderaan zie je de optie om jouw profiel op privé of publiekelijk te zetten.",
+        "en": "On your profile page you click on 'change profile' and on that page you have the option to set your profile on private or public."
       }
     }
   }
