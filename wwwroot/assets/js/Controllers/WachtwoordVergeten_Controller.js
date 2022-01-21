@@ -56,7 +56,7 @@ export default class Wachtwoord_vergeten extends Controller
                                             function ( )
                                             {
                                                 window.location.replace("https://dev-is108-3.fys.cloud/#/home")
-                                            }, 1500);
+                                            }, 2700);
 
                                     }).catch(function(reason) {
                                         console.log(reason);

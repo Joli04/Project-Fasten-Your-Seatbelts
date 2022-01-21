@@ -10,19 +10,20 @@ import view from "../Classes/View.js";
 export default class Nieuwwachtwoord_Controller extends Controller
 {
     index() {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "./vendors/jsSHA/sha.js";
+        document.head.appendChild(script);
 
         document.querySelector(".zoeken").addEventListener("click", event => {
             let email = localStorage.getItem("email")
             const wachtwoord = document.getElementById("wachtwoord").value;
 
-            const script = document.createElement("script");
-            script.type = "text/javascript";
-            script.src = "./vendors/jsSHA/sha.js";
-            document.head.appendChild(script);
-
             const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
             shaObj.update(wachtwoord);
             const hash = shaObj.getHash("HEX");
+
+
 
             FYSCloud.API.queryDatabase('UPDATE users SET password = ? WHERE email = ?', [hash,email])
                 .then(function(data) {
@@ -35,7 +36,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
                         function( )
                         {
                             window.location.replace("https://dev-is108-3.fys.cloud/#/home")
-                        }, 1500);
+                        }, 2700);
                 }).catch(function (reason) {
                 console.log(reason);
 
