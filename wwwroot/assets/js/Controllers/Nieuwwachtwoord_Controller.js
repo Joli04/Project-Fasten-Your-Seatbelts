@@ -7,7 +7,7 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
-import validatePassword from '../Classes/app.js';
+
 
 export default class Nieuwwachtwoord_Controller extends Controller
 {
@@ -20,7 +20,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
         document.querySelector(".zoeken").addEventListener("click", event => {
             let email = localStorage.getItem("email")
             const wachtwoord = document.getElementById("wachtwoord").value;
-            new validatePassword(wachtwoord)
+
             const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
             shaObj.update(wachtwoord);
             const hash = shaObj.getHash("HEX");
