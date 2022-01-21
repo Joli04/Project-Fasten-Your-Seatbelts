@@ -38,7 +38,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
                         function( )
                         {
                             window.location.replace("https://dev-is108-3.fys.cloud/#/home")
-                        }, 2000);
+                        }, 2700);
                 }).catch(function (reason) {
                 console.log(reason);
 
