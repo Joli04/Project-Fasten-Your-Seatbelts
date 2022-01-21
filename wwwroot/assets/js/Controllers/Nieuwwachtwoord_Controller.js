@@ -48,8 +48,9 @@ export default class Nieuwwachtwoord_Controller extends Controller
                     console.log(reason);
 
                 });
+            }else{
+                App.ShowNotifyError('De url is niet juist voor het veranderen van je wachtwoord');
             }
-            App.ShowNotifyError('De url is niet juist voor het veranderen van je wachtwoord');
         })
     }
     render() {
