@@ -150,10 +150,6 @@
     padding: 20px;
     background-color: var(--dark_red);
 }
-.chat__contactInfo:hover h2,.chat__contactInfo:hover p {
-    cursor: pointer;
-    color: var(--light_grey);
-}
 
 .contactInfo__image {
     margin-right: 15px;
@@ -303,29 +299,20 @@
     padding-bottom: 20px;
 }
 
-.sharedBlock .block__content p {
-    margin: 10px 0 5px 0;
+.block__sharedCountry {
+    margin: 15px 0;
 }
 
-.block__sharedCountries, .block__differentCountries {
-    display: flex;
-    flex-direction: column;
-}
-
-.block__sharedCountries a {
-    color: var(--green);
+.sharedBlock .block__content a {
+    padding: 10px;
+    background-color: var(--green);
+    color: var(--white);
+    border-radius: 5px;
     text-decoration: none;
 }
-.block__sharedCountries a:hover {
-    color: var(--dark_green);
-}
 
-.block__differentCountries a {
-    color: var(--red);
-    text-decoration: line-through;
-}
-.block__differentCountries a:hover {
-    color: var(--dark_red);
+.sharedBlock .block__content a:hover {
+    background-color: var(--dark_green);
 }
 
 /* ----------------------------- */

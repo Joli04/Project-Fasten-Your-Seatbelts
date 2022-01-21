@@ -6,7 +6,7 @@ Waarna ze elkaar kunnen contacteren en vervolgens een (groeps) reis kunnen boeke
 
 ### Bekijk onze [Wiki](https://gitlab.fdmci.hva.nl/FYS/2122/is108/team-3/-/wikis/home)
 
-## inloggegevens voor admin account
+## Inloggegevnens voor admin account
 Email: demo@demo.nl <br>
 Wachtwoord: Knoflook100!
 

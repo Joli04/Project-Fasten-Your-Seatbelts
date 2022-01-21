@@ -7,6 +7,8 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
+import validatePassword from '../Classes/app.js';
+
 export default class Nieuwwachtwoord_Controller extends Controller
 {
     index() {
@@ -18,7 +20,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
         document.querySelector(".zoeken").addEventListener("click", event => {
             let email = localStorage.getItem("email")
             const wachtwoord = document.getElementById("wachtwoord").value;
-
+            new validatePassword(wachtwoord)
             const shaObj = new jsSHA("SHA-512", "TEXT", {encoding: "UTF8"});
             shaObj.update(wachtwoord);
             const hash = shaObj.getHash("HEX");
@@ -35,8 +37,8 @@ export default class Nieuwwachtwoord_Controller extends Controller
                     setTimeout(
                         function( )
                         {
-                            window.location.replace("https://is108-3.fys.cloud/#/home")
-                        }, 2700);
+                            window.location.replace("https://dev-is108-3.fys.cloud/#/home")
+                        }, 2000);
                 }).catch(function (reason) {
                 console.log(reason);
 

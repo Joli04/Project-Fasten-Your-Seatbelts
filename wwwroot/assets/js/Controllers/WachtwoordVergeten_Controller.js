@@ -7,7 +7,7 @@ import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
 
-const link = new URL('https://is108-3.fys.cloud/#/nieuw/wachtwoord');
+const link = new URL('https://dev-is108-3.fys.cloud/#/nieuw/wachtwoord');
 
 export default class Wachtwoord_vergeten extends Controller
 {
@@ -55,8 +55,8 @@ export default class Wachtwoord_vergeten extends Controller
                                         setTimeout(
                                             function ( )
                                             {
-                                                window.location.replace("https://is108-3.fys.cloud/#/home")
-                                            }, 2700);
+                                                window.location.replace("https://dev-is108-3.fys.cloud/#/home")
+                                            }, 2000);
 
                                     }).catch(function(reason) {
                                         console.log(reason);

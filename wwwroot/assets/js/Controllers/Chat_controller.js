@@ -24,7 +24,7 @@ export default class Chat_controller extends Controller {
 
         this.message_id_set = new Set()
         this.message_list = []
-        this.chat_id = null;
+
         this.profiel = new Profile();
         await this.profiel.setProfile();
         this.messages = new Messages(this.profiel);
@@ -296,15 +296,10 @@ export default class Chat_controller extends Controller {
         async function reloadData() {
             const query = App.getFromQueryObject()
 
-            if(self.chat_id){
-                if (query.id != self.chat_id) {
-                    stopped = true
-                    console.log("Stopped")
-                    return
-                }
-            }else{
-                stopped = true;
-                return;
+            if (query.id != self.chat_id) {
+                stopped = true
+                console.log("Stopped")
+                return
             }
 
             const messages = await self.messages.get(self.chat_id);
@@ -399,18 +394,11 @@ export default class Chat_controller extends Controller {
         // Removes chat button on the chat page
         const chatBtn = document.querySelector(".chatBtn");
         chatBtn.style.display = "none";
-
-        const url = await FYSCloud.Utils.createUrl("#/profiel", {
-            id: this.other_id,
-        });
-        document.querySelector(".chat__contactInfo").addEventListener("click", () => {
-            window.location.href = url;
-        });
     }
 
     async createShareMyPref() {
         const html = `<div class='chat__block'>` +
-            `<div class='block__header'><h3>Dit zijn mijn reis voorkeuren:</h3></div>` +
+            `<div class='block__header'><h2>Dit zijn mijn reis voorkeuren:</h2></div>` +
             "<div class='block__content'> " +
             "<div class='block__preferences'>" +
             await this.profiel.GetIntressCountryString() +
@@ -430,28 +418,19 @@ export default class Chat_controller extends Controller {
         await other_profile.setProfile(this.other_id);
         await other_profile.getCountryNames();
         const countriesOfOtherUser = await other_profile.getCountryNames();
-        let sameCountries = [];
-        let differentCountries = [];
-        let country;
-
+        let comparedCountries = [];
         for (let i = 0; i < this.profiel.countries.length; i++) {
             if (countriesOfOtherUser.includes(this.profiel.countries[i].names)) {
-                country = `<a href="https://corendon.nl/${this.profiel.countries[i].names}">${this.profiel.countries[i].names}</a>`;
-                sameCountries.push(country);
-            } else {
-                country = `<a href="https://corendon.nl/${this.profiel.countries[i].names}">${this.profiel.countries[i].names}</a>`;
-                differentCountries.push(country);
+                comparedCountries.push(this.profiel.countries[i].names);
             }
         }
+        const url = "https://corendon.nl/" + comparedCountries[0];
         const html = "<div class='chat__block sharedBlock'> " +
-            "<div class='block__header'><h3>Mijn landen zijn vergeleken met jouw</h3></div>" +
+            "<div class='block__header'><h2>Onze voorkeuren komen overeen op:</h2></div>" +
             "<div class='block__content'> " +
-            "<p>Landen waar wij beiden naartoe willen:</p> " +
-            `<div class='block__sharedCountries'>${sameCountries.join('\n')}</div>` +
-            "<p>Landen die niet overeen komen:</p> " +
-            `<div class='block__differentCountries'>${differentCountries.join('\n')}</div>` +
+            `<div class='block__sharedCountry'>${comparedCountries[0]}</div>` +
+            "<a href='"+url+"'>Bekijk deal op corendon</a>" +
             "</div>" +
-            "Klik op het land om naar de boeking te gaan!" +
             "</div>";
 
           await this.messages.send(this.chat_id, Base64.encode(html), this.other_id);

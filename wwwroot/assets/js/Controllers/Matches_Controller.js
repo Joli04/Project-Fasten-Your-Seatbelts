@@ -62,9 +62,6 @@ export default class Matches_Controller extends Controller {
 
             let geslacht = document.getElementById('genders').value
             let country_origin = document.querySelector('#countrie_selector_2 #countries').value
-            let country_travel = document.querySelector('#countrie_selector #countries').value
-
-            console.log(country_travel)
 
             if (geslacht !== "none") {
                 query_string += ` AND gender = "${geslacht}"`
@@ -74,7 +71,6 @@ export default class Matches_Controller extends Controller {
 
             var users = await FYSCloud.API.queryDatabase(query_string)
             var users2 = []
-            var users3 = []
 
             let selected_intrest = document.getElementById('intresses').value
 
@@ -102,34 +98,6 @@ export default class Matches_Controller extends Controller {
                         if (match == false) {
                             users.splice(users.indexOf(user), 1)
                         }
-                    }
-                }
-            }
-
-            if (country_travel != 0) {
-                const user_countries = await FYSCloud.API.queryDatabase(`SELECT * FROM user_countries WHERE countries_id = ${country_travel}`)
-                for (const user_country of user_countries) {
-                    for (const user of users) {
-                        if (user.id == user_country.user_id) {
-                            users3.push(user)
-                        }
-                    }
-                }
-            }
-
-            if (users3.length == 0) {
-                users = []
-            } else {
-                for (const user of users) {
-                    let match = false
-                    for (const user3 of users3) {
-                        if (user.id == user3.id) {
-                            match = true
-                        }
-                    }
-
-                    if (match == false) {
-                        users.splice(users.indexOf(user), 1)
                     }
                 }
             }

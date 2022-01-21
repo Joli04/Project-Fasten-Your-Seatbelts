@@ -5,12 +5,6 @@
       "en": "Select file"
     }
   },
-  "fourSteps": {
-    "title": {
-      "nl": "De vier stappen van onze webapplicatie",
-      "en": "The four steps of our webapplication"
-    }
-  },
   "verify": {
     "header": {
       "nl": "Verifieer profiel",
@@ -30,49 +24,8 @@
     "hero": {
       "nl": "Meld je aan!",
       "en": "Sign up now!"
-    },
-    "subtekst1": {
-      "nl": "Ben je geïntereseerd geraakt? Meld je dan nu aan!",
-      "en": "Have you become interested? Then sign up now!"
-    },
-    "stap2": {
-      "nl": "2. Match met een andere gebruiker.",
-      "en": "2. Match with another user."
-    },
-    "subtekst2": {
-      "nl": "Aan de hand van jouw interesses worden verschillende mensen aangeboden.",
-      "en": "Different people are offered based on your interests."
-    },
-    "stap3": {
-      "nl": "3. Neem contact op met jouw match.",
-      "en": "3. Contact your match."
-    },
-    "subtekst3": {
-      "nl": "Ben je benieuwd naar iemand? Neem dan contact op!",
-      "en": "Are you curious about someone? Then contact them!"
-    },
-    "stap4": {
-      "nl": "4. Ga samen op reis.",
-      "en": "4. Travel together."
-    },
-    "subtekst4": {
-      "nl": "Ga samen met je match de wereld rond!",
-      "en": "Go around the world with your match!"
-    },
-    "titelinfo": {
-      "nl": "Waarom CommonFlight?",
-      "en": "Why CommonFlight?"
-    },
-    "info1": {
-      "nl": "Tegenwoordig zijn er veel mensen die eenzaam zijn, soms wordt jouw leven je iets te veel en ben je uit voor een vakantie.\n                        Wat veel mensen weerhoudt van een vakantie is dat ze niemand hebben om mee te reizen en wij hebben dit opgelost in de form van een webapplicatie.",
-      "en": "Nowadays there are many people who are lonely, sometimes your life becomes a bit too much for you and you are out for a vacation.\n                         What prevents many people from taking a vacation is that they have no one to travel with and we have solved this in the form of a web application."
-    },
-    "info2": {
-      "nl": "Commonflight laat mensen die niemand hebben om mee te reizen andere vinden die dezelfde interesses hebben,\n                        of naar hetzelfde land willen reizen contact maken en samen op reis gaan.\n                        Wat veel mensen weerhoudt van een vakantie is dat ze niemand hebben om mee te reizen en wij hebben dit opgelost in de form van een webapplicatie.",
-      "en": "Commonflight lets people who have no one to travel with find others who share similar interests,\n                         or want to travel to the same country connect and travel together.\n                                        What prevents many people from taking a vacation is that they have no one to travel with and we have solved this in the form of a web application."
     }
   },
-
   "profile": {
     "header": {
       "nl": "Mijn profiel",
@@ -141,317 +94,203 @@
     "finish": {
       "nl": "Profiel voltooien",
       "en": "Complete profile"
-    },
-    "profiel_afronden": {
-      "nl": "Profiel afronden",
-      "en": "Complete profile"
-    },
-    "subtekst1": {
-      "nl": "Selecteer je interesses",
-      "en": "Select your interests"
-    },
-    "subtekst2": {
-      "nl": "Selectie van landen waarnaar je naar toe zou willen",
-      "en": "Selection of countries you would like to go to"
-    },
-    "bio": {
-      "nl": "Bio toevoegen",
-      "en": "Add Bio"
-    },
-    "vorige": {
-      "nl": "Vorige",
-      "en": "Previous"
-    },
-    "volgende": {
-      "nl": "Volgende",
-      "en": "Next"
     }
   },
-  "profiel": {
-    "geboortedatum": {
-      "nl": "Geboortedatum",
-      "en": "Date of birth"
-    },
-    "geslacht": {
-      "nl": "Geslacht",
-      "en": "Gender"
-    },
-    "geboorteland": {
-      "nl": "Geboorteland",
-      "en": "Country of birth"
-    },
-    "geïntereseerde_landen": {
-      "nl": "Geïnteresseerde land(en)",
-      "en": "Interested country(ies)"
-    },
-    "interesses": {
-      "nl": "Interesses",
-      "en": "Interests"
-    },
-    "verander_profiel": {
-      "nl": "Verander profiel",
-      "en": "Change profile"
-    },
-    "aanvraag": {
-      "nl": "Stuur match aanvraag",
-      "en": "Send match request"
-    },
-    "chat": {
-      "nl": "Chat gebruiker",
-      "en": "Chat user"
-    },
-    "beschrijving": {
-      "nl": "Beschrijving",
-      "en": "Description"
-    }
-  },
-  "profiel_edit": {
-    "knop": {
-      "nl": "Opslaan",
-      "en": "Save"
-    },
-    "match": {
-      "data": {
-        "filter": {
-          "countryTo": {
-            "nl": "Land om naar te reizen:",
-            "en": "Country to travel to:"
-          },
-          "countryOrigin": {
-            "nl": "Land van herkomst:",
-            "en": "Country of origin:"
-          },
-          "intresses": {
-            "nl": "Interesses:",
-            "en": "Interests:"
-          },
-          "gender": {
-            "nl": "Geslacht:",
-            "en": "Gender:",
-            "data": {
-              "male": {
-                "nl": "Man",
-                "en": "Male"
-              },
-              "female": {
-                "nl": "Vrouw",
-                "en": "Female"
-              },
-              "other": {
-                "nl": "Overig",
-                "en": "Other"
-              },
-              "none": {
-                "nl": "Geen voorkeur",
-                "en": "No preference"
-              }
-            }
-          },
-          "age": {
-            "nl": "Leeftijd:",
-            "en": "Age:"
-          },
-          "nationality": {
-            "nl": "Nationaliteit:",
-            "en": "Nationality:"
-          },
-          "moreSettings": {
-            "nl": "Meer filter instellingen...",
-            "en": "More filter settings..."
-          },
-          "type": {
-            "public": {
-              "nl": "Publiek",
-              "en": "Public"
+  "match": {
+    "data": {
+      "filter": {
+        "countryTo": {
+          "nl": "Land om naar te reizen:",
+          "en": "Country to travel to:"
+        },
+        "countryOrigin": {
+          "nl": "Land van herkomst:",
+          "en": "Country of origin:"
+        },
+        "intresses": {
+          "nl": "Interesses:",
+          "en": "Interests:"
+        },
+        "gender": {
+          "nl": "Geslacht:",
+          "en": "Gender:",
+          "data": {
+            "male": {
+              "nl": "Man",
+              "en": "Male"
             },
-            "private": {
-              "nl": "Privé",
-              "en": "Private"
+            "female": {
+              "nl": "Vrouw",
+              "en": "Female"
+            },
+            "other": {
+              "nl": "Overig",
+              "en": "Other"
+            },
+            "none": {
+              "nl": "Geen voorkeur",
+              "en": "No preference"
             }
           }
         },
-        "profile": {
-          "header": {
-            "nl": "Jouw profiel",
-            "en": "Your profile"
+        "age": {
+          "nl": "Leeftijd:",
+          "en": "Age:"
+        },
+        "nationality": {
+          "nl": "Nationaliteit:",
+          "en": "Nationality:"
+        },
+        "moreSettings": {
+          "nl": "Meer filter instellingen...",
+          "en": "More filter settings..."
+        },
+        "type": {
+          "public": {
+            "nl": "Publiek",
+            "en": "Public"
+          },
+          "private": {
+            "nl": "Privé",
+            "en": "Private"
           }
-
         }
-      }
-    },
-    "register": {
-      "btn_register": {
-        "nl": "Aanmelden",
-        "en": "Sign Up"
-      },
-      "has_account": {
-        "nl": "Heb je al een account?",
-        "en": "Do you already have an account?"
-      },
-      "has_account_link": {
-        "nl": "Inloggen",
-        "en": "Login"
-      },
-      "gender_default": {
-        "nl": "Kies een geslacht",
-        "en": "Choose an gender"
-      }
-    },
-    "login": {
-      "desc": {
-        "nl": "Vul de onderstaande gegevens in om door te gaan.",
-        "en": "Please fill in the information below to continue."
-      },
-      "no_account": {
-        "nl": "Heb je geen account?",
-        "en": "Do not have an account?"
-      },
-      "no_account_link": {
-        "nl": "Registreer hier",
-        "en": "Register here"
-      },
-      "wachtwoord_vergeten": {
-        "nl": "Wachtwoord Vergeten?",
-        "en": "Forgot your password?"
-      }
-    },
-    "nieuw_wachtwoord": {
-      "titel": {
-        "nl": "Kies een nieuw wachtwoord",
-        "en": "Choose a new password"
-      },
-      "subtekst": {
-        "nl": "Stel hier een nieuw wachtwoord in.",
-        "en": "Set a new password here."
-      },
-      "buttonL": {
-        "nl": "Annuleren",
-        "en": "Cancel"
-      },
-      "buttonR": {
-        "nl": "Wijzigen",
-        "en": "Change"
-      }
-    },
-    "wachtwoord_vergeten": {
-      "titel": {
-        "nl": "Je account zoeken",
-        "en": "Find your account"
-      },
-      "subtekst": {
-        "nl": "Voer je e-mailadres in om je account te zoeken.",
-        "en": "Enter your email adress to search for your account."
-      },
-      "buttonL": {
-        "nl": "Annuleren",
-        "en": "Cancel"
-      },
-      "buttonR": {
-        "nl": "Zoeken",
-        "en": "Search"
-      }
-    },
-    "chat": {
-      "titel": {
-        "nl": "Mijn Matches",
-        "en": "My matches"
-      },
-      "contacten": {
-        "nl": "Contacten",
-        "en": "Contacts"
-      },
-      "voorstel": {
-        "nl": "Voorstel boeking",
-        "en": "Proposal booking"
-      },
-      "voorkeuren": {
-        "nl": "Deel voorkeuren",
-        "en": "Share preferences"
-      }
-    },
-    "nav": {
-      "login": {
-        "nl": "Inloggen",
-        "en": "Login"
-      },
-      "logout": {
-        "nl": "Uitloggen",
-        "en": "Logout"
       },
       "profile": {
-        "nl": "Profiel",
-        "en": "Profile"
-      },
-      "matching": {
-        "nl": "Matches",
-        "en": "Matching"
-      },
-      "register": {
-        "nl": "Registreren",
-        "en": "Registration"
-      }
-    },
-    "matchen": {
-      "description": {
-        "nl": "Vind hier de match waar jij mee op reis kan gaan!",
-        "en": "Find the match you can travel with here!"
-      },
-      "geslacht": {
-        "nl": "Geslacht:",
-        "en": "Gender:"
-      },
-      "jouw_gegevens": {
-        "nl": "Jouw Gegevens",
-        "en": "Your credentials"
-      },
-      "naam": {
-        "nl": "Naam",
-        "en": "Name"
-      },
-      "leeftijd": {
-        "nl": "Leeftijd",
-        "en": "Age"
-      }
-    },
+        "header": {
+          "nl": "Jouw profiel",
+          "en": "Your profile"
+        }
 
-    "fourSteps": {
-      "title": {
-        "nl": "De vier stappen van onze website.",
-        "en": "The four steps of our website."
-      }
-    },
-    "faq": {
-      "header": {
-        "nl": "Veelgestelde vragen",
-        "en": "Frequently Asked Questions"
-      }
-    },
-    "country": {
-      "select": {
-        "nl": "Selecteer een land",
-        "en": "Select a country"
-      }
-    },
-    "intress": {
-      "select": {
-        "nl": "Selecteer een interesse",
-        "en": "Select an interest"
-      }
-    },
-    "matchRequest": {
-      "from": {
-        "nl": "Match aanvraag van",
-        "en": "match request from"
-      },
-      "accept": {
-        "nl": "Accepteer",
-        "en": "Accept"
-      },
-      "deny": {
-        "nl": "Weiger",
-        "en": "deny"
       }
     }
+  },
+  "register": {
+    "btn_register": {
+      "nl": "Aanmelden",
+      "en": "Sign Up"
+    },
+    "has_account": {
+      "nl": "Heb je al een account?",
+      "en": "Do you already have an account?"
+    },
+    "has_account_link": {
+      "nl": "Inloggen",
+      "en": "Login"
+    },
+    "gender_default": {
+      "nl": "Kies een geslacht",
+      "en": "Choose an gender"
+    }
+  },
+  "login": {
+    "desc": {
+      "nl": "Vul de onderstaande gegevens in om door te gaan.",
+      "en": "Please fill in the information below to continue."
+    },
+    "no_account": {
+      "nl": "Heb je geen account?",
+      "en": "Do not have an account?"
+    },
+    "no_account_link": {
+      "nl": "Registreer hier",
+      "en": "Register here"
+    }
+  },
+  "nieuw_wachtwoord": {
+    "titel": {
+      "nl": "Kies een nieuw wachtwoord",
+      "en": "Choose a new password"
+    },
+    "subtekst": {
+      "nl": "Stel hier een nieuw wachtwoord in.",
+      "en": "Set a new password here."
+    },
+    "buttonL": {
+      "nl": "Annuleren",
+      "en": "Cancel"
+    },
+    "buttonR": {
+      "nl": "Wijzigen",
+      "en": "Change"
+    }
+  },
+  "wachtwoord_vergeten": {
+    "titel": {
+      "nl": "Je account zoeken",
+      "en": "Find your account"
+    },
+    "subtekst": {
+      "nl": "Voer je e-mailadres in om je account te zoeken.",
+      "en": "Enter your email adress to search for your account."
+    },
+    "buttonL": {
+      "nl": "Annuleren",
+      "en": "Cancel"
+    },
+    "buttonR": {
+      "nl": "Zoeken",
+      "en": "Search"
+    }
+  },
+  "nav": {
+    "login": {
+      "nl": "Inloggen",
+      "en": "Login"
+    },
+    "logout": {
+      "nl": "Uitloggen",
+      "en": "Logout"
+    },
+    "profile": {
+      "nl": "Profiel",
+      "en": "Profile"
+    },
+    "matching": {
+      "nl": "Matches",
+      "en": "Matching"
+    },
+    "register": {
+      "nl": "Registreren",
+      "en": "Registration"
+    }
+  },
+  "fourSteps": {
+    "title": {
+      "nl": "De vier stappen van onze website.",
+      "en": "The four steps of our website."
+    }
+  },
+  "faq": {
+    "header": {
+      "nl": "Veelgestelde vragen",
+      "en": "Frequently Asked Questions"
+    }
+  },
+  "country": {
+    "select": {
+      "nl": "Selecteer een land",
+      "en": "Select a country"
+    }
+  },
+  "intress": {
+    "select": {
+      "nl": "Selecteer een interesse",
+      "en": "Select an interest"
+    }
+  },
+  "matchRequest": {
+    "from": {
+      "nl": "Match aanvraag van",
+      "en": "match request from"
+    },
+    "accept": {
+      "nl": "Accepteer",
+      "en": "Accept"
+    },
+    "deny": {
+      "nl": "Weiger",
+      "en": "deny"
+    }
   }
-
 }
