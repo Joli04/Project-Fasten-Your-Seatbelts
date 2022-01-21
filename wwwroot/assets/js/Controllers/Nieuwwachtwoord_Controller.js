@@ -24,7 +24,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
                 //let email = localStorage.getItem("email")
                 const wachtwoord = document.getElementById("wachtwoord").value;
                 if(!App.validatePassword(wachtwoord)){
-                    App.addError(wachtwoord,"Wachtwoord voldoet niet aan de wachtwoord eisen,");
+                    App.addError(document.getElementById("wachtwoord"),"Wachtwoord voldoet niet aan de wachtwoord eisen,");
                     App.ShowNotifyError("Wachtwoord veranderen is fout gegaan");
                     return
                 }
