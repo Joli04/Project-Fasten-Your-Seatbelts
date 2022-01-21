@@ -6,6 +6,7 @@ import '../config.js';
 import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
+import App from "../Classes/app.js";
 
 const link = new URL('https://is108-3.fys.cloud/#/nieuw/wachtwoord');
 
@@ -30,7 +31,12 @@ export default class Wachtwoord_vergeten extends Controller
                                     document.getElementById("error").style.color = "red"
                                 }
                                 if(data.length === 1){
-                                    localStorage.setItem("email",invoer);
+                                    //localStorage.setItem("email",invoer);
+                                    const domain = "https://" + window.location.hostname;
+                                    const url = FYSCloud.Utils.createUrl("#/nieuw/wachtwoord", {
+                                        email: invoer,
+                                        timestamp: FYSCloud.Utils.toSqlDatetime(new Date())
+                                    });
                                     document.getElementById("titel").innerHTML = "Er is een email verstuurd naar het ingevulde emailadres"
                                     document.getElementById("titel").style.backgroundColor = "green"
                                     document.getElementById("error").innerHTML = "Er is een account gevonden met dit emailadres!"
@@ -48,14 +54,14 @@ export default class Wachtwoord_vergeten extends Controller
                                             }
                                         ],
                                         subject: "CommonFlight - Een nieuw wachtwoord aanmaken",
-                                        html: "<h1>Een nieuw wachtwoord maken</h1><p>Hier is de link om je wachtwoord te veranderen:</p>"+link
+                                        html: `<h1>Een nieuw wachtwoord maken</h1><p> <a href='${domain}/${url}'>Wachtwoord reset</a></p>`
 
                                     }).then(function(data) {
                                         console.log(data);
                                         setTimeout(
                                             function ( )
                                             {
-                                                window.location.replace("https://is108-3.fys.cloud/#/home")
+                                                App.redirect('#/home');
                                             }, 2700);
 
                                     }).catch(function(reason) {
