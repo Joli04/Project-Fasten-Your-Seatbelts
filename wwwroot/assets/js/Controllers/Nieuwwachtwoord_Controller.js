@@ -35,7 +35,7 @@ export default class Nieuwwachtwoord_Controller extends Controller
                     setTimeout(
                         function( )
                         {
-                            window.location.replace("https://dev-is108-3.fys.cloud/#/home")
+                            window.location.replace("https://is108-3.fys.cloud/#/home")
                         }, 2700);
                 }).catch(function (reason) {
                 console.log(reason);
