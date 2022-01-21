@@ -6,7 +6,7 @@ import '../config.js';
 import Controller from './Controller.js';
 
 import view from "../Classes/View.js";
-import App from "../Classes/app";
+import App from "../Classes/app.js";
 
 
 
