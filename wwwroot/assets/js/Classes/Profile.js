@@ -202,7 +202,9 @@ export default class Profile {
     }
 
     verify() {
-        var time = new Date().getTime();
+        var date = new Date();
+        var time = date.toISOString().split('T')[0] + ' ' 
+                        + date.toTimeString().split(' ')[0];
         this.update('email_verified_at', time);
     }
 

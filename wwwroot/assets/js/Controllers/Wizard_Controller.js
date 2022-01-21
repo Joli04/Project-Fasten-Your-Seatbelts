@@ -60,6 +60,7 @@ export default class Wizard_Controller extends Controller {
         function finishProfile(){
             intressFilter.submit();
             CountrieFilter.submit();
+            profiel.verify()
         }
 
     }
